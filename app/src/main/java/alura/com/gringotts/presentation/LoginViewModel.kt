@@ -1,6 +1,8 @@
 package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -9,8 +11,26 @@ import java.util.regex.Pattern
 //Onde vamos realizar as verificaçoes
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
+    private val _enableButtonLogin = MutableLiveData<Boolean>()
+    val enableButtonLogin: LiveData<Boolean> = _enableButtonLogin
+
+    var currentUsername: String? = null
+    set(value){
+        usernameIsValid=isCPFValid(value.toString())
+        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
+        field=value
+    }
+    private var usernameIsValid: Boolean = false
+    var currentPassword: String? = null
+    set(value){
+        passwordIsValid=isPasswordValid(value.toString())
+        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
+        field=value
+    }
+    private var passwordIsValid: Boolean = false
 
     val loginResult: Boolean = false // váriavel pra saber se o login foi válido
+
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job

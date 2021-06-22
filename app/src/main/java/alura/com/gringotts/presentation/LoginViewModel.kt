@@ -20,5 +20,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // Método para Validar a senha
     private fun isPasswordValid(password: String): Boolean {
+
     }
 }

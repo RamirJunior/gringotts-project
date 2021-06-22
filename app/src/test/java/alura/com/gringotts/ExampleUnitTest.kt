@@ -1,4 +1,4 @@
-package alura.com.login
+package alura.com.gringotts
 
 import org.junit.Test
 

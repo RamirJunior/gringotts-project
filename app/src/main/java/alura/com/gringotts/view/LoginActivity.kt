@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
-import alura.com.login.databinding.ActivityLoginBinding
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 
 class LoginActivity : AppCompatActivity() {
@@ -33,6 +33,11 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
 
         })
+
+        login.setOnClickListener { // Quando o usuário clicar para logar
+            loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
+            loginViewModel.login(username.text.toString(), password.text.toString()) //Verifica se existe no sistema o usuário em questão
+        }
 
     }
 }

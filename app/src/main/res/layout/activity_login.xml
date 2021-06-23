@@ -107,7 +107,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="36dp"
         android:text="@string/forgotPassword"
-        android:textColorLink="blue"
+        android:textColorLink="@color/black"
         android:linksClickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

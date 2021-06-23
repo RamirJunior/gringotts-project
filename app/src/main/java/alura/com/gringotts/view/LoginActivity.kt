@@ -14,6 +14,7 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
@@ -30,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonLogin: Button
     private lateinit var loading: ProgressBar
     private lateinit var register: Button
-
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var remember: SwitchCompat
     private lateinit var forgotPassword: TextView
@@ -44,25 +44,26 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin = binding.loginLogin //  botao de login
         loading = binding.loading // barra de login
         register = binding.loginRegister // barra de login
-        remember = binding.loginRemember //Lembrar Usuário
+        remember  = binding.loginRemember //Lembrar Usuário
         forgotPassword = binding.loginForgout // Esqueceu Senha
 
-        loginViewModel =
-            ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
         loginViewModel.init(SharedPreferencesProvider(this))
 
-        username.setText(loginViewModel.currentUsername.value.toString())
-        password.setText(loginViewModel.currentPassword.value.toString())
-        remember.isChecked = loginViewModel.rememberSwitch.value == true
+        username.setText(loginViewModel.getUsername())
+        password.setText(loginViewModel.getPassword())
+        remember.isChecked= loginViewModel.rememberSwitch.value == true
 
-        username.addTextChangedListener {
+        username.addTextChangedListener{
             loginViewModel.setUsername(it.toString())
         }
-        password.addTextChangedListener {
+        password.addTextChangedListener{
             loginViewModel.setPassword(it.toString())
         }
-        remember.setOnClickListener {
-            loginViewModel.switchClicked(remember.isChecked)
+
+        remember.setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.e("b", isChecked.toString())
+            loginViewModel.switchClicked(isChecked)
         }
 
         loginViewModel.enableButtonLogin.observe(this, {
@@ -70,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         buttonLogin.setOnClickListener { // Quando o usuário clicar para logar
-            loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
+            //loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
             loginViewModel.login() //Verifica se existe no sistema o usuário em questão
         }
 
@@ -110,10 +111,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         username.setText(loginViewModel.currentUsername.value.toString())
         password.setText(loginViewModel.currentPassword.value.toString())
         remember.isChecked = loginViewModel.rememberSwitch.value == true
-    }
+    }*/
 }

@@ -10,6 +10,7 @@ class SharedPreferencesProvider(context: Context) {
     private val rememberKey = "remember"
 
     private val sharedPreferences = context.getSharedPreferences(sharedPref, Context.MODE_PRIVATE)
+    private val sharedPreferencesEditor = sharedPreferences.edit()
     fun getUsername(): String?{
         return sharedPreferences.getString(usernameKey, "")
     }
@@ -20,17 +21,15 @@ class SharedPreferencesProvider(context: Context) {
         return sharedPreferences.getBoolean(rememberKey, false)
     }
     fun setRemember(value: Boolean) {
-        val sharedPreferencesEditor = sharedPreferences.edit()
-        sharedPreferencesEditor.putBoolean(rememberKey, value).apply()
+        sharedPreferencesEditor.putBoolean(rememberKey, value).commit()
     }
     fun saveUserData(username: String, password: String){
-        val sharedPreferencesEditor = sharedPreferences.edit()
+        //Log.e("Username", username)
         sharedPreferencesEditor.putString(usernameKey, username)
-        sharedPreferencesEditor.putString(passwordKey, password).apply()
+        sharedPreferencesEditor.putString(passwordKey, password).commit()
     }
     fun deleteUserData(){
-        val sharedPreferencesEditor = sharedPreferences.edit()
         sharedPreferencesEditor.remove(usernameKey)
-        sharedPreferencesEditor.remove(passwordKey).apply()
+        sharedPreferencesEditor.remove(passwordKey).commit()
     }
 }

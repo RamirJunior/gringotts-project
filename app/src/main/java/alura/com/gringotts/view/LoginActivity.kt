@@ -14,6 +14,8 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 
@@ -26,8 +28,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonLogin: Button
     private lateinit var loading: ProgressBar
     private lateinit var register: Button
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var remember: Switch
+    private lateinit var remember: SwitchCompat
     private lateinit var forgotPassword: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,23 +42,24 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin = binding.loginLogin //  botao de login
         loading = binding.loading // barra de login
         register = binding.loginRegister // barra de login
-        remember  = binding.loginRemember //Lembrar Usuário
+        remember = binding.loginRemember //Lembrar Usuário
         forgotPassword = binding.loginForgout // Esqueceu Senha
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
+        loginViewModel =
+            ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
         loginViewModel.init(SharedPreferencesProvider(this))
 
         username.setText(loginViewModel.currentUsername.value.toString())
         password.setText(loginViewModel.currentPassword.value.toString())
-        remember.isChecked= loginViewModel.rememberSwitch.value == true
+        remember.isChecked = loginViewModel.rememberSwitch.value == true
 
-        username.addTextChangedListener{
+        username.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
         }
-        password.addTextChangedListener{
+        password.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }
-        remember.setOnClickListener{
+        remember.setOnClickListener {
             loginViewModel.switchClicked(remember.isChecked)
         }
 
@@ -69,13 +73,25 @@ class LoginActivity : AppCompatActivity() {
         }
 
         register.setOnClickListener(View.OnClickListener() {
+            //abre a pagina de cadastro do PagBank
             @Override
-            fun onClick(v : View) {
-                var url : String = "market://details?id=<package_name>";
+            fun onClickRegister(v: View) {
+                val url: String = "https://cadastro.pagseguro.uol.com.br" +
+                        "/?type=customer&pid=site&af_channel=home&c=banner&af_" +
+                        "adset=pagbank&af_ad=abra-sua-conta&af_force_deeplink=true"
 
-                var i : Intent = Intent(Intent.ACTION_VIEW);
-                i.data = Uri.parse(url);
-                startActivity(i);
+                val i: Intent = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+            }
+        });
+
+        forgotPassword.setOnClickListener(View.OnClickListener() {
+            //abre a pagina de cadastro do PagBank
+            @Override
+            fun onClickRegister(v: View) {
+                val url: String = "https://minhasenha.pagseguro.uol.com.br/recuperar-senha"
+                val i: Intent = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
             }
         });
 
@@ -86,6 +102,6 @@ class LoginActivity : AppCompatActivity() {
         super.onResume()
         username.setText(loginViewModel.currentUsername.value.toString())
         password.setText(loginViewModel.currentPassword.value.toString())
-        remember.isChecked= loginViewModel.rememberSwitch.value == true
+        remember.isChecked = loginViewModel.rememberSwitch.value == true
     }
 }

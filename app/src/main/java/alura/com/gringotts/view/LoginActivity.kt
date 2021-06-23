@@ -5,7 +5,8 @@ import androidx.lifecycle.Observer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
-import alura.com.login.databinding.ActivityLoginBinding
+import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 
 class LoginActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
         val username = binding.loginUsername // pegando o nome no layout login
         val password = binding.loginPassword // pegando o password no layout de login
-        val login = binding.loginLogin //  botao de login
+        val buttonLogin = binding.loginLogin //  botao de login
         val loading = binding.loading // barra de login
         val register = binding.loginRegister // barra de login
         val remember  = binding.loginRemember //Lembrar Usuário
@@ -29,10 +30,25 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
 
+        username.addTextChangedListener{
+            loginViewModel.currentUsername = it.toString()
+        }
+        password.addTextChangedListener{
+            loginViewModel.currentPassword = it.toString()
+        }
         //View model do resultado do login
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
 
         })
+
+        loginViewModel.enableButtonLogin.observe(this, {
+            buttonLogin.isEnabled = it
+        })
+
+        buttonLogin.setOnClickListener { // Quando o usuário clicar para logar
+            loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
+            loginViewModel.login(username.text.toString(), password.text.toString()) //Verifica se existe no sistema o usuário em questão
+        }
 
     }
 }

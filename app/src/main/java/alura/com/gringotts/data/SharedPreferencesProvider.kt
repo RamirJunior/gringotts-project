@@ -1,6 +1,7 @@
 package alura.com.gringotts.data
 
 import android.content.Context
+import android.util.Log
 
 class SharedPreferencesProvider(context: Context) {
     private val sharedPref = "sharedPrefs"
@@ -11,6 +12,7 @@ class SharedPreferencesProvider(context: Context) {
     private val sharedPreferences = context.getSharedPreferences(sharedPref, Context.MODE_PRIVATE)
 
     fun getUsername(): String?{
+        Log.e("a", sharedPreferences.getString(usernameKey, "").toString())
         return sharedPreferences.getString(usernameKey, "")
     }
     fun getPassword(): String?{
@@ -24,6 +26,7 @@ class SharedPreferencesProvider(context: Context) {
         sharedPreferencesEditor.putBoolean(rememberKey, value).apply()
     }
     fun saveUserData(username: String, password: String){
+        Log.e("zz", username)
         val sharedPreferencesEditor = sharedPreferences.edit()
         sharedPreferencesEditor.putString(usernameKey, username)
         sharedPreferencesEditor.putString(passwordKey, password).apply()

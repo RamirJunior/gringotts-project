@@ -45,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
         loginViewModel.init(SharedPreferencesProvider(this))
 
-        username.setText(loginViewModel.currentUsername.value.toString())
-        password.setText(loginViewModel.currentPassword.value.toString())
+        username.setText(loginViewModel.getUsername())
+        password.setText(loginViewModel.getPassword())
         remember.isChecked= loginViewModel.rememberSwitch.value == true
 
         username.addTextChangedListener{
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         buttonLogin.setOnClickListener { // Quando o usuário clicar para logar
-            loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
+            //loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
             loginViewModel.login() //Verifica se existe no sistema o usuário em questão
         }
 
@@ -84,8 +84,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        username.setText(loginViewModel.currentUsername.value.toString())
-        password.setText(loginViewModel.currentPassword.value.toString())
+        username.setText(loginViewModel.getUsername())
+        password.setText(loginViewModel.getPassword())
         remember.isChecked= loginViewModel.rememberSwitch.value == true
     }
 }

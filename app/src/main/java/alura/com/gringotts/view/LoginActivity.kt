@@ -2,24 +2,22 @@ package alura.com.gringotts.view
 
 import alura.com.gringotts.data.SharedPreferencesProvider
 import alura.com.gringotts.databinding.ActivityLoginBinding
-import androidx.lifecycle.Observer
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
-import android.app.Application
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.net.Uri
+import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
+import forgotUrl
+import registerUrl
 
 class LoginActivity : AppCompatActivity() {
 
@@ -74,28 +72,23 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login() //Verifica se existe no sistema o usuário em questão
         }
 
-        register.setOnClickListener(View.OnClickListener() {
+        register.setOnClickListener {
             //abre a pagina de cadastro do PagBank
             @Override
-            fun onClickRegister(v: View) {
-                val url: String = "https://cadastro.pagseguro.uol.com.br" +
-                        "/?type=customer&pid=site&af_channel=home&c=banner&af_" +
-                        "adset=pagbank&af_ad=abra-sua-conta&af_force_deeplink=true"
-
-                val i: Intent = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(url)
+            fun onClickRegister() {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(registerUrl)
             }
-        });
+        }
 
-        forgotPassword.setOnClickListener(View.OnClickListener() {
+        forgotPassword.setOnClickListener {
             //abre a pagina de cadastro do PagBank
             @Override
-            fun onClickRegister(v: View) {
-                val url: String = "https://minhasenha.pagseguro.uol.com.br/recuperar-senha"
-                val i: Intent = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(url)
+            fun onClickRegister() {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(forgotUrl)
             }
-        });
+        }
 
         //Gerenciador de Conexão
         //val connectionManager: ConnectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

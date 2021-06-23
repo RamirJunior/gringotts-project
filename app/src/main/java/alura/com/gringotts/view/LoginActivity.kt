@@ -12,8 +12,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 
@@ -27,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loading: ProgressBar
     private lateinit var register: Button
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var remember: Switch
+    private lateinit var remember: SwitchCompat
     private lateinit var forgotPassword: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
         username.setText(loginViewModel.currentUsername.value.toString())
         password.setText(loginViewModel.currentPassword.value.toString())
-        remember.isChecked= loginViewModel.rememberSwitch.value == true
+        remember.isChecked = loginViewModel.rememberSwitch.value == true
 
         username.addTextChangedListener{
             loginViewModel.setUsername(it.toString())
@@ -55,8 +57,9 @@ class LoginActivity : AppCompatActivity() {
         password.addTextChangedListener{
             loginViewModel.setPassword(it.toString())
         }
-        remember.setOnClickListener{
-            loginViewModel.switchClicked(remember.isChecked)
+        remember.setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.e("b", isChecked.toString())
+            loginViewModel.switchClicked(isChecked)
         }
 
         loginViewModel.enableButtonLogin.observe(this, {
@@ -82,10 +85,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         username.setText(loginViewModel.currentUsername.value.toString())
         password.setText(loginViewModel.currentPassword.value.toString())
         remember.isChecked= loginViewModel.rememberSwitch.value == true
-    }
+    }*/
 }

@@ -1,6 +1,8 @@
 package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository
+import alura.com.gringotts.data.SharedPreferencesProvider
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,37 +11,58 @@ import java.util.regex.Pattern
 
 
 //Onde vamos realizar as verificaçoes
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
-
+class LoginViewModel() : ViewModel() {
     private val _enableButtonLogin = MutableLiveData<Boolean>()
     val enableButtonLogin: LiveData<Boolean> = _enableButtonLogin
-
-    var currentUsername: String? = null
-    set(value){
-        usernameIsValid=isCPFValid(value.toString())
-        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
-        field=value
-    }
+    private val _currentUsername = MutableLiveData<String?>()
+    val currentUsername: LiveData<String?> = _currentUsername
     private var usernameIsValid: Boolean = false
-    var currentPassword: String? = null
-    set(value){
-        passwordIsValid=isPasswordValid(value.toString())
-        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
-        field=value
-    }
+    private val _currentPassword = MutableLiveData<String?>()
+    val currentPassword: LiveData<String?> = _currentPassword
     private var passwordIsValid: Boolean = false
-
     val loginResult: Boolean = false // váriavel pra saber se o login foi válido
+    private val _rememberSwitch = MutableLiveData<Boolean>()
+    val rememberSwitch: LiveData<Boolean> = _rememberSwitch
+    private lateinit var sharedPeferenceProvider: SharedPreferencesProvider
 
+    fun init(provider: SharedPreferencesProvider) {
+        sharedPeferenceProvider=provider
+        _rememberSwitch.postValue(sharedPeferenceProvider.getRemeber())
+        if(_rememberSwitch.value != true){
+            _currentUsername.postValue(sharedPeferenceProvider.getUsername())
+            _currentPassword.postValue(sharedPeferenceProvider.getPassword())
+        }
+        else{
+            _currentUsername.postValue("")
+            _currentPassword.postValue("")
+        }
+    }
 
-    fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password) //Logando no nosso Banco de dados ou algo do tipo
+    fun switchClicked(value: Boolean){
+        _rememberSwitch.postValue(value)
+    }
 
-        if (result) { //Se verdadeiro
+    fun setUsername(value: String){
+        passwordIsValid=isPasswordValid(value)
+        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
+        _currentUsername.postValue(value)
+    }
 
-        } else { //Senão
+    fun setPassword(value: String){
+        passwordIsValid=isPasswordValid(value)
+        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
+        _currentPassword.postValue(value)
+    }
 
+    fun login() {
+        if(_rememberSwitch.value == true){
+            sharedPeferenceProvider.
+                saveUserData(_currentUsername.value.toString(), _currentPassword.value.toString())
+            sharedPeferenceProvider.setRemember(true)
+        }
+        else{
+            sharedPeferenceProvider.deleteUserData()
+            sharedPeferenceProvider.setRemember(false)
         }
     }
 

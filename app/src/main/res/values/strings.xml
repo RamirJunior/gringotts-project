@@ -10,4 +10,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="registrar">CRIAR CONTA</string>
+    <string name="forgotPassword">ESQUECI MINHA SENHA</string>
+    <string name="rememberPassword">Lembrar minha conta</string>
 </resources>

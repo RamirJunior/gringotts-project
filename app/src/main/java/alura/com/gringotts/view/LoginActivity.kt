@@ -11,6 +11,8 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
 import android.view.View
 import android.widget.*
@@ -95,6 +97,16 @@ class LoginActivity : AppCompatActivity() {
             }
         });
 
+        //Gerenciador de Conexão
+        val connectionManager: ConnectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? =connectionManager.activeNetworkInfo
+        //Valor falso corresponde a ausência de conexão
+        val isConnected:Boolean = activeNetwork?.isConnectedOrConnecting == false
+
+        //Checagem e Layout
+        if (isConnected) {
+
+        }
     }
 
 

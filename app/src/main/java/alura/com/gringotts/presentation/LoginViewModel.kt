@@ -2,11 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
-import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
-import android.view.View
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,7 +20,7 @@ class LoginViewModel() : ViewModel() {
     private val _currentPassword = MutableLiveData<String?>()
     val currentPassword: LiveData<String?> = _currentPassword
     private var passwordIsValid: Boolean = true
-    val loginResult: Boolean = true // váriavel pra saber se o login foi válido
+    val loginResult: Boolean = false // váriavel pra saber se o login foi válido
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private lateinit var sharedPeferenceProvider: SharedPreferencesProvider
@@ -47,13 +43,13 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun setUsername(value: String){
-        //passwordIsValid=isPasswordValid(value)
+        passwordIsValid=true
         _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
         _currentUsername.postValue(value)
     }
 
     fun setPassword(value: String){
-        //passwordIsValid=isPasswordValid(value)
+        passwordIsValid=true
         _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
         _currentPassword.postValue(value)
     }
@@ -109,9 +105,8 @@ class LoginViewModel() : ViewModel() {
         pattern = Pattern.compile(PASSWORD_PATTERN)
         matcher = pattern.matcher(password)
 
+
+
         return matcher.matches()
     }
-
-
-
 }

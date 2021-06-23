@@ -7,8 +7,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
@@ -65,7 +68,19 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login() //Verifica se existe no sistema o usuário em questão
         }
 
+        register.setOnClickListener(View.OnClickListener() {
+            @Override
+            fun onClick(v : View) {
+                var url : String = "market://details?id=<package_name>";
+
+                var i : Intent = Intent(Intent.ACTION_VIEW);
+                i.data = Uri.parse(url);
+                startActivity(i);
+            }
+        });
+
     }
+
 
     override fun onResume() {
         super.onResume()

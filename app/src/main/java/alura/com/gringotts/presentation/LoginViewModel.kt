@@ -16,10 +16,10 @@ class LoginViewModel() : ViewModel() {
     val enableButtonLogin: LiveData<Boolean> = _enableButtonLogin
     private val _currentUsername = MutableLiveData<String?>()
     val currentUsername: LiveData<String?> = _currentUsername
-    private var usernameIsValid: Boolean = false
+    private var usernameIsValid: Boolean = true
     private val _currentPassword = MutableLiveData<String?>()
     val currentPassword: LiveData<String?> = _currentPassword
-    private var passwordIsValid: Boolean = false
+    private var passwordIsValid: Boolean = true
     val loginResult: Boolean = false // váriavel pra saber se o login foi válido
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch

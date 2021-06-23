@@ -3,7 +3,6 @@ package alura.com.gringotts.presentation
 import alura.com.gringotts.data.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,9 +14,11 @@ import java.util.regex.Pattern
 class LoginViewModel() : ViewModel() {
     private val _enableButtonLogin = MutableLiveData<Boolean>()
     val enableButtonLogin: LiveData<Boolean> = _enableButtonLogin
-    private var _currentUsername: String? = ""
+    private val _currentUsername = MutableLiveData<String?>()
+    val currentUsername: LiveData<String?> = _currentUsername
     private var usernameIsValid: Boolean = true
-    private var _currentPassword :String? = ""
+    private val _currentPassword = MutableLiveData<String?>()
+    val currentPassword: LiveData<String?> = _currentPassword
     private var passwordIsValid: Boolean = true
     val loginResult: Boolean = false // váriavel pra saber se o login foi válido
     private val _rememberSwitch = MutableLiveData<Boolean>()
@@ -27,10 +28,13 @@ class LoginViewModel() : ViewModel() {
     fun init(provider: SharedPreferencesProvider) {
         sharedPeferenceProvider=provider
         _rememberSwitch.postValue(sharedPeferenceProvider.getRemeber())
-        if(_rememberSwitch.value==true) {
-            Log.e("a", "bbb")
-            _currentUsername = sharedPeferenceProvider.getUsername()
-            _currentPassword = sharedPeferenceProvider.getPassword()
+        if(_rememberSwitch.value != true){
+            _currentUsername.postValue(sharedPeferenceProvider.getUsername())
+            _currentPassword.postValue(sharedPeferenceProvider.getPassword())
+        }
+        else{
+            _currentUsername.postValue("")
+            _currentPassword.postValue("")
         }
     }
 
@@ -39,35 +43,21 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun setUsername(value: String){
-        usernameIsValid=true
+        passwordIsValid=isPasswordValid(value)
         _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
-        _currentUsername = value
+        _currentUsername.postValue(value)
     }
 
     fun setPassword(value: String){
-        passwordIsValid=true
+        passwordIsValid=isPasswordValid(value)
         _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
-        _currentPassword = value
-    }
-
-    fun getUsername(): String{
-        if(_currentUsername.equals("")) {
-            return ""
-        }
-        return _currentUsername.toString()
-    }
-    fun getPassword(): String{
-        if(_currentPassword.equals("")) {
-            return ""
-        }
-        return _currentPassword.toString()
+        _currentPassword.postValue(value)
     }
 
     fun login() {
         if(_rememberSwitch.value == true){
-            Log.e("zz", _rememberSwitch.value.toString())
             sharedPeferenceProvider.
-                saveUserData(_currentUsername.toString(), _currentPassword.toString())
+                saveUserData(_currentUsername.value.toString(), _currentPassword.value.toString())
             sharedPeferenceProvider.setRemember(true)
         }
         else{

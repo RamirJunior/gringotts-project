@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Login">
         <activity
-            android:name="alura.com.gringotts.view.LoginActivity"
+            android:name="alura.com.gringotts.view.InitialActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

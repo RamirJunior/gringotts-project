@@ -24,7 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import forgotUrl
 import registerUrl
 
-class LoginActivity : AppCompatActivity() {
+class InitialActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding

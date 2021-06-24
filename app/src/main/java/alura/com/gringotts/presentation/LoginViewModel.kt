@@ -1,9 +1,6 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
-import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,18 +19,18 @@ class LoginViewModel() : ViewModel() {
     val loginResult: Boolean = false // váriavel pra saber se o login foi válido
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
-    private lateinit var sharedPeferenceProvider: SharedPreferencesProvider
+    private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
 
-    fun init(provider: SharedPreferencesProvider) {
-        sharedPeferenceProvider=provider
-        _rememberSwitch.value = sharedPeferenceProvider.getRemeber()
+    fun init(IMPL: SharedPreferencesProvider) {
+        sharedPeferenceIMPL=IMPL
+        _rememberSwitch.value = sharedPeferenceIMPL.getRemeber()
         if(_rememberSwitch.value == null) {
             _rememberSwitch.value = false
         }
         //Log.e("estadoSwitch", _rememberSwitch.value.toString())
         if(_rememberSwitch.value==true) {
-            _currentUsername = sharedPeferenceProvider.getUsername()
-            _currentPassword = sharedPeferenceProvider.getPassword()
+            _currentUsername = sharedPeferenceIMPL.getUsername()
+            _currentPassword = sharedPeferenceIMPL.getPassword()
         }
     }
 
@@ -69,14 +66,14 @@ class LoginViewModel() : ViewModel() {
     fun login() {
         if(_rememberSwitch.value == true){
             //Log.e("switchOn", _rememberSwitch.value.toString())
-            sharedPeferenceProvider.
+            sharedPeferenceIMPL.
             saveUserData(_currentUsername.toString(), _currentPassword.toString())
-            sharedPeferenceProvider.setRemember(true)
+            sharedPeferenceIMPL.setRemember(true)
         }
         else{
             //Log.e("switchOff", _rememberSwitch.value.toString())
-            sharedPeferenceProvider.deleteUserData()
-            sharedPeferenceProvider.setRemember(false)
+            sharedPeferenceIMPL.deleteUserData()
+            sharedPeferenceIMPL.setRemember(false)
         }
     }
 

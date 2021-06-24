@@ -1,24 +1,16 @@
 package alura.com.gringotts.view
 
-import alura.com.gringotts.data.SharedPreferencesProvider
+import alura.com.gringotts.data.SharedPreferencesIMPL
 import alura.com.gringotts.databinding.ActivityLoginBinding
-import androidx.lifecycle.Observer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
-import android.app.Application
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.net.Uri
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import forgotUrl
@@ -49,7 +41,7 @@ class InitialActivity : AppCompatActivity() {
         forgotPassword = binding.loginForgout // Esqueceu Senha
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
-        loginViewModel.init(SharedPreferencesProvider(this))
+        loginViewModel.init(SharedPreferencesIMPL(this))
 
         username.setText(loginViewModel.getUsername())
         password.setText(loginViewModel.getPassword())

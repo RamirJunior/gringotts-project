@@ -1,7 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.data.SharedPreferencesIMPL
-import alura.com.gringotts.databinding.ActivityLoginBinding
+import alura.com.gringotts.databinding.ActivityInitialBinding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import alura.com.gringotts.presentation.LoginViewModel
@@ -19,7 +19,7 @@ import registerUrl
 class InitialActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityInitialBinding
     private lateinit var username: EditText
     private lateinit var password: EditText
     private lateinit var buttonLogin: Button
@@ -30,7 +30,7 @@ class InitialActivity : AppCompatActivity() {
     private lateinit var forgotPassword: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater) //Setando o nosso Layout de login
+        binding = ActivityInitialBinding.inflate(layoutInflater) //Setando o nosso Layout de login
         setContentView(binding.root) //Setando o nosso Layout de login
         username = binding.loginUsername // pegando o nome no layout login
         password = binding.loginPassword // pegando o password no layout de login

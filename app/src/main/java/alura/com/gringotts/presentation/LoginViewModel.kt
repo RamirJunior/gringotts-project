@@ -1,11 +1,18 @@
 package alura.com.gringotts.presentation
 
+import alura.com.gringotts.data.LoginResponse
 import alura.com.gringotts.data.SharedPreferencesProvider
+import alura.com.gringotts.data.api.ApiInterface
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
 
 
 //Onde vamos realizar as verificaçoes
@@ -20,6 +27,19 @@ class LoginViewModel() : ViewModel() {
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
+
+    fun loginValidation(){
+        val apiInterface = ApiInterface.create().userLogin(_currentUsername.toString(), _currentPassword.toString())
+        apiInterface.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
+                Log.e("user", response?.body()?.user?.firstName.toString())
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.e("erro", t.message.toString())
+            }
+        })
+    }
 
     fun init(IMPL: SharedPreferencesProvider) {
         sharedPeferenceIMPL=IMPL
@@ -75,6 +95,7 @@ class LoginViewModel() : ViewModel() {
             sharedPeferenceIMPL.deleteUserData()
             sharedPeferenceIMPL.setRemember(false)
         }
+        loginValidation()
     }
 
     // Método para Validar a senha utilizando Pattern e Matcher

@@ -77,7 +77,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         register.setOnClickListener {
-            //abre a pagina de cadastro do PagBank
             @Override
             fun onClickRegister() {
                 val i = Intent(Intent.ACTION_VIEW)
@@ -86,7 +85,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         forgotPassword.setOnClickListener {
-            //abre a pagina de cadastro do PagBank
             @Override
             fun onClickRegister() {
                 val i = Intent(Intent.ACTION_VIEW)

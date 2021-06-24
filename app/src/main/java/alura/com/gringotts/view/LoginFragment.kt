@@ -15,6 +15,6 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_initial, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 }

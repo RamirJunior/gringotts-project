@@ -80,30 +80,6 @@ class LoginViewModel() : ViewModel() {
         }
     }
 
-    //Verifica se o CPF é válido
-    private fun isCPFValid(cpf: String): Boolean {
-        val pattern: Pattern
-        val matcher: Matcher
-        val CPF_PATTERN = "^(?=.[0-9])(?=.{11,})"
-
-        pattern = Pattern.compile(CPF_PATTERN)
-        matcher = pattern.matcher(cpf)
-
-        return matcher.matches()
-    }
-
-    //Verifica se o CNPJ é válido
-    private fun isCNPJValid(cnpj: String): Boolean {
-        val pattern: Pattern
-        val matcher: Matcher
-        val CNPJ_PATTERN = "^(?=.[0-9])(?=.{14,})"
-
-        pattern = Pattern.compile(CNPJ_PATTERN)
-        matcher = pattern.matcher(cnpj)
-
-        return matcher.matches()
-    }
-
     // Método para Validar a senha utilizando Pattern e Matcher
     private fun isPasswordValid(password: String): Boolean {
         val pattern: Pattern
@@ -118,7 +94,6 @@ class LoginViewModel() : ViewModel() {
 
         pattern = Pattern.compile(PASSWORD_PATTERN)
         matcher = pattern.matcher(password)
-
 
 
         return matcher.matches()

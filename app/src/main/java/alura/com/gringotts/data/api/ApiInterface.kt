@@ -1,6 +1,6 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.LoginResponse
+import alura.com.gringotts.data.model.LoginResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,7 +17,7 @@ interface ApiInterface {
         @Field("password") password: String
     ): Call<LoginResponse>
     companion object{
-        private val BASE_URL = "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc"
+        private val BASE_URL = "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc/"
 
 
         fun create() : ApiInterface{

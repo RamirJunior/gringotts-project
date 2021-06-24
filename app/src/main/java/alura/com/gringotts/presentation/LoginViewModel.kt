@@ -1,10 +1,9 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.LoginResponse
+import alura.com.gringotts.data.model.LoginResponse
 import alura.com.gringotts.data.SharedPreferencesProvider
 import alura.com.gringotts.data.api.ApiInterface
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,7 +22,6 @@ class LoginViewModel() : ViewModel() {
     private var usernameIsValid: Boolean = true
     private var _currentPassword :String? = ""
     private var passwordIsValid: Boolean = true
-    val loginResult: Boolean = false // váriavel pra saber se o login foi válido
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
@@ -36,7 +34,7 @@ class LoginViewModel() : ViewModel() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("erro", t.message.toString())
+                //Log.e("erro", t.message.toString())
             }
         })
     }

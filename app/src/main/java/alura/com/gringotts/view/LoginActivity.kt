@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var forgotPassword: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityLoginBinding.inflate(layoutInflater) //Setando o nosso Layout de login
         setContentView(binding.root) //Setando o nosso Layout de login
         username = binding.loginUsername // pegando o nome no layout login

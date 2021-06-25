@@ -16,8 +16,6 @@ import retrofit2.Response
 
 //Onde vamos realizar as verificaçoes
 class LoginViewModel() : ViewModel() {
-    private val _enableButtonLogin = MutableLiveData<Boolean>()
-    val enableButtonLogin: LiveData<Boolean> = _enableButtonLogin
     private var _currentUsername: String? = ""
     private var usernameIsValid: Boolean = true
     private var _currentPassword :String? = ""
@@ -58,13 +56,11 @@ class LoginViewModel() : ViewModel() {
 
     fun setUsername(value: String){
         usernameIsValid=true
-        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
         _currentUsername = value
     }
 
     fun setPassword(value: String){
         passwordIsValid=true
-        _enableButtonLogin.postValue(usernameIsValid && passwordIsValid)
         _currentPassword = value
     }
 

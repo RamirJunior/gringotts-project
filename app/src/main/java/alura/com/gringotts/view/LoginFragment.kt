@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentLoginBinding.inflate(layoutInflater) //Setando o nosso Layout de login
         val view = binding.root //Setando o nosso Layout de login
@@ -74,9 +74,6 @@ class LoginFragment : Fragment() {
             loginViewModel.switchClicked(isChecked)
         }
 
-        loginViewModel.enableButtonLogin.observe(viewLifecycleOwner, {
-            buttonLogin.isEnabled = it
-        })
 
         buttonLogin.setOnClickListener { // Quando o usuário clicar para logar
             //loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela

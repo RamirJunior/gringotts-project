@@ -23,31 +23,56 @@ class LoginViewModel() : ViewModel() {
     private var passwordIsValid: Boolean = true
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
+    private val _loading= MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _rememberSwitch
+    private val _errorMassage= MutableLiveData<String>()
+    val errorMassage: LiveData<String> = _errorMassage
+    private val _loginResponse= MutableLiveData<LoginResponse>()
+    val loginResponse: LiveData<LoginResponse> = _loginResponse
     private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
 
+
     fun loginValidation(){
+        Log.e("erro", "loginValidation")
         val apiInterface = ApiInterface.create().userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
         apiInterface.enqueue(object : Callback<LoginResponse> {
 
             override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
+                Log.e("erro", "onResponse")
                 if(response?.isSuccessful==true){
-                    Log.e("user", response.body()!!.user.firstName)
+                    _loginResponse.postValue(response.body())
                 }
+                else{
+                    Log.e("erro", response?.code().toString())
+                    if(response?.code() == 422){
+                        _errorMassage.postValue("Senha e e-mail não encontrados")
+                    }
+                    if(response?.code() == 404){
+                        _errorMassage.postValue("e-mail incompativel com a senha")
+                    }
+                    if(response?.code() == 401){
+                        _errorMassage.postValue("Senha incorreta")
+                    }
+                }
+                _loading.postValue(false)
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                //Log.e("erro", t.message.toString())
+                Log.e("erro",t.message.toString())
+                _loading.postValue(false)
             }
         })
     }
 
     fun init(IMPL: SharedPreferencesProvider) {
+        Log.e("erro", "init")
+        _loading.postValue(false)
         sharedPeferenceIMPL=IMPL
         _rememberSwitch.value = sharedPeferenceIMPL.getRemeber()
         if(_rememberSwitch.value == null) {
             _rememberSwitch.value = false
         }
-        //Log.e("estadoSwitch", _rememberSwitch.value.toString())
+        Log.e("estadoSwitch", _rememberSwitch.value.toString())
         if(_rememberSwitch.value==true) {
             _currentUsername = sharedPeferenceIMPL.getUsername()
             _currentPassword = sharedPeferenceIMPL.getPassword()
@@ -82,6 +107,7 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun login() {
+        Log.e("erro", "logi")
         if(_rememberSwitch.value == true){
             //Log.e("switchOn", _rememberSwitch.value.toString())
             sharedPeferenceIMPL.
@@ -93,6 +119,7 @@ class LoginViewModel() : ViewModel() {
             sharedPeferenceIMPL.deleteUserData()
             sharedPeferenceIMPL.setRemember(false)
         }
+        _loading.postValue(true)
         loginValidation()
     }
 

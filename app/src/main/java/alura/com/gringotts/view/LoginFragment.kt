@@ -4,6 +4,7 @@ import alura.com.gringotts.data.SharedPreferencesIMPL
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -57,29 +59,50 @@ class LoginFragment : Fragment() {
 
         loginViewModel =
             ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
-        loginViewModel.init(SharedPreferencesIMPL(requireContext()))
+        loginViewModel.init(SharedPreferencesIMPL(requireContext().applicationContext))
 
         username.setText(loginViewModel.getUsername())
         password.setText(loginViewModel.getPassword())
-        remember.isChecked = loginViewModel.rememberSwitch.value == true
+        remember.isChecked= loginViewModel.rememberSwitch.value == true
 
-        username.addTextChangedListener {
+        username.addTextChangedListener{
             loginViewModel.setUsername(it.toString())
         }
-        password.addTextChangedListener {
+        password.addTextChangedListener{
             loginViewModel.setPassword(it.toString())
         }
 
         remember.setOnCheckedChangeListener { buttonView, isChecked ->
-            Log.e("b", isChecked.toString())
             loginViewModel.switchClicked(isChecked)
         }
 
+        loginViewModel.errorMassage.observe(viewLifecycleOwner, {
+            Log.e("erro", it.toString())
+            /*val alertDialogBuilder = AlertDialog.Builder(requireContext().applicationContext)
+            alertDialogBuilder.setMessage(it.toString())
+            alertDialogBuilder.setNegativeButton("Ok",
+                DialogInterface.OnClickListener { dialog, id ->
 
-        buttonLogin.setOnClickListener { // Quando o usuário clicar para logar
-            //loading.visibility = View.VISIBLE // Falando pro loading aparecer na tela
-            loginViewModel.login() //Verifica se existe no sistema o usuário em questão
+                })
+            alertDialogBuilder.show()*/
+
+        })
+
+        buttonLogin.setOnClickListener {
+            loginViewModel.login()
         }
+
+        loginViewModel.loading.observe(viewLifecycleOwner, {
+            //Log.e("erro", it.toString())
+            if(it){
+                loading.visibility= View.VISIBLE
+            }
+            else{
+                loading.visibility = View.GONE
+            }
+        })
+
+
 
         register.setOnClickListener {
             @Override

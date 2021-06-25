@@ -3,6 +3,7 @@ package alura.com.gringotts.presentation
 import alura.com.gringotts.data.model.LoginResponse
 import alura.com.gringotts.data.SharedPreferencesProvider
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.model.LoginModel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,10 +26,13 @@ class LoginViewModel() : ViewModel() {
     private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
 
     fun loginValidation(){
-        val apiInterface = ApiInterface.create().userLogin(_currentUsername.toString(), _currentPassword.toString())
+        val apiInterface = ApiInterface.create().userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
         apiInterface.enqueue(object : Callback<LoginResponse> {
+
             override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
-                Log.e("user", response?.body()?.user?.firstName.toString())
+                if(response?.isSuccessful==true){
+                    Log.e("user", response.body()!!.user.firstName)
+                }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {

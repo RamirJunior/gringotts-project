@@ -1,5 +1,6 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.data.SharedPreferencesIMPL
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
@@ -56,7 +57,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel =
             ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
-        //loginViewModel.init(SharedPreferencesIMPL(viewLifecycleOwner))
+        loginViewModel.init(SharedPreferencesIMPL(requireContext()))
 
         username.setText(loginViewModel.getUsername())
         password.setText(loginViewModel.getPassword())

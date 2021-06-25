@@ -24,7 +24,7 @@ class LoginViewModel() : ViewModel() {
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private val _loading= MutableLiveData<Boolean>()
-    val loading: LiveData<Boolean> = _rememberSwitch
+    val loading: LiveData<Boolean> = _loading
     private val _errorMassage= MutableLiveData<String>()
     val errorMassage: LiveData<String> = _errorMassage
     private val _loginResponse= MutableLiveData<LoginResponse>()
@@ -65,14 +65,12 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun init(IMPL: SharedPreferencesProvider) {
-        Log.e("erro", "init")
-        _loading.postValue(false)
         sharedPeferenceIMPL=IMPL
         _rememberSwitch.value = sharedPeferenceIMPL.getRemeber()
+        _loading.postValue(false)
         if(_rememberSwitch.value == null) {
             _rememberSwitch.value = false
         }
-        Log.e("estadoSwitch", _rememberSwitch.value.toString())
         if(_rememberSwitch.value==true) {
             _currentUsername = sharedPeferenceIMPL.getUsername()
             _currentPassword = sharedPeferenceIMPL.getPassword()
@@ -107,18 +105,19 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun login() {
-        Log.e("erro", "logi")
+        Log.e("erro", "login")
         if(_rememberSwitch.value == true){
-            //Log.e("switchOn", _rememberSwitch.value.toString())
+            Log.e("switchOn", _rememberSwitch.value.toString())
             sharedPeferenceIMPL.
             saveUserData(_currentUsername.toString(), _currentPassword.toString())
             sharedPeferenceIMPL.setRemember(true)
         }
         else{
-            //Log.e("switchOff", _rememberSwitch.value.toString())
+            Log.e("switchOff", _rememberSwitch.value.toString())
             sharedPeferenceIMPL.deleteUserData()
             sharedPeferenceIMPL.setRemember(false)
         }
+        Log.e("erro", "EEEEEEE")
         _loading.postValue(true)
         loginValidation()
     }

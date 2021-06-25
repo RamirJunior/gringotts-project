@@ -73,6 +73,7 @@ class LoginFragment : Fragment() {
         }
 
         remember.setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.e("switch", "switch")
             loginViewModel.switchClicked(isChecked)
         }
 
@@ -93,7 +94,7 @@ class LoginFragment : Fragment() {
         }
 
         loginViewModel.loading.observe(viewLifecycleOwner, {
-            //Log.e("erro", it.toString())
+            Log.e("loading", it.toString())
             if(it){
                 loading.visibility= View.VISIBLE
             }

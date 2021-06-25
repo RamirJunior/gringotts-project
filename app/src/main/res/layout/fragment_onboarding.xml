@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grayLow"
-    >
+    android:background="@color/grayLow">
 
     <ImageView
         android:id="@+id/imageViewLogoGringotts"
@@ -33,17 +31,18 @@
 
     <TextView
         android:id="@+id/txt_onboarding1"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:text="@string/txt_activityOnboarding1"
         android:textAlignment="center"
         android:textColor="@color/grayHigh"
         android:textSize="28dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view" />
@@ -53,12 +52,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/txt_activityOnboarding2"
         android:textAlignment="center"
         android:textColor="@color/grayHigh"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_onboarding1" />

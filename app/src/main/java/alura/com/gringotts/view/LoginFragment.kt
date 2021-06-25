@@ -4,7 +4,6 @@ import alura.com.gringotts.data.SharedPreferencesIMPL
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,7 +15,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -63,12 +61,12 @@ class LoginFragment : Fragment() {
 
         username.setText(loginViewModel.getUsername())
         password.setText(loginViewModel.getPassword())
-        remember.isChecked= loginViewModel.rememberSwitch.value == true
+        remember.isChecked = loginViewModel.rememberSwitch.value == true
 
-        username.addTextChangedListener{
+        username.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
         }
-        password.addTextChangedListener{
+        password.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }
 
@@ -95,10 +93,9 @@ class LoginFragment : Fragment() {
 
         loginViewModel.loading.observe(viewLifecycleOwner, {
             Log.e("loading", it.toString())
-            if(it){
-                loading.visibility= View.VISIBLE
-            }
-            else{
+            if (it) {
+                loading.visibility = View.VISIBLE
+            } else {
                 loading.visibility = View.GONE
             }
         })

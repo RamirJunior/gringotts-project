@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
-class SplashFragment : Fragment(){
+class SplashFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,9 +22,9 @@ class SplashFragment : Fragment(){
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if(onBoardingFinished()){
+            if (onBoardingFinished()) {
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment) //leva para tela de login se ja tiver sharedpref
-            }else{
+            } else {
                 findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment) // leva para tela de onboarding se for a primeira vez que o aplicativo esta sendo executado
             }
         }, 3000)
@@ -33,7 +33,7 @@ class SplashFragment : Fragment(){
         return view
     }
 
-    private fun onBoardingFinished(): Boolean{ //Verifica se o app já foi aberto alguma vez
+    private fun onBoardingFinished(): Boolean { //Verifica se o app já foi aberto alguma vez
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }

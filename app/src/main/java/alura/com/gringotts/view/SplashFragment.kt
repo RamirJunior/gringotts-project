@@ -23,7 +23,7 @@ class SplashFragment : Fragment(){
 
         Handler(Looper.getMainLooper()).postDelayed({
             if(onBoardingFinished()){
-                findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment) //leva para tela de login se ja tiver sharedpref
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment) //leva para tela de login se ja tiver sharedpref
             }else{
                 findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment) // leva para tela de onboarding se for a primeira vez que o aplicativo esta sendo executado
             }

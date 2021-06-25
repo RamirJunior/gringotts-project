@@ -42,8 +42,8 @@ class OnboardingFragment : Fragment() {
         criarConta.setOnClickListener { //errado
             @Override
             fun onClickRegister() {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(registerUrl)
+                val openUrl = Intent(Intent.ACTION_VIEW, Uri.parse(registerUrl))
+                this.startActivity(openUrl)
             }
         }
 

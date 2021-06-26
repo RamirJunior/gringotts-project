@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">android-pagbank-gringotts</string>
+    <string name="app_name">Gringotts</string>
     <string name="txt_activityOnboarding1">Nunca foi tão fácil controlar o seu dinheiro.</string>
     <string name="txt_activityOnboarding2">Crie sua conta agora mesmo.</string>
     <string name="txt_botaoCriarConta">Criar conta</string>

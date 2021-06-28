@@ -11,16 +11,15 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.UnknownHostException
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
 //Onde vamos realizar as verificaçoes
-class LoginViewModel() : ViewModel() {
+class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewModel() {
     private var _currentUsername: String? = ""
-    private var usernameIsValid: Boolean = true
     private var _currentPassword: String? = ""
-    private var passwordIsValid: Boolean = true
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private val _loading = MutableLiveData<Boolean>()
@@ -29,7 +28,6 @@ class LoginViewModel() : ViewModel() {
     private lateinit var loginResponse: LoginResponse
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> = _loginResult
-    private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
 
     fun loginValidation() {
         if(isPasswordValid()) {
@@ -68,9 +66,7 @@ class LoginViewModel() : ViewModel() {
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Log.e("Falha conexao", t.message.toString())
-                    val noInternetError =
-                        "Unable to resolve host \"us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net\": No address associated with hostname"
-                    if (t.message.equals(noInternetError)) {
+                    if (t is UnknownHostException) {
                         errorMassage = "Sem acesso a internet"
                     }
                     _loginResult.postValue(false)
@@ -79,16 +75,13 @@ class LoginViewModel() : ViewModel() {
             })
         }
         else{
-            errorMassage = "A senha deve ter: uma letra minuscula, um número de 0 à 9, " +
-                    "conter uma letra maiuscula, algum caractere especial e " +
-                    "ter 6 caracteres ou mais"
+            errorMassage = "A senha deve ter: 6 caracteres ou mais"
             _loginResult.postValue(false)
             _loading.postValue(false)
         }
     }
 
-    fun init(IMPL: SharedPreferencesProvider) {
-        sharedPeferenceIMPL = IMPL
+    init{
         _rememberSwitch.value = sharedPeferenceIMPL.getRemeber()
         _loading.postValue(false)
         if (_rememberSwitch.value == null) {
@@ -105,12 +98,10 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun setUsername(value: String) {
-        usernameIsValid = true
         _currentUsername = value
     }
 
     fun setPassword(value: String) {
-        passwordIsValid = true
         _currentPassword = value
     }
 
@@ -154,21 +145,9 @@ class LoginViewModel() : ViewModel() {
 
     // Método para Validar a senha utilizando Pattern e Matcher
     private fun isPasswordValid(): Boolean {
-        val password = _currentPassword
-        val pattern: Pattern
-        val matcher: Matcher
-
-        val PASSWORD_PATTERN = "^(?=.[0-9])(?=.[a-z])(?=.*[A-Z])(?=.*[!@#\$%^&*])(?=.{6,})"
-        //(?=.*[a-z]) a senha tem que ter uma letra minuscula
-        //(?=.[0-9]) a senha tem que ter um número de 0 à 9
-        //(?=.*[A-Z]) a senha tem que conter uma letra maiuscula
-        //(?=.*[!@#$%^&*]) a senha tem que ter algum caractere especial
-        //(?=.{6,}) a senha tem quer ter 6 caracteres ou mais
-
-        pattern = Pattern.compile(PASSWORD_PATTERN)
-        matcher = pattern.matcher(password)
-
-
-        return matcher.matches()
+        val password = _currentPassword.toString()
+        var resp=true
+        if(password.length<6) resp = false
+        return resp
     }
 }

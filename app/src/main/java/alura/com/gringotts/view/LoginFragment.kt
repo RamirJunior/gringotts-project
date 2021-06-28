@@ -22,11 +22,11 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import forgotUrl
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import registerUrl
 
 class LoginFragment : Fragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
     private lateinit var username: EditText
     private lateinit var password: EditText
@@ -37,6 +37,7 @@ class LoginFragment : Fragment() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var remember: SwitchCompat
     private lateinit var forgotPassword: TextView
+    private val loginViewModel by viewModel<LoginViewModel>()
 
 
     override fun onCreateView(
@@ -56,11 +57,6 @@ class LoginFragment : Fragment() {
         remember = binding.loginRemember //Lembrar Usuário
         forgotPassword = binding.loginForgot // Esqueceu Senha
 
-
-        loginViewModel =
-            ViewModelProvider(this).get(LoginViewModel::class.java) //Iniciando o view model
-        loginViewModel.init(SharedPreferencesIMPL(requireContext().applicationContext))
-
         username.setText(loginViewModel.getUsername())
         password.setText(loginViewModel.getPassword())
         remember.isChecked = loginViewModel.rememberSwitch.value == true
@@ -79,6 +75,7 @@ class LoginFragment : Fragment() {
         loginViewModel.loginResult.observe(viewLifecycleOwner, {
             if(it){
                 //passa para proxima tela
+                //findNavController().navigate(R.id.action_loginFragment2_to_home_navigation)
             }
             else{
                 val alertDialogBuilder = AlertDialog.Builder(activity)
@@ -108,19 +105,11 @@ class LoginFragment : Fragment() {
         })
 
         register.setOnClickListener {
-            @Override
-            fun onClickRegister() {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(registerUrl)
-            }
+            //findNavController().navigate(R.id.action_loginFragment2_to_criarContaFragment)
         }
 
         forgotPassword.setOnClickListener {
-            @Override
-            fun onClickRegister() {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(forgotUrl)
-            }
+            //findNavController().navigate(R.id.action_loginFragment2_to_esqueciMinhaSenhaFragment)
         }
 
         return view

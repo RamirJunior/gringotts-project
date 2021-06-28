@@ -41,6 +41,6 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
 
     override fun saveResponse(token_authentication: String, refresh_token: String) {
         sharedPreferencesEditor.putString(token_authentication_key, token_authentication)
-        sharedPreferencesEditor.putString(refresh_token_key, refresh_token)
+        sharedPreferencesEditor.putString(refresh_token_key, refresh_token).commit()
     }
 }

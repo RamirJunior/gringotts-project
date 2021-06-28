@@ -32,41 +32,59 @@ class LoginViewModel() : ViewModel() {
     private lateinit var sharedPeferenceIMPL: SharedPreferencesProvider
 
     fun loginValidation() {
-        val apiInterface = ApiInterface.create()
-            .userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
-        apiInterface.enqueue(object : Callback<LoginResponse> {
+        if(isPasswordValid()) {
+            val apiInterface = ApiInterface.create()
+                .userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
+            apiInterface.enqueue(object : Callback<LoginResponse> {
 
-            override fun onResponse(
-                call: Call<LoginResponse>?,
-                response: Response<LoginResponse>?
-            ) {
-                Log.e("Conexao sucedida", "")
-                if (response?.isSuccessful == true) {
-                    loginResponse = response.body()!!
-                    sharedPeferenceIMPL.saveResponse(loginResponse.token_authentication,
-                        loginResponse.refresh_token)
-                    _loginResult.postValue(true)
-                } else {
-                    _loginResult.postValue(false)
-                    Log.e("error", response?.code().toString())
-                    if (response?.code() == 422) {
-                        errorMassage="Senha e e-mail não encontrados"
+                override fun onResponse(
+                    call: Call<LoginResponse>?,
+                    response: Response<LoginResponse>?
+                ) {
+                    Log.e("Conexao sucedida", "")
+                    if (response?.isSuccessful == true) {
+                        loginResponse = response.body()!!
+                        sharedPeferenceIMPL.saveResponse(
+                            loginResponse.token_authentication,
+                            loginResponse.refresh_token
+                        )
+                        saveUserData()
+                        _loginResult.postValue(true)
+                    } else {
+                        _loginResult.postValue(false)
+                        Log.e("error", response?.code().toString())
+                        if (response?.code() == 422) {
+                            errorMassage = "Senha e e-mail não encontrados"
+                        }
+                        if (response?.code() == 404) {
+                            errorMassage = "e-mail incompativel com a senha"
+                        }
+                        if (response?.code() == 401) {
+                            errorMassage = "Senha incorreta"
+                        }
                     }
-                    if (response?.code() == 404) {
-                        errorMassage="e-mail incompativel com a senha"
-                    }
-                    if (response?.code() == 401) {
-                        errorMassage="Senha incorreta"
-                    }
+                    _loading.postValue(false)
                 }
-                _loading.postValue(false)
-            }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("Falha conexao", t.message.toString())
-                _loading.postValue(false)
-            }
-        })
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Log.e("Falha conexao", t.message.toString())
+                    val noInternetError =
+                        "Unable to resolve host \"us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net\": No address associated with hostname"
+                    if (t.message.equals(noInternetError)) {
+                        errorMassage = "Sem acesso a internet"
+                    }
+                    _loginResult.postValue(false)
+                    _loading.postValue(false)
+                }
+            })
+        }
+        else{
+            errorMassage = "A senha deve ter: uma letra minuscula, um número de 0 à 9, " +
+                    "conter uma letra maiuscula, algum caractere especial e " +
+                    "ter 6 caracteres ou mais"
+            _loginResult.postValue(false)
+            _loading.postValue(false)
+        }
     }
 
     fun init(IMPL: SharedPreferencesProvider) {
@@ -114,7 +132,7 @@ class LoginViewModel() : ViewModel() {
         return _currentPassword.toString()
     }
 
-    fun login() {
+    private fun saveUserData(){
         if (_rememberSwitch.value == true) {
             Log.e("switchOn", _rememberSwitch.value.toString())
             sharedPeferenceIMPL.saveUserData(
@@ -127,12 +145,16 @@ class LoginViewModel() : ViewModel() {
             sharedPeferenceIMPL.deleteUserData()
             sharedPeferenceIMPL.setRemember(false)
         }
+    }
+
+    fun login() {
         _loading.postValue(true)
         loginValidation()
     }
 
     // Método para Validar a senha utilizando Pattern e Matcher
-    private fun isPasswordValid(password: String): Boolean {
+    private fun isPasswordValid(): Boolean {
+        val password = _currentPassword
         val pattern: Pattern
         val matcher: Matcher
 

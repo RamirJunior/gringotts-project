@@ -77,7 +77,6 @@ class LoginFragment : Fragment() {
         }
 
         loginViewModel.loginResult.observe(viewLifecycleOwner, {
-            Log.e("erro", it.toString())
             if(it){
                 //passa para proxima tela
             }

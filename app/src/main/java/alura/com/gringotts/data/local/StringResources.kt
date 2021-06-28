@@ -3,4 +3,3 @@ const val registerUrl: String = "https://cadastro.pagseguro.uol.com.br/" +
         "_ad=abra-sua-conta&af_force_deeplink=true"
 
 const val forgotUrl: String = "https://minhasenha.pagseguro.uol.com.br/recuperar-senha"
-

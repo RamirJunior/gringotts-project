@@ -4,6 +4,8 @@ import alura.com.gringotts.data.SharedPreferencesIMPL
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -71,20 +73,23 @@ class LoginFragment : Fragment() {
         }
 
         remember.setOnCheckedChangeListener { buttonView, isChecked ->
-            Log.e("switch", "switch")
             loginViewModel.switchClicked(isChecked)
         }
 
-        loginViewModel.errorMassage.observe(viewLifecycleOwner, {
+        loginViewModel.loginResult.observe(viewLifecycleOwner, {
             Log.e("erro", it.toString())
-            /*val alertDialogBuilder = AlertDialog.Builder(requireContext().applicationContext)
-            alertDialogBuilder.setMessage(it.toString())
-            alertDialogBuilder.setNegativeButton("Ok",
-                DialogInterface.OnClickListener { dialog, id ->
+            if(it){
+                //passa para proxima tela
+            }
+            else{
+                val alertDialogBuilder = AlertDialog.Builder(activity)
+                alertDialogBuilder.setMessage(loginViewModel.getError())
+                alertDialogBuilder.setNegativeButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
 
-                })
-            alertDialogBuilder.show()*/
-
+                    })
+                alertDialogBuilder.show()
+            }
         })
 
         buttonLogin.setOnClickListener {
@@ -92,15 +97,12 @@ class LoginFragment : Fragment() {
         }
 
         loginViewModel.loading.observe(viewLifecycleOwner, {
-            Log.e("loading", it.toString())
             if (it) {
                 loading.visibility = View.VISIBLE
             } else {
                 loading.visibility = View.GONE
             }
         })
-
-
 
         register.setOnClickListener {
             @Override

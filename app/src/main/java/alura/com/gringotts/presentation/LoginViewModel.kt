@@ -29,7 +29,7 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewM
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> = _loginResult
 
-    fun loginValidation() {
+    private fun loginValidation() {
         if(isPasswordValid()) {
             val apiInterface = ApiInterface.create()
                 .userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
@@ -54,10 +54,10 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewM
                         if (response?.code() == 422) {
                             errorMassage = "Senha e e-mail não encontrados"
                         }
-                        if (response?.code() == 404) {
+                        else if (response?.code() == 404) {
                             errorMassage = "e-mail incompativel com a senha"
                         }
-                        if (response?.code() == 401) {
+                        else if (response?.code() == 401) {
                             errorMassage = "Senha incorreta"
                         }
                     }
@@ -87,7 +87,7 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewM
         if (_rememberSwitch.value == null) {
             _rememberSwitch.value = false
         }
-        if (_rememberSwitch.value == true) {
+        else if (_rememberSwitch.value == true) {
             _currentUsername = sharedPeferenceIMPL.getUsername()
             _currentPassword = sharedPeferenceIMPL.getPassword()
         }

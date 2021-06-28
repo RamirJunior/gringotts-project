@@ -99,8 +99,12 @@ class LoginFragment : Fragment() {
         loginViewModel.loading.observe(viewLifecycleOwner, {
             if (it) {
                 loading.visibility = View.VISIBLE
+                buttonLogin.isClickable = false
+                register.isClickable = false
             } else {
                 loading.visibility = View.GONE
+                buttonLogin.isClickable = true
+                register.isClickable = true
             }
         })
 

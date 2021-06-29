@@ -7,8 +7,8 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     private val usernameKey = "username"
     private val passwordKey = "password"
     private val rememberKey = "remember"
-    private val token_authentication_key = "token_authentication"
-    private val refresh_token_key = "refresh_token"
+    private val tokenAuthenticationKey = "token_authentication"
+    private val refreshTokenKey = "refresh_token"
 
     private val sharedPreferences = context.getSharedPreferences(sharedPref, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
@@ -20,7 +20,7 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
         return sharedPreferences.getString(passwordKey, "")
     }
 
-    override fun getRemember(): Boolean {
+    override fun getRemeber(): Boolean {
         return sharedPreferences.getBoolean(rememberKey, false)
     }
 
@@ -29,6 +29,7 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     }
 
     override fun saveUserData(username: String, password: String) {
+        //Log.e("Username", username)
         sharedPreferencesEditor.putString(usernameKey, username)
         sharedPreferencesEditor.putString(passwordKey, password).commit()
     }
@@ -38,8 +39,8 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
         sharedPreferencesEditor.remove(passwordKey).commit()
     }
 
-    override fun saveResponse(tokenAuthentication: String, refreshToken: String) {
-        sharedPreferencesEditor.putString(token_authentication_key, tokenAuthentication)
-        sharedPreferencesEditor.putString(refresh_token_key, refreshToken).commit()
+    override fun saveResponse(token_authentication: String, refresh_token: String) {
+        sharedPreferencesEditor.putString(tokenAuthenticationKey, token_authentication)
+        sharedPreferencesEditor.putString(refreshTokenKey, refresh_token).commit()
     }
 }

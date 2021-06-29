@@ -1,8 +1,10 @@
 package alura.com.gringotts.data.api
 
+import alura.com.gringotts.data.LoginRepository.LoginResult
 import alura.com.gringotts.data.model.LoginModel
 import alura.com.gringotts.data.model.LoginResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -13,7 +15,7 @@ interface ApiInterface {
     @POST()
     suspend fun userLogin(
         @Body login: LoginModel
-    ): Call<LoginResponse>
+    ): Response<LoginResponse>
 
     companion object {
         private const val BASE_URL =

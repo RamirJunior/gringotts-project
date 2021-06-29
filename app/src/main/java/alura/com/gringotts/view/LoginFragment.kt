@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
         }
 
         remember.setOnCheckedChangeListener { buttonView, isChecked ->
-            loginViewModel.switchClicked(isChecked)
+            loginViewModel.switchChanged(isChecked)
         }
 
         loginViewModel.loginResult.observe(viewLifecycleOwner, {

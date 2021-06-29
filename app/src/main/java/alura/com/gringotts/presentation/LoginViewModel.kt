@@ -1,134 +1,111 @@
 package alura.com.gringotts.presentation
 
+import alura.com.gringotts.data.LoginRepository.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
-import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.model.LoginModel
-import alura.com.gringotts.data.model.LoginResponse
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.net.UnknownHostException
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import androidx.lifecycle.*
+import kotlinx.coroutines.launch
+import java.net.ConnectException
 
 
 //Onde vamos realizar as verificaçoes
-class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewModel() {
-    private var _currentUsername: String? = ""
-    private var _currentPassword: String? = ""
+class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private val loginRepository: LoginRepository) : ViewModel() {
+    private var currentUsername: String? = ""
+    private var currentPassword: String? = ""
     private val _rememberSwitch = MutableLiveData<Boolean>()
     val rememberSwitch: LiveData<Boolean> = _rememberSwitch
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-    private lateinit var errorMassage: String
-    private lateinit var loginResponse: LoginResponse
+    private val _loginError = MutableLiveData<String>()
+    val loginError: LiveData<String> = _loginError
+    private val _loginSuccess = MutableLiveData<Unit>()
+    val loginSucces: LiveData<Unit> = _loginSuccess
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> = _loginResult
 
-    private fun loginValidation() {
-        if(isPasswordValid()) {
-            val apiInterface = ApiInterface.create()
-                .userLogin(LoginModel(_currentUsername.toString(), _currentPassword.toString()))
-            apiInterface.enqueue(object : Callback<LoginResponse> {
-
-                override fun onResponse(
-                    call: Call<LoginResponse>?,
-                    response: Response<LoginResponse>?
-                ) {
-                    Log.e("Conexao sucedida", "")
-                    if (response?.isSuccessful == true) {
-                        loginResponse = response.body()!!
-                        sharedPeferenceIMPL.saveResponse(
-                            loginResponse.token_authentication,
-                            loginResponse.refresh_token
-                        )
-                        saveUserData()
-                        _loginResult.postValue(true)
-                    } else {
-                        _loginResult.postValue(false)
-                        Log.e("error", response?.code().toString())
-                        if (response?.code() == 422) {
-                            errorMassage = "Senha e e-mail não encontrados"
-                        }
-                        else if (response?.code() == 404) {
-                            errorMassage = "e-mail incompativel com a senha"
-                        }
-                        else if (response?.code() == 401) {
-                            errorMassage = "Senha incorreta"
-                        }
-                    }
-                    _loading.postValue(false)
-                }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.e("Falha conexao", t.message.toString())
-                    if (t is UnknownHostException) {
-                        errorMassage = "Sem acesso a internet"
-                    }
-                    _loginResult.postValue(false)
-                    _loading.postValue(false)
-                }
-            })
-        }
-        else{
-            errorMassage = "A senha deve ter: 6 caracteres ou mais"
-            _loginResult.postValue(false)
-            _loading.postValue(false)
-        }
-    }
-
     init{
-        _rememberSwitch.value = sharedPeferenceIMPL.getRemeber()
-        _loading.postValue(false)
+        _rememberSwitch.value = sharedPeferenceIMPL.getRemeber() == true
         if (_rememberSwitch.value == null) {
             _rememberSwitch.value = false
         }
         else if (_rememberSwitch.value == true) {
-            _currentUsername = sharedPeferenceIMPL.getUsername()
-            _currentPassword = sharedPeferenceIMPL.getPassword()
+            currentUsername = sharedPeferenceIMPL.getUsername()
+            currentPassword = sharedPeferenceIMPL.getPassword()
         }
     }
 
-    fun switchClicked(value: Boolean) {
+    private fun loginValidation(){
+
+    }
+
+    private fun doLogin() {
+        viewModelScope.launch{
+             try{
+                 val response =loginRepository.userLogin(
+                        LoginModel(currentUsername.toString(), currentPassword.toString()))
+                 if(response.isSuccessful) {
+                     _loginSuccess.postValue(Unit)
+                     //salvar state usuario
+                 }
+                 else{
+                     loginFailedHandler(response.code())
+                 }
+            }catch (e: ConnectException) {
+                _loginError.postValue("Sem acesso a internet")
+            }
+        }
+        _loading.postValue(false)
+    }
+
+    private fun loginFailedHandler(code: Int) {
+        _loginResult.postValue(false)
+        when (code) {
+            422 -> {
+                _loginError.postValue("Senha e e-mail não encontrados")
+            }
+            404 -> {
+                _loginError.postValue("e-mail incompativel com a senha")
+            }
+            401 -> {
+                _loginError.postValue("Senha incorreta")
+            }
+        }
+    }
+
+    fun switchChanged(value: Boolean) {
         _rememberSwitch.postValue(value)
     }
 
     fun setUsername(value: String) {
-        _currentUsername = value
+        currentUsername = value
     }
 
     fun setPassword(value: String) {
-        _currentPassword = value
+        currentPassword = value
     }
 
-    fun getError(): String{
-        return errorMassage
-    }
 
     fun getUsername(): String {
-        if (_currentUsername.equals("")) {
+        if (currentUsername.equals("")) {
             return ""
         }
-        return _currentUsername.toString()
+        return currentUsername.toString()
     }
 
     fun getPassword(): String {
-        if (_currentPassword.equals("")) {
+        if (currentPassword.equals("")) {
             return ""
         }
-        return _currentPassword.toString()
+        return currentPassword.toString()
     }
 
     private fun saveUserData(){
         if (_rememberSwitch.value == true) {
             Log.e("switchOn", _rememberSwitch.value.toString())
             sharedPeferenceIMPL.saveUserData(
-                _currentUsername.toString(),
-                _currentPassword.toString()
+                currentUsername.toString(),
+                currentPassword.toString()
             )
             sharedPeferenceIMPL.setRemember(true)
         } else {
@@ -140,14 +117,18 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider) : ViewM
 
     fun login() {
         _loading.postValue(true)
-        loginValidation()
+        doLogin()
     }
 
     // Método para Validar a senha utilizando Pattern e Matcher
     private fun isPasswordValid(): Boolean {
-        val password = _currentPassword.toString()
+        val password = currentPassword.toString()
         var resp=true
         if(password.length<6) resp = false
         return resp
+    }
+
+    companion object{
+        private const val Senha
     }
 }

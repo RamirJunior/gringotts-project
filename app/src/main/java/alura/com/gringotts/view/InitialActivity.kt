@@ -15,7 +15,5 @@ class InitialActivity : AppCompatActivity() {
         binding = ActivityInitialBinding.inflate(layoutInflater) //Setando o nosso Layout de login
         setContentView(binding.root) //Setando o nosso Layout de login
 
-        supportActionBar?.hide()
-
     }
 }

@@ -10,9 +10,8 @@ import retrofit2.http.POST
 
 interface ApiInterface {
 
-    //  @FormUrlEncoded
-    @POST("userlogin")
-    fun userLogin(
+    @POST()
+    suspend fun userLogin(
         @Body login: LoginModel
     ): Call<LoginResponse>
 

@@ -20,6 +20,7 @@ class OnboardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
     private lateinit var criarConta: Button
     private lateinit var jaTenhoConta: TextView
+    private val onboardingViewModel by viewModel<OnboardingViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +31,7 @@ class OnboardingFragment : Fragment() {
         binding =
             FragmentOnboardingBinding.inflate(layoutInflater) //Setando o nosso Layout de login
         val view = binding.root //Setando o nosso Layout de login
-        val onboardingViewModel by viewModel<OnboardingViewModel>()
+
 
         criarConta = binding.buttonCriarConta
         jaTenhoConta = binding.textViewJaTenhoCadastro

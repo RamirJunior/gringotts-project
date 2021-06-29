@@ -16,13 +16,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
+    private val splashViewModel by viewModel<SplashViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val splashViewModel by viewModel<SplashViewModel>()
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
         Handler(Looper.getMainLooper()).postDelayed({

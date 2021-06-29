@@ -16,7 +16,9 @@
         <activity
             android:name="alura.com.gringotts.view.InitialActivity"
             android:label="@string/app_name"
-            android:theme="@style/MyTheme">
+            android:theme="@style/MyTheme"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name="alura.com.gringotts.view.LoginActivity"
-            android:theme="@style/MyTheme"/>
+            android:theme="@style/MyTheme"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

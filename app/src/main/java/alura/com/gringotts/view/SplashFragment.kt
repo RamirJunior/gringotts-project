@@ -1,9 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.R
-import alura.com.gringotts.presentation.LoginViewModel
 import alura.com.gringotts.presentation.SplashViewModel
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -23,24 +21,18 @@ class SplashFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_splash, container, false)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (splashViewModel.getFinished()) {
-                findNavController().navigate(R.id.action_splashFragment_to_loginFragment) //leva para tela de login se ja tiver sharedpref
-            } else {
-                findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment) // leva para tela de onboarding se for a primeira vez que o aplicativo esta sendo executado
-            }
-        }, 3000)
-
-        // Inflate the layout for this fragment
-        return view
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
-    private fun onBoardingFinished(): Boolean { //Verifica se o app já foi aberto alguma vez
-        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("Finished", false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (splashViewModel.getFinished()) {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+            }
+        }, 3000)
     }
 
 }

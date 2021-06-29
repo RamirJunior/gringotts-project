@@ -2,6 +2,8 @@ package alura.com.gringotts.view
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentOnboardingBinding
+import alura.com.gringotts.presentation.LoginViewModel
+import alura.com.gringotts.presentation.OnboardingViewModel
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +13,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingFragment : Fragment() {
 
     private lateinit var binding: FragmentOnboardingBinding
     private lateinit var criarConta: Button
     private lateinit var jaTenhoConta: TextView
+    private val onBordingViewModel by viewModel<OnboardingViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +36,7 @@ class OnboardingFragment : Fragment() {
         jaTenhoConta = binding.textViewJaTenhoCadastro
 
         fun onBoardingFinished() { //Salva que a onboard foi executada para não ter que repetir
-            val sharedPref =
-                requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-            val editor = sharedPref.edit()
-            editor.putBoolean("Finished", true)
-            editor.apply()
+            onBordingViewModel.onBoardingFinished()
         }
 
         criarConta.setOnClickListener { //errado

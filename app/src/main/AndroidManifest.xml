@@ -25,6 +25,9 @@
         </activity>
         <activity android:name="alura.com.gringotts.view.LoginActivity"
             android:theme="@style/MyTheme"/>
+
+        <activity android:name="alura.com.gringotts.view.HomeActivity"
+            android:theme="@style/MyTheme"/>
     </application>
 
 </manifest>

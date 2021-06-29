@@ -1,7 +1,6 @@
 package alura.com.gringotts.view
 
-import alura.com.gringotts.data.sharedPreferencesIMPlModule
-import alura.com.gringotts.data.viewModelModule
+import alura.com.gringotts.data.*
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -12,7 +11,8 @@ class App : Application() {
         startKoin{
             //androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(listOf(viewModelModule, sharedPreferencesIMPlModule))
+            modules(listOf(viewModelModule, sharedPreferencesIMPlModule, initialRepository,
+                onboardingViewModel, splashViewModel))
         }
     }
 }

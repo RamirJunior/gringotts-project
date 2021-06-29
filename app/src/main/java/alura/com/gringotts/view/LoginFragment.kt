@@ -9,10 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -65,22 +62,19 @@ class LoginFragment : Fragment() {
             loginViewModel.switchChanged(isChecked)
         }
 
-        loginViewModel.loginResult.observe(viewLifecycleOwner, {
-            if(it){
-                //passa para proxima tela
-                //findNavController().navigate(R.id.action_loginFragment2_to_home_navigation)
-            }
-            else{
+        loginViewModel.loginError.observe(viewLifecycleOwner, {
+
                 val alertDialogBuilder = AlertDialog.Builder(activity)
-                alertDialogBuilder.setMessage(loginViewModel.getError())
+                alertDialogBuilder.setMessage(it)
                 alertDialogBuilder.setNegativeButton("Ok",
                     DialogInterface.OnClickListener { dialog, id ->
 
                     })
                 alertDialogBuilder.show()
-            }
+            })
+        loginViewModel.loginSuccess.observe(viewLifecycleOwner,{
+            Toast.makeText(context, "Login! proxima tela não implementada", Toast.LENGTH_LONG)
         })
-
         buttonLogin.setOnClickListener {
             loginViewModel.onLoginButtonClicked()
         }
@@ -98,11 +92,11 @@ class LoginFragment : Fragment() {
         })
 
         register.setOnClickListener {
-            //findNavController().navigate(R.id.action_loginFragment2_to_criarContaFragment)
+            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG)
         }
 
         forgotPassword.setOnClickListener {
-            //findNavController().navigate(R.id.action_loginFragment2_to_esqueciMinhaSenhaFragment)
+            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG)
         }
 
         return view

@@ -20,7 +20,7 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
         return sharedPreferences.getString(passwordKey, "")
     }
 
-    override fun getRemeber(): Boolean {
+    override fun getRemember(): Boolean {
         return sharedPreferences.getBoolean(rememberKey, false)
     }
 
@@ -29,7 +29,6 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     }
 
     override fun saveUserData(username: String, password: String) {
-        //Log.e("Username", username)
         sharedPreferencesEditor.putString(usernameKey, username)
         sharedPreferencesEditor.putString(passwordKey, password).commit()
     }
@@ -39,8 +38,8 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
         sharedPreferencesEditor.remove(passwordKey).commit()
     }
 
-    override fun saveResponse(token_authentication: String, refresh_token: String) {
-        sharedPreferencesEditor.putString(token_authentication_key, token_authentication)
-        sharedPreferencesEditor.putString(refresh_token_key, refresh_token).commit()
+    override fun saveResponse(tokenAuthentication: String, refreshToken: String) {
+        sharedPreferencesEditor.putString(token_authentication_key, tokenAuthentication)
+        sharedPreferencesEditor.putString(refresh_token_key, refreshToken).commit()
     }
 }

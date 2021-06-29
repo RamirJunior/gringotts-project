@@ -1,9 +1,7 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.LoginRepository.LoginResult
-import alura.com.gringotts.data.model.LoginModel
+import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,7 +12,7 @@ interface ApiInterface {
 
     @POST()
     suspend fun userLogin(
-        @Body login: LoginModel
+        @Body login: LoginPayload
     ): Response<LoginResponse>
 
     companion object {

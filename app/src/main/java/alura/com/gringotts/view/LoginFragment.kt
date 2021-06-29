@@ -82,7 +82,7 @@ class LoginFragment : Fragment() {
         })
 
         buttonLogin.setOnClickListener {
-            loginViewModel.login()
+            loginViewModel.onLoginButtonClicked()
         }
 
         loginViewModel.loading.observe(viewLifecycleOwner, {

@@ -2,7 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
-import alura.com.gringotts.data.model.LoginModel
+import alura.com.gringotts.data.model.LoginPayload
 import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private
     private val _loginError = MutableLiveData<String>()
     val loginError: LiveData<String> = _loginError
     private val _loginSuccess = MutableLiveData<Unit>()
-    val loginSucces: LiveData<Unit> = _loginSuccess
+    val loginSuccess: LiveData<Unit> = _loginSuccess
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> = _loginResult
 
@@ -36,14 +36,20 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private
     }
 
     private fun loginValidation(){
-
+        if(isPasswordValid()){
+            doLogin()
+        }
+        else{
+            _loginError.postValue("A senha deve conter pelo menos 6 letras")
+            _loading.postValue(false)
+        }
     }
 
     private fun doLogin() {
         viewModelScope.launch{
              try{
                  val response =loginRepository.userLogin(
-                        LoginModel(currentUsername.toString(), currentPassword.toString()))
+                        LoginPayload(currentUsername.toString(), currentPassword.toString()))
                  if(response.isSuccessful) {
                      _loginSuccess.postValue(Unit)
                      //salvar state usuario
@@ -54,20 +60,20 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private
             }catch (e: ConnectException) {
                 _loginError.postValue("Sem acesso a internet")
             }
+            _loading.postValue(false)
         }
-        _loading.postValue(false)
     }
 
     private fun loginFailedHandler(code: Int) {
         _loginResult.postValue(false)
         when (code) {
-            422 -> {
+            NOT_FOUND_EMAIL -> {
                 _loginError.postValue("Senha e e-mail não encontrados")
             }
-            404 -> {
+            INCOMPATIBLE_EMAIL_PASSWORD -> {
                 _loginError.postValue("e-mail incompativel com a senha")
             }
-            401 -> {
+            INCORRECT_PASSWORD -> {
                 _loginError.postValue("Senha incorreta")
             }
         }
@@ -115,7 +121,7 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private
         }
     }
 
-    fun login() {
+    fun onLoginButtonClicked() {
         _loading.postValue(true)
         doLogin()
     }
@@ -123,12 +129,12 @@ class LoginViewModel(val sharedPeferenceIMPL: SharedPreferencesProvider, private
     // Método para Validar a senha utilizando Pattern e Matcher
     private fun isPasswordValid(): Boolean {
         val password = currentPassword.toString()
-        var resp=true
-        if(password.length<6) resp = false
-        return resp
+        return password.length>=6
     }
 
     companion object{
-        private const val Senha
+        private const val NOT_FOUND_EMAIL = 422
+        private const val INCORRECT_PASSWORD = 401
+        private const val INCOMPATIBLE_EMAIL_PASSWORD = 403
     }
 }

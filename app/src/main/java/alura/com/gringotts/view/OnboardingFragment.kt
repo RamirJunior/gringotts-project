@@ -17,6 +17,10 @@ class OnboardingFragment : Fragment() {
     private val binding get() = _binding!!
     private val onBordingViewModel by viewModel<OnboardingViewModel>()
 
+    fun onBoardingFinished() {
+        onBordingViewModel.onBoardingFinished()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,9 +32,6 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fun onBoardingFinished() {
-            onBordingViewModel.onBoardingFinished()
-        }
 
         binding.buttonCriarConta.setOnClickListener {
         }

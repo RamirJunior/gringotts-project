@@ -94,13 +94,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         currentPassword = value
     }
 
-    fun getUsername(): String {
-        return currentUsername
-    }
+    fun getUsername() = currentUsername
 
-    fun getPassword(): String {
-        return currentPassword
-    }
+    fun getPassword() = currentPassword
 
     fun onLoginButtonClicked() {
         _loading.postValue(true)
@@ -108,8 +104,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun isPasswordValid(): Boolean {
-        val password = currentPassword
-        return password.length>=6
+        return currentPassword.length>=6
     }
 
     companion object{

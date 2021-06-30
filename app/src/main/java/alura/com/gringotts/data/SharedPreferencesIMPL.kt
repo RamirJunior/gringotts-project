@@ -7,29 +7,28 @@ import com.google.gson.Gson
 
 class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
 
-    private var gson = Gson()
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     override fun getUserData(): LoginPayload? {
         val userString = sharedPreferences.getString(USER_KEY, "")
         if (userString.equals("")) return null
-        return gson.fromJson(userString, LoginPayload::class.java)
+        return Gson().fromJson(userString, LoginPayload::class.java)
     }
 
     override fun getTokens(): Token? {
         val tokensString = sharedPreferences.getString(TOKENS_KEY, "")
         if (tokensString.equals("")) return null
-        return gson.fromJson(tokensString, Token::class.java)
+        return Gson().fromJson(tokensString, Token::class.java)
     }
 
     override fun saveUserData(user: LoginPayload) {
-        val userString = gson.toJson(user)
+        val userString =  Gson().toJson(user)
         sharedPreferencesEditor.putString(USER_KEY, userString)
     }
 
     override fun saveTokens(token: Token) {
-        val tokensString = gson.toJson(token)
+        val tokensString = Gson().toJson(token)
         sharedPreferencesEditor.putString(TOKENS_KEY, tokensString)
     }
 

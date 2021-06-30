@@ -27,9 +27,10 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
-            if (splashViewModel.getFinished()) {
+            splashViewModel.goToLogin.observe(viewLifecycleOwner){
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-            } else {
+            }
+            splashViewModel.goToOnboarding.observe(viewLifecycleOwner){
                 findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
             }
         }, 3000)

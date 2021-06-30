@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,10 +17,6 @@ class OnboardingFragment : Fragment() {
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
     private val onBordingViewModel by viewModel<OnboardingViewModel>()
-
-    fun onBoardingFinished() {
-        onBordingViewModel.onBoardingFinished()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,11 +31,12 @@ class OnboardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonCriarConta.setOnClickListener {
+            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
         }
 
         binding.textViewJaTenhoCadastro.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
-            onBoardingFinished()
+            onBordingViewModel.onBoardingFinished()
         }
     }
 

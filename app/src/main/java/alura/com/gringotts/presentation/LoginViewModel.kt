@@ -1,6 +1,8 @@
 package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository.LoginRepository
+import alura.com.gringotts.data.exceptions.IncorrectPasswordException
+import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
 import alura.com.gringotts.data.model.Token
@@ -30,6 +32,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             currentUsername = user.email
             _rememberSwitch.postValue(true)
         }
+        else{
+            _rememberSwitch.postValue(false)
+        }
     }
 
     private fun loginValidation() {
@@ -37,50 +42,29 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             doLogin()
         } else {
             _loginError.postValue("A senha deve conter pelo menos 6 letras")
-            _loading.postValue(false)
         }
     }
 
     private fun doLogin() {
+        _loading.postValue(true)
         viewModelScope.launch {
             try {
-                val response = loginRepository.userLogin(
-                    LoginPayload(currentUsername, currentPassword)
-                )
-                if (response.isSuccessful) {
-                    loginSuccessHandler(response.body()!!)
-                } else {
-                    loginFailedHandler(response.code())
-                }
-            } catch (e: Exception) {
-                if (e is UnknownHostException) _loginError.postValue("Sem acesso a internet")
+                 loginRepository.userLogin(
+                     LoginPayload(currentUsername, currentPassword),
+                     _rememberSwitch.value!!
+                 )
+                _loginSuccess.postValue(Unit)
+            }catch(e: IncorrectPasswordException){
+                _loginError.postValue(e.message)
+            } catch(e: NotFoundEmailException){
+                _loginError.postValue(e.message)
+            }catch (e: Exception) {
+                if (e is UnknownHostException)
+                    _loginError.postValue("Sem acesso a internet")
+                else
+                    _loginError.postValue("Erro desconhecido")
             }
             _loading.postValue(false)
-        }
-    }
-
-    private fun loginSuccessHandler(responseBody: LoginResponse) {
-        loginRepository.saveTokens(
-            Token(responseBody.tokenAuthentication, responseBody.refreshToken)
-        )
-        if (_rememberSwitch.value == true) {
-            loginRepository.saveUser(LoginPayload(currentUsername, currentPassword))
-        } else {
-            loginRepository.deleteUserData()
-        }
-    }
-
-    private fun loginFailedHandler(code: Int) {
-        when (code) {
-            NOT_FOUND_EMAIL -> {
-                _loginError.postValue("Senha e e-mail não encontrados")
-            }
-            INCOMPATIBLE_EMAIL_PASSWORD -> {
-                _loginError.postValue("e-mail incompativel com a senha")
-            }
-            INCORRECT_PASSWORD -> {
-                _loginError.postValue("Senha incorreta")
-            }
         }
     }
 
@@ -101,17 +85,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     fun getPassword() = currentPassword
 
     fun onLoginButtonClicked() {
-        _loading.postValue(true)
         loginValidation()
     }
 
     private fun isPasswordValid(): Boolean {
         return currentPassword.length >= 6
-    }
-
-    companion object {
-        private const val NOT_FOUND_EMAIL = 422
-        private const val INCORRECT_PASSWORD = 401
-        private const val INCOMPATIBLE_EMAIL_PASSWORD = 404
     }
 }

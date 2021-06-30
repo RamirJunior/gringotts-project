@@ -1,6 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.databinding.FragmentLoginBinding
+import alura.com.gringotts.databinding.FragmentOnboardingBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -17,88 +18,78 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
-    private lateinit var username: EditText
-    private lateinit var password: EditText
-    private lateinit var buttonLogin: Button
-    private lateinit var loading: ProgressBar
-    private lateinit var register: Button
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var remember: SwitchCompat
-    private lateinit var forgotPassword: TextView
     private val loginViewModel by viewModel<LoginViewModel>()
-
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentLoginBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        binding = FragmentLoginBinding.inflate(layoutInflater) //Setando o nosso Layout de login
-        val view = binding.root //Setando o nosso Layout de login
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        username = binding.loginUsername // pegando o nome no layout login
-        password = binding.loginPassword // pegando o password no layout de login
-        buttonLogin = binding.loginLogin //  botao de login
-        loading = binding.loading // barra de login
-        register = binding.loginRegister // barra de login
-        remember = binding.loginRemember //Lembrar Usuário
-        forgotPassword = binding.loginForgot // Esqueceu Senha
+        binding.loginUsername.setText(loginViewModel.getUsername())
+        binding.loginPassword.setText(loginViewModel.getPassword())
+        binding.loginRemember.isChecked = loginViewModel.rememberSwitch.value == true
 
-        username.setText(loginViewModel.getUsername())
-        password.setText(loginViewModel.getPassword())
-        remember.isChecked = loginViewModel.rememberSwitch.value == true
-
-        username.addTextChangedListener {
+        binding.loginUsername.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
         }
-        password.addTextChangedListener {
+        binding.loginPassword.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }
 
-        remember.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.loginRemember.setOnCheckedChangeListener { buttonView, isChecked ->
             loginViewModel.switchChanged(isChecked)
         }
 
         loginViewModel.loginError.observe(viewLifecycleOwner, {
 
-                val alertDialogBuilder = AlertDialog.Builder(activity)
-                alertDialogBuilder.setMessage(it)
-                alertDialogBuilder.setNegativeButton("Ok",
-                    DialogInterface.OnClickListener { dialog, id ->
+            val alertDialogBuilder = AlertDialog.Builder(activity)
+            alertDialogBuilder.setMessage(it)
+            alertDialogBuilder.setNegativeButton("Ok",
+                DialogInterface.OnClickListener { dialog, id ->
 
-                    })
-                alertDialogBuilder.show()
-            })
+                })
+            alertDialogBuilder.show()
+        })
         loginViewModel.loginSuccess.observe(viewLifecycleOwner,{
             Toast.makeText(context, "Login! proxima tela não implementada", Toast.LENGTH_LONG)
         })
-        buttonLogin.setOnClickListener {
+        binding.loginLogin.setOnClickListener {
             loginViewModel.onLoginButtonClicked()
         }
 
         loginViewModel.loading.observe(viewLifecycleOwner, {
             if (it) {
-                loading.visibility = View.VISIBLE
-                buttonLogin.isClickable = false
-                register.isClickable = false
+                binding.loading.visibility = View.VISIBLE
+                binding.loginLogin.isClickable = false
+                binding.loginRegister.isClickable = false
             } else {
-                loading.visibility = View.GONE
-                buttonLogin.isClickable = true
-                register.isClickable = true
+                binding.loading.visibility = View.GONE
+                binding.loginLogin.isClickable = true
+                binding.loginRegister.isClickable = true
             }
         })
 
-        register.setOnClickListener {
+        binding.loginRegister.setOnClickListener {
             Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG)
         }
 
-        forgotPassword.setOnClickListener {
+        binding.loginForgot.setOnClickListener {
             Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG)
         }
+    }
 
-        return view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

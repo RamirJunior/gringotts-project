@@ -1,11 +1,12 @@
 package alura.com.gringotts.data
 
+import alura.com.gringotts.data.model.LoginPayload
+import alura.com.gringotts.data.model.Tokens
+
 interface SharedPreferencesProvider {
     fun deleteUserData()
-    fun getRemember(): Boolean
-    fun getPassword(): String?
-    fun getUsername(): String?
-    fun setRemember(value: Boolean)
-    fun saveUserData(username: String, password: String)
-    fun saveResponse(tokenAuthentication: String, refreshToken: String)
+    fun saveUserData(user: LoginPayload)
+    fun saveTokens(tokens: Tokens)
+    fun getTokens(): Tokens?
+    fun getUserData(): LoginPayload?
 }

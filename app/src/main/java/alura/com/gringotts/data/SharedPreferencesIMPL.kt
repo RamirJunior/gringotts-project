@@ -1,46 +1,45 @@
 package alura.com.gringotts.data
 
+import alura.com.gringotts.data.model.LoginPayload
+import alura.com.gringotts.data.model.Tokens
 import android.content.Context
+import com.google.gson.Gson
 
 class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
-    private val sharedPref = "sharedPrefs"
-    private val usernameKey = "username"
-    private val passwordKey = "password"
-    private val rememberKey = "remember"
-    private val tokenAuthenticationKey = "token_authentication"
-    private val refreshTokenKey = "refresh_token"
 
+    private val sharedPref = "sharedPrefs"
+    private var gson = Gson()
     private val sharedPreferences = context.getSharedPreferences(sharedPref, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
-    override fun getUsername(): String? {
-        return sharedPreferences.getString(usernameKey, "")
+
+    override fun getUserData(): LoginPayload?{
+        val userString = sharedPreferences.getString(USER_KEY, "")
+        if(userString.equals("")) return null
+        return gson.fromJson(userString, LoginPayload::class.java)
     }
 
-    override fun getPassword(): String? {
-        return sharedPreferences.getString(passwordKey, "")
+    override fun getTokens(): Tokens?{
+        val tokensString = sharedPreferences.getString(TOKENS_KEY, "")
+        if(tokensString.equals("")) return null
+        return gson.fromJson(tokensString, Tokens::class.java)
     }
 
-    override fun getRemeber(): Boolean {
-        return sharedPreferences.getBoolean(rememberKey, false)
+    override fun saveUserData(user: LoginPayload) {
+        val userString = gson.toJson(user)
+        sharedPreferencesEditor.putString(USER_KEY, userString)
     }
 
-    override fun setRemember(value: Boolean) {
-        sharedPreferencesEditor.putBoolean(rememberKey, value).commit()
-    }
-
-    override fun saveUserData(username: String, password: String) {
-        //Log.e("Username", username)
-        sharedPreferencesEditor.putString(usernameKey, username)
-        sharedPreferencesEditor.putString(passwordKey, password).commit()
+    override fun saveTokens(tokens: Tokens) {
+        val tokensString = gson.toJson(tokens)
+        sharedPreferencesEditor.putString(TOKENS_KEY, tokensString)
     }
 
     override fun deleteUserData() {
-        sharedPreferencesEditor.remove(usernameKey)
-        sharedPreferencesEditor.remove(passwordKey).commit()
+        sharedPreferencesEditor.remove(USER_KEY).commit()
     }
 
-    override fun saveResponse(token_authentication: String, refresh_token: String) {
-        sharedPreferencesEditor.putString(tokenAuthenticationKey, token_authentication)
-        sharedPreferencesEditor.putString(refreshTokenKey, refresh_token).commit()
+    companion object{
+        private const val USER_KEY = "User"
+        private const val TOKENS_KEY = "Tokens"
     }
 }

@@ -36,9 +36,19 @@ class SessionManagerImpl(context: Context) : SessionManager {
         sharedPreferencesEditor.remove(USER_KEY).commit()
     }
 
+    override fun setFinished() {
+        sharedPreferencesEditor.putBoolean(FINISHED_KEY, true)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getFinished(): Boolean {
+        return sharedPreferences.getBoolean(FINISHED_KEY, false)
+    }
+
     companion object {
         private const val SHARED_PREFS = "sharedPrefs"
         private const val USER_KEY = "User"
         private const val TOKENS_KEY = "Tokens"
+        private const val FINISHED_KEY = "finished"
     }
 }

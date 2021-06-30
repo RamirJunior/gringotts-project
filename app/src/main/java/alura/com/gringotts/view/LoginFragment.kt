@@ -1,19 +1,16 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.databinding.FragmentLoginBinding
-import alura.com.gringotts.databinding.FragmentOnboardingBinding
 import alura.com.gringotts.presentation.LoginViewModel
-import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -51,18 +48,19 @@ class LoginFragment : Fragment() {
         }
 
         loginViewModel.loginError.observe(viewLifecycleOwner, {
-
-            val alertDialogBuilder = AlertDialog.Builder(activity)
-            alertDialogBuilder.setMessage(it)
-            alertDialogBuilder.setNegativeButton("Ok",
-                DialogInterface.OnClickListener { dialog, id ->
-
-                })
-            alertDialogBuilder.show()
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton("Ok",
+                        DialogInterface.OnClickListener { dialog, which -> }
+                            .show()
+            }
         })
-        loginViewModel.loginSuccess.observe(viewLifecycleOwner,{
+
+        loginViewModel.loginSuccess.observe(viewLifecycleOwner, {
             Toast.makeText(context, "Login! proxima tela não implementada", Toast.LENGTH_LONG)
         })
+
         binding.loginLogin.setOnClickListener {
             loginViewModel.onLoginButtonClicked()
         }

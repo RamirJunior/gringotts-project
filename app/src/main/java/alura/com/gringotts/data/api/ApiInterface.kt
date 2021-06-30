@@ -19,7 +19,6 @@ interface ApiInterface {
         private const val BASE_URL =
             "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc/"
 
-
         fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)

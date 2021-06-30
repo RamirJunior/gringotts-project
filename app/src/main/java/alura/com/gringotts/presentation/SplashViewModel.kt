@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 
-class SplashViewModel(val initialRepository: InitialRepository) : ViewModel() {
+class SplashViewModel(initialRepository: InitialRepository) : ViewModel() {
 
     private val _goToOnboarding = MutableLiveData<Boolean>()
     val goToOnboarding: LiveData<Boolean> = _goToOnboarding
@@ -15,15 +15,11 @@ class SplashViewModel(val initialRepository: InitialRepository) : ViewModel() {
     private val _goToLogin = MutableLiveData<Boolean>()
     val goToLogin: LiveData<Boolean> = _goToLogin
 
-    fun getFinished(): Boolean {
-        return initialRepository.getFinished()
-    }
-
-    fun onboardingWasExecuted () {
-        if (getFinished()) {
-            goToLogin
+    init {
+        if (initialRepository.getFinished()) {
+            _goToLogin.postValue(true)
         } else {
-            goToOnboarding
+            _goToOnboarding.postValue(true)
         }
     }
 

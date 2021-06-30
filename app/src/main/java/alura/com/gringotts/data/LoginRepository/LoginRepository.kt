@@ -18,7 +18,7 @@ class LoginRepository(private val sessionManager: SessionManager) {
             response = ApiInterface.create().userLogin(loginPayload)
         }
         if (response.isSuccessful) {
-            loginSuccessHandler(response.body()!!, rememberSwitch)
+            loginSuccessHandler(response.body()!!, rememberSwitch, loginPayload)
         } else {
             loginFailedHandler(response.code())
         }

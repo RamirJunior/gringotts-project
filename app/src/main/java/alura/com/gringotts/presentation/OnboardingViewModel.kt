@@ -1,11 +1,11 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.InitialRepository
+import alura.com.gringotts.data.SessionManager
 import androidx.lifecycle.ViewModel
 
-class OnboardingViewModel(val initialRepository: InitialRepository) : ViewModel() {
+class OnboardingViewModel(private val sessionManager: SessionManager) : ViewModel() {
 
     fun onBoardingFinished() {
-        initialRepository.setFinished()
+        sessionManager.setOnboardingFinished()
     }
 }

@@ -1,13 +1,11 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.R
-import alura.com.gringotts.data.InitialRepository
+import alura.com.gringotts.data.SessionManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
 
-class SplashViewModel(initialRepository: InitialRepository) : ViewModel() {
+class SplashViewModel(sessionManager: SessionManager) : ViewModel() {
 
     private val _goToOnboarding = MutableLiveData<Boolean>()
     val goToOnboarding: LiveData<Boolean> = _goToOnboarding
@@ -16,7 +14,7 @@ class SplashViewModel(initialRepository: InitialRepository) : ViewModel() {
     val goToLogin: LiveData<Boolean> = _goToLogin
 
     init {
-        if (initialRepository.getFinished()) {
+        if (sessionManager.getOnboardingFinished()) {
             _goToLogin.postValue(true)
         } else {
             _goToOnboarding.postValue(true)

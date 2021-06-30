@@ -22,9 +22,6 @@ val initialModule = module {
         SessionManagerImpl(get())
     }
     factory {
-        InitialRepository(get())
-    }
-    factory {
         LoginRepository(get())
     }
 }

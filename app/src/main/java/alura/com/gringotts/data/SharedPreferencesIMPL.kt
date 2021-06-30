@@ -7,9 +7,8 @@ import com.google.gson.Gson
 
 class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
 
-    private val sharedPref = "sharedPrefs"
     private var gson = Gson()
-    private val sharedPreferences = context.getSharedPreferences(sharedPref, Context.MODE_PRIVATE)
+    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     override fun getUserData(): LoginPayload?{
@@ -39,6 +38,7 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     }
 
     companion object{
+        private const val SHARED_PREFS="sharedPrefs"
         private const val USER_KEY = "User"
         private const val TOKENS_KEY = "Tokens"
     }

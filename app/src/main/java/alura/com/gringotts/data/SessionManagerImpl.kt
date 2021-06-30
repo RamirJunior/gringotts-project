@@ -36,12 +36,12 @@ class SessionManagerImpl(context: Context) : SessionManager {
         sharedPreferencesEditor.remove(USER_KEY).commit()
     }
 
-    override fun setFinished() {
+    override fun setOnboardingFinished() {
         sharedPreferencesEditor.putBoolean(FINISHED_KEY, true)
         sharedPreferencesEditor.apply()
     }
 
-    override fun getFinished(): Boolean {
+    override fun getOnboardingFinished(): Boolean {
         return sharedPreferences.getBoolean(FINISHED_KEY, false)
     }
 

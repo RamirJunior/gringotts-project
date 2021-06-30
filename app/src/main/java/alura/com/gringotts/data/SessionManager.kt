@@ -9,6 +9,6 @@ interface SessionManager {
     fun saveTokens(token: Token)
     fun getTokens(): Token?
     fun getUserData(): LoginPayload?
-    fun getFinished(): Boolean
-    fun setFinished()
+    fun getOnboardingFinished(): Boolean
+    fun setOnboardingFinished()
 }

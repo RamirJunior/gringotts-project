@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -66,15 +67,9 @@ class LoginFragment : Fragment() {
         }
 
         loginViewModel.loading.observe(viewLifecycleOwner, {
-            if (it) {
-                binding.loading.visibility = View.VISIBLE
-                binding.loginLogin.isClickable = false
-                binding.loginRegister.isClickable = false
-            } else {
-                binding.loading.visibility = View.GONE
-                binding.loginLogin.isClickable = true
-                binding.loginRegister.isClickable = true
-            }
+            binding.loading.isVisible = it
+            binding.loginLogin.isClickable = !it
+            binding.loginRegister.isClickable = !it
         })
 
         binding.loginRegister.setOnClickListener {

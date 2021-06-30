@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class SplashViewModel(val initialRepository: InitialRepository) : ViewModel() {
 
-    fun getFinished(): Boolean { //Verifica se o app já foi aberto alguma vez
+    fun getFinished(): Boolean {
         return initialRepository.getFinished()
     }
 

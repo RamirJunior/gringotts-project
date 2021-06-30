@@ -13,22 +13,23 @@ class LoginRepository(private val sharedPreferencesProvider: SharedPreferencesPr
         ApiInterface.create().userLogin(loginPayload)
     }
 
-    fun saveUser(loginPayload: LoginPayload){
+    fun saveUser(loginPayload: LoginPayload) {
         sharedPreferencesProvider.saveUserData(loginPayload)
     }
 
-    fun saveTokens(token: Token){
+    fun saveTokens(token: Token) {
         sharedPreferencesProvider.saveTokens(token)
     }
 
-    fun getUser(): LoginPayload?{
+    fun getUser(): LoginPayload? {
         return sharedPreferencesProvider.getUserData()
     }
 
-    fun getTokens(): Token?{
+    fun getTokens(): Token? {
         return sharedPreferencesProvider.getTokens()
     }
-    fun deleteUserData(){
+
+    fun deleteUserData() {
         sharedPreferencesProvider.deleteUserData()
     }
 }

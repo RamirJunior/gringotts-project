@@ -23,7 +23,7 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     }
 
     override fun saveUserData(user: LoginPayload) {
-        val userString =  Gson().toJson(user)
+        val userString = Gson().toJson(user)
         sharedPreferencesEditor.putString(USER_KEY, userString)
     }
 

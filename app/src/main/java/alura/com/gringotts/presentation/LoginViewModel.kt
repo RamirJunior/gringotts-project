@@ -3,7 +3,7 @@ package alura.com.gringotts.presentation
 import alura.com.gringotts.data.LoginRepository.LoginRepository
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
-import alura.com.gringotts.data.model.Tokens
+import alura.com.gringotts.data.model.Token
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
@@ -59,7 +59,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     private fun loginSuccessHandler(responseBody: LoginResponse){
         loginRepository.saveTokens(
-            Tokens(responseBody.tokenAuthentication, responseBody.refreshToken))
+            Token(responseBody.tokenAuthentication, responseBody.refreshToken))
         if(_rememberSwitch.value==true){
             loginRepository.saveUser(LoginPayload(currentUsername, currentPassword))
         }

@@ -21,10 +21,10 @@ val initialModule = module {
     single <SharedPreferencesProvider>{
         SharedPreferencesIMPL(get())
     }
-    single {
+    factory {
         InitialRepository(get())
     }
-    single {
+    factory {
         LoginRepository(get())
     }
 }

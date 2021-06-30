@@ -3,7 +3,7 @@ package alura.com.gringotts.data.LoginRepository
 import alura.com.gringotts.data.SharedPreferencesProvider
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.Tokens
+import alura.com.gringotts.data.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -17,15 +17,15 @@ class LoginRepository(private val sharedPreferencesProvider: SharedPreferencesPr
         sharedPreferencesProvider.saveUserData(loginPayload)
     }
 
-    fun saveTokens(tokens: Tokens){
-        sharedPreferencesProvider.saveTokens(tokens)
+    fun saveTokens(token: Token){
+        sharedPreferencesProvider.saveTokens(token)
     }
 
     fun getUser(): LoginPayload?{
         return sharedPreferencesProvider.getUserData()
     }
 
-    fun getTokens(): Tokens?{
+    fun getTokens(): Token?{
         return sharedPreferencesProvider.getTokens()
     }
     fun deleteUserData(){

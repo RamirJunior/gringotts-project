@@ -3,19 +3,21 @@ package alura.com.gringotts.data
 import android.content.Context
 
 class InitialRepository (context : Context) {
-    private val sharedPreferencesOnboarding = "sharedPreferencesInitial"
-    private val finishedKey = "finished"
-
     private val sharedPreferences = context.getSharedPreferences(
-        sharedPreferencesOnboarding, Context.MODE_PRIVATE)
+        SHARED_PREFS_ONBOARDING, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     fun setFinished(){
-        sharedPreferencesEditor.putBoolean(finishedKey,true)
+        sharedPreferencesEditor.putBoolean(FINISHED_KEY,true)
         sharedPreferencesEditor.apply()
     }
 
     fun getFinished() : Boolean {
-        return sharedPreferences.getBoolean(finishedKey,false)
+        return sharedPreferences.getBoolean(FINISHED_KEY,false)
+    }
+
+    companion object{
+        private const val SHARED_PREFS_ONBOARDING = "sharedPreferencesInitial"
+        private const val FINISHED_KEY = "finished"
     }
 }

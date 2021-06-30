@@ -5,7 +5,7 @@ import alura.com.gringotts.data.model.Token
 import android.content.Context
 import com.google.gson.Gson
 
-class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
+class SessionManagerImpl(context: Context) : SessionManager {
 
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()

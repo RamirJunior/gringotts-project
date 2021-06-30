@@ -18,8 +18,8 @@ val initialModule = module {
     viewModel {
         SplashViewModel(get())
     }
-    single <SharedPreferencesProvider>{
-        SharedPreferencesIMPL(get())
+    single <SessionManager>{
+        SessionManagerImpl(get())
     }
     factory {
         InitialRepository(get())

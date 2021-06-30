@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 
 class OnboardingViewModel(val initialRepository: InitialRepository) : ViewModel() {
 
-    fun onBoardingFinished() { //Salva que a onboard foi executada para não ter que repetir
+    fun onBoardingFinished() {
         initialRepository.setFinished()
     }
 }

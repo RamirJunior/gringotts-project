@@ -11,15 +11,15 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
-    override fun getUserData(): LoginPayload?{
+    override fun getUserData(): LoginPayload? {
         val userString = sharedPreferences.getString(USER_KEY, "")
-        if(userString.equals("")) return null
+        if (userString.equals("")) return null
         return gson.fromJson(userString, LoginPayload::class.java)
     }
 
-    override fun getTokens(): Tokens?{
+    override fun getTokens(): Tokens? {
         val tokensString = sharedPreferences.getString(TOKENS_KEY, "")
-        if(tokensString.equals("")) return null
+        if (tokensString.equals("")) return null
         return gson.fromJson(tokensString, Tokens::class.java)
     }
 
@@ -37,8 +37,8 @@ class SharedPreferencesIMPL(context: Context) : SharedPreferencesProvider {
         sharedPreferencesEditor.remove(USER_KEY).commit()
     }
 
-    companion object{
-        private const val SHARED_PREFS="sharedPrefs"
+    companion object {
+        private const val SHARED_PREFS = "sharedPrefs"
         private const val USER_KEY = "User"
         private const val TOKENS_KEY = "Tokens"
     }

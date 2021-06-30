@@ -11,9 +11,8 @@ class InitialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityInitialBinding.inflate(layoutInflater) //Setando o nosso Layout de login
-        setContentView(binding.root) //Setando o nosso Layout de login
-
+        binding = ActivityInitialBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
+

@@ -42,7 +42,7 @@ class LoginRepository(private val sessionManager: SessionManager) {
         responseBody: LoginResponse, rememberSwitch: Boolean, loginPayload: LoginPayload
     ) {
         sessionManager.saveTokens(
-            Token(responseBody.tokenAuthentication, responseBody.refreshToken)
+            Token(responseBody.tokenAuthentication)
         )
         if (rememberSwitch) {
             sessionManager.saveUserData(loginPayload)

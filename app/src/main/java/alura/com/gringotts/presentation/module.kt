@@ -1,9 +1,8 @@
-package alura.com.gringotts.data
+package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.LoginRepository.LoginRepository
-import alura.com.gringotts.presentation.LoginViewModel
-import alura.com.gringotts.presentation.OnboardingViewModel
-import alura.com.gringotts.presentation.SplashViewModel
+import alura.com.gringotts.data.SessionManager
+import alura.com.gringotts.data.SessionManagerImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 
 import org.koin.dsl.module
@@ -18,7 +17,7 @@ val initialModule = module {
     viewModel {
         SplashViewModel(get())
     }
-    single <SessionManager>{
+    single<SessionManager> {
         SessionManagerImpl(get())
     }
     factory {

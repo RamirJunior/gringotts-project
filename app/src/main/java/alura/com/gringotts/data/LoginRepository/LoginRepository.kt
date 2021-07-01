@@ -1,8 +1,8 @@
 package alura.com.gringotts.data.LoginRepository
 
-import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
 import alura.com.gringotts.data.model.Token

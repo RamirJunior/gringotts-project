@@ -10,10 +10,6 @@
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Falha de login"</string>
     <string name="registrar">CRIAR CONTA</string>
     <string name="forgotPassword">ESQUECI MINHA SENHA</string>
     <string name="rememberPassword">Lembrar minha conta</string>

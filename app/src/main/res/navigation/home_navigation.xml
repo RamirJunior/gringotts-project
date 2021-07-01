@@ -8,52 +8,5 @@
         android:id="@+id/homeFragment"
         android:name="alura.com.gringotts.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_pagarComQrCodeFragment"
-            app:destination="@id/pagarComQrCodeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_venderComQrCodeFragment"
-            app:destination="@id/venderComQrCodeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_extratoFragment"
-            app:destination="@id/extratoFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_pixFragment"
-            app:destination="@id/pixFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_fragment_tranferir"
-            app:destination="@id/fragment_tranferir" />
-        <action
-            android:id="@+id/action_homeFragment_to_contaCorrenteFragment"
-            app:destination="@id/contaCorrenteFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/extratoFragment"
-        android:name="alura.com.gringotts.view.ExtratoFragment"
-        android:label="fragment_extrato"
-        tools:layout="@layout/fragment_extrato" />
-    <fragment
-        android:id="@+id/pixFragment"
-        android:name="alura.com.gringotts.view.PixFragment"
-        android:label="fragment_pix"
-        tools:layout="@layout/fragment_pix" />
-    <fragment
-        android:id="@+id/pagarComQrCodeFragment"
-        android:name="alura.com.gringotts.view.PagarComQrCodeFragment"
-        android:label="PagarComQrCodeFragment" />
-    <fragment
-        android:id="@+id/venderComQrCodeFragment"
-        android:name="alura.com.gringotts.view.VenderComQrCodeFragment"
-        android:label="VenderComQrCodeFragment" />
-    <fragment
-        android:id="@+id/fragment_tranferir"
-        android:name="alura.com.gringotts.view.fragment_tranferir"
-        android:label="fragment_tranferir"
-        tools:layout="@layout/fragment_tranferir" />
-    <fragment
-        android:id="@+id/contaCorrenteFragment"
-        android:name="alura.com.gringotts.view.ContaCorrenteFragment"
-        android:label="fragment_conta_corrente"
-        tools:layout="@layout/fragment_conta_corrente" />
+        tools:layout="@layout/fragment_home" />
 </navigation>

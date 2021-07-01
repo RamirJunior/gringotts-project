@@ -32,13 +32,13 @@
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/imageView"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="72dp"
             android:layout_marginEnd="72dp"
+            android:layout_marginBottom="72dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginBottom="72dp" />
+            motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end" />

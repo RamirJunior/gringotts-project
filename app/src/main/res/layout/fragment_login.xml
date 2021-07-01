@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imageViewLogoGringotts"
         android:layout_width="300dp"
@@ -16,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logotipo_png"
         tools:ignore="ContentDescription" />
-
 
     <Button
         android:id="@+id/login_register"
@@ -93,7 +91,6 @@
         app:layout_constraintStart_toStartOf="@+id/login_password"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/login_remember"
         android:layout_width="320dp"
@@ -106,7 +103,7 @@
         app:layout_constraintBottom_toTopOf="@+id/login_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/login_forgot"

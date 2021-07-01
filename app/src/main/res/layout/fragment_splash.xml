@@ -30,4 +30,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/splash_png"
         tools:ignore="ContentDescription" />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

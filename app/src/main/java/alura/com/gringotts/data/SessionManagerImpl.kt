@@ -3,6 +3,7 @@ package alura.com.gringotts.data
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.Token
 import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.Gson
 
 class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : SessionManager {
@@ -23,12 +24,12 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
 
     override fun saveUserData(user: LoginPayload) {
         val userString = Gson().toJson(user)
-        sharedPreferencesEditor.putString(USER_KEY, userString)
+        sharedPreferencesEditor.putString(USER_KEY, userString).commit()
     }
 
     override fun saveTokens(token: Token) {
         val tokensString = Gson().toJson(token)
-        sharedPreferencesEditor.putString(TOKENS_KEY, tokensString)
+        sharedPreferencesEditor.putString(TOKENS_KEY, tokensString).commit()
     }
 
     override fun deleteUserData() {
@@ -45,8 +46,8 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
     }
 
     companion object {
-        private const val USER_KEY = "User"
-        private const val TOKENS_KEY = "Tokens"
+        private const val USER_KEY = "user"
+        private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
     }
 }

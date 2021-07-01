@@ -4,6 +4,7 @@ import alura.com.gringotts.data.repositories.LoginRepository
 import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

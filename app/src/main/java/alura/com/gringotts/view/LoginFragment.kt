@@ -4,6 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,10 @@ class LoginFragment : Fragment() {
         binding.loginPassword.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }
+
+        loginViewModel.rememberSwitch.observe(viewLifecycleOwner,{
+            binding.loginRemember.isChecked=it
+        })
 
         binding.loginRemember.setOnCheckedChangeListener { _, isChecked ->
             loginViewModel.switchChanged(isChecked)

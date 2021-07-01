@@ -9,4 +9,10 @@
         android:name="alura.com.gringotts.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/paymentsFragment"
+        android:name="alura.com.gringotts.view.PaymentsFragment"
+        android:label="fragment_payments"
+        tools:layout="@layout/fragment_payments"
+        />
 </navigation>

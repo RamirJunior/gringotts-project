@@ -17,7 +17,7 @@ interface ApiInterface {
 
     companion object {
         private const val BASE_URL =
-            "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc/"
+            "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/"
 
         fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()

@@ -3,11 +3,11 @@ package alura.com.gringotts.data
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.Token
 import android.content.Context
+import android.content.SharedPreferences
 import com.google.gson.Gson
 
-class SessionManagerImpl(context: Context) : SessionManager {
+class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : SessionManager {
 
-    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     override fun getUserData(): LoginPayload? {
@@ -46,7 +46,6 @@ class SessionManagerImpl(context: Context) : SessionManager {
     }
 
     companion object {
-        private const val SHARED_PREFS = "sharedPrefs"
         private const val USER_KEY = "User"
         private const val TOKENS_KEY = "Tokens"
         private const val FINISHED_KEY = "finished"

@@ -1,6 +1,6 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.Repositories.LoginRepository
+import alura.com.gringotts.data.repositories.LoginRepository
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.SessionManagerImpl
 import android.content.Context

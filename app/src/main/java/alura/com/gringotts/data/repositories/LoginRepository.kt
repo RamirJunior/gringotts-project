@@ -1,4 +1,4 @@
-package alura.com.gringotts.data.Repositories
+package alura.com.gringotts.data.repositories
 
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface

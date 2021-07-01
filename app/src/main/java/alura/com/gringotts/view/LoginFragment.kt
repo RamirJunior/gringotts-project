@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         })
 
         loginViewModel.loginSuccess.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.action_loginFragment2_to_home_navigation)
+            findNavController().navigate(R.id.action_loginFragment2_to_homeActivity)
         })
 
         binding.loginLogin.setOnClickListener {

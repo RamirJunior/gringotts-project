@@ -22,5 +22,11 @@
     <string name="principais">Principais</string>
     <string name="produtosInvestimentos">Produtos e Investimentos</string>
     <string name="servicos">Serviços</string>
+    <string name="transferencias">Transferências</string>
+    <string name="cartoes">Cartões</string>
+    <string name="pagarContas">Pagar Contas</string>
+    <string name="recargas">Recargas</string>
+    <string name="adicionarDinheiro">Adicionar Dinheiro</string>
+    <string name="pixQrCode">Pix/QR Code</string>
 
 </resources>

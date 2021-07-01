@@ -1,9 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.R
-import alura.com.gringotts.presentation.LoginViewModel
 import alura.com.gringotts.presentation.SplashViewModel
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -23,20 +21,19 @@ class SplashFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_splash, container, false)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (splashViewModel.getFinished()) {
-                findNavController().navigate(R.id.action_splashFragment_to_login_navigation) //leva para tela de login se ja tiver sharedpref
-            } else {
-                findNavController().navigate(R.id.action_splashFragment_to_onboarding_navigation) // leva para tela de onboarding se for a primeira vez que o aplicativo esta sendo executado
-            }
-        }, 3000)
-
-        return view
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Handler(Looper.getMainLooper()).postDelayed({
+            splashViewModel.goToLogin.observe(viewLifecycleOwner){
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
+            splashViewModel.goToOnboarding.observe(viewLifecycleOwner){
+                findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+            }
+        }, 3000)
+    }
 
 }

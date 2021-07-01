@@ -1,11 +1,24 @@
 package alura.com.gringotts.presentation
-import alura.com.gringotts.data.InitialRepository
+
+import alura.com.gringotts.data.SessionManager
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SplashViewModel (val initialRepository: InitialRepository) : ViewModel() {
+class SplashViewModel(sessionManager: SessionManager) : ViewModel() {
 
-    fun getFinished(): Boolean { //Verifica se o app já foi aberto alguma vez
-        return initialRepository.getFinished()
+    private val _goToOnboarding = MutableLiveData<Boolean>()
+    val goToOnboarding: LiveData<Boolean> = _goToOnboarding
+
+    private val _goToLogin = MutableLiveData<Boolean>()
+    val goToLogin: LiveData<Boolean> = _goToLogin
+
+    init {
+        if (sessionManager.getOnboardingFinished()) {
+            _goToLogin.postValue(true)
+        } else {
+            _goToOnboarding.postValue(true)
+        }
     }
 
 }

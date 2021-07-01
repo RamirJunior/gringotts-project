@@ -1,8 +1,8 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.model.LoginModel
+import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -10,16 +10,14 @@ import retrofit2.http.POST
 
 interface ApiInterface {
 
-    //  @FormUrlEncoded
-    @POST("userlogin")
-    fun userLogin(
-        @Body login: LoginModel
-    ): Call<LoginResponse>
+    @POST("userLogin")
+    suspend fun userLogin(
+        @Body login: LoginPayload
+    ): Response<LoginResponse>
 
     companion object {
         private const val BASE_URL =
             "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc/"
-
 
         fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()

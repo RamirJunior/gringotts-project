@@ -8,11 +8,11 @@ import org.koin.core.context.startKoin
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        startKoin{
-            //androidLogger(Level.DEBUG)
+
+        startKoin {
             androidContext(this@App)
-            modules(listOf(viewModelModule, sharedPreferencesIMPlModule, initialRepository,
-                onboardingViewModel, splashViewModel))
+            modules(listOf(initialModule))
         }
     }
 }
+

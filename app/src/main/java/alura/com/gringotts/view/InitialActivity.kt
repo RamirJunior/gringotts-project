@@ -4,7 +4,6 @@ import alura.com.gringotts.databinding.ActivityInitialBinding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-
 class InitialActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInitialBinding

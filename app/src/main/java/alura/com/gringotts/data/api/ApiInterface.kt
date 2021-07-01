@@ -1,11 +1,14 @@
 package alura.com.gringotts.data.api
 
+import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
+import alura.com.gringotts.data.model.Token
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiInterface {
@@ -14,6 +17,11 @@ interface ApiInterface {
     suspend fun userLogin(
         @Body login: LoginPayload
     ): Response<LoginResponse>
+
+    @GET("home")
+    suspend fun home(
+        @Body token: Token
+    ): Response<HomeResponse>
 
     companion object {
         private const val BASE_URL =

@@ -30,5 +30,7 @@
     <string name="pixQrCode">Pix/QR Code</string>
     <string name="saldo">Saldo</string>
     <string name="real">R$ </string>
+    <string name="detalhes_conta">Ver detalhes da conta</string>
+    <string name="detalhes_saldo">Ver detalhes do saldo</string>
 
 </resources>

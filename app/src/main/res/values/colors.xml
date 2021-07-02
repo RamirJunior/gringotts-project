@@ -7,4 +7,7 @@
     <color name="gold">#EFAF2D</color>
     <color name="grayLow">#EDEDED</color>
     <color name="grayHigh">#3C3C3C</color>
+    <color name="orange">#F7931E</color>
+    <color name="grayMiddle">#565656</color>
+    <color name="orangeHigh">#FF9D00</color>
 </resources>

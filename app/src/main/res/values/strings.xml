@@ -28,5 +28,7 @@
     <string name="recargas">Recargas</string>
     <string name="adicionarDinheiro">Adicionar Dinheiro</string>
     <string name="pixQrCode">Pix/QR Code</string>
+    <string name="saldo">Saldo</string>
+    <string name="real">R$ </string>
 
 </resources>

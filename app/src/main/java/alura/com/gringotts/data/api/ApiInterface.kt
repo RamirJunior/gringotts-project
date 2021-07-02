@@ -3,12 +3,12 @@ package alura.com.gringotts.data.api
 import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
-import alura.com.gringotts.data.model.Token
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterface {
@@ -20,7 +20,7 @@ interface ApiInterface {
 
     @GET("home")
     suspend fun home(
-        @Body token: Token
+        @Header("token") token: String
     ): Response<HomeResponse>
 
     companion object {

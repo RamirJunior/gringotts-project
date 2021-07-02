@@ -20,6 +20,9 @@ val initialModule = module {
     viewModel {
         SplashViewModel(get())
     }
+    viewModel {
+        HomeViewModel(get())
+    }
     single<SessionManager> {
         SessionManagerImpl(get())
     }

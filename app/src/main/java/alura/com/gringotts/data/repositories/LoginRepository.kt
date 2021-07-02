@@ -39,7 +39,9 @@ class LoginRepository(private val sessionManager: SessionManager) {
     }
 
     private fun loginSuccessHandler(
-        responseBody: LoginResponse, rememberSwitch: Boolean, loginPayload: LoginPayload
+        responseBody: LoginResponse,
+        rememberSwitch: Boolean,
+        loginPayload: LoginPayload
     ) {
         sessionManager.saveTokens(
             Token(responseBody.tokenAuthentication)
@@ -64,4 +66,5 @@ class LoginRepository(private val sessionManager: SessionManager) {
         private const val INCORRECT_PASSWORD = 401
         private const val INCOMPATIBLE_EMAIL_PASSWORD = 404
     }
+
 }

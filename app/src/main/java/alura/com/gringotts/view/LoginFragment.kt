@@ -4,7 +4,6 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +40,7 @@ class LoginFragment : Fragment() {
         binding.loginUsername.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
         }
+
         binding.loginPassword.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }

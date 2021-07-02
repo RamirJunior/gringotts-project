@@ -1,9 +1,9 @@
 package alura.com.gringotts.data
 
+import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.Token
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.gson.Gson
 
 class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : SessionManager {
@@ -45,9 +45,23 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return sharedPreferences.getBoolean(FINISHED_KEY, false)
     }
 
+    override fun getHomeResponse(): HomeResponse? {
+        val homeResponse = sharedPreferences.getString(HOME_RESPONSE, "")
+        if (homeResponse.equals("")) return null
+        return Gson().fromJson(homeResponse, HomeResponse::class.java)
+    }
+
+    override fun saveHomeResponse(response: HomeResponse) {
+        val homeResponse = Gson().toJson(response)
+        sharedPreferencesEditor.putString(HOME_RESPONSE, homeResponse).commit()
+    }
+
     companion object {
         private const val USER_KEY = "user"
         private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
+        private const val HOME_RESPONSE = "homeBalance"
     }
+
 }
+

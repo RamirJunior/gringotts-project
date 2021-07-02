@@ -65,79 +65,20 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TableLayout
-            android:id="@+id/table"
+        <androidx.viewpager.widget.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:stretchColumns="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view_balance">
+            android:layout_height="wrap_content">
 
-            <TableRow android:layout_height="91dp">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/principais"
-                    android:textAlignment="center" />
+        </androidx.viewpager.widget.ViewPager>
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/produtosInvestimentos"
-                    android:textAlignment="center" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/servicos"
-                    android:textAlignment="center" />
-            </TableRow>
-
-            <TableRow android:layout_height="91dp">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/transferencias"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/cartoes"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/pagarContas"
-                    android:textAlignment="center" />
-            </TableRow>
-
-            <TableRow android:layout_height="91dp">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/recargas"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/adicionarDinheiro"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/pixQrCode"
-                    android:textAlignment="center" />
-            </TableRow>
-
-        </TableLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

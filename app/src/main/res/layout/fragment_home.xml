@@ -5,133 +5,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment" >
-    <com.google.android.material.card.MaterialCardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view_balance"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        app:cardBackgroundColor="@color/gold">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent">
+        <com.google.android.material.card.MaterialCardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp">
-            <TextView
-                android:id="@+id/balance_text"
-                android:layout_width="wrap_content"
+            card_view:cardCornerRadius="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            app:cardBackgroundColor="@color/gold">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/saldo"
-                android:textSize="20sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/balance_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/saldo"
+                    android:textSize="20sp"
 
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/balance_currency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/real"
+                <TextView
+                    android:id="@+id/balance_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/real"
 
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/balance_text"/>
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/balance_text"/>
 
-            <TextView
-                android:id="@+id/balance_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="5000,00"
+                <TextView
+                    android:id="@+id/balance_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:text="5000,00"
 
-                app:layout_constraintStart_toEndOf="@+id/balance_currency"
-                app:layout_constraintTop_toBottomOf="@+id/balance_text"/>
+                    app:layout_constraintStart_toEndOf="@+id/balance_currency"
+                    app:layout_constraintTop_toBottomOf="@+id/balance_text"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <TableLayout
-        android:id="@+id/table"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:stretchColumns="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_view_balance">
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:stretchColumns="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view_balance">
 
-        <TableRow android:layout_height="91dp">
+            <TableRow android:layout_height="91dp">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/principais"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/principais"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/produtosInvestimentos"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/produtosInvestimentos"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/servicos"
-                android:textAlignment="center" />
-        </TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/servicos"
+                    android:textAlignment="center" />
+            </TableRow>
 
-        <TableRow android:layout_height="91dp">
+            <TableRow android:layout_height="91dp">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/transferencias"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/transferencias"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/cartoes"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/cartoes"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/pagarContas"
-                android:textAlignment="center" />
-        </TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/pagarContas"
+                    android:textAlignment="center" />
+            </TableRow>
 
-        <TableRow android:layout_height="91dp">
+            <TableRow android:layout_height="91dp">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/recargas"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/recargas"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/adicionarDinheiro"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/adicionarDinheiro"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_gravity="center"
-                android:text="@string/pixQrCode"
-                android:textAlignment="center" />
-        </TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:text="@string/pixQrCode"
+                    android:textAlignment="center" />
+            </TableRow>
 
-
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

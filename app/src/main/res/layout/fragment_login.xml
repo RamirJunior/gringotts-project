@@ -92,6 +92,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SwitchCompat
+        android:theme="@style/SCBSwitch"
         android:id="@+id/login_remember"
         android:layout_width="320dp"
         android:layout_height="48dp"
@@ -115,7 +116,6 @@
         android:linksClickable="true"
         android:text="@string/forgotPassword"
         android:textAlignment="center"
-        android:textColor="@color/gold"
         android:textColorLink="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

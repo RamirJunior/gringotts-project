@@ -45,7 +45,6 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:text="@string/real"
-
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/balance_text"/>
@@ -77,9 +76,10 @@
         </com.google.android.material.card.MaterialCardView>
 
     <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="4dp"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_view_balance">
 
@@ -87,9 +87,15 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </androidx.viewpager.widget.ViewPager>
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="4dp"
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

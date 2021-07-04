@@ -55,6 +55,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
     implementation 'io.insert-koin:koin-androidx-viewmodel:2.0.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     def lifecycle_version = "2.2.0"
 

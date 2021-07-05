@@ -1,10 +1,9 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.repositories.LoginRepository
 import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
-import android.util.Log
+import alura.com.gringotts.data.repositories.LoginRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -89,4 +88,5 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(): Boolean {
         return currentPassword.length >= 6
     }
+
 }

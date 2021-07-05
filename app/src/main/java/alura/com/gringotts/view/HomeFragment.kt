@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = benefits?.let { BenefitsListAdapter(it) }
-        //homeViewModel.getHomeData()
     }
 
     //val adapter = ViewPagerAdapter(this)

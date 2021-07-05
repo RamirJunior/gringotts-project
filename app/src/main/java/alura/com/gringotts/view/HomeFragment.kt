@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
     //val adapter = ViewPagerAdapter(this)
     //binding.PagerFuncionalidades.adapter = adapter
 
-    val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
+  /*  val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
         binding.pagerFuncionalidades,
         TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
             when(position + 1){
@@ -60,5 +60,5 @@ class HomeFragment : Fragment() {
             }
         })
     //tabLayoutMediator.attach()
-
+*/
 }

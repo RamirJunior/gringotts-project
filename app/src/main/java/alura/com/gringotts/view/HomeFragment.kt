@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -29,8 +31,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val benefitsList = listOf(Benefits("color", "image", "title", "message", "link"),
-            Benefits("color1", "image1", "title1", "message1", "link1"))
-        homeViewModel.getHomeData()
+        val benefitsList = listOf(Benefits("#FFEB3B", "https://assets.pagseguro.com.br/ps-website-assets/v14.44.0/img/_pswn/generic/large/pagamento-contas-cartao-credito.png", "title", "message", "link"),
+            Benefits("#4CAF50", "https://assets.pagseguro.com.br/ps-website-assets/v14.44.0/img/_pswn/generic/large/pagamento-contas-cartao-credito.png", "title1", "message1", "link1"))
+        val recyclerView: RecyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = BenefitsListAdapter(benefitsList)
+        //homeViewModel.getHomeData()
     }
 }

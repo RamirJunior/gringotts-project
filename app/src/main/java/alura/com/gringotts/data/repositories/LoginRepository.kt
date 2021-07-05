@@ -12,8 +12,8 @@ import retrofit2.Response
 
 class LoginRepository(private val sessionManager: SessionManager) {
 
-    suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean){
-        val response : Response<LoginResponse>
+    suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean) {
+        val response: Response<LoginResponse>
         withContext(Dispatchers.IO) {
             response = ApiInterface.create().userLogin(loginPayload)
         }
@@ -43,6 +43,7 @@ class LoginRepository(private val sessionManager: SessionManager) {
         rememberSwitch: Boolean,
         loginPayload: LoginPayload
     ) {
+        sessionManager.saveUser(responseBody.user)
         sessionManager.saveTokens(
             Token(responseBody.tokenAuthentication)
         )

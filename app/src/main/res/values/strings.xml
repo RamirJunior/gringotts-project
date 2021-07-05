@@ -32,5 +32,8 @@
     <string name="real">R$ </string>
     <string name="detalhes_conta">Ver detalhes da conta</string>
     <string name="detalhes_saldo">Ver detalhes do saldo</string>
+    <string name="security">security</string>
+    <string name="notifications">notifications</string>
+    <string name="profile_picture">profile picture</string>
 
 </resources>

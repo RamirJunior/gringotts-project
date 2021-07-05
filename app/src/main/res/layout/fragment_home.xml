@@ -77,23 +77,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/pager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_balance"
+        >
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_funcionalidades"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
              />
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:id="@+id/pager_funcionalidades" >
-
+            android:id="@+id/pager_funcionalidades"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades">
         </androidx.viewpager2.widget.ViewPager2>
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,6 +108,6 @@
         android:layout_height="wrap_content"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pager_funcionalidades"/>
+        app:layout_constraintTop_toBottomOf="@+id/pager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

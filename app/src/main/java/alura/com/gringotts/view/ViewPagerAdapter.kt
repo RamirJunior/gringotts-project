@@ -18,7 +18,7 @@ class ViewPagerAdapter(fragmentBase: Fragment): FragmentStateAdapter(fragmentBas
             2 -> {
                 PageThreeFragment()
             }
-            else {
+            else -> {
                 throw Exception("Esta página não foi encontrada.")
             }
         }

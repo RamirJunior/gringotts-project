@@ -42,19 +42,19 @@ class HomeFragment : Fragment() {
     }
 
     val adapter = ViewPagerAdapter(this)
+    //binding.PagerFuncionalidades.adapter = adapter
 
-    //binding.pagerFuncionalidades.adapter = adapter
     val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
         binding.pagerFuncionalidades,
         TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
-            when(position){
-                0 -> {
+            when(position + 1){
+                1 -> {
                     tab.text = "@strings/principais"
                 }
-                1 -> {
+                2 -> {
                     tab.text = "@strings/produtosInvestimentos"
                 }
-                2 -> {
+                3 -> {
                     tab.text = "@strings/servicos"
                 }
             }

@@ -14,9 +14,13 @@ class HomeRepository(private val sessionManager: SessionManager) {
         val response = withContext(Dispatchers.IO) {
             val response = sessionManager.getTokens()
                 ?.let { ApiInterface.create().home(it.tokenAuthentication) }!!
-            response.body()!!
+            response
         }
-        saveHomeResponse(response)
+        if (response.isSuccessful) {
+            saveHomeResponse(response.body()!!)
+        } else {
+            throw Exception("Não foi possível realizar o acesso")
+        }
     }
 
     fun getHomeResponse(): HomeResponse? {

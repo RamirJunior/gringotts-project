@@ -3,6 +3,7 @@ package alura.com.gringotts.data.repositories
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.model.Balance
+import alura.com.gringotts.data.model.Benefits
 import alura.com.gringotts.data.model.HomeResponse
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
@@ -33,4 +34,11 @@ class HomeRepository(private val sessionManager: SessionManager) {
         return balance
     }
 
+    fun getBenefits(): List<Benefits> {
+        val response = getHomeResponse()
+        val benefits: List<Benefits> = response!!.benefits
+        return benefits
+    }
+
 }
+

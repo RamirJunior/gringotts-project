@@ -2,7 +2,6 @@ package alura.com.gringotts.view
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import java.lang.Exception
 
 class ViewPagerAdapter(fragmentBase: Fragment): FragmentStateAdapter(fragmentBase) {
     override fun getItemCount(): Int = 3
@@ -18,7 +17,7 @@ class ViewPagerAdapter(fragmentBase: Fragment): FragmentStateAdapter(fragmentBas
             2 -> {
                 PageThreeFragment()
             }
-            else {
+            else -> {
                 throw Exception("Esta página não foi encontrada.")
             }
         }

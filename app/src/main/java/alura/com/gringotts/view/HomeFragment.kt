@@ -37,11 +37,11 @@ class HomeFragment : Fragment() {
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = BenefitsListAdapter(benefits)
+        recyclerView.adapter = benefits?.let { BenefitsListAdapter(it) }
         //homeViewModel.getHomeData()
     }
 
-    val adapter = ViewPagerAdapter(this)
+    //val adapter = ViewPagerAdapter(this)
     //binding.PagerFuncionalidades.adapter = adapter
 
     val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,

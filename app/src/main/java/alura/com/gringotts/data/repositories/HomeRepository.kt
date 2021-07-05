@@ -31,14 +31,14 @@ class HomeRepository(private val sessionManager: SessionManager) {
         return sessionManager.saveHomeResponse(homeResponse)
     }
 
-    fun getBalance(): Balance {
+    fun getBalance(): Balance? {
         val response = getHomeResponse()
-        return response!!.balance
+        return response?.balance
     }
 
-    fun getBenefits(): List<Benefits> {
+    fun getBenefits(): List<Benefits>? {
         val response = getHomeResponse()
-        return response!!.benefits
+        return response?.benefits
     }
 
 }

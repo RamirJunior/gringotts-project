@@ -22,11 +22,11 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
         _loading.postValue(false)
     }
 
-    fun getBenefits(): List<Benefits> {
+    fun getBenefits(): List<Benefits>? {
         return HomeRepository.getBenefits()
     }
 
-    fun getBalance(): Balance {
+    fun getBalance(): Balance? {
         return HomeRepository.getBalance()
     }
 

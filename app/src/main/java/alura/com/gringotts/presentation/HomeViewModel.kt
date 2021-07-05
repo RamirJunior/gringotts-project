@@ -1,5 +1,7 @@
 package alura.com.gringotts.presentation
 
+import alura.com.gringotts.data.model.Balance
+import alura.com.gringotts.data.model.Benefits
 import alura.com.gringotts.data.repositories.HomeRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,4 +14,13 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
             HomeRepository.homeData()
         }
     }
+
+    fun getBenefits(): List<Benefits> {
+        return HomeRepository.getBenefits()
+    }
+
+    fun getBalance(): Balance? {
+        return HomeRepository.getBalance()
+    }
+
 }

@@ -1,11 +1,9 @@
 package alura.com.gringotts.view
 
-import alura.com.gringotts.R
-import alura.com.gringotts.data.model.Benefits
 import alura.com.gringotts.databinding.FragmentHomeBinding
-import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,16 +30,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val benefitsList = listOf(Benefits("#FFEB3B", "https://assets.pagseguro.com.br/ps-website-assets/v14.44.0/img/_pswn/generic/large/pagamento-contas-cartao-credito.png", "title", "message", "link"),
-            Benefits("#4CAF50", "https://assets.pagseguro.com.br/ps-website-assets/v14.44.0/img/_pswn/generic/large/pagamento-contas-cartao-credito.png", "title1", "message1", "link1"))
+        homeViewModel.getHomeData()
+        val benefits = homeViewModel.getBenefits()
+        val balance = homeViewModel.getBalance()
+        Log.d("Beneficio", balance.toString())
         val recyclerView: RecyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = BenefitsListAdapter(benefitsList)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = BenefitsListAdapter(benefits)
         //homeViewModel.getHomeData()
     }
 
     val adapter = ViewPagerAdapter(this)
-    binding.pagerFuncionalidades.adapter = adapter
+
+    //binding.pagerFuncionalidades.adapter = adapter
     val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
         binding.pagerFuncionalidades,
         TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
@@ -57,6 +59,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-    tabLayoutMediator.attach()
+    //tabLayoutMediator.attach()
 
 }

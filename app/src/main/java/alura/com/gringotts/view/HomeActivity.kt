@@ -2,12 +2,16 @@ package alura.com.gringotts.view
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.ActivityHomeBinding
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 
 class HomeActivity: AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,4 +20,10 @@ class HomeActivity: AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.nav_fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
     }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
+
+    }
+
 }

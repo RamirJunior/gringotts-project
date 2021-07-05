@@ -10,8 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -38,4 +36,24 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = BenefitsListAdapter(benefitsList)
         //homeViewModel.getHomeData()
     }
+
+    val adapter = ViewPagerAdapter(this)
+    binding.pagerFuncionalidades.adapter = adapter
+    val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
+        binding.pagerFuncionalidades,
+        TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
+            when(position){
+                0 -> {
+                    tab.text = "@strings/principais"
+                }
+                1 -> {
+                    tab.text = "@strings/produtosInvestimentos"
+                }
+                2 -> {
+                    tab.text = "@strings/servicos"
+                }
+            }
+        })
+    tabLayoutMediator.attach()
+
 }

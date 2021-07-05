@@ -3,7 +3,7 @@
 
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/gold</item>
-        <item name="colorSurface">@color/gold</item>
+        <item name="colorSurface">@color/white</item>
     </style>
 
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">

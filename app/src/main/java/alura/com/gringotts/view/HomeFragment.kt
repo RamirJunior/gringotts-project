@@ -1,14 +1,13 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.data.model.Balance
+import alura.com.gringotts.data.model.Benefits
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
-import android.R
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -21,25 +20,34 @@ class HomeFragment : Fragment() {
     private val homeViewModel by viewModel<HomeViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var benefits: List<Benefits>
+    private lateinit var balance: Balance
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding= FragmentHomeBinding.inflate(layoutInflater)
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.run { getHomeData() }
-        val benefits = homeViewModel.getBenefits()
-        val balance = homeViewModel.getBalance()
+
+        homeViewModel.benefits.observe(viewLifecycleOwner) {
+            benefits =
+                homeViewModel.getBenefits()!!
+        }
+
+        homeViewModel.balance.observe(viewLifecycleOwner) {
+            balance = homeViewModel.getBalance()!!
+        }
+
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = benefits?.let { BenefitsListAdapter(it) }
+        recyclerView.adapter = BenefitsListAdapter(benefits)
         recyclerView.addItemDecoration(DotsIndicatorDecoration())
         PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
@@ -47,21 +55,21 @@ class HomeFragment : Fragment() {
     //val adapter = ViewPagerAdapter(this)
     //binding.PagerFuncionalidades.adapter = adapter
 
-  /*  val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
-        binding.pagerFuncionalidades,
-        TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
-            when(position + 1){
-                1 -> {
-                    tab.text = "@strings/principais"
-                }
-                2 -> {
-                    tab.text = "@strings/produtosInvestimentos"
-                }
-                3 -> {
-                    tab.text = "@strings/servicos"
-                }
-            }
-        })
-    //tabLayoutMediator.attach()
-*/
+    /*  val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
+          binding.pagerFuncionalidades,
+          TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
+              when(position + 1){
+                  1 -> {
+                      tab.text = "@strings/principais"
+                  }
+                  2 -> {
+                      tab.text = "@strings/produtosInvestimentos"
+                  }
+                  3 -> {
+                      tab.text = "@strings/servicos"
+                  }
+              }
+          })
+      //tabLayoutMediator.attach()
+  */
 }

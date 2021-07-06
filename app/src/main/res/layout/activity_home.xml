@@ -37,10 +37,10 @@
                 app:menu="@menu/top_bar_home"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="16dp"
-                />
+                android:layout_marginEnd="16dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment

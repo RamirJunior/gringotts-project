@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
             binding.balanceValue.text = it.currentValue.toString()
+            //binding. .text = it.receivables.toString()
         }
 
         binding.hideBalance.setOnClickListener(){

@@ -39,7 +39,7 @@
                     android:id="@+id/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/empty"
+                    android:text=""
                     android:textColor="@color/lowBlack"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"

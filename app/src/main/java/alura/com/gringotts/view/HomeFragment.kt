@@ -5,6 +5,7 @@ import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.userFirstName.observe(viewLifecycleOwner){
-            binding.firstName.text = it
+            binding.firstName.text = "Olá, " + it
         }
 
         homeViewModel.userLastName.observe(viewLifecycleOwner){

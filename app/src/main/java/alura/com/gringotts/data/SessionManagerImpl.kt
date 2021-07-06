@@ -11,7 +11,7 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     override fun getUserData(): LoginPayload? {
-        val userString = sharedPreferences.getString(USER_KEY, "")
+        val userString = sharedPreferences.getString(LOGIN_PAYLOAD, "")
         if (userString.equals("")) return null
         return Gson().fromJson(userString, LoginPayload::class.java)
     }
@@ -24,7 +24,7 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
 
     override fun saveUserData(user: LoginPayload) {
         val userString = Gson().toJson(user)
-        sharedPreferencesEditor.putString(USER_KEY, userString).commit()
+        sharedPreferencesEditor.putString(LOGIN_PAYLOAD, userString).commit()
     }
 
     override fun saveTokens(token: Token) {
@@ -33,7 +33,7 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
     }
 
     override fun deleteUserData() {
-        sharedPreferencesEditor.remove(USER_KEY).commit()
+        sharedPreferencesEditor.remove(LOGIN_PAYLOAD).commit()
     }
 
     override fun setOnboardingFinished() {
@@ -46,22 +46,22 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
     }
 
     override fun saveUser(user: User) {
-        val user = Gson().toJson(user)
-        sharedPreferencesEditor.putString(USER, user).commit()
+        val userGson = Gson().toJson(user)
+        sharedPreferencesEditor.putString(USER_KEY, userGson).apply()
     }
 
     override fun getUser(): User? {
-        val user = sharedPreferences.getString(USER, "")
+        val user = sharedPreferences.getString(USER_KEY, "")
         if (user.equals("")) return null
         return Gson().fromJson(user, User::class.java)
     }
 
     companion object {
-        private const val USER_KEY = "user"
+        private const val LOGIN_PAYLOAD = "loginPayload"
         private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
-        private const val USER = "user"
+        private const val HOME_RESPONSE = "homeBalance"
+        private const val USER_KEY = "user"
     }
-
 }
 

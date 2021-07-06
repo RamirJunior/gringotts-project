@@ -6,9 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_balance"
             android:layout_width="match_parent"
@@ -18,7 +20,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:elevation="16dp"
-            app:cardBackgroundColor="@color/grayBack"
+            android:backgroundTint="@color/grayLow"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,14 +36,25 @@
                 android:layout_marginBottom="0dp">
 
                 <TextView
-                    android:id="@+id/balance_text"
+                    android:id="@+id/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/saldo"
+                    android:text="@string/empty"
                     android:textColor="@color/lowBlack"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/last_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lowBlack"
+                    android:text="@string/empty"
+                    android:layout_marginStart="4dp"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/first_name"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/balance_currency"
@@ -51,7 +64,7 @@
                     android:textColor="@color/lowBlack"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
 
                 <TextView
                     android:id="@+id/balance_value"
@@ -62,7 +75,7 @@
                     android:textSize="24sp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintStart_toEndOf="@+id/balance_currency"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/hide_balance"
@@ -72,7 +85,7 @@
                     android:tint="@color/lowBlack"
                     android:src="@drawable/ic_baseline_remove_red_eye_24"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text"
+                    app:layout_constraintTop_toBottomOf="@+id/first_name"
                     app:layout_constraintBottom_toBottomOf="@id/balance_value"/>
 
                 <TextView
@@ -193,11 +206,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@color/grayLow">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
+
                 <ImageView
                     android:id="@+id/help_image"
                     android:layout_width="120dp"
@@ -205,6 +220,7 @@
                     app:srcCompat="@drawable/atendente"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,6 +231,7 @@
                     android:layout_marginStart="16dp"
                     app:layout_constraintStart_toEndOf="@id/help_image"
                     app:layout_constraintTop_toTopOf="parent"/>
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -225,8 +242,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintTop_toBottomOf="@id/help_title"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

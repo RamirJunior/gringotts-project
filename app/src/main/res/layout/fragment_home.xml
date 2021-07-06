@@ -111,26 +111,37 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/benefits_title"
-            android:text="@string/vantagens_do_gringotts_para_voc"
+            android:id="@+id/recycler_view_container"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pager"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/benefits_title"/>
-
+            app:layout_constraintTop_toBottomOf="@id/pager"
+            android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/benefits_title"
+                android:text="@string/vantagens_do_gringotts_para_voc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/benefits_title"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

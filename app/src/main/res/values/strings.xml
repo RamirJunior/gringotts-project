@@ -40,5 +40,6 @@
     <string name="txt_ajuda">Precisa de ajuda?</string>
     <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente</string>
     <string name="vendas_recber">À receber:</string>
+    <string name="empty" />
 
 </resources>

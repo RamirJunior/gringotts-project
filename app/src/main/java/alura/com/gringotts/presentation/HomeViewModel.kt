@@ -4,6 +4,7 @@ import alura.com.gringotts.data.model.Balance
 import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.data.model.User
 import alura.com.gringotts.data.repositories.HomeRepository
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     val balance: LiveData<String> = _balance
     private val _receivable = MutableLiveData<String>()
     val receivable: LiveData<String> = _receivable
+    private val _userFirstName = MutableLiveData<String>()
+    val userFirstName: LiveData<String> = _userFirstName
+    private val _userLastName = MutableLiveData<String>()
+    val userLastName: LiveData<String> = _userLastName
 
     init {
         _loading.postValue(true)
@@ -36,6 +41,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
             _loading.postValue(false)
+            val user = homeRepository.getUser()
+            _userFirstName.postValue(user!!.firstName)
+            _userLastName.postValue(user.lastName)
+            Log.e("erro", user!!.firstName)
         }
     }
 
@@ -53,9 +62,5 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     companion object {
         private const val HIDDENVALUE = "- - - -"
-    }
-
-    fun getUser(): User? {
-        return homeRepository.getUser()
     }
 }

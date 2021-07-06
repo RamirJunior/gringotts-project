@@ -34,14 +34,25 @@
                 android:layout_marginBottom="0dp">
 
                 <TextView
-                    android:id="@+id/balance_text"
+                    android:id="@+id/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/saldo"
+                    android:text="@string/empty"
                     android:textColor="@color/lowBlack"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/last_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lowBlack"
+                    android:text="@string/empty"
+                    android:layout_marginStart="4dp"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/first_name"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/balance_currency"
@@ -51,7 +62,7 @@
                     android:textColor="@color/lowBlack"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
 
                 <TextView
                     android:id="@+id/balance_value"
@@ -62,7 +73,7 @@
                     android:textSize="24sp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintStart_toEndOf="@+id/balance_currency"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/hide_balance"
@@ -72,7 +83,7 @@
                     android:tint="@color/lowBlack"
                     android:src="@drawable/ic_baseline_remove_red_eye_24"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_text"
+                    app:layout_constraintTop_toBottomOf="@+id/first_name"
                     app:layout_constraintBottom_toBottomOf="@id/balance_value"/>
 
                 <TextView

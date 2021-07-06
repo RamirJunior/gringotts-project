@@ -61,6 +61,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     companion object {
-        private const val HIDDENVALUE = "- - - -"
+        private const val HIDDENVALUE = "* * * *"
     }
 }

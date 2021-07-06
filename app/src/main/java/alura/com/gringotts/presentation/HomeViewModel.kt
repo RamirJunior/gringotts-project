@@ -22,23 +22,21 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
 
 
     init {
-        fun getHomeData() {
-            _loading.postValue(true)
+        _loading.postValue(true)
 
-            viewModelScope.launch {
-                HomeRepository.homeData()
-            }
-
-            if (getBenefits() != null) {
-                _benefits.postValue(true)
-            }
-
-            if (getBalance() != null) {
-                _balance.postValue(true)
-            }
-
-            _loading.postValue(false)
+        viewModelScope.launch {
+            HomeRepository.homeData()
         }
+
+        if (getBenefits() != null) {
+            _benefits.postValue(true)
+        }
+
+        if (getBalance() != null) {
+            _balance.postValue(true)
+        }
+
+        _loading.postValue(false)
     }
 
     fun getBenefits(): List<Benefits>? {

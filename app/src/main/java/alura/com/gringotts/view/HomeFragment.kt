@@ -35,21 +35,22 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recyclerView: RecyclerView = binding.recyclerView
+
         homeViewModel.benefits.observe(viewLifecycleOwner) {
             benefits =
                 homeViewModel.getBenefits()!!
+            recyclerView.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.adapter = BenefitsListAdapter(benefits)
+            recyclerView.addItemDecoration(DotsIndicatorDecoration())
+            PagerSnapHelper().attachToRecyclerView(recyclerView)
         }
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
             balance = homeViewModel.getBalance()!!
         }
 
-        val recyclerView: RecyclerView = binding.recyclerView
-        recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = BenefitsListAdapter(benefits)
-        recyclerView.addItemDecoration(DotsIndicatorDecoration())
-        PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
 
     //val adapter = ViewPagerAdapter(this)

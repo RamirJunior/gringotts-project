@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         homeViewModel.benefits.observe(viewLifecycleOwner) {
             binding.recyclerView.adapter = BenefitsListAdapter(it)
             binding.recyclerView.addItemDecoration(DotsIndicatorDecoration())

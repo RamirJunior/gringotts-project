@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 
 class PageThreeFragment : Fragment() {
     private var _binding: Funcionalidade3Binding? = null
-    //private var binding: Funcionalidade3Binding get() = _binding!!
+    private val binding: Funcionalidade3Binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,

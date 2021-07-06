@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 
 class PageTwoFragment : Fragment() {
     private var _binding: Funcionalidade2Binding? = null
-    //private var binding: Funcionalidade2Binding get() = _binding!!
+    private val binding: Funcionalidade2Binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,

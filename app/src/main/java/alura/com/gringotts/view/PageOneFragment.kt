@@ -10,7 +10,8 @@ import androidx.fragment.app.Fragment
 
 class PageOneFragment : Fragment() {
     private var _binding: Funcionalidade1Binding? = null
-    //private var binding: Funcionalidade1Binding get() = _binding!!
+    private val binding: Funcionalidade1Binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

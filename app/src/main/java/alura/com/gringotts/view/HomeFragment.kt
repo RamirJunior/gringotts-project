@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -44,30 +45,29 @@ class HomeFragment : Fragment() {
             binding.receivableValue.text = it.receivables.toString()
         }
 
-        binding.hideBalance.setOnClickListener(){
+        binding.hideBalance.setOnClickListener() {
 
         }
 
+
+        val adapter = ViewPagerAdapter(this)
+        binding.pagerFuncionalidades.adapter = adapter
+
+        val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
+            binding.pagerFuncionalidades,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                when (position + 1) {
+                    1 -> {
+                        tab.text = "@strings/principais"
+                    }
+                    2 -> {
+                        tab.text = "@strings/produtosInvestimentos"
+                    }
+                    3 -> {
+                        tab.text = "@strings/servicos"
+                    }
+                }
+            })
+        tabLayoutMediator.attach()
     }
-
-    //val adapter = ViewPagerAdapter(this)
-    //binding.PagerFuncionalidades.adapter = adapter
-
-    /*  val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
-          binding.pagerFuncionalidades,
-          TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
-              when(position + 1){
-                  1 -> {
-                      tab.text = "@strings/principais"
-                  }
-                  2 -> {
-                      tab.text = "@strings/produtosInvestimentos"
-                  }
-                  3 -> {
-                      tab.text = "@strings/servicos"
-                  }
-              }
-          })
-      //tabLayoutMediator.attach()
-  */
 }

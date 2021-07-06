@@ -19,8 +19,6 @@ class HomeFragment : Fragment() {
     private val homeViewModel by viewModel<HomeViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var benefits: List<Benefit>
-    private lateinit var balance: Balance
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,14 +39,16 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
-            binding.balanceValue.text = it.currentValue.toString()
-            binding.receivableValue.text = it.receivables.toString()
+            binding.balanceValue.text = it
         }
 
-        binding.hideBalance.setOnClickListener() {
-
+        homeViewModel.receivable.observe(viewLifecycleOwner){
+            binding.receivableValue.text = it
         }
 
+        binding.hideBalance.setOnClickListener {
+            homeViewModel.hideBalanceButtonClicked()
+        }
 
         val adapter = ViewPagerAdapter(this)
         binding.pagerFuncionalidades.adapter = adapter

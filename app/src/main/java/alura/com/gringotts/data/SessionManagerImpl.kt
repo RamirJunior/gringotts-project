@@ -1,6 +1,5 @@
 package alura.com.gringotts.data
 
-import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.Token
 import alura.com.gringotts.data.model.User
@@ -44,17 +43,6 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
 
     override fun getOnboardingFinished(): Boolean {
         return sharedPreferences.getBoolean(FINISHED_KEY, false)
-    }
-
-    override fun getHomeResponse(): HomeResponse? {
-        val homeResponse = sharedPreferences.getString(HOME_RESPONSE, "")
-        if (homeResponse.equals("")) return null
-        return Gson().fromJson(homeResponse, HomeResponse::class.java)
-    }
-
-    override fun saveHomeResponse(response: HomeResponse) {
-        val homeResponse = Gson().toJson(response)
-        sharedPreferencesEditor.putString(HOME_RESPONSE, homeResponse).commit()
     }
 
     override fun saveUser(user: User) {

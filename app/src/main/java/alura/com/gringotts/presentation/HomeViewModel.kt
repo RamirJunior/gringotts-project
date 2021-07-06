@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.model.Balance
 import alura.com.gringotts.data.model.Benefit
+import alura.com.gringotts.data.model.User
 import alura.com.gringotts.data.repositories.HomeRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
+class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -29,26 +30,32 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
         _loading.postValue(true)
 
         viewModelScope.launch {
-            val homeApiData = HomeRepository.homeData()
+            val homeApiData = homeRepository.homeData()
             _benefits.postValue(homeApiData.benefits)
-            balanceValue=homeApiData.balance
+            balanceValue = homeApiData.balance
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
             _loading.postValue(false)
         }
     }
+
     fun hideBalanceButtonClicked() {
-        hideBalance = if(!hideBalance){
+        hideBalance = if (!hideBalance) {
             _balance.postValue(HIDDENVALUE)
             _receivable.postValue(HIDDENVALUE)
             true
-        } else{
+        } else {
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
             false
         }
     }
-    companion object{
+
+    companion object {
         private const val HIDDENVALUE = "- - - -"
+    }
+
+    fun getUser(): User? {
+        return homeRepository.getUser()
     }
 }

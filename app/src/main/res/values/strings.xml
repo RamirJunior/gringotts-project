@@ -35,10 +35,10 @@
     <string name="security">security</string>
     <string name="notifications">notifications</string>
     <string name="profile_picture">profile picture</string>
-    <string name="vantagens_do_gringotts_para_voc">Vantagens do Gringotts para você</string>
-    <string name="hidden_balance">- - - - -</string>
-    <string name="esta_precisando_de_ajuda">Esta precisando de ajuda?</string>
+    <string name="txt_vantagens">Vantagens do Gringotts para você</string>
+    <string name="hidden_balance">* * * *</string>
+    <string name="txt_ajuda">Precisa de ajuda?</string>
     <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente</string>
-    <string name="vendas_recber">vendas a recber:</string>
+    <string name="vendas_recber">À receber:</string>
 
 </resources>

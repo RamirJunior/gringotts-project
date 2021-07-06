@@ -11,4 +11,12 @@
     <color name="grayMiddle">#565656</color>
     <color name="orangeHigh">#FF9D00</color>
     <color name="trans">#00000000 </color>
+
+    <!-- Gringotts Palette Colors -->
+    <color name="orangeLogo">#F7931E</color>
+    <color name="orangeMain">#FF9D00</color>
+    <color name="grayBack">#E0E0E0</color>
+    <color name="grayFront">#F2F2F2</color>
+    <color name="lowBlack">#565656</color>
+
 </resources>

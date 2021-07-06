@@ -16,5 +16,5 @@
         android:id="@+id/profilePic"
         android:title="@string/profile_picture"
         android:icon="@drawable/ic_baseline_account"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

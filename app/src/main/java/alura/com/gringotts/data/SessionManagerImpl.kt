@@ -60,7 +60,6 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         private const val USER_KEY = "user"
         private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
-        private const val HOME_RESPONSE = "homeBalance"
         private const val USER = "user"
     }
 

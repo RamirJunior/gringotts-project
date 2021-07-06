@@ -49,7 +49,10 @@ class HomeFragment : Fragment() {
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
             balance = homeViewModel.getBalance()!!
+            binding.balanceValue.text = balance.currentValue.toString()
         }
+        //android:text="@string/hidden_balance"
+
 
     }
 

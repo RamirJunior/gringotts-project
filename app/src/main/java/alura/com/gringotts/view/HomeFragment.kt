@@ -51,6 +51,11 @@ class HomeFragment : Fragment() {
             binding.userName.text = "Olá, " + it
         }
 
+        homeViewModel.visibilityId.observe(viewLifecycleOwner) {
+            binding.hideBalance.setImageResource(it)
+        }
+
+
         val adapter = ViewPagerAdapter(this)
         binding.pagerFuncionalidades.adapter = adapter
 

@@ -47,12 +47,8 @@ class HomeFragment : Fragment() {
             homeViewModel.hideBalanceButtonClicked()
         }
 
-        homeViewModel.userFirstName.observe(viewLifecycleOwner){
-            binding.firstName.text = "Olá, " + it
-        }
-
-        homeViewModel.userLastName.observe(viewLifecycleOwner){
-            binding.lastName.text = it
+        homeViewModel.userName.observe(viewLifecycleOwner){
+            binding.userName.text = "Olá, " + it
         }
 
         val adapter = ViewPagerAdapter(this)

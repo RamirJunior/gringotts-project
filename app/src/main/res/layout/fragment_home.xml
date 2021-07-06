@@ -74,6 +74,35 @@
                     app:layout_constraintTop_toBottomOf="@+id/balance_text"
                     app:layout_constraintBottom_toBottomOf="@id/balance_value"/>
 
+                <TextView
+                    android:id="@+id/receivable_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vendas_recber"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hide_balance" />
+
+                <TextView
+                    android:id="@+id/receivable_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/real"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintStart_toEndOf="@id/receivable_text"
+                    app:layout_constraintBottom_toBottomOf="@id/receivable_text" />
+                <TextView
+                    android:id="@+id/receivable_hide_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hidden_balance"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/receivable_currency"
+                    app:layout_constraintBottom_toBottomOf="@id/receivable_text" />
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/balance_details"
                     style="?attr/borderlessButtonStyle"
@@ -83,7 +112,7 @@
                     android:textColor="@color/orange"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/balance_value" />
+                    app:layout_constraintTop_toBottomOf="@+id/receivable_text" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 

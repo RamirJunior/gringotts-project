@@ -3,6 +3,7 @@ package alura.com.gringotts.data.repositories
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.model.HomeResponse
+import alura.com.gringotts.data.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -19,5 +20,9 @@ class HomeRepository(private val sessionManager: SessionManager) {
         } else {
             throw Exception("Não foi possível realizar o acesso")
         }
+    }
+
+    fun getUser(): User? {
+        return sessionManager.getUser()
     }
 }

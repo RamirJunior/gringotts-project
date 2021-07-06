@@ -58,11 +58,21 @@
                     android:id="@+id/balance_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5000,00"
+                    android:text="@string/hidden_balance"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@+id/balance_currency"
                     app:layout_constraintTop_toBottomOf="@+id/balance_text" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/hide_balance"
+                    android:background="@color/trans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/balance_text"
+                    app:layout_constraintBottom_toBottomOf="@id/balance_value"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/balance_details"
@@ -114,6 +124,7 @@
             />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

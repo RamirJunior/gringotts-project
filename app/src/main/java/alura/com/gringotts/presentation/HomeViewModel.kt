@@ -20,7 +20,6 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
     private val _balance = MutableLiveData<Balance>()
     val balance: LiveData<Balance> = _balance
 
-
     init {
         _loading.postValue(true)
 

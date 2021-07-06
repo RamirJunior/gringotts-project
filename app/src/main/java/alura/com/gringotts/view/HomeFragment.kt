@@ -2,14 +2,19 @@ package alura.com.gringotts.view
 
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
+import android.R
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +40,8 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = benefits?.let { BenefitsListAdapter(it) }
+        recyclerView.addItemDecoration(DotsIndicatorDecoration())
+        PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
 
     //val adapter = ViewPagerAdapter(this)

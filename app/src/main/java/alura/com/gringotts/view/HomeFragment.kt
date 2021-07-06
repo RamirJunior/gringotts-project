@@ -1,7 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.data.model.Balance
-import alura.com.gringotts.data.model.Benefits
+import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
@@ -18,7 +18,7 @@ class HomeFragment : Fragment() {
     private val homeViewModel by viewModel<HomeViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var benefits: List<Benefits>
+    private lateinit var benefits: List<Benefit>
     private lateinit var balance: Balance
 
     override fun onCreateView(

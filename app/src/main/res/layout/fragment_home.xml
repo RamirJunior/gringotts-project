@@ -95,7 +95,7 @@
                     app:layout_constraintStart_toEndOf="@id/receivable_text"
                     app:layout_constraintBottom_toBottomOf="@id/receivable_text" />
                 <TextView
-                    android:id="@+id/receivable_hide_value"
+                    android:id="@+id/receivable_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hidden_balance"

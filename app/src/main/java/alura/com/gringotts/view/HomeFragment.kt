@@ -43,6 +43,10 @@ class HomeFragment : Fragment() {
             binding.balanceValue.text = it.currentValue.toString()
         }
 
+        binding.hideBalance.setOnClickListener(){
+
+        }
+
     }
 
     //val adapter = ViewPagerAdapter(this)

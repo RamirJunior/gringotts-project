@@ -41,11 +41,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
             _loading.postValue(false)
-            val user = homeRepository.getUser()
-            _userFirstName.postValue(user!!.firstName)
-            _userLastName.postValue(user.lastName)
-            Log.e("erro", user!!.firstName)
         }
+        val user = homeRepository.getUser()
+        _userFirstName.postValue(user!!.firstName)
+        _userLastName.postValue(user.lastName)
     }
 
     fun hideBalanceButtonClicked() {

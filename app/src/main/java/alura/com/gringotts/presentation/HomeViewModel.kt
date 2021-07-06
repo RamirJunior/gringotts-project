@@ -14,37 +14,21 @@ class HomeViewModel(private val HomeRepository: HomeRepository) : ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    private val _benefits = MutableLiveData<Boolean>()
-    val benefits: LiveData<Boolean> = _benefits
+    private val _benefits = MutableLiveData<List<Benefits>>()
+    val benefits: LiveData<List<Benefits>> = _benefits
 
-    private val _balance = MutableLiveData<Boolean>()
-    val balance: LiveData<Boolean> = _balance
+    private val _balance = MutableLiveData<Balance>()
+    val balance: LiveData<Balance> = _balance
 
 
     init {
         _loading.postValue(true)
 
         viewModelScope.launch {
-            HomeRepository.homeData()
+            val homeApiData = HomeRepository.homeData()
+            _benefits.postValue(homeApiData.benefits)
+            _balance.postValue(homeApiData.balance)
+            _loading.postValue(false)
         }
-
-        if (getBenefits() != null) {
-            _benefits.postValue(true)
-        }
-
-        if (getBalance() != null) {
-            _balance.postValue(true)
-        }
-
-        _loading.postValue(false)
     }
-
-    fun getBenefits(): List<Benefits>? {
-        return HomeRepository.getBenefits()
-    }
-
-    fun getBalance(): Balance? {
-        return HomeRepository.getBalance()
-    }
-
 }

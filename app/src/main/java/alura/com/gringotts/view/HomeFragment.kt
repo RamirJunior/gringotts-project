@@ -9,9 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -35,24 +33,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView: RecyclerView = binding.recyclerView
-
         homeViewModel.benefits.observe(viewLifecycleOwner) {
-            benefits =
-                homeViewModel.getBenefits()!!
-            recyclerView.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            recyclerView.adapter = BenefitsListAdapter(benefits)
-            recyclerView.addItemDecoration(DotsIndicatorDecoration())
-            PagerSnapHelper().attachToRecyclerView(recyclerView)
+            binding.recyclerView.adapter = BenefitsListAdapter(it)
+            binding.recyclerView.addItemDecoration(DotsIndicatorDecoration())
+            PagerSnapHelper().attachToRecyclerView(binding.recyclerView)
         }
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
-            balance = homeViewModel.getBalance()!!
-            binding.balanceValue.text = balance.currentValue.toString()
+            binding.balanceValue.text = it.currentValue.toString()
         }
-        //android:text="@string/hidden_balance"
-
 
     }
 

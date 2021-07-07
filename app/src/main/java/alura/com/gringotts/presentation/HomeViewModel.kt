@@ -20,9 +20,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private lateinit var balanceValue: Balance
 
-    private val _hideStatus = MutableLiveData<Boolean>()
-    val hideStatus: LiveData<Boolean> = _hideStatus
-
     private val _visibilityId = MutableLiveData<Int>()
     val visibilityId: LiveData<Int> = _visibilityId
 
@@ -35,7 +32,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     init {
         _loading.postValue(true)
-
         viewModelScope.launch {
             val homeApiData = homeRepository.homeData()
             _benefits.postValue(homeApiData.benefits)
@@ -44,9 +40,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _receivable.postValue(balanceValue.receivables.toString())
             setBalanceState(homeRepository.getHideStatus())
             _loading.postValue(false)
+            val user = homeRepository.getUser()
+            _userName.postValue(user!!.firstName + " " +user.lastName)
         }
-        val user = homeRepository.getUser()
-        _userName.postValue(user!!.firstName + " " +user.lastName)
     }
 
     fun hideBalanceButtonClicked() {

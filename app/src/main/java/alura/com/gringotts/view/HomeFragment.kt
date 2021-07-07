@@ -59,8 +59,7 @@ class HomeFragment : Fragment() {
             binding.hideBalance.setImageResource(it)
         }
 
-
-        val fragmentList = arrayListOf<Fragment>(
+        val fragmentList = arrayListOf(
             PageOneFragment(),
             PageTwoFragment(),
             PageThreeFragment()
@@ -76,23 +75,23 @@ class HomeFragment : Fragment() {
 
         val tabLayoutMediator = TabLayoutMediator(
             binding.tabLayoutFuncionalidades,
-            binding.pagerFuncionalidades,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when (position + 1) {
-                    1 -> {
-                        tab.text = getString(R.string.principais)
-                        adapter.to(0)
-                    }
-                    2 -> {
-                        tab.text = getString(R.string.produtosInvestimentos)
-                        adapter.to(1)
-                    }
-                    3 -> {
-                        tab.text = getString(R.string.servicos)
-                        adapter.to(2)
-                    }
+            binding.pagerFuncionalidades
+        ) { tab, position ->
+            when (position + 1) {
+                1 -> {
+                    tab.text = getString(R.string.principais)
+                    adapter to 0
                 }
-            })
+                2 -> {
+                    tab.text = getString(R.string.produtosInvestimentos)
+                    adapter to 1
+                }
+                3 -> {
+                    tab.text = getString(R.string.servicos)
+                    adapter to 2
+                }
+            }
+        }
         tabLayoutMediator.attach()
     }
 }

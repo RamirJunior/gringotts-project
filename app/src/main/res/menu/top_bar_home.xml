@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/security"
-        android:title="@string/security"
         android:icon="@drawable/ic_baseline_lock_24"
+        android:title="@string/security"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/notifications"
-        android:title="@string/notifications"
         android:icon="@drawable/ic_baseline_notifications"
+        android:title="@string/notifications"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profilePic"
-        android:title="@string/profile_picture"
         android:icon="@drawable/ic_baseline_account"
+        android:title="@string/profile_picture"
         app:showAsAction="ifRoom" />
 </menu>

@@ -92,7 +92,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:theme="@style/SCBSwitch"
         android:id="@+id/login_remember"
         android:layout_width="320dp"
         android:layout_height="48dp"
@@ -101,6 +100,7 @@
         android:layout_marginBottom="20dp"
         android:text="@string/rememberPassword"
         android:textAlignment="textStart"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintBottom_toTopOf="@+id/login_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"

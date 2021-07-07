@@ -6,6 +6,6 @@
         android:icon="@drawable/ic_outline_home_24" />
     <item
         android:title="@string/txt_extrato"
-        android:id="@+id/paymentsFragment"
+        android:id="@+id/extractFragment"
         android:icon="@drawable/ic_outline_text_snippet_24" />
 </menu>

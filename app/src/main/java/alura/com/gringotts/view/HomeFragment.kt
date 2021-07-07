@@ -1,5 +1,8 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.R
+import alura.com.gringotts.data.model.Balance
+import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
@@ -64,13 +67,13 @@ class HomeFragment : Fragment() {
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position + 1) {
                     1 -> {
-                        tab.text = "@strings/principais"
+                        tab.text = getString(R.string.principais)
                     }
                     2 -> {
-                        tab.text = "@strings/produtosInvestimentos"
+                        tab.text = getString(R.string.produtosInvestimentos)
                     }
                     3 -> {
-                        tab.text = "@strings/servicos"
+                        tab.text = getString(R.string.servicos)
                     }
                 }
             })

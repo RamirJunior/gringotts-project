@@ -26,10 +26,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     val balance: LiveData<String> = _balance
     private val _receivable = MutableLiveData<String>()
     val receivable: LiveData<String> = _receivable
-    private val _userFirstName = MutableLiveData<String>()
-    val userFirstName: LiveData<String> = _userFirstName
-    private val _userLastName = MutableLiveData<String>()
-    val userLastName: LiveData<String> = _userLastName
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> = _userName
 
     init {
         _loading.postValue(true)
@@ -44,8 +42,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _loading.postValue(false)
         }
         val user = homeRepository.getUser()
-        _userFirstName.postValue(user!!.firstName)
-        _userLastName.postValue(user.lastName)
+        _userName.postValue(user!!.firstName + " " +user.lastName)
     }
 
     fun hideBalanceButtonClicked() {

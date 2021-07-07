@@ -130,3 +130,5 @@ local.properties
 C:\Users\Rafael\AndroidStudioProjects\android-pagbank-gringotts\local.properties
 /.idea/libraries/Gradle__androidx_databinding_viewbinding_4_2_2_aar.xml
 /.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_2_1_aar.xml
+/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_0_0_aar.xml
+/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_8_aar.xml

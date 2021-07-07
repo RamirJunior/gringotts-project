@@ -6,10 +6,7 @@ import alura.com.gringotts.data.model.LoginResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -17,6 +14,13 @@ interface ApiInterface {
     suspend fun userLogin(
         @Body login: LoginPayload
     ): Response<LoginResponse>
+
+    @GET("extract?start={initialDate}&end={finalDate}")
+    suspend fun extract(
+        @Path("initialDate") initialDate: String,
+        @Path("finalDate") finalDate: String,
+        @Header("token") token: String
+    ): Response<Unit>
 
     @GET("home")
     suspend fun home(

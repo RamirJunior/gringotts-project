@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
+        android:title="@string/txt_home"
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_outline_home_28" />
+        android:icon="@drawable/ic_outline_home_28"/>
     <item
+        android:title="@string/txt_extrato"
         android:id="@+id/extractFragment"
-        android:icon="@drawable/ic_baseline_receipt_long_28" />
+        android:icon="@drawable/ic_baseline_receipt_long_28"/>
 </menu>

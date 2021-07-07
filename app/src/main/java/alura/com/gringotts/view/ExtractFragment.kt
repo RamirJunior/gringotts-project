@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ExtractFragment: Fragment() {
+class ExtractFragment : Fragment() {
     private val extractViewModel by viewModel<ExtractViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +24,7 @@ class ExtractFragment: Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         extractViewModel.getCalendar()
         Log.e("aaaa", "aaaaaa")

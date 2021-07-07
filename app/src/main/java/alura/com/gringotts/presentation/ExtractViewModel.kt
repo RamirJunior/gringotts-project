@@ -9,14 +9,14 @@ import java.util.*
 class ExtractViewModel(private val extractRepository: ExtractRepository) : ViewModel() {
     private val dataAtual: String = ""
 
-    fun getCalendar(){
+    fun getCalendar() {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
         sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - 7 * MILLIS_DAY)
         Log.e("aaaa", formatDate(sevenDaysAgo.time))
     }
 
-    private fun formatDate(date : Date) : String {
+    private fun formatDate(date: Date): String {
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)
         return formatter.format(date)
     }

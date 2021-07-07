@@ -5,7 +5,6 @@ import alura.com.gringotts.data.SessionManagerImpl
 import alura.com.gringotts.data.repositories.ExtractRepository
 import alura.com.gringotts.data.repositories.HomeRepository
 import alura.com.gringotts.data.repositories.LoginRepository
-import alura.com.gringotts.view.ExtractFragment
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.android.ext.koin.androidContext

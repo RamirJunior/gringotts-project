@@ -43,5 +43,8 @@
     <string name="empty" />
     <string name="txt_ola">Olá,&#xA0;</string>
     <string name="txt_transferencia">TRANSFERÊNCIAS</string>
+    <string name="todos">Todos</string>
+    <string name="entradas">Entradas</string>
+    <string name="saida">Saída</string>
 
 </resources>

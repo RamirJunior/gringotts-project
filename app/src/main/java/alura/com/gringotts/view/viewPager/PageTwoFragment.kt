@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.pageview
+package alura.com.gringotts.view.viewPager
 
 import alura.com.gringotts.databinding.Funcionality2Binding
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 class PageTwoFragment : Fragment() {
+
     private var _binding: Funcionality2Binding? = null
     private val binding: Funcionality2Binding get() = _binding!!
 
@@ -17,7 +18,7 @@ class PageTwoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = Funcionality2Binding.inflate(inflater, container, false)
-        return _binding!!.root
+        return binding.root
     }
 
 }

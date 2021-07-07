@@ -41,5 +41,7 @@
     <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente</string>
     <string name="vendas_recber">À receber:</string>
     <string name="empty" />
+    <string name="txt_ola">Olá,&#xA0;</string>
+    <string name="txt_transferencia">TRANSFERÊNCIAS</string>
 
 </resources>

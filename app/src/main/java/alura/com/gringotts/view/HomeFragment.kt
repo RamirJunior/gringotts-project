@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.userFirstName.observe(viewLifecycleOwner){
-            binding.firstName.text = "Olá, " + it
+            binding.firstName.text = it
         }
 
         homeViewModel.userLastName.observe(viewLifecycleOwner){

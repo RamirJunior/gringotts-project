@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.userName.observe(viewLifecycleOwner) {
-            binding.userName.text = "Olá, " + it
+            binding.userName.text = it
         }
 
         homeViewModel.visibilityId.observe(viewLifecycleOwner) {

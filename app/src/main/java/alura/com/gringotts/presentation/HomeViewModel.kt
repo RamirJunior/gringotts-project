@@ -1,5 +1,6 @@
 package alura.com.gringotts.presentation
 
+import alura.com.gringotts.R
 import alura.com.gringotts.data.model.Balance
 import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.data.repositories.HomeRepository
@@ -21,6 +22,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _hideStatus = MutableLiveData<Boolean>()
     val hideStatus: LiveData<Boolean> = _hideStatus
+
+    private val _visibilityId = MutableLiveData<Int>()
+    val visibilityId: LiveData<Int> = _visibilityId
 
     private val _balance = MutableLiveData<String>()
     val balance: LiveData<String> = _balance
@@ -54,8 +58,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private fun setBalanceState(isBalanceVisible: Boolean) {
         if (isBalanceVisible) {
+            _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
             showBalance()
         } else {
+            _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
             hideBalance()
         }
     }

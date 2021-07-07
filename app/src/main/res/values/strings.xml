@@ -45,5 +45,8 @@
     <string name="txt_transferencia">TRANSFERÊNCIAS</string>
     <string name="txt_extract">Extrato de Transações</string>
     <string name="txt_filter">Filtros</string>
+    <string name="todos">Todos</string>
+    <string name="entradas">Entradas</string>
+    <string name="saida">Saídas</string>
 
 </resources>

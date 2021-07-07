@@ -2,7 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.SessionManagerImpl
-import alura.com.gringotts.data.repositories.ExtractRepository
+import alura.com.gringotts.data.repositories.AccountStatementRepository
 import alura.com.gringotts.data.repositories.HomeRepository
 import alura.com.gringotts.data.repositories.LoginRepository
 import android.content.Context
@@ -25,7 +25,7 @@ val initialModule = module {
         HomeViewModel(get())
     }
     viewModel {
-        ExtractViewModel(get())
+        AccountStatementViewModel(get())
     }
     single<SessionManager> {
         SessionManagerImpl(get())
@@ -40,6 +40,6 @@ val initialModule = module {
         HomeRepository(get())
     }
     factory {
-        ExtractRepository(get())
+        AccountStatementRepository(get())
     }
 }

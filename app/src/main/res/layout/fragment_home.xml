@@ -45,7 +45,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/first_name"
+                    android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -55,17 +55,6 @@
                     app:layout_constraintStart_toEndOf="@id/HelloUser"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/last_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/lowBlack"
-                    android:textStyle="bold"
-                    android:text="@string/empty"
-                    android:layout_marginStart="4dp"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@id/first_name"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/balance_currency"
@@ -76,7 +65,7 @@
                     android:textSize="24sp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
                 <TextView
                     android:id="@+id/balance_value"
@@ -88,7 +77,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintStart_toEndOf="@+id/balance_currency"
-                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/hide_balance"
@@ -96,8 +85,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:tint="@color/lowBlack"
-                    android:src="@drawable/ic_baseline_remove_red_eye_24"
-                    android:layout_marginRight="24dp"
+                    android:src="@drawable/ic_baseline_visibility_off_24"
+                    android:layout_marginEnd="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/balance_currency"
                     app:layout_constraintBottom_toBottomOf="@id/balance_value" />

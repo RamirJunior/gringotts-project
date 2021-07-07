@@ -7,9 +7,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class TabLayoutAdapter(
     list: ArrayList<Fragment>,
-    fm: FragmentManager,
+    fragmentManager: FragmentManager,
     lifecycle: Lifecycle
-) : FragmentStateAdapter(fm, lifecycle) {
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     private val fragmentList = list
 

@@ -1,7 +1,5 @@
 package alura.com.gringotts.view
 
-import alura.com.gringotts.data.model.Balance
-import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
@@ -11,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.tabs.TabLayoutMediator
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,7 +29,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         homeViewModel.benefits.observe(viewLifecycleOwner) {
             binding.recyclerView.adapter = BenefitsListAdapter(it)
             binding.recyclerView.addItemDecoration(DotsIndicatorDecoration())
@@ -51,13 +47,14 @@ class HomeFragment : Fragment() {
             homeViewModel.hideBalanceButtonClicked()
         }
 
-        homeViewModel.userFirstName.observe(viewLifecycleOwner){
-            binding.firstName.text = it
+        homeViewModel.userName.observe(viewLifecycleOwner){
+            binding.userName.text = "Olá, " + it
         }
 
-        homeViewModel.userLastName.observe(viewLifecycleOwner){
-            binding.lastName.text = it
+        homeViewModel.visibilityId.observe(viewLifecycleOwner) {
+            binding.hideBalance.setImageResource(it)
         }
+
 
         val adapter = ViewPagerAdapter(this)
         binding.pagerFuncionalidades.adapter = adapter

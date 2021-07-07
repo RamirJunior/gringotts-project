@@ -5,14 +5,14 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
 
-class DotsIndicatorDecoration(
-) :
+class DotsIndicatorDecoration :
     ItemDecoration() {
     private val indicatorHeight: Float
     private val indicatorItemPadding: Float
@@ -27,21 +27,20 @@ class DotsIndicatorDecoration(
         val itemCount = adapter.itemCount
 
         // center horizontally, calculate width and subtract half from center
-        val totalLength = (radius * 2 * itemCount).toFloat()
-        val paddingBetweenItems = (Math.max(0, itemCount - 1) * indicatorItemPadding).toFloat()
+        val totalLength = (radius * 2 * itemCount)
+        val paddingBetweenItems =
+            (0.coerceAtLeast(itemCount - 1) * indicatorItemPadding)
         val indicatorTotalWidth = totalLength + paddingBetweenItems
         val indicatorStartX = (parent.width - indicatorTotalWidth) / 2f
 
         // center vertically in the allotted space
         val indicatorPosY = parent.height - indicatorHeight / 2f
         drawInactiveDots(c, indicatorStartX, indicatorPosY, itemCount)
-        val activePosition: Int =(parent.layoutManager as LinearLayoutManager?)!!.findFirstVisibleItemPosition()
+        val activePosition: Int = (parent.layoutManager as LinearLayoutManager?)!!
+            .findFirstCompletelyVisibleItemPosition()
         if (activePosition == RecyclerView.NO_POSITION) {
             return
         }
-        // find offset of active page if the user is scrolling
-        val activeChild = parent.layoutManager!!.findViewByPosition(activePosition)
-            ?: return
         drawActiveDot(c, indicatorStartX, indicatorPosY, activePosition)
     }
 
@@ -52,10 +51,10 @@ class DotsIndicatorDecoration(
         itemCount: Int
     ) {
         // width of item indicator including padding
-        val itemWidth = (radius * 2 + indicatorItemPadding).toFloat()
+        val itemWidth = (radius * 2 + indicatorItemPadding)
         var start = indicatorStartX + radius
         for (i in 0 until itemCount) {
-            c.drawCircle(start, indicatorPosY, radius.toFloat(), inactivePaint)
+            c.drawCircle(start, indicatorPosY, radius, inactivePaint)
             start += itemWidth
         }
     }

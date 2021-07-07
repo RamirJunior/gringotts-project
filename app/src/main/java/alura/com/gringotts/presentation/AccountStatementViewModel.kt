@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AccountStatementViewModel(private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
+class AccountStatementViewModel(private val accountStatementRepository: AccountStatementRepository) :
+    ViewModel() {
     private val dataAtual: String = ""
 
     fun getCalendar() {

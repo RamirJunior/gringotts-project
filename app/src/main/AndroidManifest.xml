@@ -28,7 +28,6 @@
         <activity
             android:screenOrientation="portrait"
             android:name=".view.HomeActivity"
-            android:theme="@style/MyNewTheme"
             tools:ignore="LockedOrientationActivity" />
     </application>
 

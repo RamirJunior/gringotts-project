@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
             binding.balanceValue.text = it
         }
 
-        homeViewModel.receivable.observe(viewLifecycleOwner){
+        homeViewModel.receivable.observe(viewLifecycleOwner) {
             binding.receivableValue.text = it
         }
 
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
             homeViewModel.hideBalanceButtonClicked()
         }
 
-        homeViewModel.userName.observe(viewLifecycleOwner){
+        homeViewModel.userName.observe(viewLifecycleOwner) {
             binding.userName.text = "Olá, " + it
         }
 

@@ -45,8 +45,8 @@ class LoginFragment : Fragment() {
             loginViewModel.setPassword(it.toString())
         }
 
-        loginViewModel.rememberSwitch.observe(viewLifecycleOwner,{
-            binding.loginRemember.isChecked=it
+        loginViewModel.rememberSwitch.observe(viewLifecycleOwner, {
+            binding.loginRemember.isChecked = it
         })
 
         binding.loginRemember.setOnCheckedChangeListener { _, isChecked ->

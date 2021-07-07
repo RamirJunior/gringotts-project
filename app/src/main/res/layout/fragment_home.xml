@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -66,7 +65,7 @@
                     android:layout_marginStart="4dp"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/first_name"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/balance_currency"
@@ -101,7 +100,7 @@
                     android:layout_marginRight="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/balance_currency"
-                    app:layout_constraintBottom_toBottomOf="@id/balance_value"/>
+                    app:layout_constraintBottom_toBottomOf="@id/balance_value" />
 
                 <TextView
                     android:id="@+id/receivable_text"
@@ -198,7 +197,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textSize="16sp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="4dp"

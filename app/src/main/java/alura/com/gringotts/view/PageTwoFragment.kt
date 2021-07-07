@@ -15,7 +15,7 @@ class PageTwoFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) : View {
+    ): View {
         _binding = Funcionalidade2Binding.inflate(inflater, container, false)
         return _binding!!.root
     }

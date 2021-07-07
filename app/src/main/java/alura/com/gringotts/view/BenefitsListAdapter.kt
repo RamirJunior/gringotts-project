@@ -28,7 +28,7 @@ class BenefitsListAdapter(private val benefits: List<Benefit>) :
         return benefits.size
     }
 
-    class BenefitsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class BenefitsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val cardColor: View = itemView.findViewById(R.id.card_color)
         private val cardTitle: TextView = itemView.findViewById(R.id.benefits_card_title)
         private val cardMessage: TextView = itemView.findViewById(R.id.benefits_card_message)

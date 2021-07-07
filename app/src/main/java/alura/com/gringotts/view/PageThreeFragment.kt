@@ -15,7 +15,7 @@ class PageThreeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) : View {
+    ): View {
         _binding = Funcionalidade3Binding.inflate(inflater, container, false)
         return _binding!!.root
     }

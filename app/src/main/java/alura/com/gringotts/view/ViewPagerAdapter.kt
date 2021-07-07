@@ -1,5 +1,8 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.view.pageview.PageOneFragment
+import alura.com.gringotts.view.pageview.PageThreeFragment
+import alura.com.gringotts.view.pageview.PageTwoFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 

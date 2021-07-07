@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.pageview
 
 
 import alura.com.gringotts.databinding.Funcionality1Binding

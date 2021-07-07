@@ -1,10 +1,11 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.model.Balance
-import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
+import alura.com.gringotts.view.pageview.PageOneFragment
+import alura.com.gringotts.view.pageview.PageThreeFragment
+import alura.com.gringotts.view.pageview.PageTwoFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,21 +60,36 @@ class HomeFragment : Fragment() {
         }
 
 
-        val adapter = ViewPagerAdapter(this)
+        val fragmentList = arrayListOf<Fragment>(
+            PageOneFragment(),
+            PageTwoFragment(),
+            PageThreeFragment()
+        )
+
+        val adapter = TabLayoutAdapter(
+            fragmentList,
+            requireActivity().supportFragmentManager,
+            lifecycle
+        )
+
         binding.pagerFuncionalidades.adapter = adapter
 
-        val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
+        val tabLayoutMediator = TabLayoutMediator(
+            binding.tabLayoutFuncionalidades,
             binding.pagerFuncionalidades,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position + 1) {
                     1 -> {
                         tab.text = getString(R.string.principais)
+                        adapter.to(0)
                     }
                     2 -> {
                         tab.text = getString(R.string.produtosInvestimentos)
+                        adapter.to(1)
                     }
                     3 -> {
                         tab.text = getString(R.string.servicos)
+                        adapter.to(2)
                     }
                 }
             })

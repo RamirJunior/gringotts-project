@@ -1,10 +1,11 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.model.Balance
-import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
+import alura.com.gringotts.view.viewPager.PageOneFragment
+import alura.com.gringotts.view.viewPager.PageThreeFragment
+import alura.com.gringotts.view.viewPager.PageTwoFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -58,25 +59,39 @@ class HomeFragment : Fragment() {
             binding.hideBalance.setImageResource(it)
         }
 
+        val fragmentList = arrayListOf(
+            PageOneFragment(),
+            PageTwoFragment(),
+            PageThreeFragment()
+        )
 
-        val adapter = ViewPagerAdapter(this)
+        val adapter = TabLayoutAdapter(
+            fragmentList,
+            requireActivity().supportFragmentManager,
+            lifecycle
+        )
+
         binding.pagerFuncionalidades.adapter = adapter
 
-        val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutFuncionalidades,
-            binding.pagerFuncionalidades,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when (position + 1) {
-                    1 -> {
-                        tab.text = getString(R.string.principais)
-                    }
-                    2 -> {
-                        tab.text = getString(R.string.produtosInvestimentos)
-                    }
-                    3 -> {
-                        tab.text = getString(R.string.servicos)
-                    }
+        val tabLayoutMediator = TabLayoutMediator(
+            binding.tabLayoutFuncionalidades,
+            binding.pagerFuncionalidades
+        ) { tab, position ->
+            when (position + 1) {
+                1 -> {
+                    tab.text = getString(R.string.principais)
+                    adapter to 0
                 }
-            })
+                2 -> {
+                    tab.text = getString(R.string.produtosInvestimentos)
+                    adapter to 1
+                }
+                3 -> {
+                    tab.text = getString(R.string.servicos)
+                    adapter to 2
+                }
+            }
+        }
         tabLayoutMediator.attach()
     }
 }

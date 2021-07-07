@@ -1,5 +1,6 @@
 package alura.com.gringotts.presentation
 
+import alura.com.gringotts.R
 import alura.com.gringotts.data.model.Balance
 import alura.com.gringotts.data.model.Benefit
 import alura.com.gringotts.data.model.User
@@ -26,14 +27,13 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     val balance: LiveData<String> = _balance
     private val _receivable = MutableLiveData<String>()
     val receivable: LiveData<String> = _receivable
-    private val _userFirstName = MutableLiveData<String>()
-    val userFirstName: LiveData<String> = _userFirstName
-    private val _userLastName = MutableLiveData<String>()
-    val userLastName: LiveData<String> = _userLastName
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> = _userName
+    private val _visibilityId = MutableLiveData<Int>()
+    val visibilityId: LiveData<Int> = _visibilityId
 
     init {
         _loading.postValue(true)
-
         viewModelScope.launch {
             val homeApiData = homeRepository.homeData()
             _benefits.postValue(homeApiData.benefits)
@@ -43,18 +43,19 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _loading.postValue(false)
         }
         val user = homeRepository.getUser()
-        _userFirstName.postValue(user!!.firstName)
-        _userLastName.postValue(user.lastName)
+        _userName.postValue(user!!.firstName+ " " + user.lastName)
     }
 
     fun hideBalanceButtonClicked() {
         hideBalance = if (!hideBalance) {
             _balance.postValue(HIDDENVALUE)
             _receivable.postValue(HIDDENVALUE)
+            _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
             true
         } else {
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
+            _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
             false
         }
     }

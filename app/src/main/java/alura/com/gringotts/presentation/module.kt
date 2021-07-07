@@ -23,6 +23,9 @@ val initialModule = module {
     viewModel {
         HomeViewModel(get())
     }
+    viewModel {
+        ExtractViewModel(get())
+    }
     single<SessionManager> {
         SessionManagerImpl(get())
     }

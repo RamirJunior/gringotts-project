@@ -48,10 +48,10 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:context=".view.HomeFragment"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_home"
+        tools:context=".view.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,8 +65,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:elevation="16dp"
                 android:backgroundTint="@color/white"
+                android:elevation="16dp"
                 app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,9 +76,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginBottom="0dp">
 
                     <TextView
@@ -95,10 +95,10 @@
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:text="Usuário"
                         android:textColor="@color/lowBlack"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@id/HelloUser"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,10 +106,10 @@
                         android:id="@+id/balance_currency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="@string/real"
                         android:textColor="@color/lowBlack"
                         android:textSize="24sp"
-                        android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
@@ -117,35 +117,35 @@
                         android:id="@+id/balance_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/hidden_balance"
                         android:textColor="@color/lowBlack"
                         android:textSize="24sp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginStart="8dp"
                         app:layout_constraintStart_toEndOf="@+id/balance_currency"
                         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/hide_balance"
-                        android:background="@color/trans"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
-                        android:tint="@color/lowBlack"
-                        android:src="@drawable/ic_baseline_visibility_off_24"
                         android:layout_marginEnd="24dp"
+                        android:background="@color/trans"
+                        android:src="@drawable/ic_baseline_visibility_off_24"
+                        android:tint="@color/lowBlack"
+                        app:layout_constraintBottom_toBottomOf="@id/balance_value"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/balance_currency"
-                        app:layout_constraintBottom_toBottomOf="@id/balance_value" />
+                        app:layout_constraintTop_toTopOf="@+id/balance_currency" />
 
                     <TextView
                         android:id="@+id/receivable_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="italic"
                         android:layout_marginTop="8dp"
                         android:text="@string/vendas_recber"
                         android:textColor="@color/black"
                         android:textSize="12sp"
+                        android:textStyle="italic"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/hide_balance" />
 
@@ -153,27 +153,27 @@
                         android:id="@+id/receivable_currency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="italic"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
                         android:text="@string/real"
                         android:textColor="@color/black"
                         android:textSize="12sp"
-                        android:layout_marginStart="20dp"
-                        app:layout_constraintStart_toEndOf="@id/receivable_text"
-                        app:layout_constraintBottom_toBottomOf="@id/receivable_text" />
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="@id/receivable_text"
+                        app:layout_constraintStart_toEndOf="@id/receivable_text" />
 
                     <TextView
                         android:id="@+id/receivable_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="italic"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:text="@string/hidden_balance"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"
                         android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@id/receivable_currency"
-                        app:layout_constraintBottom_toBottomOf="@id/receivable_text" />
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="@id/receivable_text"
+                        app:layout_constraintStart_toEndOf="@id/receivable_currency" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/balance_details"
@@ -216,36 +216,36 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recycler_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recycler_view_container"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pager"
-                app:layout_constraintBottom_toTopOf="@id/help_card"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@id/help_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pager">
 
                 <TextView
                     android:id="@+id/benefits_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="@string/txt_vantagens"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:textSize="16sp"
-                    android:layout_marginStart="16dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="16dp"
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="LinearLayoutManager"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="horizontal"
-                    tools:listitem="@layout/benefits_item"
+                    app:layoutManager="LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/benefits_title" />
+                    app:layout_constraintTop_toBottomOf="@id/benefits_title"
+                    tools:listitem="@layout/benefits_item" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,10 +253,10 @@
                 android:id="@+id/help_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/white"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -292,8 +292,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/encontre_as_respostas"
                         android:textColor="@color/black"
                         android:textSize="12sp"

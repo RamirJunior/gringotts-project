@@ -41,7 +41,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             setBalanceState(homeRepository.getHideStatus())
             _loading.postValue(false)
             val user = homeRepository.getUser()
-            _userName.postValue(user!!.firstName + " " +user.lastName)
+            _userName.postValue(user!!.firstName + " " + user.lastName)
         }
     }
 

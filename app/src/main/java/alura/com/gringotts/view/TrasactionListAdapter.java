@@ -6,7 +6,7 @@ import java.util.List;
 
 import alura.com.gringotts.data.model.Transaction;
 
-class TrasactionListAdapter(private val transaction :List<Transaction>) :
+/*class TrasactionListAdapter(private val transaction :List<Transaction>) :
         RecyclerView.Adapter<TransactionListAdapter.TransactionViewHolder>(){
 
         override fun onCreateViewHolder(parent:ViewGroup,viewType:Int):TransactionViewHolder{
@@ -26,4 +26,4 @@ class TrasactionListAdapter(private val transaction :List<Transaction>) :
 class TransactionViewHolder(itemView:View) :RecyclerView.ViewHolder(itemView){
 
         }
-        }
+        }*/

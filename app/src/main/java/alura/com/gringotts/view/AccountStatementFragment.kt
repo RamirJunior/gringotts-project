@@ -1,7 +1,7 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.databinding.FragmentHomeBinding
-import alura.com.gringotts.presentation.ExtractViewModel
+import alura.com.gringotts.presentation.AccountStatementViewModel
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ExtractFragment: Fragment() {
-    private val extractViewModel by viewModel<ExtractViewModel>()
+class AccountStatementFragment: Fragment() {
+    private val accountStatementViewModel by viewModel<AccountStatementViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -26,7 +26,7 @@ class ExtractFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        extractViewModel.getCalendar()
+        accountStatementViewModel.getCalendar()
         Log.e("aaaa", "aaaaaa")
     }
 }

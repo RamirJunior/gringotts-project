@@ -1,12 +1,12 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.repositories.ExtractRepository
+import alura.com.gringotts.data.repositories.AccountStatementRepository
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExtractViewModel(private val extractRepository: ExtractRepository) : ViewModel() {
+class AccountStatementViewModel(private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
     private val dataAtual: String = ""
 
     fun getCalendar(){

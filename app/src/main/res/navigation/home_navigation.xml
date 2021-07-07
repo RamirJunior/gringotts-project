@@ -10,7 +10,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/extractFragment"
-        android:name="alura.com.gringotts.view.ExtractFragment"
-        android:label="ExtractFragment" />
+        android:id="@+id/accountStatementFragment"
+        android:name="alura.com.gringotts.view.AccountStatementFragment"
+        android:label="Account Statement" />
 </navigation>

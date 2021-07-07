@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbar_extract"
+        android:id="@+id/toolbar_account_statement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grayBack"
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:backgroundTint="@color/grayBack"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_extract" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_extract"

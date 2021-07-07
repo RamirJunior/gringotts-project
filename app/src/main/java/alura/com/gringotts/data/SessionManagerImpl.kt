@@ -56,12 +56,21 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return Gson().fromJson(user, User::class.java)
     }
 
+    override fun saveHideStatus(status: Boolean) {
+        sharedPreferencesEditor.putBoolean(HIDE_STATUS, status)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getHideStatus(): Boolean {
+        return sharedPreferences.getBoolean(HIDE_STATUS, false)
+    }
+
     companion object {
         private const val LOGIN_PAYLOAD = "loginPayload"
         private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
-        private const val HOME_RESPONSE = "homeBalance"
         private const val USER_KEY = "user"
+        private const val HIDE_STATUS = "hideStatus"
     }
 }
 

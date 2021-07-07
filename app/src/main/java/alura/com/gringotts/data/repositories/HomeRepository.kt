@@ -22,7 +22,10 @@ class HomeRepository(private val sessionManager: SessionManager) {
         }
     }
 
-    fun getUser(): User? {
-        return sessionManager.getUser()
-    }
+    fun getUser(): User? = sessionManager.getUser()
+
+    fun saveHideStatus(status: Boolean) = sessionManager.saveHideStatus(status)
+
+    fun getHideStatus(): Boolean = sessionManager.getHideStatus()
+
 }

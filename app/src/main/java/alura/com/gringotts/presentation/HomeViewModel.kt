@@ -2,9 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.model.Balance
 import alura.com.gringotts.data.model.Benefit
-import alura.com.gringotts.data.model.User
 import alura.com.gringotts.data.repositories.HomeRepository
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +19,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private lateinit var balanceValue: Balance
 
-    private var hideBalance = false
+    private val _hideStatus = MutableLiveData<Boolean>()
+    val hideStatus: LiveData<Boolean> = _hideStatus
+
     private val _balance = MutableLiveData<String>()
     val balance: LiveData<String> = _balance
     private val _receivable = MutableLiveData<String>()
@@ -40,6 +40,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             balanceValue = homeApiData.balance
             _balance.postValue(balanceValue.currentValue.toString())
             _receivable.postValue(balanceValue.receivables.toString())
+            setBalanceState(homeRepository.getHideStatus())
             _loading.postValue(false)
         }
         val user = homeRepository.getUser()
@@ -48,15 +49,28 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     fun hideBalanceButtonClicked() {
-        hideBalance = if (!hideBalance) {
-            _balance.postValue(HIDDENVALUE)
-            _receivable.postValue(HIDDENVALUE)
-            true
+        val getCurrentBalanceVisibilityStatus = homeRepository.getHideStatus()
+        val newCurrentBalanceVisibilityStatus = !getCurrentBalanceVisibilityStatus
+        homeRepository.saveHideStatus(newCurrentBalanceVisibilityStatus)
+        setBalanceState(newCurrentBalanceVisibilityStatus)
+    }
+
+    private fun setBalanceState(isBalanceVisible: Boolean) {
+        if (isBalanceVisible) {
+            showBalance()
         } else {
-            _balance.postValue(balanceValue.currentValue.toString())
-            _receivable.postValue(balanceValue.receivables.toString())
-            false
+            hideBalance()
         }
+    }
+
+    private fun showBalance() {
+        _balance.postValue(balanceValue.currentValue.toString())
+        _receivable.postValue(balanceValue.receivables.toString())
+    }
+
+    private fun hideBalance() {
+        _balance.postValue(HIDDENVALUE)
+        _receivable.postValue(HIDDENVALUE)
     }
 
     companion object {

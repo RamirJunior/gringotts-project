@@ -201,6 +201,7 @@
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout_funcionalidades"
+                    android:backgroundTint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintStart_toStartOf="parent"

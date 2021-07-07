@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/grayFront">
 
-
     <fragment
         android:id="@+id/nav_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

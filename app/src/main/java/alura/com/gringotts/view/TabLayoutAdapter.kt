@@ -1,5 +1,6 @@
 package alura.com.gringotts.view
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -11,10 +12,14 @@ class TabLayoutAdapter(
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
-        return fragmentList.size
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragmentList[position]
+        return PagesFragment().apply {
+            arguments = Bundle() .apply {
+                putInt("position", position)
+            }
+        }
     }
 }

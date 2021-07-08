@@ -1,6 +1,8 @@
 package alura.com.gringotts.view
 
 import alura.com.gringotts.R
+import alura.com.gringotts.data.model.Benefit
+import alura.com.gringotts.data.model.FuncionalityItem
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
 import android.os.Bundle
@@ -28,6 +30,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

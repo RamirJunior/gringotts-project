@@ -58,6 +58,10 @@
     <string name="txt_onde_sacar_dinheiro">ONDE SACAR DINHEIRO</string>
     <string name="txt_indique_e_ganhe">INDIQUE E GANHE</string>
     <string name="txt_pagar_com_qr_code">PAGAR COM QR CODE</string>
+    <string name="txt_aplicarDinheiro">APLICAÇÕES</string>
+    <string name="txt_postoShell">POSTOS SHELL</string>
+    <string name="txt_localSaque">LOCAIS DE SAQUE</string>
+    <string name="txt_ganheIndique">GANHE INDICANDO</string>
 
 
 </resources>

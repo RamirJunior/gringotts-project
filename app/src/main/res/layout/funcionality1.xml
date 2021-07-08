@@ -10,17 +10,17 @@
     app:cardCornerRadius="8dp"
     app:cardBackgroundColor="@color/white">
 
-
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
         <TableRow>
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_transf"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:strokeWidth="4dp"
+                android:elevation="8dp">
 
                 <ImageView
                     android:id="@+id/icon_transf"
@@ -37,7 +37,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-
                     android:text="@string/txt_transferencia"
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +47,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_cartoes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp">
 
                 <ImageView
                     android:id="@+id/icon_cartoes"
@@ -77,8 +76,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_pagar_contas"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp">
 
                 <ImageView
                     android:id="@+id/icon_pagar_contas"
@@ -106,11 +105,10 @@
         </TableRow>
 
         <TableRow>
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_recargas"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp">
 
                 <ImageView
                     android:id="@+id/icon_recargas"
@@ -138,8 +136,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_adicionar_dinheiro"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp">
 
                 <ImageView
                     android:id="@+id/icon_adicionar_dinheiro"
@@ -167,8 +165,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_pix"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="110dp"
+                android:layout_height="110dp">
 
                 <ImageView
                     android:id="@+id/icon_pix"
@@ -195,8 +193,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </TableRow>
 
-
     </TableLayout>
-
 
 </com.google.android.material.card.MaterialCardView>

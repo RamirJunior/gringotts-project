@@ -223,9 +223,10 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/pager_funcionalidades"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="220dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades"></androidx.viewpager2.widget.ViewPager2>
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

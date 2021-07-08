@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-
 class DotsIndicatorDecoration :
     ItemDecoration() {
     private val indicatorHeight: Float
@@ -18,8 +17,8 @@ class DotsIndicatorDecoration :
     private val radius: Float
     private val inactivePaint: Paint = Paint()
     private val activePaint: Paint = Paint()
-    private val colorInactive: Int = Color.parseColor("#FF000000")
-    private val colorActive: Int = Color.parseColor("#EFAF2D")
+    private val colorInactive: Int = Color.parseColor("#878787")
+    private val colorActive: Int = Color.parseColor("#F7931E")
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
         val adapter = parent.adapter ?: return
@@ -82,9 +81,7 @@ class DotsIndicatorDecoration :
         val strokeWidth: Float = Resources.getSystem().displayMetrics.density * 1
         this.radius = Resources.getSystem().displayMetrics.density * 4
         this.indicatorHeight = Resources.getSystem().displayMetrics.density * 12
-        inactivePaint.strokeCap = Paint.Cap.ROUND
-        inactivePaint.strokeWidth = strokeWidth
-        inactivePaint.style = Paint.Style.STROKE
+
         inactivePaint.isAntiAlias = true
         inactivePaint.color = colorInactive
         activePaint.strokeCap = Paint.Cap.ROUND

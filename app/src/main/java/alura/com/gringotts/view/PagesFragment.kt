@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -30,12 +29,12 @@ class PagesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
-        binding.recyclerView.adapter = FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
+        binding.recyclerView.adapter =
+            FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
     }
 
 
-
-    fun getItensByPosition(position: Int) : List<FuncionalityItem> {
+    fun getItensByPosition(position: Int): List<FuncionalityItem> {
         if (position == 0) {
             return listOf<FuncionalityItem>(
                 FuncionalityItem("Transferências", R.drawable.ic_transferecnia),
@@ -45,16 +44,14 @@ class PagesFragment : Fragment() {
                 FuncionalityItem("Adicionar Dinheiro", R.drawable.ic_adicionar_dinheiro),
                 FuncionalityItem("Pix", R.drawable.logo_pix_final)
             )
-        }
-        else if (position == 1) {
+        } else if (position == 1) {
             return listOf<FuncionalityItem>(
                 FuncionalityItem("Aplicar meu Dinheiro", R.drawable.ic_investir),
                 FuncionalityItem("Meus Investimentos", R.drawable.ic_meus_investimentos),
                 FuncionalityItem("Seguros", R.drawable.ic_seguros),
                 FuncionalityItem("Aprenda a Investir", R.drawable.ic_aprenda_a_investir),
             )
-        }
-        else {
+        } else {
             return listOf<FuncionalityItem>(
                 FuncionalityItem("Postos Shell", R.drawable.ic_postos_shell),
                 FuncionalityItem("Radar de Ofertas", R.drawable.ic_ofertas),

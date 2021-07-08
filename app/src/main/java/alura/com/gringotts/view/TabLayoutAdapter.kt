@@ -17,7 +17,7 @@ class TabLayoutAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return PagesFragment().apply {
-            arguments = Bundle() .apply {
+            arguments = Bundle().apply {
                 putInt("position", position)
             }
         }

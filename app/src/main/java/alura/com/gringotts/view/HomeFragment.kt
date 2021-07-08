@@ -3,9 +3,6 @@ package alura.com.gringotts.view
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.HomeViewModel
-import alura.com.gringotts.view.viewPager.PageOneFragment
-import alura.com.gringotts.view.viewPager.PageThreeFragment
-import alura.com.gringotts.view.viewPager.PageTwoFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -64,14 +61,7 @@ class HomeFragment : Fragment() {
             binding.loadingHome.isVisible = it
         }
 
-        val fragmentList = arrayListOf(
-            PageOneFragment(),
-            PageTwoFragment(),
-            PageThreeFragment()
-        )
-
         val adapter = TabLayoutAdapter(
-            fragmentList,
             requireActivity().supportFragmentManager,
             lifecycle
         )

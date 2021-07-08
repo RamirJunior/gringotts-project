@@ -2,14 +2,11 @@ package alura.com.gringotts.view
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.FuncionalityItem
-import android.content.ClipData
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
 class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
@@ -32,11 +29,11 @@ class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
         return list.size
     }
 
-    class FuncionalityItemHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itemTitle : TextView = itemView.findViewById(R.id.title)
-        private val itemImage : ImageView = itemView.findViewById(R.id.icon)
+    class FuncionalityItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val itemTitle: TextView = itemView.findViewById(R.id.title)
+        private val itemImage: ImageView = itemView.findViewById(R.id.icon)
 
-        fun bind(item : FuncionalityItem) {
+        fun bind(item: FuncionalityItem) {
             itemTitle.text = item.title
             itemImage.setImageResource(item.icon)
         }

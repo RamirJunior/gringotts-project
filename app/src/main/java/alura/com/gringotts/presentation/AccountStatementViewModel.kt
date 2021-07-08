@@ -3,12 +3,25 @@ package alura.com.gringotts.presentation
 import alura.com.gringotts.data.repositories.AccountStatementRepository
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AccountStatementViewModel(private val accountStatementRepository: AccountStatementRepository) :
-    ViewModel() {
+class AccountStatementViewModel
+    (private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
+
     private val dataAtual: String = ""
+
+    private suspend fun getAccountStatement(
+        initilDate: String,
+        finalDate: String,
+    ){
+        viewModelScope.launch {
+            getAccountStatement(initilDate, finalDate)
+        }
+    }
+
 
     fun getCalendar() {
         val currentDate = Calendar.getInstance()

@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class Transaction(
     @SerializedName("status") val status: String,
-    @SerializedName("date") val date: String,
     @SerializedName("time") val time: String,
     @SerializedName("type") val type: String,
     @SerializedName("type_description") val typeDescription: String,

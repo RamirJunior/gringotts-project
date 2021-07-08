@@ -17,7 +17,7 @@ interface ApiInterface {
     ): Response<LoginResponse>
 
     @GET("extract?start={initialDate}&end={finalDate}")
-    suspend fun extract(
+    suspend fun transactions(
         @Path("initialDate") initialDate: String,
         @Path("finalDate") finalDate: String,
         @Header("token") token: String

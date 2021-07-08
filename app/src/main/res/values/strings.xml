@@ -43,5 +43,7 @@
     <string name="empty" />
     <string name="txt_ola">Olá,&#xA0;</string>
     <string name="txt_transferencia">TRANSFERÊNCIAS</string>
+    <string name="txt_account">Complete seu perfil agora mesmo e aproveite os serviços Gringotts gratuitos!</string>
+    <string name="txt_title_account">#FALTA POUCO</string>
 
 </resources>

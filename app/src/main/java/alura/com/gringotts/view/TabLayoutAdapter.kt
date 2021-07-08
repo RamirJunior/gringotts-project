@@ -1,8 +1,6 @@
 package alura.com.gringotts.view
 
-import alura.com.gringotts.view.viewPager.PageOneFragment
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

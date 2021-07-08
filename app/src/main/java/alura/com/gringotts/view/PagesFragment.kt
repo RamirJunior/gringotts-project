@@ -29,7 +29,7 @@ class PagesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().getInt("position")
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.recyclerView.adapter = FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
     }
 

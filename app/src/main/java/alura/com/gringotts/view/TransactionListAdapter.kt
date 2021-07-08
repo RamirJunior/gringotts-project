@@ -1,12 +1,15 @@
-package alura.com.gringotts.view;
+package alura.com.gringotts.view
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.Transaction
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import java.util.List
 
 class TransactionListAdapter(private val transaction: List<Transaction>) :
     RecyclerView.Adapter<TransactionListAdapter.TransactionViewHolder>() {
@@ -17,6 +20,7 @@ class TransactionListAdapter(private val transaction: List<Transaction>) :
         return TransactionViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         holder.bind(transaction[position])
     }
@@ -26,19 +30,27 @@ class TransactionListAdapter(private val transaction: List<Transaction>) :
     }
 
     class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //private val cardColor: View = itemView.findViewById(R.id.card_color)
-        //private val cardTitle: TextView = itemView.findViewById(R.id.benefits_card_title)
-        //private val cardMessage: TextView = itemView.findViewById(R.id.benefits_card_message)
-        //private val cardLink: TextView = itemView.findViewById(R.id.benefits_card_link)
-        //private val cardImage: ImageView = itemView.findViewById(R.id.benefits_card_image)
-        //private val cardImage: ImageView = itemView.findViewById(R.id.benefits_card_image)
+        private val cardTransactionDate: TextView = itemView.findViewById(R.id.transaction_date)
+        private val cardTransactionStatus: ImageView =
+            itemView.findViewById(R.id.transaction_status)
+        private val cardTransactionPayment: TextView =
+            itemView.findViewById(R.id.transaction_payment)
+        private val cardTransactionType: TextView =
+            itemView.findViewById(R.id.transaction_sale_type)
+        private val cardTransactionValue: TextView = itemView.findViewById(R.id.transaction_value)
+
+        //private val cardTransactionIcon: ImageView = itemView.findViewById(R.id.transaction_icon)
+        @RequiresApi(Build.VERSION_CODES.M)
         fun bind(transaction: Transaction) {
-            //cardTitle.text = benefit.title
-            //cardMessage.text = benefit.message
-            //cardLink.text = benefit.textLink
-            //cardColor.setBackgroundColor(Color.parseColor(benefit.indicatorColor))
-            //cardLink.text = benefit.textLink
-            //Picasso.get().load(benefit.image).into(cardImage)
+            cardTransactionDate.text = transaction.date
+            if (transaction.status == "completed") {
+                //cardTransactionStatus.setImageIcon(R.drawable.logotipo_black)
+            } else {
+                //cardTransactionStatus.setImageIcon(R.drawable.logotipo_black)
+            }
+            cardTransactionPayment.text = transaction.type
+            cardTransactionType.text = transaction.typeDescription
+            cardTransactionValue.text = transaction.value
         }
     }
 }

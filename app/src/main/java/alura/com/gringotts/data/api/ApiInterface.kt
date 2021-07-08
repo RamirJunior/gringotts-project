@@ -3,6 +3,7 @@ package alura.com.gringotts.data.api
 import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
+import alura.com.gringotts.data.model.TransactionResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,7 +21,7 @@ interface ApiInterface {
         @Path("initialDate") initialDate: String,
         @Path("finalDate") finalDate: String,
         @Header("token") token: String
-    ): Response<Unit>
+    ): Response<TransactionResponse>
 
     @GET("home")
     suspend fun home(

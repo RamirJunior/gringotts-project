@@ -43,25 +43,5 @@
     <string name="empty" />
     <string name="txt_ola">Olá,&#xA0;</string>
     <string name="txt_transferencia">TRANSFERÊNCIAS</string>
-    <string name="txt_cartoes">CARTÕES</string>
-    <string name="txt_pagar_contas">PAGAR CONTAS</string>
-    <string name="txt_recargas">RECARGAS</string>
-    <string name="txt_adicionar_dinheiro">ADICIONAR DINHEIRO</string>
-    <string name="txt_pix">PIX</string>
-    <string name="txt_aplicar_meu_dinheiro">APLICAR MEU DINHEIRO</string>
-    <string name="txt_meus_investimentos">MEUS INVESTIMENTOS</string>
-    <string name="txt_seguros">SEGUROS</string>
-    <string name="txt_aprenda_a_investir">APRENDA A INVESTIR</string>
-    <string name="txt_postos_shell">POSTOS SHELL</string>
-    <string name="txt_radar_de_ofertas">RADAR DE OFERTAS</string>
-    <string name="txt_shopping">SHOPPING</string>
-    <string name="txt_onde_sacar_dinheiro">ONDE SACAR DINHEIRO</string>
-    <string name="txt_indique_e_ganhe">INDIQUE E GANHE</string>
-    <string name="txt_pagar_com_qr_code">PAGAR COM QR CODE</string>
-    <string name="txt_aplicarDinheiro">APLICAÇÕES</string>
-    <string name="txt_postoShell">POSTOS SHELL</string>
-    <string name="txt_localSaque">LOCAIS DE SAQUE</string>
-    <string name="txt_ganheIndique">GANHE INDICANDO</string>
-
 
 </resources>

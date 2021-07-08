@@ -7,12 +7,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class TabLayoutAdapter(
-    list: ArrayList<Fragment>,
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
-
-    private val fragmentList = list
 
     override fun getItemCount(): Int {
         return 3

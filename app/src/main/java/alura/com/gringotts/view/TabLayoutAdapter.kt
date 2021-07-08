@@ -1,5 +1,8 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.view.viewPager.PageOneFragment
+import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -14,10 +17,14 @@ class TabLayoutAdapter(
     private val fragmentList = list
 
     override fun getItemCount(): Int {
-        return fragmentList.size
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragmentList[position]
+        return PagesFragment().apply {
+            arguments = Bundle() .apply {
+                putInt("position", position)
+            }
+        }
     }
 }

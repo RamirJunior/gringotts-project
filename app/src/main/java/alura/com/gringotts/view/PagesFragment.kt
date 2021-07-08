@@ -30,7 +30,6 @@ class PagesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
-
         binding.recyclerView.adapter = FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
     }
 

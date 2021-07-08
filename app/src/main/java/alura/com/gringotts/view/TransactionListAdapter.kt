@@ -40,7 +40,6 @@ class TransactionListAdapter(private val transaction: List<Transaction>) :
         private val cardTransactionValue: TextView = itemView.findViewById(R.id.transaction_value)
 
         //private val cardTransactionIcon: ImageView = itemView.findViewById(R.id.transaction_icon)
-        @RequiresApi(Build.VERSION_CODES.M)
         fun bind(transaction: Transaction) {
             cardTransactionDate.text = transaction.date
             if (transaction.status == "completed") {

@@ -22,10 +22,11 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_28"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_filter" />
+                app:layout_constraintTop_toTopOf="@+id/tv_filter"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_filter"
@@ -51,6 +52,7 @@
         android:layout_marginTop="16dp"
         android:paddingStart="24dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar_filter"
+        tools:ignore="RtlSymmetry"
         tools:listitem="@android:layout/test_list_item" />
 
     <Button
@@ -59,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/golden_rounded_corner"
-        android:text="Aplicar filtros"
+        android:text="@string/aplicar_filtros"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lv_itens" />

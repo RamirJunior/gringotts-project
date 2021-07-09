@@ -46,4 +46,7 @@
     <string name="txt_account">Complete seu perfil agora mesmo e aproveite os serviços Gringotts gratuitos!</string>
     <string name="txt_title_account">#FALTA POUCO</string>
 
+    <!-- STRINGS Filter LAYOUT -->
+    <string name="txt_filter">Filtros</string>
+    <string name="aplicar_filtros">Aplicar filtros</string>
 </resources>

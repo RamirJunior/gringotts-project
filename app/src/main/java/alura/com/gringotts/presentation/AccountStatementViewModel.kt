@@ -2,7 +2,6 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.model.Transaction
 import alura.com.gringotts.data.repositories.AccountStatementRepository
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,11 +36,11 @@ class AccountStatementViewModel
         }
     }
 
+
     fun getCalendar() {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
         sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - 7 * MILLIS_DAY)
-        Log.e("aaaa", formatDate(sevenDaysAgo.time))
     }
 
     private fun formatDate(date: Date): String {

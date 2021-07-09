@@ -28,7 +28,8 @@
                 android:padding="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/tb_tipo" />
+                app:srcCompat="@drawable/tb_tipo"
+                tools:ignore="ContentDescription" />
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -148,7 +149,8 @@
                         android:background="@color/grayBack"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/hide_balance" />
+                        app:layout_constraintTop_toBottomOf="@+id/hide_balance"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/receivable_text"
@@ -220,7 +222,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_baseline_account_circle_24" />
+                    android:src="@drawable/ic_baseline_account_circle_24"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/account_title"
@@ -250,7 +253,8 @@
                     android:layout_marginStart="316dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    tools:ignore="ContentDescription" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -357,7 +361,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/atendente" />
+                        app:srcCompat="@drawable/atendente"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/help_title"

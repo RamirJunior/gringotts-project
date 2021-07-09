@@ -52,4 +52,8 @@
     <!-- STRINGS Filter LAYOUT -->
     <string name="txt_filter">Filtros</string>
     <string name="aplicar_filtros">Aplicar filtros</string>
+    <string name="txt_statement">Transação de Extrato</string>
+    <string name="txt_entradas">Entradas</string>
+    <string name="txt_saidas">Saídas</string>
+    <string name="txt_todas">Todas</string>
 </resources>

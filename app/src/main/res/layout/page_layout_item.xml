@@ -8,8 +8,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="110dp"
         android:layout_height="110dp"
+        android:elevation="4dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/border">
+        android:background="@drawable/border"
+        android:layout_margin="4dp">
 
         <ImageView
             android:id="@+id/icon"
@@ -19,7 +21,8 @@
             android:src="@drawable/ic_transferecnia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/grayHigh" />
 
         <TextView
             android:id="@+id/title"

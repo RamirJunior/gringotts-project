@@ -1,4 +1,4 @@
-package alura.com.gringotts.presentation
+package alura.com.gringotts.presentation.initial
 
 import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException

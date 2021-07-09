@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.homeFragments
+package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.FuncionalityItem

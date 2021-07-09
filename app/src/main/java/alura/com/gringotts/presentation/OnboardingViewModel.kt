@@ -8,4 +8,5 @@ class OnboardingViewModel(private val sessionManager: SessionManager) : ViewMode
     fun onBoardingFinished() {
         sessionManager.setOnboardingFinished()
     }
+
 }

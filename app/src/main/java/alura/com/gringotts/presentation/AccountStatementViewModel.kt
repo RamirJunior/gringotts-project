@@ -36,7 +36,6 @@ class AccountStatementViewModel
         }
     }
 
-
     fun getCalendar() {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
@@ -52,4 +51,5 @@ class AccountStatementViewModel
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
     }
+
 }

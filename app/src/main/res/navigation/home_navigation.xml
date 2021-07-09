@@ -6,11 +6,11 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="alura.com.gringotts.view.home.HomeFragment"
+        android:name="alura.com.gringotts.view.home.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/accountStatementFragment"
-        android:name="alura.com.gringotts.view.home.AccountStatementFragment"
+        android:name="alura.com.gringotts.view.home.fragments.AccountStatementFragment"
         android:label="Account Statement" />
 </navigation>

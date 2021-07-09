@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.home
+package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentHomeBinding
@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

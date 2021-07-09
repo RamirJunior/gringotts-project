@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.home
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.ActivityHomeBinding

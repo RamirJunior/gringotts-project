@@ -16,6 +16,6 @@
     </fragment>
     <activity
         android:id="@+id/homeActivity"
-        android:name="alura.com.gringotts.view.HomeActivity"
+        android:name="alura.com.gringotts.view.home.HomeActivity"
         android:label="HomeActivity" />
 </navigation>

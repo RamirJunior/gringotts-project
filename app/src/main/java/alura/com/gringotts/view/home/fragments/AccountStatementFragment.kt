@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.home
+package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.AccountStatementViewModel

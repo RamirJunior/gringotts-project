@@ -1,6 +1,6 @@
 package alura.com.gringotts.view.adapters
 
-import alura.com.gringotts.view.home.HomeServicesFragment
+import alura.com.gringotts.view.home.fragments.HomeServicesFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

@@ -42,10 +42,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_all"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
+                android:elevation="2dp"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_todas"
                 android:textStyle="bold"
+                android:textColor="@color/grayHigh"
+                app:chipBackgroundColor="@color/white"
+                app:chipIconTint="@color/grayHigh"
                 app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
                 app:layout_constraintEnd_toStartOf="@+id/chip_input"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +57,12 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_input"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_entradas"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/grayHigh"
+                app:chipIconTint="@color/white"
                 app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,9 +70,12 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_output"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_saidas"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/grayHigh"
+                app:chipIconTint="@color/white"
                 app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/chip_input"

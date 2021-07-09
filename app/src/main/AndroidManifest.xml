@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Login"
         tools:ignore="AllowBackup">
         <activity
-            android:name="alura.com.gringotts.view.InitialActivity"
+            android:name="alura.com.gringotts.view.initial.InitialActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

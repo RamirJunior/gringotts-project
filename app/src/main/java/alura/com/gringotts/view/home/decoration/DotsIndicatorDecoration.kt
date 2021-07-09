@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.home.decoration
 
 import android.content.res.Resources
 import android.graphics.Canvas

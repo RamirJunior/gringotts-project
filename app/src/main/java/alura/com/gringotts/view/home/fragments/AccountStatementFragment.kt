@@ -1,7 +1,7 @@
 package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.databinding.FragmentHomeBinding
-import alura.com.gringotts.presentation.AccountStatementViewModel
+import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

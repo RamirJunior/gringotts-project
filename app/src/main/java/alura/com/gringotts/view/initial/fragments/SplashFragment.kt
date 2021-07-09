@@ -1,7 +1,7 @@
 package alura.com.gringotts.view.initial
 
 import alura.com.gringotts.R
-import alura.com.gringotts.presentation.SplashViewModel
+import alura.com.gringotts.presentation.initial.SplashViewModel
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper

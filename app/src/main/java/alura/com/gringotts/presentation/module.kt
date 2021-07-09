@@ -5,6 +5,10 @@ import alura.com.gringotts.data.SessionManagerImpl
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.HomeRepository
 import alura.com.gringotts.data.repositories.LoginRepository
+import alura.com.gringotts.presentation.home.HomeViewModel
+import alura.com.gringotts.presentation.initial.LoginViewModel
+import alura.com.gringotts.presentation.initial.OnboardingViewModel
+import alura.com.gringotts.presentation.initial.SplashViewModel
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.android.ext.koin.androidContext

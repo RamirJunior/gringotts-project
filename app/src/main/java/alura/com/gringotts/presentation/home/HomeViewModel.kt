@@ -1,4 +1,4 @@
-package alura.com.gringotts.presentation
+package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.Balance

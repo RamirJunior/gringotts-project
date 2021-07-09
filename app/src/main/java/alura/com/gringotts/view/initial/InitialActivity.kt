@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.initial
 
 import alura.com.gringotts.databinding.ActivityInitialBinding
 import android.os.Bundle

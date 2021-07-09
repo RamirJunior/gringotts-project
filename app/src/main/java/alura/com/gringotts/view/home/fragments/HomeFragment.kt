@@ -2,10 +2,10 @@ package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentHomeBinding
-import alura.com.gringotts.presentation.HomeViewModel
-import alura.com.gringotts.view.DotsIndicatorDecoration
+import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.view.adapters.BenefitsListAdapter
 import alura.com.gringotts.view.adapters.HomeServicesAdapter
+import alura.com.gringotts.view.home.decoration.DotsIndicatorDecoration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

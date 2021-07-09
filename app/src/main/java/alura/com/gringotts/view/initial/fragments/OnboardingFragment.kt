@@ -2,7 +2,7 @@ package alura.com.gringotts.view.initial
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentOnboardingBinding
-import alura.com.gringotts.presentation.OnboardingViewModel
+import alura.com.gringotts.presentation.initial.OnboardingViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

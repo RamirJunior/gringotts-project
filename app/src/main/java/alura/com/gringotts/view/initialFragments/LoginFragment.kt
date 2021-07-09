@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.initialFragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

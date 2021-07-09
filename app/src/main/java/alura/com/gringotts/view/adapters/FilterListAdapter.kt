@@ -1,4 +1,4 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.adapters
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.Filter

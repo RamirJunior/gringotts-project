@@ -1,8 +1,9 @@
-package alura.com.gringotts.view
+package alura.com.gringotts.view.homeFragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.model.FuncionalityItem
 import alura.com.gringotts.databinding.HomeServicesLayoutBinding
+import alura.com.gringotts.view.adapters.FuncionalityListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

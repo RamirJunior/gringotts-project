@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -62,7 +63,18 @@ class HomeFragment : Fragment() {
             binding.loadingHome.isVisible = it
         }
 
-        val adapter = TabLayoutAdapter(
+        homeViewModel.apiError.observe(viewLifecycleOwner, {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { _, _ -> }
+                    .show()
+            }
+        })
+
+        val adapter = HomeServicesAdapter(
             requireActivity().supportFragmentManager,
             lifecycle
         )
@@ -73,18 +85,15 @@ class HomeFragment : Fragment() {
             binding.tabLayoutFuncionalidades,
             binding.pagerFuncionalidades
         ) { tab, position ->
-            when (position + 1) {
-                1 -> {
+            when (position) {
+                0 -> {
                     tab.text = getString(R.string.principais)
-                    adapter to 0
+                }
+                1 -> {
+                    tab.text = getString(R.string.produtosInvestimentos)
                 }
                 2 -> {
-                    tab.text = getString(R.string.produtosInvestimentos)
-                    adapter to 1
-                }
-                3 -> {
                     tab.text = getString(R.string.servicos)
-                    adapter to 2
                 }
             }
         }

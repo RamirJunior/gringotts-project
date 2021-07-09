@@ -29,45 +29,50 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     val receivable: LiveData<String> = _receivable
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
+    private val _apiError = MutableLiveData<String>()
+    val apiError: LiveData<String> = _apiError
 
     init {
         _loading.postValue(true)
         viewModelScope.launch {
-            val homeApiData = homeRepository.homeData()
-            _benefits.postValue(homeApiData.benefits)
-            balanceValue = homeApiData.balance
-            _balance.postValue(balanceValue.currentValue.toString())
-            _receivable.postValue(balanceValue.receivables.toString())
-            setBalanceState(homeRepository.getHideStatus())
-            val user = homeRepository.getUser()
-            _userName.postValue(user!!.firstName + " " + user.lastName)
-            _loading.postValue(false)
+            try {
+                val homeData = homeRepository.homeData()
+                _benefits.postValue(homeData.benefits)
+                balanceValue = homeData.balance
+                _balance.postValue(balanceValue.currentValue.toString())
+                _receivable.postValue(balanceValue.receivables.toString())
+                setBalanceState(homeRepository.getHideBalanceState())
+                val user = homeRepository.getUser()
+                _userName.postValue(user!!.firstName + " " + user.lastName)
+                _loading.postValue(false)
+            } catch (e: Exception) {
+                _apiError.postValue("Sem acesso a internet")
+            }
         }
     }
 
     fun hideBalanceButtonClicked() {
-        val getCurrentBalanceVisibilityStatus = homeRepository.getHideStatus()
-        val newCurrentBalanceVisibilityStatus = !getCurrentBalanceVisibilityStatus
-        homeRepository.saveHideStatus(newCurrentBalanceVisibilityStatus)
+        val newCurrentBalanceVisibilityStatus = !homeRepository.getHideBalanceState()
+        homeRepository.saveHideBalanceState(newCurrentBalanceVisibilityStatus)
         setBalanceState(newCurrentBalanceVisibilityStatus)
     }
 
     private fun setBalanceState(isBalanceVisible: Boolean) {
         if (isBalanceVisible) {
-            _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
             showBalance()
         } else {
-            _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
             hideBalance()
         }
     }
 
     private fun showBalance() {
+        _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
         _balance.postValue(balanceValue.currentValue.toString())
         _receivable.postValue(balanceValue.receivables.toString())
     }
 
     private fun hideBalance() {
+        _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
         _balance.postValue(HIDDENVALUE)
         _receivable.postValue(HIDDENVALUE)
     }

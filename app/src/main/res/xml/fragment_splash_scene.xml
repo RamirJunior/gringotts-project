@@ -25,7 +25,6 @@
                 motion:framePosition="100"
                 motion:motionTarget="@+id/imageView" />
 
-
         </KeyFrameSet>
     </Transition>
 

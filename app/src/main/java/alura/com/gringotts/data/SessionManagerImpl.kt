@@ -56,12 +56,12 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return Gson().fromJson(user, User::class.java)
     }
 
-    override fun saveHideStatus(status: Boolean) {
-        sharedPreferencesEditor.putBoolean(HIDE_STATUS, status)
+    override fun saveHideBalanceState(isVisible: Boolean) {
+        sharedPreferencesEditor.putBoolean(HIDE_STATUS, isVisible)
         sharedPreferencesEditor.apply()
     }
 
-    override fun getHideStatus(): Boolean {
+    override fun getHideBalanceState(): Boolean {
         return sharedPreferences.getBoolean(HIDE_STATUS, false)
     }
 
@@ -73,4 +73,3 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         private const val HIDE_STATUS = "hideStatus"
     }
 }
-

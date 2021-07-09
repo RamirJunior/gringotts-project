@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment2"
-        android:name="alura.com.gringotts.view.initialFragments.LoginFragment"
+        android:name="alura.com.gringotts.view.initial.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment2_to_homeActivity"

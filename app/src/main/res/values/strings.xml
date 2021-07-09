@@ -20,7 +20,7 @@
 
     <!-- STRINGS TABLE LAYOUT -->
     <string name="principais">Principais</string>
-    <string name="produtosInvestimentos">Produtos e Investimentos</string>
+    <string name="produtosInvestimentos">Produtos</string>
     <string name="servicos">Serviços</string>
     <string name="transferencias">Transferências</string>
     <string name="cartoes">Cartões</string>
@@ -29,7 +29,7 @@
     <string name="adicionarDinheiro">Adicionar Dinheiro</string>
     <string name="pixQrCode">Pix/QR Code</string>
     <string name="saldo">Saldo</string>
-    <string name="real">R$ </string>
+    <string name="real">R$&#xA0;</string>
     <string name="detalhes_conta">Ver detalhes da conta</string>
     <string name="detalhes_saldo">Ver detalhes do saldo</string>
     <string name="security">security</string>
@@ -38,7 +38,7 @@
     <string name="txt_vantagens">Vantagens do Gringotts para você</string>
     <string name="hidden_balance">* * * *</string>
     <string name="txt_ajuda">Precisa de ajuda?</string>
-    <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente</string>
+    <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente.</string>
     <string name="vendas_recber">À receber:</string>
     <string name="empty" />
     <string name="txt_ola">Olá,&#xA0;</string>

@@ -1,23 +1,31 @@
 package alura.com.gringotts.data.api
 
+import alura.com.gringotts.data.model.HomeResponse
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterface {
 
-    @POST("userLogin")
+    @POST("login")
     suspend fun userLogin(
         @Body login: LoginPayload
     ): Response<LoginResponse>
 
+    @GET("home")
+    suspend fun home(
+        @Header("token") token: String
+    ): Response<HomeResponse>
+
     companion object {
         private const val BASE_URL =
-            "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/pbpuc/"
+            "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/"
 
         fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()

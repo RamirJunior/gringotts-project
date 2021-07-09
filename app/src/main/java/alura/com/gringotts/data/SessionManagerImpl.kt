@@ -2,16 +2,16 @@ package alura.com.gringotts.data
 
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.Token
-import android.content.Context
+import alura.com.gringotts.data.model.User
+import android.content.SharedPreferences
 import com.google.gson.Gson
 
-class SessionManagerImpl(context: Context) : SessionManager {
+class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : SessionManager {
 
-    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
     private val sharedPreferencesEditor = sharedPreferences.edit()
 
     override fun getUserData(): LoginPayload? {
-        val userString = sharedPreferences.getString(USER_KEY, "")
+        val userString = sharedPreferences.getString(LOGIN_PAYLOAD, "")
         if (userString.equals("")) return null
         return Gson().fromJson(userString, LoginPayload::class.java)
     }
@@ -24,16 +24,16 @@ class SessionManagerImpl(context: Context) : SessionManager {
 
     override fun saveUserData(user: LoginPayload) {
         val userString = Gson().toJson(user)
-        sharedPreferencesEditor.putString(USER_KEY, userString)
+        sharedPreferencesEditor.putString(LOGIN_PAYLOAD, userString).commit()
     }
 
     override fun saveTokens(token: Token) {
         val tokensString = Gson().toJson(token)
-        sharedPreferencesEditor.putString(TOKENS_KEY, tokensString)
+        sharedPreferencesEditor.putString(TOKENS_KEY, tokensString).commit()
     }
 
     override fun deleteUserData() {
-        sharedPreferencesEditor.remove(USER_KEY).commit()
+        sharedPreferencesEditor.remove(LOGIN_PAYLOAD).commit()
     }
 
     override fun setOnboardingFinished() {
@@ -45,10 +45,31 @@ class SessionManagerImpl(context: Context) : SessionManager {
         return sharedPreferences.getBoolean(FINISHED_KEY, false)
     }
 
+    override fun saveUser(user: User) {
+        val userGson = Gson().toJson(user)
+        sharedPreferencesEditor.putString(USER_KEY, userGson).apply()
+    }
+
+    override fun getUser(): User? {
+        val user = sharedPreferences.getString(USER_KEY, "")
+        if (user.equals("")) return null
+        return Gson().fromJson(user, User::class.java)
+    }
+
+    override fun saveHideBalanceState(isVisible: Boolean) {
+        sharedPreferencesEditor.putBoolean(HIDE_STATUS, isVisible)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getHideBalanceState(): Boolean {
+        return sharedPreferences.getBoolean(HIDE_STATUS, false)
+    }
+
     companion object {
-        private const val SHARED_PREFS = "sharedPrefs"
-        private const val USER_KEY = "User"
-        private const val TOKENS_KEY = "Tokens"
+        private const val LOGIN_PAYLOAD = "loginPayload"
+        private const val TOKENS_KEY = "tokens"
         private const val FINISHED_KEY = "finished"
+        private const val USER_KEY = "user"
+        private const val HIDE_STATUS = "hideStatus"
     }
 }

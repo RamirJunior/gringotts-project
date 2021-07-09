@@ -35,7 +35,7 @@ class OnboardingFragment : Fragment() {
         }
 
         binding.textViewJaTenhoCadastro.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_onboardingFragment2_to_login_navigation)
             onBordingViewModel.onBoardingFinished()
         }
     }

@@ -10,13 +10,43 @@
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Falha de login"</string>
     <string name="registrar">CRIAR CONTA</string>
-    <string name="forgotPassword">Esqueci minha senha</string>
+    <string name="forgotPassword">ESQUECI MINHA SENHA</string>
     <string name="rememberPassword">Lembrar minha conta</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_extrato">Extrato</string>
+
+    <!-- STRINGS TABLE LAYOUT -->
+    <string name="principais">Principais</string>
+    <string name="produtosInvestimentos">Produtos</string>
+    <string name="servicos">Serviços</string>
+    <string name="transferencias">Transferências</string>
+    <string name="cartoes">Cartões</string>
+    <string name="pagarContas">Pagar Contas</string>
+    <string name="recargas">Recargas</string>
+    <string name="adicionarDinheiro">Adicionar Dinheiro</string>
+    <string name="pixQrCode">Pix/QR Code</string>
+    <string name="saldo">Saldo</string>
+    <string name="real">R$&#xA0;</string>
+    <string name="detalhes_conta">Ver detalhes da conta</string>
+    <string name="detalhes_saldo">Ver detalhes do saldo</string>
+    <string name="security">security</string>
+    <string name="notifications">notifications</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="txt_vantagens">Vantagens do Gringotts para você</string>
+    <string name="hidden_balance">* * * *</string>
+    <string name="txt_ajuda">Precisa de ajuda?</string>
+    <string name="encontre_as_respostas">Encontre as respostas que precisa ou entre em contato com a gente.</string>
+    <string name="vendas_recber">À receber:</string>
+    <string name="empty" />
+    <string name="txt_ola">Olá,&#xA0;</string>
+    <string name="txt_transferencia">TRANSFERÊNCIAS</string>
+    <string name="txt_account">Complete seu perfil agora mesmo e aproveite os serviços Gringotts gratuitos!</string>
+    <string name="txt_title_account">#FALTA POUCO</string>
+    <string name="titulo">Titulo</string>
+    <string name="texto">Texto</string>
+    <string name="click">click</string>
+
 </resources>

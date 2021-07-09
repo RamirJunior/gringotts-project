@@ -1,5 +1,6 @@
 package alura.com.gringotts.view
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.LoginViewModel
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,9 +40,14 @@ class LoginFragment : Fragment() {
         binding.loginUsername.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
         }
+
         binding.loginPassword.addTextChangedListener {
             loginViewModel.setPassword(it.toString())
         }
+
+        loginViewModel.rememberSwitch.observe(viewLifecycleOwner, {
+            binding.loginRemember.isChecked = it
+        })
 
         binding.loginRemember.setOnCheckedChangeListener { _, isChecked ->
             loginViewModel.switchChanged(isChecked)
@@ -58,8 +65,7 @@ class LoginFragment : Fragment() {
         })
 
         loginViewModel.loginSuccess.observe(viewLifecycleOwner, {
-            Toast.makeText(context, "Login! proxima tela não implementada", Toast.LENGTH_LONG)
-                .show()
+            findNavController().navigate(R.id.action_loginFragment2_to_homeActivity)
         })
 
         binding.loginLogin.setOnClickListener {

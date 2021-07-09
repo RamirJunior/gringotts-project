@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imageViewLogoGringotts"
         android:layout_width="300dp"
@@ -16,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logotipo_png"
         tools:ignore="ContentDescription" />
-
 
     <Button
         android:id="@+id/login_register"
@@ -93,19 +91,19 @@
         app:layout_constraintStart_toStartOf="@+id/login_password"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/login_remember"
         android:layout_width="320dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/rememberPassword"
         android:textAlignment="textStart"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintBottom_toTopOf="@+id/login_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -118,7 +116,6 @@
         android:linksClickable="true"
         android:text="@string/forgotPassword"
         android:textAlignment="center"
-        android:textColor="@color/gold"
         android:textColorLink="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

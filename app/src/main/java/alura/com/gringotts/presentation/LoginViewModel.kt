@@ -1,11 +1,9 @@
 package alura.com.gringotts.presentation
 
-import alura.com.gringotts.data.LoginRepository.LoginRepository
 import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.LoginResponse
-import alura.com.gringotts.data.model.Token
+import alura.com.gringotts.data.repositories.LoginRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,8 +29,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             currentPassword = user.password
             currentUsername = user.email
             _rememberSwitch.postValue(true)
-        }
-        else{
+        } else {
             _rememberSwitch.postValue(false)
         }
     }
@@ -49,16 +46,16 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                 loginRepository.userLogin(
-                     LoginPayload(currentUsername, currentPassword),
-                     _rememberSwitch.value!!
-                 )
+                loginRepository.userLogin(
+                    LoginPayload(currentUsername, currentPassword),
+                    _rememberSwitch.value!!
+                )
                 _loginSuccess.postValue(Unit)
-            }catch(e: IncorrectPasswordException){
+            } catch (e: IncorrectPasswordException) {
                 _loginError.postValue(e.message)
-            } catch(e: NotFoundEmailException){
+            } catch (e: NotFoundEmailException) {
                 _loginError.postValue(e.message)
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _loginError.postValue("Sem acesso a internet")
                 else
@@ -91,4 +88,5 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(): Boolean {
         return currentPassword.length >= 6
     }
+
 }

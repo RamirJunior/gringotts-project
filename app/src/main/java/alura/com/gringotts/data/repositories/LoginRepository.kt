@@ -1,8 +1,8 @@
-package alura.com.gringotts.data.LoginRepository
+package alura.com.gringotts.data.repositories
 
-import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.model.LoginPayload
 import alura.com.gringotts.data.model.LoginResponse
 import alura.com.gringotts.data.model.Token
@@ -12,8 +12,8 @@ import retrofit2.Response
 
 class LoginRepository(private val sessionManager: SessionManager) {
 
-    suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean){
-        val response : Response<LoginResponse>
+    suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean) {
+        val response: Response<LoginResponse>
         withContext(Dispatchers.IO) {
             response = ApiInterface.create().userLogin(loginPayload)
         }
@@ -39,10 +39,13 @@ class LoginRepository(private val sessionManager: SessionManager) {
     }
 
     private fun loginSuccessHandler(
-        responseBody: LoginResponse, rememberSwitch: Boolean, loginPayload: LoginPayload
+        responseBody: LoginResponse,
+        rememberSwitch: Boolean,
+        loginPayload: LoginPayload
     ) {
+        sessionManager.saveUser(responseBody.user)
         sessionManager.saveTokens(
-            Token(responseBody.tokenAuthentication, responseBody.refreshToken)
+            Token(responseBody.tokenAuthentication)
         )
         if (rememberSwitch) {
             sessionManager.saveUserData(loginPayload)
@@ -64,4 +67,5 @@ class LoginRepository(private val sessionManager: SessionManager) {
         private const val INCORRECT_PASSWORD = 401
         private const val INCOMPATIBLE_EMAIL_PASSWORD = 404
     }
+
 }

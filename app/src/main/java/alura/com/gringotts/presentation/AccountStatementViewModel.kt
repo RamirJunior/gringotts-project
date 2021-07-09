@@ -28,11 +28,11 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 currentTransactions = response.transactions
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
                 else _accountStatementError
-                        .postValue("Erro desconhecido ao recuperar o extrato")
+                    .postValue("Erro desconhecido ao recuperar o extrato")
             }
         }
     }

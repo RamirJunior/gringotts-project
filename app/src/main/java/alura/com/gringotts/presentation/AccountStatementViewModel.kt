@@ -16,7 +16,7 @@ class AccountStatementViewModel
     private suspend fun getAccountStatement(
         initilDate: String,
         finalDate: String,
-    ){
+    ) {
         viewModelScope.launch {
             getAccountStatement(initilDate, finalDate)
         }

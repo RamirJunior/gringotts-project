@@ -3,7 +3,6 @@ package alura.com.gringotts.data.repositories
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.model.TransactionResponse
-import alura.com.gringotts.presentation.initialModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -13,8 +12,10 @@ class AccountStatementRepository(private val sessionManager: SessionManager) {
         val response = withContext(Dispatchers.IO) {
             val response = sessionManager.getTokens()
                 ?.let {
-                    ApiInterface.create().transactions(initialDate,
-                        finalDate, it.tokenAuthentication)
+                    ApiInterface.create().transactions(
+                        initialDate,
+                        finalDate, it.tokenAuthentication
+                    )
                 }!!
             response
         }

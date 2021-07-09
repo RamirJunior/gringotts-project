@@ -17,7 +17,7 @@ class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
         viewType: Int
     ): FuncionalityItemHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.page_layout_item, parent, false)
+            .inflate(R.layout.home_services_layout_item, parent, false)
         return FuncionalityItemHolder(view)
     }
 

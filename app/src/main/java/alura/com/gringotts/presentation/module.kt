@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation
 
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.SessionManagerImpl
+import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.HomeRepository
 import alura.com.gringotts.data.repositories.LoginRepository
 import android.content.Context
@@ -33,6 +34,9 @@ val initialModule = module {
         LoginRepository(get())
     }
     factory {
-        HomeRepository(get())
+        HomeRepository(get(), get())
+    }
+    factory {
+        ApiInterface.create()
     }
 }

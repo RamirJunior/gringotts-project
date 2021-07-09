@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class TabLayoutAdapter(
+class HomeServicesAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -16,10 +16,15 @@ class TabLayoutAdapter(
     }
 
     override fun createFragment(position: Int): Fragment {
-        return PagesFragment().apply {
-            arguments = Bundle().apply {
-                putInt("position", position)
+        return HomeServicesFragment().also {
+            it.arguments = Bundle().apply {
+                putInt(POSITION, position)
             }
         }
     }
+
+    companion object {
+        private const val POSITION = "position"
+    }
+
 }

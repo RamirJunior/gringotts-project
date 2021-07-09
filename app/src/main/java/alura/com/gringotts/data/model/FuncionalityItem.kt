@@ -1,6 +1,8 @@
 package alura.com.gringotts.data.model
 
+import androidx.annotation.DrawableRes
+
 data class FuncionalityItem(
     val title: String,
-    val icon: Int
+    @DrawableRes val icon: Int
 )

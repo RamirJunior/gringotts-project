@@ -93,5 +93,4 @@ class AccountStatementViewModel
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
         private const val DEFAULT_RANGE: Int = 7
     }
-
 }

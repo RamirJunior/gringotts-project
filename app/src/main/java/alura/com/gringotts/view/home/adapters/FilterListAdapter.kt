@@ -2,10 +2,13 @@ package alura.com.gringotts.view.home.adapters
 
 import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.Filter
+import alura.com.gringotts.view.home.fragments.FilterFragment
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 
 class FilterListAdapter(private val filter: List<Filter>) :
@@ -15,6 +18,10 @@ class FilterListAdapter(private val filter: List<Filter>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.filter_item, parent, false)
         return FilterViewHolder(view)
+    }
+
+    companion object {
+        private const val POSITION = "position"
     }
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
@@ -31,4 +38,13 @@ class FilterListAdapter(private val filter: List<Filter>) :
             cardText.text = filter.text
         }
     }
+
+    override fun createFragment(position: Int): Fragment {
+        return FilterFragment().also {
+            it.arguments = Bundle().apply {
+                putInt(FilterListAdapter.POSITION, position)
+            }
+        }
+    }
+
 }

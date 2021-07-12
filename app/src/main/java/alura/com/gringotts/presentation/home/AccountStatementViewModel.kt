@@ -1,4 +1,5 @@
 package alura.com.gringotts.presentation.home
+
 import AccountStatementRepository
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
@@ -19,13 +20,13 @@ class AccountStatementViewModel
 
     private lateinit var transactionList: List<Transaction>
     private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
-    val currentTransactionsList : LiveData<List<TransactionListItem>> = _currentTransactionsList
+    val currentTransactionsList: LiveData<List<TransactionListItem>> = _currentTransactionsList
     private val _accountStatementError = MutableLiveData<String>()
     val accountStatementError: LiveData<String> = _accountStatementError
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    init{
+    init {
         getAccountStatement(DEFAULT_RANGE)
     }
 
@@ -38,7 +39,7 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
-               _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
+                _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
                 onlyEntries()
             } catch (e: Exception) {
                 Log.e("aa", "ssss")
@@ -57,13 +58,13 @@ class AccountStatementViewModel
             val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
-        for(date in transactionsMap.keys) {
+        for (date in transactionsMap.keys) {
             segmentedList.add(
                 TransactionDateItem(
                     getDateFromString(date)
                 )
             )
-            for(transaction in transactionsMap[date]!!) {
+            for (transaction in transactionsMap[date]!!) {
                 segmentedList.add(
                     TransactionItem(
                         transaction
@@ -91,15 +92,15 @@ class AccountStatementViewModel
         return formatter.parse(dateString)!!
     }
 
-    fun changeRange(newRange: Int){
+    fun changeRange(newRange: Int) {
         getAccountStatement(newRange)
     }
 
     fun onlyEntries() {
         var filteredTransactions = mutableListOf<Transaction>()
-        for(transaction in transactionList) {
+        for (transaction in transactionList) {
             Log.e("aaaaa", transaction.status)
-            if(transaction.type == PAYMENT_FILTER) {
+            if (transaction.type == PAYMENT_FILTER) {
 
             }
         }

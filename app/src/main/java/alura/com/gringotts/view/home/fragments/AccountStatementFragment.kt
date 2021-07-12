@@ -4,7 +4,6 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        accountStatementViewModel.loading.observe(viewLifecycleOwner){
+        accountStatementViewModel.loading.observe(viewLifecycleOwner) {
 
         }
         binding.transactionsFilter.setOnClickListener {

@@ -1,9 +1,9 @@
 package alura.com.gringotts.presentation.home
+import AccountStatementRepository
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import alura.com.gringotts.data.repositories.AccountStatementRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

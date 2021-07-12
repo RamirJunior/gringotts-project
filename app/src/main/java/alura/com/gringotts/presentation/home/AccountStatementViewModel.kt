@@ -4,6 +4,7 @@ import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,7 +39,9 @@ class AccountStatementViewModel
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
                _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
+                onlyEntries()
             } catch (e: Exception) {
+                Log.e("aa", "ssss")
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
                 else _accountStatementError
@@ -88,9 +91,24 @@ class AccountStatementViewModel
         return formatter.parse(dateString)!!
     }
 
+    fun changeRange(newRange: Int){
+        getAccountStatement(newRange)
+    }
+
+    fun onlyEntries() {
+        var filteredTransactions = mutableListOf<Transaction>()
+        for(transaction in transactionList) {
+            Log.e("aaaaa", transaction.status)
+            if(transaction.type == PAYMENT_FILTER) {
+
+            }
+        }
+    }
+
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
         private const val DEFAULT_RANGE: Int = 7
+        private const val PAYMENT_FILTER: String = "Pagamento"
     }
 }

@@ -28,11 +28,12 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        accountStatementViewModel.loading.observe(viewLifecycleOwner){
 
+        }
         binding.transactionsFilter.setOnClickListener {
             findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
         }
 
-        Log.e("aaaa", "aaaaaa")
     }
 }

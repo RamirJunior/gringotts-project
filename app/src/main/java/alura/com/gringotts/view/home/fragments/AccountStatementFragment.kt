@@ -1,5 +1,6 @@
 package alura.com.gringotts.view.home.fragments
 
+import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.databinding.FragmentHomeBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import android.os.Bundle
@@ -12,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountStatementFragment : Fragment() {
     private val accountStatementViewModel by viewModel<AccountStatementViewModel>()
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentAccountStatementBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,7 +21,7 @@ class AccountStatementFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(layoutInflater)
+        _binding = FragmentAccountStatementBinding.inflate(layoutInflater)
         return binding.root
     }
 

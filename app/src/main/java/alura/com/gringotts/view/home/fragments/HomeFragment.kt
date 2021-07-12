@@ -17,7 +17,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class HomeFragment : Fragment() {
 
     private val homeViewModel by viewModel<HomeViewModel>()
@@ -32,7 +31,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

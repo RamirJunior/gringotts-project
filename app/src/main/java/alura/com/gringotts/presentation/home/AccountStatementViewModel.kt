@@ -5,6 +5,7 @@ import alura.com.gringotts.data.model.TransactionDateItem
 import alura.com.gringotts.data.model.TransactionItem
 import alura.com.gringotts.data.model.TransactionListItem
 import alura.com.gringotts.data.repositories.AccountStatementRepository
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +22,8 @@ class AccountStatementViewModel
     private val _accountStatementError = MutableLiveData<String>()
     val accountStatementError: LiveData<String> = _accountStatementError
 
-    private suspend fun getAccountStatement(
+
+    private fun getAccountStatement(
         initialDate: String,
         finalDate: String,
     ) {
@@ -29,8 +31,10 @@ class AccountStatementViewModel
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                currentTransactions = response.transactions
+                currentTransactions = response
+                Log.e("bbbb",currentTransactions.toString())
             } catch (e: Exception) {
+                Log.e("aaa", e.toString())
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
                 else _accountStatementError
@@ -67,6 +71,7 @@ class AccountStatementViewModel
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
         sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - 7 * MILLIS_DAY)
+        getAccountStatement(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
     }
 
     private fun formatDate(date: Date): String {

@@ -1,9 +1,6 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.model.HomeResponse
-import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.LoginResponse
-import alura.com.gringotts.data.model.TransactionResponse
+import alura.com.gringotts.data.model.*
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,12 +13,12 @@ interface ApiInterface {
         @Body login: LoginPayload
     ): Response<LoginResponse>
 
-    @GET("extract?start={initialDate}&end={finalDate}")
+    @GET("extract")
     suspend fun transactions(
-        @Path("initialDate") initialDate: String,
-        @Path("finalDate") finalDate: String,
+        @Query("start") initialDate: String,
+        @Query("end") finalDate: String,
         @Header("token") token: String
-    ): Response<TransactionResponse>
+    ): Response<List<Transaction>>
 
     @GET("home")
     suspend fun home(

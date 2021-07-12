@@ -28,7 +28,6 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        accountStatementViewModel.getCalendar()
 
         binding.transactionsFilter.setOnClickListener {
             findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)

@@ -1,6 +1,8 @@
 package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.data.model.Transaction
+import alura.com.gringotts.data.model.TransactionDateItem
+import alura.com.gringotts.data.model.TransactionItem
 import alura.com.gringotts.data.model.TransactionListItem
 import alura.com.gringotts.data.repositories.AccountStatementRepository
 import androidx.lifecycle.LiveData
@@ -37,16 +39,29 @@ class AccountStatementViewModel
         }
     }
 
-    fun mapTransactions(response: List<Transaction>) {
+    fun getTransactionsSegmentedList(response: List<Transaction>): List<TransactionListItem> {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        val segmentedList: List<TransactionListItem>
+        val segmentedList: List<TransactionListItem> = listOf()
         for (i in response) {
             val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
             transactionsMap[i.date] = currentList.plus(i)
         }
         for(date in transactionsMap.keys) {
-
+            segmentedList.plusElement(
+                TransactionDateItem(
+                    getDateFromString(date), TransactionListItem.TRANSACTION_HEADER
+                )
+            )
+            for(transaction in transactionsMap[date]!!){
+                segmentedList.plusElement(
+                    TransactionItem(
+                        transaction,
+                        TransactionListItem.TRANSACTION_ITEM
+                    )
+                )
+            }
         }
+        return segmentedList
     }
 
     fun getCalendar() {

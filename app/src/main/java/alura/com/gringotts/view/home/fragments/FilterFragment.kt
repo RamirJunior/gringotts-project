@@ -1,6 +1,6 @@
 package alura.com.gringotts.view.home.fragments
 
-import alura.com.gringotts.data.model.FuncionalityItem
+import alura.com.gringotts.data.models.home.FuncionalityItem
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.view.adapters.FuncionalityListAdapter
 import android.os.Bundle
@@ -26,8 +26,8 @@ class FilterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().getInt("position")
-        binding.recyclerViewTrnasactions.layoutManager = GridLayoutManager(context, 3)
-        binding.recyclerViewTrnasactions.adapter =
+        binding.recyclerViewTransactions.layoutManager = GridLayoutManager(context, 3)
+        binding.recyclerViewTransactions.adapter =
             FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
     }
 

@@ -26,8 +26,8 @@ class FilterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().getInt("position")
-        binding.recyclerViewTrnasactions.layoutManager = GridLayoutManager(context, 3)
-        binding.recyclerViewTrnasactions.adapter =
+        binding.recyclerViewTransactions.layoutManager = GridLayoutManager(context, 3)
+        binding.recyclerViewTransactions.adapter =
             FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
     }
 

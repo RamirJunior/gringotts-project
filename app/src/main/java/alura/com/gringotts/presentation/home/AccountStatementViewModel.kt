@@ -16,11 +16,19 @@ import java.util.*
 class AccountStatementViewModel
     (private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
 
-    private var currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
+    private lateinit var transactionList: List<Transaction>
+    private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
+    val currentTransactionsList : LiveData<List<TransactionListItem>> = _currentTransactionsList
     private val _accountStatementError = MutableLiveData<String>()
     val accountStatementError: LiveData<String> = _accountStatementError
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
 
-    private fun getAccountStatement(
+    init{
+        getAccountStatement(DEFAULT_RANGE)
+    }
+
+    private fun getTransactionList(
         initialDate: String,
         finalDate: String,
     ) {
@@ -28,7 +36,8 @@ class AccountStatementViewModel
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-               currentTransactionsList.postValue(getTransactionsSegmentedList(response).toList())
+                transactionList = response
+               _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
@@ -62,11 +71,11 @@ class AccountStatementViewModel
         return segmentedList
     }
 
-    fun getCalendar() {
+    private fun getAccountStatement(range: Int) {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
-        sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - 7 * MILLIS_DAY)
-        getAccountStatement(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
+        sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - range * MILLIS_DAY)
+        getTransactionList(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
     }
 
     private fun formatDate(date: Date): String {
@@ -82,6 +91,7 @@ class AccountStatementViewModel
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
+        private const val DEFAULT_RANGE: Int = 7
     }
 
 }

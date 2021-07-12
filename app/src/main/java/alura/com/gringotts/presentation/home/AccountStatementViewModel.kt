@@ -52,7 +52,7 @@ class AccountStatementViewModel
                     getDateFromString(date), TransactionListItem.TRANSACTION_HEADER
                 )
             )
-            for(transaction in transactionsMap[date]!!){
+            for(transaction in transactionsMap[date]!!) {
                 segmentedList.plusElement(
                     TransactionItem(
                         transaction,

@@ -49,14 +49,13 @@ class AccountStatementViewModel
         for(date in transactionsMap.keys) {
             segmentedList.plusElement(
                 TransactionDateItem(
-                    getDateFromString(date), TransactionListItem.TRANSACTION_HEADER
+                    getDateFromString(date)
                 )
             )
             for(transaction in transactionsMap[date]!!) {
                 segmentedList.plusElement(
                     TransactionItem(
-                        transaction,
-                        TransactionListItem.TRANSACTION_ITEM
+                        transaction
                     )
                 )
             }

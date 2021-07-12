@@ -18,13 +18,12 @@ class FilterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAccountStatementBinding.inflate(inflater, container, false)
+        _binding = FragmentAccountStatementBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireArguments().getInt("position")
         binding.recyclerViewTransactions.adapter =
             FilterListAdapter(transactionsDaysFilter())
     }

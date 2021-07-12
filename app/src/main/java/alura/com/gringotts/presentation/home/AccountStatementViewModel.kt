@@ -4,7 +4,6 @@ import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -53,7 +52,7 @@ class AccountStatementViewModel
                 )
             )
             for(transaction in transactionsMap[date]!!) {
-                segmentedList.plusElement(
+                segmentedList.add(
                     TransactionItem(
                         transaction
                     )

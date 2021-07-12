@@ -1,10 +1,9 @@
 package alura.com.gringotts.presentation.home
-
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import alura.com.gringotts.data.repositories.home.AccountStatementRepository
+import alura.com.gringotts.data.repositories.AccountStatementRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,7 +28,7 @@ class AccountStatementViewModel
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                currentTransactions = response.transactions
+                currentTransactions = response
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
@@ -46,13 +45,13 @@ class AccountStatementViewModel
             val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
             transactionsMap[i.date] = currentList.plus(i)
         }
-        for (date in transactionsMap.keys) {
+        for(date in transactionsMap.keys) {
             segmentedList.plusElement(
                 TransactionDateItem(
                     getDateFromString(date)
                 )
             )
-            for (transaction in transactionsMap[date]!!) {
+            for(transaction in transactionsMap[date]!!) {
                 segmentedList.plusElement(
                     TransactionItem(
                         transaction

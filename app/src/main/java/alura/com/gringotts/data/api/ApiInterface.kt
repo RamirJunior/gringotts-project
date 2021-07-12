@@ -1,7 +1,7 @@
 package alura.com.gringotts.data.api
 
 import alura.com.gringotts.data.models.home.HomeResponse
-import alura.com.gringotts.data.models.home.TransactionResponse
+import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
 import retrofit2.Response
@@ -16,12 +16,12 @@ interface ApiInterface {
         @Body login: LoginPayload
     ): Response<LoginResponse>
 
-    @GET("extract?start={initialDate}&end={finalDate}")
+    @GET("extract")
     suspend fun transactions(
-        @Path("initialDate") initialDate: String,
-        @Path("finalDate") finalDate: String,
+        @Query("start") initialDate: String,
+        @Query("end") finalDate: String,
         @Header("token") token: String
-    ): Response<TransactionResponse>
+    ): Response<List<Transaction>>
 
     @GET("home")
     suspend fun home(

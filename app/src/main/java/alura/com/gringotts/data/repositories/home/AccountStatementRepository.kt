@@ -1,8 +1,8 @@
-package alura.com.gringotts.data.repositories
+package alura.com.gringotts.data.repositories.home
 
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
-import alura.com.gringotts.data.model.TransactionResponse
+import alura.com.gringotts.data.models.home.TransactionResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response

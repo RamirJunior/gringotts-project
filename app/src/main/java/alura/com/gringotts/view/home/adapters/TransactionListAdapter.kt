@@ -1,7 +1,7 @@
 package alura.com.gringotts.view.home.adapters
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.model.Transaction
+import alura.com.gringotts.data.models.home.Transaction
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View

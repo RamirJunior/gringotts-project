@@ -1,9 +1,9 @@
 package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.model.Balance
-import alura.com.gringotts.data.model.Benefit
-import alura.com.gringotts.data.repositories.HomeRepository
+import alura.com.gringotts.data.models.home.Balance
+import alura.com.gringotts.data.models.home.Benefit
+import alura.com.gringotts.data.repositories.home.HomeRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

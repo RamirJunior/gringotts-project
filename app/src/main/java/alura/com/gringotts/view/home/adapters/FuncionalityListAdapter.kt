@@ -1,7 +1,7 @@
 package alura.com.gringotts.view.adapters
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.model.FuncionalityItem
+import alura.com.gringotts.data.models.home.FuncionalityItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

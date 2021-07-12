@@ -1,4 +1,4 @@
-package alura.com.gringotts.data.model
+package alura.com.gringotts.data.models.home
 
 import androidx.annotation.DrawableRes
 

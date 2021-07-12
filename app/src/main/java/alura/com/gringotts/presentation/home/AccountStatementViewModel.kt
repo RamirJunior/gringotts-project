@@ -1,10 +1,10 @@
 package alura.com.gringotts.presentation.home
 
-import alura.com.gringotts.data.model.Transaction
-import alura.com.gringotts.data.model.TransactionDateItem
-import alura.com.gringotts.data.model.TransactionItem
-import alura.com.gringotts.data.model.TransactionListItem
-import alura.com.gringotts.data.repositories.AccountStatementRepository
+import alura.com.gringotts.data.models.home.Transaction
+import alura.com.gringotts.data.models.home.TransactionDateItem
+import alura.com.gringotts.data.models.home.TransactionItem
+import alura.com.gringotts.data.models.home.TransactionListItem
+import alura.com.gringotts.data.repositories.home.AccountStatementRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,13 +46,13 @@ class AccountStatementViewModel
             val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
             transactionsMap[i.date] = currentList.plus(i)
         }
-        for(date in transactionsMap.keys) {
+        for (date in transactionsMap.keys) {
             segmentedList.plusElement(
                 TransactionDateItem(
                     getDateFromString(date)
                 )
             )
-            for(transaction in transactionsMap[date]!!) {
+            for (transaction in transactionsMap[date]!!) {
                 segmentedList.plusElement(
                     TransactionItem(
                         transaction

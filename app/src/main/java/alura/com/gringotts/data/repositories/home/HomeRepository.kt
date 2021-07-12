@@ -1,9 +1,9 @@
-package alura.com.gringotts.data.repositories
+package alura.com.gringotts.data.repositories.home
 
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
-import alura.com.gringotts.data.model.HomeResponse
-import alura.com.gringotts.data.model.User
+import alura.com.gringotts.data.models.home.HomeResponse
+import alura.com.gringotts.data.models.initial.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,9 +1,9 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.model.HomeResponse
-import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.LoginResponse
-import alura.com.gringotts.data.model.TransactionResponse
+import alura.com.gringotts.data.models.home.HomeResponse
+import alura.com.gringotts.data.models.home.TransactionResponse
+import alura.com.gringotts.data.models.initial.LoginPayload
+import alura.com.gringotts.data.models.initial.LoginResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

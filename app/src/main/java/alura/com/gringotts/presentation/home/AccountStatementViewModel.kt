@@ -1,4 +1,5 @@
 package alura.com.gringotts.presentation.home
+
 import AccountStatementRepository
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
@@ -45,13 +46,13 @@ class AccountStatementViewModel
             val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
             transactionsMap[i.date] = currentList.plus(i)
         }
-        for(date in transactionsMap.keys) {
+        for (date in transactionsMap.keys) {
             segmentedList.plusElement(
                 TransactionDateItem(
                     getDateFromString(date)
                 )
             )
-            for(transaction in transactionsMap[date]!!) {
+            for (transaction in transactionsMap[date]!!) {
                 segmentedList.plusElement(
                     TransactionItem(
                         transaction

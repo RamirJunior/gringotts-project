@@ -1,8 +1,8 @@
 package alura.com.gringotts.data
 
-import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.Token
-import alura.com.gringotts.data.model.User
+import alura.com.gringotts.data.models.initial.LoginPayload
+import alura.com.gringotts.data.models.initial.Token
+import alura.com.gringotts.data.models.initial.User
 import android.content.SharedPreferences
 import com.google.gson.Gson
 

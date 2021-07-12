@@ -61,8 +61,8 @@
                 android:text="@string/txt_entradas"
                 android:textColor="@color/white"
                 app:chipBackgroundColor="@color/grayHigh"
-                app:chipIconTint="@color/white"
                 app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+                app:chipIconTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -74,8 +74,8 @@
                 android:text="@string/txt_saidas"
                 android:textColor="@color/white"
                 app:chipBackgroundColor="@color/grayHigh"
-                app:chipIconTint="@color/white"
                 app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+                app:chipIconTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/chip_input"
                 app:layout_constraintTop_toTopOf="@+id/chip_input" />
@@ -85,11 +85,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_trnasactions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycler_view_trnasactions"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

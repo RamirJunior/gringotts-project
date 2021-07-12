@@ -9,7 +9,7 @@
         <item name="colorSecondary">@color/black</item>
         <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/teal_200</item>
-        <item name="colorSurface">@color/gold</item>
+        <item name="colorSurface">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/grayBack</item>
         <!-- Customize your theme here. -->

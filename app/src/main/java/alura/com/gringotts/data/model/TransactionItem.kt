@@ -6,10 +6,11 @@ class TransactionItem(
     val type: String,
     val date: String,
     val value: String,
-    val typeDescription: String
+    val typeDescription: String,
+    newItemType: Int
 ) : TransactionListItem() {
-    override fun getType(): Int {
-        TODO("Not yet implemented")
+    private val itemType = newItemType
+    override fun getItemType(): Int {
+        return itemType
     }
-
 }

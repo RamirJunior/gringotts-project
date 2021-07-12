@@ -1,6 +1,7 @@
 package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.data.model.Transaction
+import alura.com.gringotts.data.model.TransactionListItem
 import alura.com.gringotts.data.repositories.AccountStatementRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,6 +37,18 @@ class AccountStatementViewModel
         }
     }
 
+    fun mapTransactions(response: List<Transaction>) {
+        val transactionsMap = TreeMap<String, List<Transaction>>()
+        val segmentedList: List<TransactionListItem>
+        for (i in response) {
+            val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
+            transactionsMap[i.date] = currentList.plus(i)
+        }
+        for(date in transactionsMap.keys) {
+
+        }
+    }
+
     fun getCalendar() {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
@@ -45,6 +58,11 @@ class AccountStatementViewModel
     private fun formatDate(date: Date): String {
         val formatter = SimpleDateFormat(DATE_FORMAT, Locale.US)
         return formatter.format(date)
+    }
+
+    private fun getDateFromString(dateString: String): Date {
+        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.US)
+        return formatter.parse(dateString)!!
     }
 
     companion object {

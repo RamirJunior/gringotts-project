@@ -1,15 +1,9 @@
 package alura.com.gringotts.data.model
 
 class TransactionItem(
-    val status: String,
-    val time: String,
-    val type: String,
-    val date: String,
-    val value: String,
-    val typeDescription: String,
-    newItemType: Int
+    val transaction: Transaction,
 ) : TransactionListItem() {
-    private val itemType = newItemType
+    private val itemType = TRANSACTION_ITEM
     override fun getItemType(): Int {
         return itemType
     }

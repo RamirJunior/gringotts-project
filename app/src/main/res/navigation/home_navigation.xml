@@ -23,4 +23,5 @@
         android:name="alura.com.gringotts.view.home.fragments.FilterFragment"
         android:label="FilterFragment"
         tools:layout="@layout/filter_fragment" />
+
 </navigation>

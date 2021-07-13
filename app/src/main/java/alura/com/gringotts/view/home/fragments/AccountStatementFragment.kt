@@ -53,22 +53,4 @@ class AccountStatementFragment : Fragment() {
             accountStatementViewModel.setAllTransactions()
         }
     }
-
-    private fun allPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
-    }
-
-    private fun receivablesPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
-    }
-
-    private fun withdrawPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
-    }
 }

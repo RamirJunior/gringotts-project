@@ -1,10 +1,11 @@
 package alura.com.gringotts.presentation.home
 
+import AccountStatementRepository
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import alura.com.gringotts.data.repositories.home.AccountStatementRepository
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,11 +18,19 @@ import java.util.*
 class AccountStatementViewModel
     (private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
 
-    private var currentTransactions: List<Transaction> = listOf()
+    private lateinit var transactionList: List<Transaction>
+    private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
+    val currentTransactionsList: LiveData<List<TransactionListItem>> = _currentTransactionsList
     private val _accountStatementError = MutableLiveData<String>()
     val accountStatementError: LiveData<String> = _accountStatementError
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
 
-    private suspend fun getAccountStatement(
+    init {
+        getAccountStatement(DEFAULT_RANGE)
+    }
+
+    private fun getTransactionList(
         initialDate: String,
         finalDate: String,
     ) {
@@ -29,8 +38,11 @@ class AccountStatementViewModel
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                currentTransactions = response.transactions
+                transactionList = response
+                _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
+                onlyEntries()
             } catch (e: Exception) {
+                Log.e("aa", "ssss")
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
                 else _accountStatementError
@@ -39,21 +51,21 @@ class AccountStatementViewModel
         }
     }
 
-    fun getTransactionsSegmentedList(response: List<Transaction>): List<TransactionListItem> {
+    private fun getTransactionsSegmentedList(response: List<Transaction>): List<TransactionListItem> {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        val segmentedList: List<TransactionListItem> = listOf()
+        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
-            val currentList = transactionsMap[i.date] ?: listOf<Transaction>()
+            val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
         for (date in transactionsMap.keys) {
-            segmentedList.plusElement(
+            segmentedList.add(
                 TransactionDateItem(
                     getDateFromString(date)
                 )
             )
             for (transaction in transactionsMap[date]!!) {
-                segmentedList.plusElement(
+                segmentedList.add(
                     TransactionItem(
                         transaction
                     )
@@ -63,10 +75,11 @@ class AccountStatementViewModel
         return segmentedList
     }
 
-    fun getCalendar() {
+    private fun getAccountStatement(range: Int) {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
-        sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - 7 * MILLIS_DAY)
+        sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - range * MILLIS_DAY)
+        getTransactionList(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
     }
 
     private fun formatDate(date: Date): String {
@@ -79,9 +92,24 @@ class AccountStatementViewModel
         return formatter.parse(dateString)!!
     }
 
+    fun changeRange(newRange: Int) {
+        getAccountStatement(newRange)
+    }
+
+    fun onlyEntries() {
+        var filteredTransactions = mutableListOf<Transaction>()
+        for (transaction in transactionList) {
+            Log.e("aaaaa", transaction.status)
+            if (transaction.type == PAYMENT_FILTER) {
+
+            }
+        }
+    }
+
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
+        private const val DEFAULT_RANGE: Int = 7
+        private const val PAYMENT_FILTER: String = "Pagamento"
     }
-
 }

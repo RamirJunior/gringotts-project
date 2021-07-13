@@ -23,5 +23,4 @@
     <include app:graph="@navigation/login_navigation" />
     <include app:graph="@navigation/onboarding_navigation" />
 
-
 </navigation>

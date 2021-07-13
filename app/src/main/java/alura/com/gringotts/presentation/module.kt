@@ -1,10 +1,12 @@
 package alura.com.gringotts.presentation
 
+import AccountStatementRepository
 import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.SessionManagerImpl
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
+import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.presentation.initial.LoginViewModel
 import alura.com.gringotts.presentation.initial.OnboardingViewModel
@@ -28,6 +30,9 @@ val initialModule = module {
     viewModel {
         HomeViewModel(get())
     }
+    viewModel {
+        AccountStatementViewModel(get())
+    }
     single<SessionManager> {
         SessionManagerImpl(get())
     }
@@ -39,6 +44,9 @@ val initialModule = module {
     }
     factory {
         HomeRepository(get(), get())
+    }
+    factory {
+        AccountStatementRepository(get(), get())
     }
     factory {
         ApiInterface.create()

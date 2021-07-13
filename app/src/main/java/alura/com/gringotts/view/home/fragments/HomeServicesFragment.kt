@@ -3,6 +3,7 @@ package alura.com.gringotts.view.home.fragments
 import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.FuncionalityItem
 import alura.com.gringotts.databinding.HomeServicesLayoutBinding
+import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.view.adapters.FuncionalityListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeServicesFragment : Fragment() {
 
+    private val homeServicesViewModel by viewModel<HomeServicesViewModel>()
     private var _binding: HomeServicesLayoutBinding? = null
     private val binding: HomeServicesLayoutBinding get() = _binding!!
 
@@ -30,7 +33,19 @@ class HomeServicesFragment : Fragment() {
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.recyclerView.adapter =
-            FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")))
+            FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")),
+                object : FuncionalityListAdapter.OnSelectOnClickListener {
+                    override fun onSelect(position: Int) {
+                        if (getItensByPosition(requireArguments().getInt("position")).get(position).title == "Pix") {
+                            homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
+                                //findNavController().navigate(R.id.action_homeFragment_to_pixFragment2)
+                            }
+                            homeServicesViewModel.goToPixOnboarding.observe(viewLifecycleOwner) {
+                                //findNavController().navigate(R.id.action_homeFragment_to_onboardingPixFragment)
+                            }
+                        }
+                    }
+                })
     }
 
     private fun getItensByPosition(position: Int): List<FuncionalityItem> {

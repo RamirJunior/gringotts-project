@@ -14,15 +14,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-
     private val _benefits = MutableLiveData<List<Benefit>>()
     val benefits: LiveData<List<Benefit>> = _benefits
-
-    private lateinit var balanceValue: Balance
-
     private val _visibilityId = MutableLiveData<Int>()
     val visibilityId: LiveData<Int> = _visibilityId
-
     private val _balance = MutableLiveData<String>()
     val balance: LiveData<String> = _balance
     private val _receivable = MutableLiveData<String>()
@@ -31,6 +26,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     val userName: LiveData<String> = _userName
     private val _apiError = MutableLiveData<String>()
     val apiError: LiveData<String> = _apiError
+
+    private lateinit var balanceValue: Balance
 
     init {
         _loading.postValue(true)

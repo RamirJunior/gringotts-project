@@ -10,7 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
+class FuncionalityListAdapter(
+    private val list: List<FuncionalityItem>,
+    private val listener: OnSelectOnClickListener
+) :
     RecyclerView.Adapter<FuncionalityListAdapter.FuncionalityItemHolder>() {
 
     override fun onCreateViewHolder(
@@ -24,6 +27,7 @@ class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
 
     override fun onBindViewHolder(holder: FuncionalityItemHolder, position: Int) {
         holder.bind(list[position])
+        holder.itemView.setOnClickListener { listener.onSelect(position) }
     }
 
     override fun getItemCount(): Int {
@@ -40,4 +44,7 @@ class FuncionalityListAdapter(private val list: List<FuncionalityItem>) :
         }
     }
 
+    interface OnSelectOnClickListener {
+        fun onSelect(position: Int)
+    }
 }

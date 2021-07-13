@@ -1,5 +1,6 @@
 package alura.com.gringotts.view.home.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.Filter
 import alura.com.gringotts.databinding.FilterFragmentBinding
 import alura.com.gringotts.view.home.adapters.FilterListAdapter
@@ -51,11 +52,11 @@ class FilterFragment : Fragment() {
 
     private fun transactionsDaysFilter(): List<Filter> {
         return listOf(
-            Filter("Ùltimos 3 dias"),
-            Filter("Ùltimos 7 dias"),
-            Filter("Ùltimos 30 dias"),
-            Filter("Ùltimos 60 dias"),
-            Filter("Ùltimos 120 dias")
+            Filter(getString(R.string.tres_dias)),
+            Filter(getString(R.string.sete_dias)),
+            Filter(getString(R.string.trinta_dias)),
+            Filter(getString(R.string.sessenta_dias)),
+            Filter(getString(R.string.centoevinte_dias))
         )
     }
 

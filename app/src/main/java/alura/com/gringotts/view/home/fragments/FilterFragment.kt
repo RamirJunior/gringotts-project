@@ -45,6 +45,7 @@ class FilterFragment : Fragment() {
                 val intent = Intent(activity, FilterFragment::class.java)
                 resultLauncher.launch(intent)
             }
+
         }
         binding.filterRecyclerView.adapter =
             FilterListAdapter(transactionsDaysFilter())

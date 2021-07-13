@@ -42,7 +42,7 @@ class FilterFragment : Fragment() {
                 }
 
             fun openSomeActivityForResult() {
-                val intent = Intent(requireContext(), FilterFragment::class.java)
+                val intent = Intent(activity, FilterFragment::class.java)
                 resultLauncher.launch(intent)
             }
         }

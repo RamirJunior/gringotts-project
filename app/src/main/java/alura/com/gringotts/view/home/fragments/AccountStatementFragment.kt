@@ -1,7 +1,6 @@
 package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.models.home.TransactionListItem
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import android.os.Bundle
@@ -51,6 +50,9 @@ class AccountStatementFragment : Fragment() {
         }
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
+        }
+        binding.transactionsFilter.setOnClickListener {
+
         }
     }
 }

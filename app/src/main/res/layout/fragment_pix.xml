@@ -26,28 +26,28 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
+            android:text="Compartilhe suas chaves ou seus dados bancários para receber transferências grátis."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="61dp"
+            android:layout_height="21dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
+            android:text="Gerenciar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="142dp"
+            android:layout_height="23dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            android:text="Minhas chaves ativas"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
@@ -64,7 +64,12 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:text="TextView"
+            android:gravity="center"
+            android:text="Vender"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,11 +151,11 @@
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="247dp"
-                android:layout_height="46dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="40dp"
-                android:text="TextView" />
+                android:text="Fazer transferência por PIX" />
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -160,6 +165,15 @@
                 android:layout_marginTop="35dp"
                 android:background="@color/white"
                 app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="181dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="60dp"
+                android:text="Transfira utilizando a chave ou os dados bancários"
+                android:textSize="12sp" />
 
         </androidx.cardview.widget.CardView>
 

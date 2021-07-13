@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,10 +39,10 @@ class HomeServicesFragment : Fragment() {
                     override fun onSelect(position: Int) {
                         if (getItensByPosition(requireArguments().getInt("position")).get(position).title == "Pix") {
                             homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
-                                //findNavController().navigate(R.id.action_homeFragment_to_pixFragment2)
+                                findNavController().navigate(R.id.)
                             }
                             homeServicesViewModel.goToPixOnboarding.observe(viewLifecycleOwner) {
-                                //findNavController().navigate(R.id.action_homeFragment_to_onboardingPixFragment)
+                                findNavController().navigate(R.id.)
                             }
                         }
                     }

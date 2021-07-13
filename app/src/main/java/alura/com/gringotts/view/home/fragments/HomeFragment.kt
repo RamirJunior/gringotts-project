@@ -80,6 +80,8 @@ class HomeFragment : Fragment() {
             lifecycle
         )
 
+        binding.pagerFuncionalidades.adapter = adapter
+
         val tabLayoutMediator = TabLayoutMediator(
             binding.tabLayoutFuncionalidades,
             binding.pagerFuncionalidades

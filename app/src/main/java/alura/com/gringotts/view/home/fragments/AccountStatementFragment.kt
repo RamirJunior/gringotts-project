@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountStatementFragment : Fragment() {
@@ -31,6 +32,16 @@ class AccountStatementFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingAccountStatement.isVisible = it
+        }
+        accountStatementViewModel.accountStatementError.observe(viewLifecycleOwner){
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { _, _ -> }
+                    .show()
+            }
         }
         binding.transactionsFilter.setOnClickListener {
             findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)

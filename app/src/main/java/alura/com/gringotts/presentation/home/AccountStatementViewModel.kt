@@ -5,7 +5,6 @@ import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -39,10 +38,10 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
-                _currentTransactionsList.postValue(getTransactionsSegmentedList(transactionList).toList())
-                onlyEntries()
+                _currentTransactionsList.postValue(
+                    getTransactionsSegmentedList(transactionList)
+                )
             } catch (e: Exception) {
-                Log.e("aa", "ssss")
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
                 else _accountStatementError
@@ -51,7 +50,8 @@ class AccountStatementViewModel
         }
     }
 
-    private fun getTransactionsSegmentedList(response: List<Transaction>): List<TransactionListItem> {
+    private fun getTransactionsSegmentedList
+                (response: List<Transaction>): List<TransactionListItem> {
         val transactionsMap = TreeMap<String, List<Transaction>>()
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
@@ -72,7 +72,7 @@ class AccountStatementViewModel
                 )
             }
         }
-        return segmentedList
+        return segmentedList.toList()
     }
 
     private fun getAccountStatement(range: Int) {
@@ -96,20 +96,24 @@ class AccountStatementViewModel
         getAccountStatement(newRange)
     }
 
-    fun onlyEntries() {
-        var filteredTransactions = mutableListOf<Transaction>()
-        for (transaction in transactionList) {
-            Log.e("aaaaa", transaction.status)
-            if (transaction.type == PAYMENT_FILTER) {
+    fun setAllTransactions(){
+        getTransactionsSegmentedList(transactionList)
+    }
 
+    fun setOnlyEntries() {
+        val filteredTransactions = mutableListOf<Transaction>()
+        for (transaction in transactionList) {
+            if (transaction.type == PAYMENT_FILTER) {
+                filteredTransactions.add(transaction)
             }
         }
+        getTransactionsSegmentedList(filteredTransactions.toList())
     }
 
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
-        private const val DEFAULT_RANGE: Int = 7
+        private const val DEFAULT_RANGE: Int = 3
         private const val PAYMENT_FILTER: String = "Pagamento"
     }
 }

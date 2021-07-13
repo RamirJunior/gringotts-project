@@ -34,6 +34,12 @@ class AccountStatementFragment : Fragment() {
         binding.transactionsFilter.setOnClickListener {
             findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
         }
+        binding.chipInput.setOnClickListener {
+            accountStatementViewModel.setOnlyEntries()
+        }
+        binding.chipAll.setOnClickListener {
+            accountStatementViewModel.setAllTransactions()
+        }
     }
 
     private fun allPage(): List<TransactionListItem> {

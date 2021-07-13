@@ -5,7 +5,7 @@ import alura.com.gringotts.data.models.home.Filter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.CheckedTextView
 import androidx.recyclerview.widget.RecyclerView
 
 class FilterListAdapter(private val filter: List<Filter>) :
@@ -17,10 +17,6 @@ class FilterListAdapter(private val filter: List<Filter>) :
         return FilterViewHolder(view)
     }
 
-    companion object {
-        private const val POSITION = "position"
-    }
-
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         holder.bind(filter[position])
     }
@@ -30,7 +26,7 @@ class FilterListAdapter(private val filter: List<Filter>) :
     }
 
     class FilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val cardText: TextView = itemView.findViewById(R.id.filters_filter)
+        private val cardText: CheckedTextView = itemView.findViewById(R.id.filters_filter)
         fun bind(filter: Filter) {
             cardText.text = filter.text
         }

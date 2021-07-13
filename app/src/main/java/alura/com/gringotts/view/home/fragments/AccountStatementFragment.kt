@@ -1,6 +1,7 @@
 package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.R
+import alura.com.gringotts.data.models.home.TransactionListItem
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
 import android.os.Bundle
@@ -33,6 +34,23 @@ class AccountStatementFragment : Fragment() {
         binding.transactionsFilter.setOnClickListener {
             findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
         }
+    }
 
+    private fun allPage(): List<TransactionListItem> {
+        return listOf(
+            //Provavelmente n é transaction o tipo
+        )
+    }
+
+    private fun receivablesPage(): List<TransactionListItem> {
+        return listOf(
+            //Provavelmente n é transaction o tipo
+        )
+    }
+
+    private fun withdrawPage(): List<TransactionListItem> {
+        return listOf(
+            //Provavelmente n é transaction o tipo
+        )
     }
 }

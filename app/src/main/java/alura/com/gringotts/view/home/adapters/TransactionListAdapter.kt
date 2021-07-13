@@ -30,14 +30,14 @@
 //        }
 //    }
 //
-////    override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-////        val type = getItemViewType(position)
-////        if (type == TransactionListItem.TRANSACTION_HEADER){
-////            val header: TransactionDateItem = transaction[position] as TransactionDateItem
-////            holder.bind(header)
-////        }
-////        holder.bind(transaction[position])
-////    }
+//    override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
+//        val type = getItemViewType(position)
+//        if (type == TransactionListItem.TRANSACTION_HEADER){
+//            val header: TransactionDateItem = transaction[position] as TransactionDateItem
+//            holder.bind(header)
+//        }
+//        holder.bind(transaction[position])
+//    }
 //
 //    override fun getItemCount(): Int {
 //        return transaction.size

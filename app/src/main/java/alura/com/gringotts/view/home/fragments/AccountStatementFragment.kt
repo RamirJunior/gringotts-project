@@ -43,7 +43,6 @@ class AccountStatementFragment : Fragment() {
             }
         }
         binding.transactionsFilter.setOnClickListener {
-            // findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
             startActivityForResult(
                 Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
             )
@@ -54,15 +53,7 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
-//        override fun initInstance(){
-//            binding.transactionsFilter.setOnClickListener {
-//                override fun onClick(view: View) {
-//                    val intent = Intent(this, FilterFragment::class.java)
-//                    startActivityForResult(intent, REQUEST_CODE)
-//                }
-//            }
-//
-//        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

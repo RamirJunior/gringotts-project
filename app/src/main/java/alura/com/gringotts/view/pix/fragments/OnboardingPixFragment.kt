@@ -28,10 +28,16 @@ class OnboardingPixFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeServicesViewModel.onboardingPixFinished()
-        binding.pixOnboardingContinue.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixActivity)
+
+        homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixFragment2)
         }
+
+        binding.pixOnboardingContinue.setOnClickListener {
+            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixFragment2)
+            homeServicesViewModel.onboardingPixFinished()
+        }
+
     }
 
 }

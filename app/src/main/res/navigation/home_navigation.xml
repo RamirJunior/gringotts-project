@@ -10,8 +10,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_pix_navigation"
-            app:destination="@id/pix_navigation" />
+            android:id="@+id/action_homeFragment_to_pixActivity"
+            app:destination="@id/pixActivity" />
     </fragment>
     <fragment
         android:id="@+id/accountStatementFragment"
@@ -27,6 +27,9 @@
         android:name="alura.com.gringotts.view.home.fragments.FilterFragment"
         android:label="FilterFragment"
         tools:layout="@layout/filter_fragment" />
-    <include app:graph="@navigation/pix_navigation" />
+    <activity
+        android:id="@+id/pixActivity"
+        android:name="alura.com.gringotts.view.pix.PixActivity"
+        android:label="PixActivity" />
 
 </navigation>

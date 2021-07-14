@@ -13,5 +13,5 @@ class PixActivity : AppCompatActivity() {
         binding = ActivityPixBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
-
+    
 }

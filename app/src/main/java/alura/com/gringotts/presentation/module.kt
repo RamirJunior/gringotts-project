@@ -7,7 +7,6 @@ import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
-import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.presentation.initial.LoginViewModel
 import alura.com.gringotts.presentation.initial.OnboardingViewModel
@@ -34,9 +33,6 @@ val initialModule = module {
     }
     viewModel {
         AccountStatementViewModel(get())
-    }
-    viewModel {
-        HomeServicesViewModel(get())
     }
     viewModel {
         OnboardingPixViewModel(get())

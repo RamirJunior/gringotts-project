@@ -33,10 +33,10 @@ class HomeServicesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
-            findNavController().navigate(R.id.pixActivity)
+            findNavController().navigate(R.id.action_homeFragment_to_pix_navigation)
         }
         homeServicesViewModel.goToPixOnboarding.observe(viewLifecycleOwner) {
-            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixActivity)
+            findNavController().navigate(R.id.action_homeFragment_to_pix_navigation)
         }
 
         requireArguments().getInt("position")

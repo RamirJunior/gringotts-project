@@ -11,7 +11,7 @@
         android:layout_height="70dp"
         android:elevation="8dp"
         android:padding="16dp"
-        app:singleSelection="false"
+        app:singleSelection="true"
         tools:layout_editor_absoluteY="44dp">
 
         <com.google.android.material.chip.Chip
@@ -19,12 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="2dp"
+            style="@style/ThemeOverlay.MyApp.Chip.Choice"
             android:text="@string/txt_todas"
-            android:textColor="@color/grayHigh"
             android:textStyle="bold"
-            app:chipBackgroundColor="@color/white"
             app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-            app:chipIconTint="@color/grayHigh"
+            app:chipIconTint="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/chip_input"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
@@ -34,8 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_entradas"
-            android:textColor="@color/white"
-            app:chipBackgroundColor="@color/grayHigh"
+            style="@style/ThemeOverlay.MyApp.Chip.Choice"
             app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
             app:chipIconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,8 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_saidas"
-            android:textColor="@color/white"
-            app:chipBackgroundColor="@color/grayHigh"
+            style="@style/ThemeOverlay.MyApp.Chip.Choice"
             app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
             app:chipIconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

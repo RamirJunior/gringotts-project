@@ -96,7 +96,58 @@
             android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_pagar_com_qr_code" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/golden_rounded_corner"
+                android:text="GRÁTIS"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="Pagar com QR Code" />
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="370dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="181dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="60dp"
+                android:text="Leia o QR Code para realizar o pagamento."
+                android:textSize="12sp" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
@@ -178,7 +229,7 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="60dp"
-                android:text="Transfira utilizando a chave ou os dados bancários"
+                android:text="Transfira utilizando a chave ou os dados bancários."
                 android:textSize="12sp" />
 
         </androidx.cardview.widget.CardView>

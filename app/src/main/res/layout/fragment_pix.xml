@@ -64,7 +64,58 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_adicionar_dinheiro" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/golden_rounded_corner"
+                android:text="GRÁTIS"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="Pagar com PIX Copia e Cola" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="370dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="181dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="60dp"
+                android:text="Cole o código do QR que você copiou para pagar."
+                android:textSize="12sp" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView2"
@@ -88,7 +139,46 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_vender_com_qr_code" />
+
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="Vender com QR Code" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="370dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="181dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="60dp"
+                android:text="Receba na hora com QR Code Pix com taxa de apenas 1,69%."
+                android:textSize="12sp" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"

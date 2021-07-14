@@ -14,7 +14,7 @@ class HomeServicesViewModel(private val sessionManager: SessionManager) : ViewMo
     private val _goToPix = MutableLiveData<Boolean>()
     val goToPix: LiveData<Boolean> = _goToPix
 
-    init {
+    fun pixClicked() {
         viewModelScope.launch {
             if (sessionManager.getOnboardingPixFinished()) {
                 _goToPix.postValue(true)

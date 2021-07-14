@@ -30,7 +30,7 @@ class OnboardingPixFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeServicesViewModel.onboardingPixFinished()
         binding.pixOnboardingContinue.setOnClickListener {
-            findNavController().navigate(R.id.)
+            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixActivity)
         }
     }
 

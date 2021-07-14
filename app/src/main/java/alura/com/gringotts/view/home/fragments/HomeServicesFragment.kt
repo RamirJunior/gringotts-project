@@ -31,19 +31,23 @@ class HomeServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.pixActivity)
+        }
+        homeServicesViewModel.goToPixOnboarding.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixActivity)
+        }
+
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.recyclerView.adapter =
-            FuncionalityListAdapter(getItensByPosition(requireArguments().getInt("position")),
+            FuncionalityListAdapter(
+                getItensByPosition(requireArguments().getInt("position")),
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
                         if (getItensByPosition(requireArguments().getInt("position")).get(position).title == "Pix") {
-                            homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
-                                findNavController().navigate(R.id.)
-                            }
-                            homeServicesViewModel.goToPixOnboarding.observe(viewLifecycleOwner) {
-                                findNavController().navigate(R.id.)
-                            }
+                            homeServicesViewModel.pixClicked()
                         }
                     }
                 })

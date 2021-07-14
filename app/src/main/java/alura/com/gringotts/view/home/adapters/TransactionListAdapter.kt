@@ -45,29 +45,30 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
     }
 
     class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardTransactionStatus: TextView =
-            itemView.findViewById(R.id.tv_date)
+        private val day: TextView = itemView.findViewById(R.id.textview_day)
+        private val month: TextView = itemView.findViewById(R.id.textview_mounth)
 
         fun bindHeader(transaction: TransactionDateItem) {
-            cardTransactionStatus.text = transaction.toString()
+            day.text = transaction.day
+            month.text = transaction.month
         }
     }
 
     class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardTransactionStatus: ImageView =
-            itemView.findViewById(R.id.transaction_status)
-        val cardTransactionPayment: TextView =
-            itemView.findViewById(R.id.transaction_payment)
-        val cardTransactionType: TextView =
-            itemView.findViewById(R.id.transaction_sale_type)
-        val cardTransactionValue: TextView =
-            itemView.findViewById(R.id.transaction_value)
+        private val cardTransactionStatus: ImageView =
+            itemView.findViewById(R.id.textview_status)
+        private val cardTransactionTypeDescription: TextView =
+            itemView.findViewById(R.id.textview_typedescription)
+        private val cardTransactionType: TextView =
+            itemView.findViewById(R.id.textview_type)
+        private val cardTransactionValue: TextView =
+            itemView.findViewById(R.id.textview_value)
 
-        //private val cardTransactionIcon: ImageView = itemView.findViewById(R.id.transaction_icon)
         fun bindList(transaction: TransactionItem) {
-            // preencher lista do cardview
+            // cardTransactionStatus ...
+            cardTransactionValue.text = transaction.transaction.value
+            cardTransactionType.text = transaction.transaction.type
+            cardTransactionTypeDescription.text = transaction.transaction.typeDescription
         }
     }
-
-
 }

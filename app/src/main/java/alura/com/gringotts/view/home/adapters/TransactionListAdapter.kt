@@ -4,6 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,14 +20,14 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == TransactionListItem.TRANSACTION_HEADER) {
+        return if (viewType == TransactionListItem.TRANSACTION_HEADER) {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.date_item, parent, false)
-            return DateViewHolder(view)
+            DateViewHolder(view)
         } else {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.transaction_item, parent, false)
-            return TransactionViewHolder(view)
+            TransactionViewHolder(view)
         }
     }
 
@@ -57,6 +58,8 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
     class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val cardTransactionStatus: ImageView =
             itemView.findViewById(R.id.textview_status)
+        private val cardTime: TextView =
+            itemView.findViewById(R.id.textview_time)
         private val cardTransactionTypeDescription: TextView =
             itemView.findViewById(R.id.textview_typedescription)
         private val cardTransactionType: TextView =
@@ -65,10 +68,11 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
             itemView.findViewById(R.id.textview_value)
 
         fun bindList(transaction: TransactionItem) {
-            // cardTransactionStatus ...
+            Log.e("aaa", transaction.transaction.toString())
             cardTransactionValue.text = transaction.transaction.value
             cardTransactionType.text = transaction.transaction.type
             cardTransactionTypeDescription.text = transaction.transaction.typeDescription
+            cardTime.text = transaction.transaction.time
         }
     }
 }

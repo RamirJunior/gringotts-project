@@ -29,6 +29,7 @@
             android:name=".view.home.HomeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".view.home.FilterActivity" />
     </application>
 
 </manifest>

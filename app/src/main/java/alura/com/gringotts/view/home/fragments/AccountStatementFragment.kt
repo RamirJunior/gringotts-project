@@ -1,15 +1,15 @@
 package alura.com.gringotts.view.home.fragments
 
-import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
+import alura.com.gringotts.view.home.FilterActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,7 +43,10 @@ class AccountStatementFragment : Fragment() {
             }
         }
         binding.transactionsFilter.setOnClickListener {
-            findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
+            // findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
+            startActivityForResult(
+                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
+            )
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -51,8 +54,25 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
-        binding.transactionsFilter.setOnClickListener {
+//        override fun initInstance(){
+//            binding.transactionsFilter.setOnClickListener {
+//                override fun onClick(view: View) {
+//                    val intent = Intent(this, FilterFragment::class.java)
+//                    startActivityForResult(intent, REQUEST_CODE)
+//                }
+//            }
+//
+//        }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            //  data!!.getStringExtra("key_filter")
         }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 2
     }
 }

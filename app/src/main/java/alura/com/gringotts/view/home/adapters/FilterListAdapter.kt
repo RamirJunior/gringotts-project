@@ -8,8 +8,17 @@ import android.view.ViewGroup
 import android.widget.CheckedTextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FilterListAdapter(private val filter: List<Filter>) :
+class FilterListAdapter(
+    private val filter: List<Filter>,
+    selectItemFilterListener: selectItemFilterListener
+) :
     RecyclerView.Adapter<FilterListAdapter.FilterViewHolder>() {
+
+    interface selectItemFilterListener {
+        fun returnPosition(position: Int) {
+
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -17,8 +26,15 @@ class FilterListAdapter(private val filter: List<Filter>) :
         return FilterViewHolder(view)
     }
 
+    var positionSelect = 1
+
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         holder.bind(filter[position])
+        holder.itemView.setOnClickListener {
+            positionSelect = position
+
+            // selectItemFilterListener.returnPosition(positionSelect)
+        }
     }
 
     override fun getItemCount(): Int {

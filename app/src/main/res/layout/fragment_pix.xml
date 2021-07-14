@@ -38,16 +38,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-            <ImageView
-                android:id="@+id/imageView7"
+            <ImageButton
+                android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:width="24dp"
-                android:height="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="345dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/white"
                 app:srcCompat="@drawable/ic_compartilhar" />
 
         </androidx.cardview.widget.CardView>

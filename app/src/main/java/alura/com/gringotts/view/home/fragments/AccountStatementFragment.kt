@@ -3,6 +3,7 @@ package alura.com.gringotts.view.home.fragments
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
+import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,5 +55,10 @@ class AccountStatementFragment : Fragment() {
         binding.transactionsFilter.setOnClickListener {
 
         }
+        accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner) {
+            binding.recyclerViewTransactions.adapter = TransactionListAdapter(it)
+        }
+
+
     }
 }

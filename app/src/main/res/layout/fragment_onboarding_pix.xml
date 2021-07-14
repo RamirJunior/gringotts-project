@@ -29,6 +29,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_transferecnia" />
 
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="18dp"
+                android:text="Transferências por chaves grátis e ilimitadas."
+                android:textSize="18sp" />
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -50,6 +59,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_codigo_barras_vector" />
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="18dp"
+                android:text="Pague e receba 24 horas por dia, 7 dias por semana."
+                android:textSize="18sp" />
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -69,6 +87,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_meus_investimentos" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="18dp"
+                android:text="Venda com QR Code Pix por até 1.89% e receba na hora."
+                android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
 

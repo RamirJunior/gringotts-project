@@ -58,9 +58,12 @@ class AccountStatementViewModel
             transactionsMap[i.date] = currentList.plus(i)
         }
         for (date in transactionsMap.keys) {
+            val calendar= Calendar.getInstance()
+            calendar.time = getDateFromString(date)
             segmentedList.add(
                 TransactionDateItem(
-                    getDateFromString(date)
+                    calendar.get(Calendar.DAY_OF_MONTH).toString(),
+                    monthIntToString(calendar.get(Calendar.MONTH))
                 )
             )
             for (transaction in transactionsMap[date]!!) {
@@ -72,6 +75,48 @@ class AccountStatementViewModel
             }
         }
         return segmentedList.toList()
+    }
+
+    fun monthIntToString(monthInt: Int): String{
+        when (monthInt) {
+            1 -> {
+                return "JAN"
+            }
+            2 -> {
+                return "FEV"
+            }
+            3 -> {
+                return "MAR"
+            }
+            4 -> {
+                return "ABR"
+            }
+            5 -> {
+                return "MAI"
+            }
+            6 -> {
+                return "JUN"
+            }
+            7 -> {
+                return "JUL"
+            }
+            8 -> {
+                return "AGO"
+            }
+            9 -> {
+                return "SET"
+            }
+            10 -> {
+                return "OUT"
+            }
+            11 -> {
+                return "NOV"
+            }
+            12 -> {
+                return "DEZ"
+            }
+            else -> return ""
+        }
     }
 
     private fun getAccountStatement(range: Int) {

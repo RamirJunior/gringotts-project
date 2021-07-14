@@ -74,7 +74,7 @@ class HomeServicesFragment : Fragment() {
         return listOf(
             FuncionalityItem("Transferências", R.drawable.ic_transferecnia),
             FuncionalityItem("Cartões", R.drawable.ic_cartoes),
-            FuncionalityItem("Pagar contas", R.drawable.ic_codigo_barras),
+            FuncionalityItem("Pagar contas", R.drawable.ic_codigo_barras_vector),
             FuncionalityItem("Recargas", R.drawable.ic_celular_recarga),
             FuncionalityItem("Depositar", R.drawable.ic_adicionar_dinheiro),
             FuncionalityItem("Pix", R.drawable.logo_pix_final)

@@ -17,7 +17,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_transferecnia" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
@@ -26,7 +38,19 @@
             android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView8" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView8">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_codigo_barras_vector" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView9"
@@ -34,7 +58,19 @@
             android:layout_height="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView5">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_meus_investimentos" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView11"
@@ -54,7 +90,7 @@
             android:layout_height="57dp"
             android:layout_marginStart="56dp"
             android:layout_marginTop="340dp"
-            android:text="Pix é com o banco Gringotts : O banco completo e grátis"
+            android:text="Pix é com o Banco Gringotts: O banco completo e grátis"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"

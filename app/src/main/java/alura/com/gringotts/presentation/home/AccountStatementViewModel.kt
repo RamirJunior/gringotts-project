@@ -77,7 +77,7 @@ class AccountStatementViewModel
         return segmentedList.toList()
     }
 
-    fun monthIntToString(monthInt: Int): String{
+    private fun monthIntToString(monthInt: Int): String{
         when (monthInt) {
             1 -> {
                 return "JAN"

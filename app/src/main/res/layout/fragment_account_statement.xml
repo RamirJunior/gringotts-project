@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chips_group"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:elevation="8dp"
+        android:padding="16dp"
+        app:singleSelection="false"
+        tools:layout_editor_absoluteY="44dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:text="@string/txt_todas"
+            android:textColor="@color/grayHigh"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/white"
+            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+            app:chipIconTint="@color/grayHigh"
+            app:layout_constraintEnd_toStartOf="@+id/chip_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_entradas"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/grayHigh"
+            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+            app:chipIconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_output"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_saidas"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/grayHigh"
+            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+            app:chipIconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chip_input"
+            app:layout_constraintTop_toTopOf="@+id/chip_input" />
+
+    </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_account_statement"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:backgroundTint="@color/grayBack"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,47 +93,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_statement" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="2dp"
-                android:text="@string/txt_todas"
-                android:textColor="@color/grayHigh"
-                android:textStyle="bold"
-                app:chipBackgroundColor="@color/white"
-                app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-                app:chipIconTint="@color/grayHigh"
-                app:layout_constraintEnd_toStartOf="@+id/chip_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_entradas"
-                android:textColor="@color/white"
-                app:chipBackgroundColor="@color/grayHigh"
-                app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-                app:chipIconTint="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_output"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_saidas"
-                android:textColor="@color/white"
-                app:chipBackgroundColor="@color/grayHigh"
-                app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-                app:chipIconTint="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/chip_input"
-                app:layout_constraintTop_toTopOf="@+id/chip_input" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -91,7 +103,9 @@
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <ProgressBar
         android:id="@+id/loading_account_statement"

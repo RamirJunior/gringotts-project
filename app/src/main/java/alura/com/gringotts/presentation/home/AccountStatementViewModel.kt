@@ -74,7 +74,7 @@ class AccountStatementViewModel
                 )
             }
         }
-        return segmentedList.toList()
+        return segmentedList.toList().reversed()
     }
 
     private fun monthIntToString(monthInt: Int): String{

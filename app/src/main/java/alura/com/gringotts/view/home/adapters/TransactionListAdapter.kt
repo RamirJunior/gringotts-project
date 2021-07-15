@@ -84,11 +84,11 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
                     ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24)
                 )
                 cardTransactionStatus.setColorFilter(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+                    ContextCompat.getColor(itemView.context, R.color.grayExpense))
                 cardTransactionType.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+                    ContextCompat.getColor(itemView.context, R.color.grayExpense))
                 cardTransactionValue.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+                    ContextCompat.getColor(itemView.context, R.color.grayExpense))
             } else {
                 cardTransactionStatus.setImageDrawable(
                     ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24)

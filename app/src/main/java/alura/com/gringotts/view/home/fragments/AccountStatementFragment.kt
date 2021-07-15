@@ -63,6 +63,9 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
+        binding.chipOutput.setOnClickListener {
+            accountStatementViewModel.setWithdraw()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

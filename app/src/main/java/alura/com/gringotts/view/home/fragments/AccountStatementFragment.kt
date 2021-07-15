@@ -48,6 +48,10 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
             adapter.setAdapterList(it)
         }
+        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner){
+            binding.recyclerViewTransactions.isVisible = it
+            binding.emptyListContainer.isVisible = !it
+        }
         binding.transactionsFilter.setOnClickListener {
             startActivityForResult(
                 Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE

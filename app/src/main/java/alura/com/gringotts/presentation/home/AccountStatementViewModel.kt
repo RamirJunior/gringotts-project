@@ -60,12 +60,6 @@ class AccountStatementViewModel
         for (date in transactionsMap.keys) {
             val calendar= Calendar.getInstance()
             calendar.time = getDateFromString(date)
-            segmentedList.add(
-                TransactionDateItem(
-                    calendar.get(Calendar.DAY_OF_MONTH).toString(),
-                    monthIntToString(calendar.get(Calendar.MONTH))
-                )
-            )
             for (transaction in transactionsMap[date]!!) {
                 segmentedList.add(
                     TransactionItem(
@@ -73,6 +67,12 @@ class AccountStatementViewModel
                     )
                 )
             }
+            segmentedList.add(
+                TransactionDateItem(
+                    calendar.get(Calendar.DAY_OF_MONTH).toString(),
+                    monthIntToString(calendar.get(Calendar.MONTH))
+                )
+            )
         }
         return segmentedList.toList().reversed()
     }

@@ -30,6 +30,8 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = TransactionListAdapter(listOf())
+        binding.recyclerViewTransactions.adapter = adapter
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingAccountStatement.isVisible = it
         }
@@ -44,7 +46,7 @@ class AccountStatementFragment : Fragment() {
             }
         }
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
-            binding.recyclerViewTransactions.adapter = TransactionListAdapter(it)
+            adapter.setAdapterList(it)
         }
         binding.transactionsFilter.setOnClickListener {
             startActivityForResult(
@@ -57,13 +59,12 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-            //  data!!.getStringExtra("key_filter")
+             data!!.getStringExtra("key_filter")
         }
     }
 

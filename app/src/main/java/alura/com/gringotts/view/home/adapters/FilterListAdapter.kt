@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilterListAdapter(
     private val filter: List<Filter>,
-    selectItemFilterListener: selectItemFilterListener
+    private val selectItemFilterListener: SelectItemFilterListener
 ) :
     RecyclerView.Adapter<FilterListAdapter.FilterViewHolder>() {
 
-    interface selectItemFilterListener {
+    interface SelectItemFilterListener {
         fun returnPosition(position: Int) {
 
         }
@@ -33,7 +33,7 @@ class FilterListAdapter(
         holder.itemView.setOnClickListener {
             positionSelect = position
 
-            // selectItemFilterListener.returnPosition(positionSelect)
+            selectItemFilterListener.returnPosition(positionSelect)
         }
     }
 

@@ -38,9 +38,7 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
-                _currentTransactionsList.postValue(
-                    getTransactionsSegmentedList(transactionList)
-                )
+                getTransactionsSegmentedList (transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Sem acesso a internet")
@@ -51,8 +49,7 @@ class AccountStatementViewModel
         }
     }
 
-    private fun getTransactionsSegmentedList
-                (response: List<Transaction>): List<TransactionListItem> {
+    private fun getTransactionsSegmentedList (response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
@@ -76,7 +73,9 @@ class AccountStatementViewModel
                 )
             )
         }
-        return segmentedList.toList().reversed()
+        _currentTransactionsList.postValue(
+            segmentedList.toList().reversed()
+        )
     }
 
     private fun monthIntToString(monthInt: Int): String{

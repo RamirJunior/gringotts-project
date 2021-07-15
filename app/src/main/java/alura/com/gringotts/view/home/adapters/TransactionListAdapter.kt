@@ -12,7 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TransactionListAdapter(private val transaction: List<TransactionListItem>) :
+class TransactionListAdapter(private var transaction: List<TransactionListItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
@@ -29,6 +29,11 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
                 .inflate(R.layout.transaction_item, parent, false)
             TransactionViewHolder(view)
         }
+    }
+
+    fun setAdapterList( newList: List<TransactionListItem> ){
+        transaction = newList
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -75,4 +80,9 @@ class TransactionListAdapter(private val transaction: List<TransactionListItem>)
             cardTime.text = transaction.transaction.time
         }
     }
+
+
+
+
+
 }

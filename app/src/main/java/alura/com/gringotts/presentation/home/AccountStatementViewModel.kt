@@ -23,6 +23,8 @@ class AccountStatementViewModel
     val accountStatementError: LiveData<String> = _accountStatementError
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
+    private val _isListVisible = MutableLiveData<Boolean>()
+    val isListVisible: LiveData<Boolean> = _isListVisible
 
     init {
         getAccountStatement(DEFAULT_RANGE)
@@ -73,9 +75,15 @@ class AccountStatementViewModel
                 )
             )
         }
-        _currentTransactionsList.postValue(
-            segmentedList.toList().reversed()
-        )
+        if(segmentedList.isEmpty()){
+            _isListVisible.postValue(false)
+        }
+        else {
+            _currentTransactionsList.postValue(
+                segmentedList.toList().reversed()
+            )
+            _isListVisible.postValue(true)
+        }
     }
 
     private fun monthIntToString(monthInt: Int): String{

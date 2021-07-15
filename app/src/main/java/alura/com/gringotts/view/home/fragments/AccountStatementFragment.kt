@@ -48,6 +48,10 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
             adapter.setAdapterList(it)
         }
+        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner){
+            binding.recyclerViewTransactions.isVisible = it
+            binding.emptyListContainer.isVisible = !it
+        }
         binding.transactionsFilter.setOnClickListener {
             startActivityForResult(
                 Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
@@ -59,12 +63,15 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
+        binding.chipOutput.setOnClickListener {
+            accountStatementViewModel.setWithdraw()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-             data!!.getStringExtra("key_filter")
+             accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
         }
     }
 

@@ -4,12 +4,14 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class TransactionListAdapter(private var transaction: List<TransactionListItem>) :
@@ -73,16 +75,20 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             itemView.findViewById(R.id.textview_value)
 
         fun bindList(transaction: TransactionItem) {
-            Log.e("aaa", transaction.transaction.toString())
             cardTransactionValue.text = transaction.transaction.value
             cardTransactionType.text = transaction.transaction.type
             cardTransactionTypeDescription.text = transaction.transaction.typeDescription
             cardTime.text = transaction.transaction.time
+            if(transaction.transaction.status == "canceled"){
+                cardTransactionStatus.setImageDrawable(
+                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24)
+                )
+            }
+            else {
+                cardTransactionStatus.setImageDrawable(
+                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24)
+                )
+            }
         }
     }
-
-
-
-
-
 }

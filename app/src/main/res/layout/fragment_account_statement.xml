@@ -5,62 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chips_group"
-        android:layout_width="400dp"
-        android:layout_height="70dp"
-        android:elevation="8dp"
-        android:padding="16dp"
-        app:singleSelection="true"
-        tools:layout_editor_absoluteY="44dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        >
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            style="@style/ThemeOverlay.MyApp.Chip.Choice"
-            android:text="@string/txt_todas"
-            android:textStyle="bold"
-            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-            app:chipIconTint="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/chip_input"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_entradas"
-            style="@style/ThemeOverlay.MyApp.Chip.Choice"
-            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-            app:chipIconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_output"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_saidas"
-            style="@style/ThemeOverlay.MyApp.Chip.Choice"
-            app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
-            app:chipIconTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chip_input"
-            app:layout_constraintTop_toTopOf="@+id/chip_input" />
-
-    </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_account_statement"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/grayBack"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_statement"
+                android:id="@+id/textview_statement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -91,7 +41,57 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_baseline_tune_28"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_statement" />
+                app:layout_constraintTop_toTopOf="@+id/textview_statement" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chips_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_statement"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_all"
+                    style="@style/ThemeOverlay.MyApp.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:text="@string/txt_todas"
+                    android:textStyle="bold"
+                    app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+                    app:chipIconTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/chip_input"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_input"
+                    style="@style/ThemeOverlay.MyApp.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_entradas"
+                    app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+                    app:chipIconTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_output"
+                    style="@style/ThemeOverlay.MyApp.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_saidas"
+                    app:chipIcon="@drawable/ic_baseline_local_gas_station_24"
+                    app:chipIconTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/chip_input"
+                    app:layout_constraintTop_toTopOf="@+id/chip_input" />
+
+            </com.google.android.material.chip.ChipGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

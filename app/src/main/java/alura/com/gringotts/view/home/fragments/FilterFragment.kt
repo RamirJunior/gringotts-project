@@ -48,9 +48,23 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", localPostition)
+                Intent().putExtra("key_filter", returnValueOfPosition())
             )
             requireActivity().finish()
+        }
+    }
+
+    private fun returnValueOfPosition(): Int {
+        if (localPostition == 0) {
+            return 3
+        } else if (localPostition == 1) {
+            return 7
+        } else if (localPostition == 2) {
+            return 30
+        } else if (localPostition == 3) {
+            return 60
+        } else {
+            return 120
         }
     }
 

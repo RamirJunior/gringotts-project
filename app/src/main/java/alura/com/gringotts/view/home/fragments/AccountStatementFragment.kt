@@ -64,7 +64,7 @@ class AccountStatementFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-             data!!.getStringExtra("key_filter")
+             accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
         }
     }
 

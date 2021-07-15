@@ -32,6 +32,7 @@ class AccountStatementViewModel
         initialDate: String,
         finalDate: String,
     ) {
+        _loading.postValue(true)
         viewModelScope.launch {
             try {
                 val response =
@@ -46,6 +47,7 @@ class AccountStatementViewModel
                 else _accountStatementError
                     .postValue("Erro desconhecido ao recuperar o extrato")
             }
+            _loading.postValue(false)
         }
     }
 

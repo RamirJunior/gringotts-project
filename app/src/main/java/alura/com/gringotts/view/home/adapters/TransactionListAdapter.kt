@@ -79,15 +79,26 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             cardTransactionType.text = transaction.transaction.type
             cardTransactionTypeDescription.text = transaction.transaction.typeDescription
             cardTime.text = transaction.transaction.time
-            if(transaction.transaction.status == "canceled"){
+            if (transaction.transaction.status == "canceled"){
                 cardTransactionStatus.setImageDrawable(
                     ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24)
                 )
-            }
-            else {
+                cardTransactionStatus.setColorFilter(
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+                cardTransactionType.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+                cardTransactionValue.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
+            } else {
                 cardTransactionStatus.setImageDrawable(
                     ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24)
                 )
+                cardTransactionStatus.setColorFilter(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                cardTransactionType.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                cardTransactionValue.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
             }
         }
     }

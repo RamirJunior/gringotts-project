@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingPixFragment : Fragment() {
 
-    private val homeServicesViewModel by viewModel<OnboardingPixViewModel>()
+    private val onboardingPixViewModel by viewModel<OnboardingPixViewModel>()
     private var _binding: FragmentOnboardingPixBinding? = null
     private val binding: FragmentOnboardingPixBinding get() = _binding!!
 
@@ -29,13 +29,9 @@ class OnboardingPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeServicesViewModel.goToPix.observe(viewLifecycleOwner) {
-            findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixFragment2)
-        }
-
         binding.pixOnboardingContinue.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingPixFragment2_to_pixFragment2)
-            homeServicesViewModel.onboardingPixFinished()
+            onboardingPixViewModel.onboardingPixFinished()
         }
 
     }

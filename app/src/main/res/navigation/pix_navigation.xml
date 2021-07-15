@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pix_navigation"
-    app:startDestination="@id/onboardingPixFragment2">
+    android:id="@+id/pix_navigation">
 
     <fragment
         android:id="@+id/onboardingPixFragment2"
@@ -20,13 +19,5 @@
         android:id="@+id/pixFragment2"
         android:name="alura.com.gringotts.view.pix.fragments.PixFragment"
         android:label="PixFragment"
-        tools:layout="@layout/fragment_pix">
-        <action
-            android:id="@+id/action_pixFragment2_to_homeActivity2"
-            app:destination="@id/homeActivity2" />
-    </fragment>
-    <activity
-        android:id="@+id/homeActivity2"
-        android:name="alura.com.gringotts.view.home.HomeActivity"
-        android:label="HomeActivity" />
+        tools:layout="@layout/fragment_pix" />
 </navigation>

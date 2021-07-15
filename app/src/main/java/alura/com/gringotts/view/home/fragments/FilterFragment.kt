@@ -52,6 +52,14 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
             )
             requireActivity().finish()
         }
+        binding.btVoltaParaExtrato.setOnClickListener {
+            requireActivity().setResult(
+                2,
+                Intent().putExtra("key_filter", 3)
+            )
+            requireActivity().finish()
+        }
+
     }
 
     private fun returnValueOfPosition(): Int {

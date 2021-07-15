@@ -20,6 +20,7 @@
             android:layout_height="?attr/actionBarSize">
 
             <ImageView
+                android:id="@+id/bt_volta_para_extrato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

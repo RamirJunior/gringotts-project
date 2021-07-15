@@ -43,9 +43,9 @@ class AccountStatementViewModel
                 getTransactionsSegmentedList (transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
-                    _accountStatementError.postValue("Sem acesso a internet")
+                    _accountStatementError.postValue("Verifique sua conexão de internet.")
                 else _accountStatementError
-                    .postValue("Erro desconhecido ao recuperar o extrato")
+                    .postValue("Erro desconhecido ao recuperar o extrato.")
             }
             _loading.postValue(false)
         }

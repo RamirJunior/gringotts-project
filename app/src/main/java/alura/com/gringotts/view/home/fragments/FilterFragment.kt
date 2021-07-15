@@ -11,18 +11,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class FilterFragment : Fragment(), FilterListAdapter.selectItemFilterListener {
+class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     private var _binding: FilterFragmentBinding? = null
     private val binding: FilterFragmentBinding get() = _binding!!
 
     private var localPostition = 1
-    private val filterList: List<Filter> = listOf(
-        Filter(getString(R.string.tres_dias)),
-        Filter(getString(R.string.sete_dias)),
-        Filter(getString(R.string.trinta_dias)),
-        Filter(getString(R.string.sessenta_dias)),
-        Filter(getString(R.string.centoevinte_dias))
-    )
+    private val filterList by lazy {
+        listOf(
+            Filter(getString(R.string.tres_dias)),
+            Filter(getString(R.string.sete_dias)),
+            Filter(getString(R.string.trinta_dias)),
+            Filter(getString(R.string.sessenta_dias)),
+            Filter(getString(R.string.centoevinte_dias))
+        )
+    }
 
     override fun returnPosition(position: Int) {
         localPostition = position
@@ -46,7 +48,7 @@ class FilterFragment : Fragment(), FilterListAdapter.selectItemFilterListener {
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", filterList[localPostition].toString())
+                Intent().putExtra("key_filter", localPostition)
             )
             requireActivity().finish()
         }

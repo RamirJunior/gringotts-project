@@ -6,7 +6,6 @@ import alura.com.gringotts.view.home.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +64,7 @@ class AccountStatementFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-            //  data!!.getStringExtra("key_filter")
+             data!!.getStringExtra("key_filter")
         }
     }
 

@@ -81,24 +81,31 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             cardTime.text = transaction.transaction.time
             if (transaction.transaction.status == "canceled"){
                 cardTransactionStatus.setImageDrawable(
-                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24)
-                )
+                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24))
                 cardTransactionStatus.setColorFilter(
                     ContextCompat.getColor(itemView.context, R.color.grayExpense))
                 cardTransactionType.setTextColor(
                     ContextCompat.getColor(itemView.context, R.color.grayExpense))
                 cardTransactionValue.setTextColor(
                     ContextCompat.getColor(itemView.context, R.color.grayExpense))
+            } else if ((transaction.transaction.type == "Pagamento") && (transaction.transaction.status != "canceled")){
+                cardTransactionStatus.setImageDrawable(
+                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24))
+                cardTransactionStatus.setColorFilter(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                cardTransactionType.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                cardTransactionValue.setTextColor(
+                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
             } else {
                 cardTransactionStatus.setImageDrawable(
-                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24)
-                )
+                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_check_24))
                 cardTransactionStatus.setColorFilter(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
                 cardTransactionType.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
                 cardTransactionValue.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense))
+                    ContextCompat.getColor(itemView.context, R.color.redExpense))
             }
         }
     }

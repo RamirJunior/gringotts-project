@@ -6,6 +6,7 @@ import alura.com.gringotts.view.home.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,8 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = TransactionListAdapter(listOf())
+        binding.recyclerViewTransactions.adapter = adapter
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingAccountStatement.isVisible = it
         }
@@ -44,7 +47,7 @@ class AccountStatementFragment : Fragment() {
             }
         }
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
-            binding.recyclerViewTransactions.adapter = TransactionListAdapter(it)
+            adapter.setAdapterList(it)
         }
         binding.transactionsFilter.setOnClickListener {
             startActivityForResult(
@@ -57,7 +60,6 @@ class AccountStatementFragment : Fragment() {
         binding.chipAll.setOnClickListener {
             accountStatementViewModel.setAllTransactions()
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

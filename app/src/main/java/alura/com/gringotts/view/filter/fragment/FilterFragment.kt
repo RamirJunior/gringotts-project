@@ -3,7 +3,7 @@ package alura.com.gringotts.view.filter.fragment
 import alura.com.gringotts.R
 import alura.com.gringotts.data.models.filter.Filter
 import alura.com.gringotts.databinding.FilterFragmentBinding
-import alura.com.gringotts.view.filter.adapters.FilterListAdapter
+import alura.com.gringotts.view.filter.adapter.FilterListAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater

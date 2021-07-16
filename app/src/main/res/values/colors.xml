@@ -19,4 +19,8 @@
     <color name="grayFront">#F2F2F2</color>
     <color name="lowBlack">#565656</color>
 
+    <!-- Colors for Statement -->
+    <color name="redExpense">#FF6868</color>
+    <color name="greenExpense">#458A3D</color>
+    <color name="grayExpense">#9E9E9E</color>
 </resources>

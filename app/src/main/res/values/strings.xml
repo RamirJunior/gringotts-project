@@ -56,4 +56,9 @@
     <string name="txt_entradas">Entradas</string>
     <string name="txt_saidas">Saídas</string>
     <string name="txt_todas">Todas</string>
+    <string name="tres_dias">Últimos 3 dias</string>
+    <string name="sete_dias">Últimos 7 dias</string>
+    <string name="trinta_dias">Últimos 30 dias</string>
+    <string name="sessenta_dias">Últimos 60 dias</string>
+    <string name="centoevinte_dias">Últimos 120 dias</string>
 </resources>

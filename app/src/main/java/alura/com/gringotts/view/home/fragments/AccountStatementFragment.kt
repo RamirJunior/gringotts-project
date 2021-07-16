@@ -1,15 +1,17 @@
 package alura.com.gringotts.view.home.fragments
 
-import alura.com.gringotts.R
-import alura.com.gringotts.data.models.home.TransactionListItem
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
+import alura.com.gringotts.view.home.FilterActivity
+import alura.com.gringotts.view.home.adapters.TransactionListAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountStatementFragment : Fragment() {
@@ -28,29 +30,52 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = TransactionListAdapter(listOf())
+        binding.recyclerViewTransactions.adapter = adapter
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
-
+            binding.loadingAccountStatement.isVisible = it
+        }
+        accountStatementViewModel.accountStatementError.observe(viewLifecycleOwner){
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { _, _ -> }
+                    .show()
+            }
+        }
+        accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
+            adapter.setAdapterList(it)
+        }
+        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner){
+            binding.recyclerViewTransactions.isVisible = it
+            binding.emptyListContainer.isVisible = !it
         }
         binding.transactionsFilter.setOnClickListener {
-            findNavController().navigate(R.id.action_accountStatementFragment_to_filterFragment)
+            startActivityForResult(
+                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
+            )
+        }
+        binding.chipInput.setOnClickListener {
+            accountStatementViewModel.setOnlyEntries()
+        }
+        binding.chipAll.setOnClickListener {
+            accountStatementViewModel.setAllTransactions()
+        }
+        binding.chipOutput.setOnClickListener {
+            accountStatementViewModel.setWithdraw()
         }
     }
 
-    private fun allPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+             accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
+        }
     }
 
-    private fun receivablesPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
-    }
-
-    private fun withdrawPage(): List<TransactionListItem> {
-        return listOf(
-            //Provavelmente n é transaction o tipo
-        )
+    companion object {
+        const val REQUEST_CODE = 2
     }
 }

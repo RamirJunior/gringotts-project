@@ -40,7 +40,7 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
-                getTransactionsSegmentedList (transactionList)
+                getTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Verifique sua conexão de internet.")
@@ -51,7 +51,7 @@ class AccountStatementViewModel
         }
     }
 
-    private fun getTransactionsSegmentedList (response: List<Transaction>) {
+    private fun getTransactionsSegmentedList(response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
@@ -59,7 +59,7 @@ class AccountStatementViewModel
             transactionsMap[i.date] = currentList.plus(i)
         }
         for (date in transactionsMap.keys) {
-            val calendar= Calendar.getInstance()
+            val calendar = Calendar.getInstance()
             calendar.time = getDateFromString(date)
             for (transaction in transactionsMap[date]!!) {
                 segmentedList.add(
@@ -75,10 +75,9 @@ class AccountStatementViewModel
                 )
             )
         }
-        if(segmentedList.isEmpty()){
+        if (segmentedList.isEmpty()) {
             _isListVisible.postValue(false)
-        }
-        else {
+        } else {
             _currentTransactionsList.postValue(
                 segmentedList.toList().reversed()
             )
@@ -86,7 +85,7 @@ class AccountStatementViewModel
         }
     }
 
-    private fun monthIntToString(monthInt: Int): String{
+    private fun monthIntToString(monthInt: Int): String {
         when (monthInt) {
             1 -> {
                 return "JAN"
@@ -149,7 +148,7 @@ class AccountStatementViewModel
         getAccountStatement(newRange)
     }
 
-    fun setAllTransactions(){
+    fun setAllTransactions() {
         getTransactionsSegmentedList(transactionList)
     }
 

@@ -54,8 +54,8 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/filter_item"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_filter"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_filter"
+        tools:listitem="@layout/filter_item" />
 
     <Button
         android:id="@+id/bt_applyfilters"

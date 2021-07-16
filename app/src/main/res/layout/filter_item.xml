@@ -20,16 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/grayLow"
-            android:text="Últimos 30 dias"
             android:paddingStart="24dp"
-            android:paddingBottom="16dp"
             android:paddingTop="16dp"
             android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:text="Últimos 30 dias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:checkMarkTint="@color/gold"
             tools:checked="false" />
-        
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

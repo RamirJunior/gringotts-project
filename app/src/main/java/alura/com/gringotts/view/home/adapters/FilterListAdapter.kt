@@ -36,7 +36,7 @@ class FilterListAdapter(
             val value: Boolean = holder.cardText.isChecked
             if (value) {
                 // set check mark drawable and set checked property to false
-                holder.cardText.setCheckMarkDrawable(R.drawable.golden_rounded_corner)
+                //holder.cardText.setCheckMarkDrawable(R.drawable.golden_rounded_corner)
                 holder.cardText.isChecked = false
             } else {
                 // set check mark drawable and set checked property to true

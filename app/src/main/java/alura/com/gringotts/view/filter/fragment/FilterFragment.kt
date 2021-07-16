@@ -78,4 +78,5 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     companion object {
         const val RESULT_OK = 1
     }
+
 }

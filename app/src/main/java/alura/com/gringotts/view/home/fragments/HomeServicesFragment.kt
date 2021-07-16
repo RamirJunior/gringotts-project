@@ -35,6 +35,8 @@ class HomeServicesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        homeServicesViewModel.onViewCreated()
+
         homeServicesViewModel.goToOnboardingPix.observe(viewLifecycleOwner) {
             goToOnboardingPix = it
         }

@@ -1,7 +1,7 @@
-package alura.com.gringotts.view.home.adapters
+package alura.com.gringotts.view.filter.adapters
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.models.home.Filter
+import alura.com.gringotts.data.models.filter.Filter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

@@ -1,12 +1,12 @@
 package alura.com.gringotts.view.home.adapters
 
-import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.Filter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckedTextView
 import androidx.recyclerview.widget.RecyclerView
+
 
 class FilterListAdapter(
     private val filter: List<Filter>,
@@ -32,7 +32,18 @@ class FilterListAdapter(
         holder.bind(filter[position])
         holder.itemView.setOnClickListener {
             positionSelect = position
-
+//            val value: Boolean = holder.simpleCheckedTextView.isChecked()
+//            if (value) {
+//                // set check mark drawable and set checked property to false
+//                holder.simpleCheckedTextView.setCheckMarkDrawable(R.drawable.check_ic)
+//                holder.simpleCheckedTextView.setChecked(false)
+//                Toast.makeText(context, "un-Checked", Toast.LENGTH_LONG).show()
+//            } else {
+//                // set check mark drawable and set checked property to true
+//                holder.simpleCheckedTextView.setCheckMarkDrawable(R.drawable.check)
+//                holder.simpleCheckedTextView.setChecked(true)
+//                Toast.makeText(context, "Checked", Toast.LENGTH_LONG).show()
+//            }
             selectItemFilterListener.returnPosition(positionSelect)
         }
     }

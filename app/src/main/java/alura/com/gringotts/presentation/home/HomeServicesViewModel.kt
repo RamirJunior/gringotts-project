@@ -7,11 +7,7 @@ import androidx.lifecycle.ViewModel
 
 class HomeServicesViewModel(private val sessionManager: SessionManager) : ViewModel() {
 
-    private val _goToOnboardingPix = MutableLiveData<Boolean>()
-    val goToOnboardingPix: LiveData<Boolean> = _goToOnboardingPix
-
-    fun onViewCreated() {
-        val userPassedPixOnboarding = sessionManager.getOnboardingPixFinished()
-        _goToOnboardingPix.postValue(!userPassedPixOnboarding)
+    fun onViewCreated() : Boolean{
+        return !sessionManager.getOnboardingPixFinished()
     }
 }

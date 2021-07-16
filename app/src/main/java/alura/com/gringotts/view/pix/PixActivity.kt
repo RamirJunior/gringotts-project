@@ -23,7 +23,7 @@ class PixActivity : AppCompatActivity() {
         val graph = navHost.navController.navInflater.inflate(R.navigation.pix_navigation)
         val goToOnboarding = arguments.pixOnboardingWasExecuted
 
-        Log.d("Onboarding Pix Valor ", goToOnboarding.toString())
+        Log.e("Onboarding Pix Valor ", goToOnboarding.toString())
         graph.startDestination =
             if (goToOnboarding) R.id.onboardingPixFragment2 else R.id.pixFragment2
         navHost.navController.graph = graph

@@ -36,7 +36,7 @@
         <activity
             android:name=".view.filter.FilterActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

@@ -80,10 +80,10 @@
             android:layout_height="26dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:text="Minhas chaves ativas"
+            android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 

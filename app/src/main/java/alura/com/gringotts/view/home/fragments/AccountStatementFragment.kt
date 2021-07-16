@@ -6,7 +6,9 @@ import alura.com.gringotts.view.filter.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -35,7 +37,7 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingAccountStatement.isVisible = it
         }
-        accountStatementViewModel.accountStatementError.observe(viewLifecycleOwner){
+        accountStatementViewModel.accountStatementError.observe(viewLifecycleOwner) {
             context?.let { it1 ->
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
@@ -45,17 +47,12 @@ class AccountStatementFragment : Fragment() {
                     .show()
             }
         }
-        accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner){
+        accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner) {
             adapter.setAdapterList(it)
         }
-        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner){
+        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner) {
             binding.recyclerViewTransactions.isVisible = it
             binding.emptyListContainer.isVisible = !it
-        }
-        binding.transactionsFilter.setOnClickListener {
-            startActivityForResult(
-                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
-            )
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -66,12 +63,19 @@ class AccountStatementFragment : Fragment() {
         binding.chipOutput.setOnClickListener {
             accountStatementViewModel.setWithdraw()
         }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            startActivityForResult(
+                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
+            )
+            true
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-             accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
+            accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
         }
     }
 

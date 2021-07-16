@@ -28,7 +28,6 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     override fun returnPosition(position: Int) {
         localPostition = position
-
     }
 
     override fun onCreateView(

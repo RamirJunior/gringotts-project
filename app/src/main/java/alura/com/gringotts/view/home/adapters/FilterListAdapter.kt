@@ -28,11 +28,14 @@ class FilterListAdapter(
     }
 
     var positionSelect = 1
+    var wasClicked = false
+    var lastPosition = -1
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         holder.bind(filter[position])
         holder.itemView.setOnClickListener {
             positionSelect = position
+
             val value: Boolean = holder.cardText.isChecked
             if (value) {
                 // set check mark drawable and set checked property to false
@@ -43,7 +46,9 @@ class FilterListAdapter(
                 holder.cardText.setCheckMarkDrawable(R.drawable.ic_adicionar_dinheiro)
                 holder.cardText.isChecked = true
             }
+
             selectItemFilterListener.returnPosition(positionSelect)
+
         }
     }
 

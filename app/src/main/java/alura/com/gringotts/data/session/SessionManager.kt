@@ -1,4 +1,4 @@
-package alura.com.gringotts.data
+package alura.com.gringotts.data.session
 
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.Token

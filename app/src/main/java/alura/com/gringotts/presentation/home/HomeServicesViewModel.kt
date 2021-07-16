@@ -1,6 +1,6 @@
 package alura.com.gringotts.presentation.home
 
-import alura.com.gringotts.data.SessionManager
+import alura.com.gringotts.data.session.SessionManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

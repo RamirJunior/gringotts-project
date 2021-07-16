@@ -5,32 +5,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="400dp"
-    android:layout_height="80dp"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="@color/grayHigh"
-    app:cardCornerRadius="8dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="67dp">>
+        android:layout_height="wrap_content">
 
         <CheckedTextView
             android:id="@+id/filters_filter"
-            android:layout_width="349dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/gold"
-            android:text="CheckedTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grayLow"
+            android:text="Últimos 30 dias"
+            android:paddingStart="24dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:checkMark="@drawable/ic_baseline_arrow_back_ios_28"
             tools:checkMarkTint="@color/gold"
             tools:checked="false" />
+        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

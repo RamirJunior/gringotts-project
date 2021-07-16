@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.home
+package alura.com.gringotts.view.filter
 
 import alura.com.gringotts.databinding.ActivityFilterBinding
 import android.os.Bundle

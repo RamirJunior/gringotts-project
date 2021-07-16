@@ -34,7 +34,7 @@ class HomeServicesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        goToOnboardingPix=homeServicesViewModel.onViewCreated()
+        goToOnboardingPix = homeServicesViewModel.onViewCreated()
 
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
@@ -58,7 +58,7 @@ class HomeServicesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        goToOnboardingPix=homeServicesViewModel.onViewCreated()
+        goToOnboardingPix = homeServicesViewModel.onViewCreated()
     }
 
     private fun getItensByPosition(position: Int): List<FuncionalityItem> {

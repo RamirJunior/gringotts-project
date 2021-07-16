@@ -54,9 +54,9 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_all"
                     style="@style/ThemeOverlay.MyApp.Chip.Choice"
-                    android:checked="true"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:elevation="2dp"
                     android:text="@string/txt_todas"
                     android:textAlignment="center"

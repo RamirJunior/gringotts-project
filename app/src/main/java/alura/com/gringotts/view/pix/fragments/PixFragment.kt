@@ -23,7 +23,7 @@ class PixFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.imageButton2.setOnClickListener {
+        binding.btBackPix.setOnClickListener {
             activity?.finish()
         }
     }

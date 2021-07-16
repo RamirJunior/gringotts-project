@@ -6,9 +6,7 @@ import alura.com.gringotts.view.filter.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible

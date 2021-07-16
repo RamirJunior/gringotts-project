@@ -63,13 +63,13 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     private fun showBalance() {
-        _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
+        _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
         _balance.postValue(balanceValue.currentValue.toString())
         _receivable.postValue(balanceValue.receivables.toString())
     }
 
     private fun hideBalance() {
-        _visibilityId.postValue(R.drawable.ic_baseline_visibility_24)
+        _visibilityId.postValue(R.drawable.ic_baseline_visibility_off_24)
         _balance.postValue(HIDDENVALUE)
         _receivable.postValue(HIDDENVALUE)
     }

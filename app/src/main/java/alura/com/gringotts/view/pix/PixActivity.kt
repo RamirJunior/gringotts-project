@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navArgs
 
 class PixActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPixBinding
+    private val arguments by navArgs<PixActivityArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,14 +21,12 @@ class PixActivity : AppCompatActivity() {
         val navHost =
             supportFragmentManager.findFragmentById(R.id.pixNavHostFragment) as NavHostFragment
         val graph = navHost.navController.navInflater.inflate(R.navigation.pix_navigation)
-        val goToOnboarding = navHost.arguments?.getBoolean("pixOnboardingWasExecuted")
-        Log.d("Onboarding Pix Valor : ", goToOnboarding.toString())
-        graph.startDestination =
-            if (goToOnboarding == true) R.id.onboardingPixFragment2 else R.id.pixFragment2
+        val goToOnboarding = arguments.pixOnboardingWasExecuted
 
-        //val navController = navHost.navController
-        //navController.graph = graph
+        Log.d("Onboarding Pix Valor ", goToOnboarding.toString())
+        graph.startDestination =
+            if (goToOnboarding) R.id.onboardingPixFragment2 else R.id.pixFragment2
         navHost.navController.graph = graph
     }
-    
+
 }

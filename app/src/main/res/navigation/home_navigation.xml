@@ -30,6 +30,10 @@
     <activity
         android:id="@+id/pixActivity"
         android:name="alura.com.gringotts.view.pix.PixActivity"
-        android:label="PixActivity" />
+        android:label="PixActivity">
+        <argument
+            android:name="pixOnboardingWasExecuted"
+            app:argType="boolean" />
+    </activity>
 
 </navigation>

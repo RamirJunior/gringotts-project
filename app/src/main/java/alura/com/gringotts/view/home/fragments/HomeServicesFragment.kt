@@ -6,6 +6,7 @@ import alura.com.gringotts.databinding.HomeServicesLayoutBinding
 import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.view.adapters.FuncionalityListAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,23 +14,30 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
 class HomeServicesFragment : Fragment() {
     private val homeServicesViewModel by viewModel<HomeServicesViewModel>()
     private var _binding: HomeServicesLayoutBinding? = null
     private val binding: HomeServicesLayoutBinding get() = _binding!!
+    private var goToOnboardingPix by Delegates.notNull<Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = HomeServicesLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        homeServicesViewModel.goToOnboardingPix.observe(viewLifecycleOwner) {
+            goToOnboardingPix = it
+        }
 
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
@@ -38,16 +46,13 @@ class HomeServicesFragment : Fragment() {
                 getItensByPosition(requireArguments().getInt("position")),
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
-                        if (getItensByPosition(requireArguments().getInt("position")).get(position).title == "Pix") {
-                            val bundle = Bundle()
-                            var goToOnboardingPix: Boolean = false
-                            homeServicesViewModel.goToOnboardingPix.observe(viewLifecycleOwner) {
-                                goToOnboardingPix = it
-                            }
-                            bundle.putBoolean("pixOnboardingWasExecuted", false)
+                        if (getItensByPosition(requireArguments().getInt("position"))[position].title == "Pix") {
+                            Log.i("Onboarding Home Valor  ", goToOnboardingPix.toString())
+                            val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
+                                goToOnboardingPix
+                            )
                             findNavController().navigate(
-                                R.id.action_homeFragment_to_pixActivity,
-                                bundle
+                                direction
                             )
                         }
                     }

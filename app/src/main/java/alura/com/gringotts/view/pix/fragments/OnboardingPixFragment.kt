@@ -13,9 +13,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingPixFragment : Fragment() {
 
-    private val onboardingPixViewModel by viewModel<OnboardingPixViewModel>()
     private var _binding: FragmentOnboardingPixBinding? = null
     private val binding: FragmentOnboardingPixBinding get() = _binding!!
+    private val onboardingPixViewModel by viewModel<OnboardingPixViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

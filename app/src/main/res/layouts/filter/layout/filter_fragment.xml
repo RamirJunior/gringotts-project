@@ -19,11 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/bt_volta_para_extrato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:background="@color/trans"
                 android:src="@drawable/ic_baseline_arrow_back_ios_28"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_filter"

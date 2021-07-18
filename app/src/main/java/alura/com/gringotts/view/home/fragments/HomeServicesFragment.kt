@@ -27,7 +27,6 @@ class HomeServicesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = HomeServicesLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,11 +34,7 @@ class HomeServicesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeServicesViewModel.onViewCreated()
-
-        homeServicesViewModel.goToOnboardingPix.observe(viewLifecycleOwner) {
-            goToOnboardingPix = it
-        }
+        goToOnboardingPix = homeServicesViewModel.onViewCreated()
 
         requireArguments().getInt("position")
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
@@ -59,6 +54,11 @@ class HomeServicesFragment : Fragment() {
                         }
                     }
                 })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        goToOnboardingPix = homeServicesViewModel.onViewCreated()
     }
 
     private fun getItensByPosition(position: Int): List<FuncionalityItem> {

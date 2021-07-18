@@ -246,13 +246,14 @@
                     android:textColor="@color/grayHigh"
                     android:textSize="12sp" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/account_next"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="316dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="8dp"
+                    android:background="@color/trans"
                     android:src="@drawable/ic_baseline_arrow_forward_ios_24"
                     tools:ignore="ContentDescription" />
 

@@ -1,6 +1,6 @@
 package alura.com.gringotts.presentation.initial
 
-import alura.com.gringotts.data.SessionManager
+import alura.com.gringotts.data.session.SessionManager
 import androidx.lifecycle.ViewModel
 
 class OnboardingViewModel(private val sessionManager: SessionManager) : ViewModel() {

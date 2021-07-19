@@ -1,11 +1,11 @@
 package alura.com.gringotts.data.repositories.initial
 
-import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
 import alura.com.gringotts.data.models.initial.Token
+import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response

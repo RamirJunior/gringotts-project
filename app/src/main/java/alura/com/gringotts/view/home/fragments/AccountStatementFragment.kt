@@ -2,7 +2,7 @@ package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
-import alura.com.gringotts.view.home.FilterActivity
+import alura.com.gringotts.view.filter.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/filter_menu_item"
-        android:title="Filtro"
         android:icon="@drawable/ic_baseline_tune_28"
-        app:showAsAction="ifRoom"/>
+        android:title="Filtro"
+        app:showAsAction="ifRoom" />
 </menu>

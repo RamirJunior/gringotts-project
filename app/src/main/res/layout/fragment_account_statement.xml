@@ -54,13 +54,13 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_all"
                     style="@style/ThemeOverlay.MyApp.Chip.Choice"
-                    android:checked="true"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:elevation="2dp"
                     android:text="@string/txt_todas"
-                    android:textStyle="bold"
                     android:textAlignment="center"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/chip_input"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_statement" />
@@ -71,9 +71,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_entradas"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <com.google.android.material.chip.Chip
@@ -82,8 +82,8 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_saidas"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/chip_input"
                     app:layout_constraintTop_toTopOf="@+id/chip_input" />
 
@@ -97,41 +97,41 @@
         android:id="@+id/recycler_view_transactions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/empty_list_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
-        android:id="@+id/empty_list_container"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement">
+
         <ImageView
+            android:id="@+id/icon_empty_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/icon_empty_list"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/img_no_finance"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icon_empty_list"
             android:text="Você não possui transações nos ultimos dias"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icon_empty_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
@@ -141,8 +141,8 @@
         android:layout_gravity="center"
         android:elevation="16dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_statement" />
 </androidx.constraintlayout.widget.ConstraintLayout>

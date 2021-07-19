@@ -59,6 +59,7 @@ class FilterListAdapter(
     class FilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardText: CheckedTextView =
             itemView.findViewById(R.id.filters_filter) as CheckedTextView
+
         fun bind(filter: Filter) {
             cardText.text = filter.text
         }

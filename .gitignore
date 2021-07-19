@@ -2,3 +2,7 @@
 .gradle
 /app/lint.xml
 local.properties
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+/gradlew
+/gradlew.bat

@@ -25,6 +25,7 @@ class AccountStatementViewModel
     val loading: LiveData<Boolean> = _loading
     private val _isListVisible = MutableLiveData<Boolean>()
     val isListVisible: LiveData<Boolean> = _isListVisible
+    var currentRange = DEFAULT_RANGE
 
     init {
         getAccountStatement(DEFAULT_RANGE)
@@ -53,11 +54,24 @@ class AccountStatementViewModel
 
     private fun getTransactionsSegmentedList(response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
             val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
+        val segmentedList: List<TransactionListItem> = makeSegmentedList(transactionsMap)
+        if (segmentedList.isEmpty()) {
+            _isListVisible.postValue(false)
+        } else {
+            _currentTransactionsList.postValue(
+                segmentedList.reversed()
+            )
+            _isListVisible.postValue(true)
+        }
+    }
+
+    private fun makeSegmentedList(transactionsMap: TreeMap<String, List<Transaction>>)
+        : List<TransactionListItem> {
+        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (date in transactionsMap.keys) {
             val calendar = Calendar.getInstance()
             calendar.time = getDateFromString(date)
@@ -75,14 +89,7 @@ class AccountStatementViewModel
                 )
             )
         }
-        if (segmentedList.isEmpty()) {
-            _isListVisible.postValue(false)
-        } else {
-            _currentTransactionsList.postValue(
-                segmentedList.toList().reversed()
-            )
-            _isListVisible.postValue(true)
-        }
+        return segmentedList.toList()
     }
 
     private fun monthIntToString(monthInt: Int): String {
@@ -145,6 +152,7 @@ class AccountStatementViewModel
     }
 
     fun changeRange(newRange: Int) {
+        currentRange = newRange
         getAccountStatement(newRange)
     }
 
@@ -175,7 +183,7 @@ class AccountStatementViewModel
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
-        private const val DEFAULT_RANGE: Int = 3
+        private const val DEFAULT_RANGE: Int = 7
         private const val EXPENSE_FILTER: String = "Despesa"
         private const val PAYMENT_FILTER: String = "Pagamento"
     }

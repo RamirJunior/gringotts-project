@@ -53,12 +53,11 @@ class AccountStatementViewModel
 
     private fun getTransactionsSegmentedList(response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        var segmentedList: List<TransactionListItem> = listOf()
         for (i in response) {
             val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
-        segmentedList = makeSegmentedList(transactionsMap)
+        val segmentedList: List<TransactionListItem> = makeSegmentedList(transactionsMap)
         if (segmentedList.isEmpty()) {
             _isListVisible.postValue(false)
         } else {

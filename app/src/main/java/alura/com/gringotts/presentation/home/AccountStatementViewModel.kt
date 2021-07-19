@@ -25,6 +25,7 @@ class AccountStatementViewModel
     val loading: LiveData<Boolean> = _loading
     private val _isListVisible = MutableLiveData<Boolean>()
     val isListVisible: LiveData<Boolean> = _isListVisible
+    var currentRange = DEFAULT_RANGE
 
     init {
         getAccountStatement(DEFAULT_RANGE)
@@ -151,6 +152,7 @@ class AccountStatementViewModel
     }
 
     fun changeRange(newRange: Int) {
+        currentRange = newRange
         getAccountStatement(newRange)
     }
 
@@ -181,7 +183,7 @@ class AccountStatementViewModel
     companion object {
         private const val MILLIS_DAY: Long = 86400000
         private const val DATE_FORMAT: String = "dd/MM/yyyy"
-        private const val DEFAULT_RANGE: Int = 3
+        private const val DEFAULT_RANGE: Int = 7
         private const val EXPENSE_FILTER: String = "Despesa"
         private const val PAYMENT_FILTER: String = "Pagamento"
     }

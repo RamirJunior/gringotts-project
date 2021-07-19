@@ -63,16 +63,22 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     }
 
     private fun returnValueOfPosition(): Int {
-        if (localPostition == 0) {
-            return 3
-        } else if (localPostition == 1) {
-            return 7
-        } else if (localPostition == 2) {
-            return 30
-        } else if (localPostition == 3) {
-            return 60
-        } else {
-            return 120
+        return when (localPostition) {
+            0 -> {
+                3
+            }
+            1 -> {
+                7
+            }
+            2 -> {
+                30
+            }
+            3 -> {
+                60
+            }
+            else -> {
+                120
+            }
         }
     }
 

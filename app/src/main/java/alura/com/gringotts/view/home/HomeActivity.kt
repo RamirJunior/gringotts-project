@@ -5,7 +5,6 @@ import alura.com.gringotts.databinding.ActivityHomeBinding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import androidx.navigation.ui.setupWithNavController
 
 class HomeActivity : AppCompatActivity() {
 

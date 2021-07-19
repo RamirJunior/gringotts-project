@@ -53,11 +53,25 @@ class AccountStatementViewModel
 
     private fun getTransactionsSegmentedList(response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
+        var segmentedList: List<TransactionListItem> = listOf()
         for (i in response) {
             val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
+        segmentedList = makeSegmentedList(transactionsMap)
+        if (segmentedList.isEmpty()) {
+            _isListVisible.postValue(false)
+        } else {
+            _currentTransactionsList.postValue(
+                segmentedList.reversed()
+            )
+            _isListVisible.postValue(true)
+        }
+    }
+
+    private fun makeSegmentedList(transactionsMap: TreeMap<String, List<Transaction>>)
+        : List<TransactionListItem> {
+        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (date in transactionsMap.keys) {
             val calendar = Calendar.getInstance()
             calendar.time = getDateFromString(date)
@@ -75,14 +89,7 @@ class AccountStatementViewModel
                 )
             )
         }
-        if (segmentedList.isEmpty()) {
-            _isListVisible.postValue(false)
-        } else {
-            _currentTransactionsList.postValue(
-                segmentedList.toList().reversed()
-            )
-            _isListVisible.postValue(true)
-        }
+        return segmentedList.toList()
     }
 
     private fun monthIntToString(monthInt: Int): String {

@@ -63,7 +63,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/golden_rounded_corner"
         android:text="@string/aplicar_filtros"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter_recycler_view" />

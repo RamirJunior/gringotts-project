@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/grayLow"
             android:checkMarkTint="@color/gold"
-            android:gravity="center_vertical|right"
+            android:gravity="center_vertical|end"
             android:paddingStart="24dp"
             android:paddingTop="16dp"
             android:paddingEnd="16dp"

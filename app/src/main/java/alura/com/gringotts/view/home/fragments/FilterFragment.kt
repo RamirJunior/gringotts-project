@@ -41,6 +41,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        filterList[1].isChecked=true
         binding.filterRecyclerView.adapter =
             FilterListAdapter(filterList, this@FilterFragment)
 

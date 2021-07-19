@@ -1,4 +1,4 @@
-package alura.com.gringotts.data.models.filter
+package alura.com.gringotts.presentation.filter.model
 
 data class Filter(
     val text: String

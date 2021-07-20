@@ -15,7 +15,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     private var _binding: FilterFragmentBinding? = null
     private val binding: FilterFragmentBinding get() = _binding!!
 
-    private var localPostition : Int = 1
+    private var selectedFilterPosition : Int = 1
     private val filterList by lazy {
         listOf(
             Filter(getString(R.string.tres_dias)),
@@ -26,8 +26,8 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         )
     }
 
-    override fun returnPosition(position: Int) {
-        localPostition = position
+    override fun callbackPosition(position: Int) {
+        selectedFilterPosition = position
     }
 
     override fun onCreateView(
@@ -41,12 +41,12 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        localPostition=getPositionFromValue(
+        selectedFilterPosition=getPositionFromValue(
             requireActivity().intent.extras!!.getInt(RANGE_KEY)
         )
-        filterList[localPostition].isChecked = true
+        filterList[selectedFilterPosition].isChecked = true
         binding.filterRecyclerView.adapter =
-            FilterListAdapter(filterList, this@FilterFragment, localPostition)
+            FilterListAdapter(filterList, this@FilterFragment)
 
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
@@ -55,7 +55,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
             )
             requireActivity().finish()
         }
-        binding.btVoltaParaExtrato.setOnClickListener {
+        binding.toolbarFilter.setNavigationOnClickListener{
             requireActivity().setResult(
                 2,
                 Intent().putExtra(FILTER_KEY, 3)
@@ -66,7 +66,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     }
 
     private fun returnValueOfPosition(): Int {
-        return when (localPostition) {
+        return when (selectedFilterPosition) {
             0 -> {
                 3
             }

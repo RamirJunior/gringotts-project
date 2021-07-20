@@ -80,6 +80,6 @@ class AccountStatementFragment : Fragment() {
     }
 
     companion object {
-        const val REQUEST_CODE = 2
+        private const val REQUEST_CODE = 2
     }
 }

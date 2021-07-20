@@ -1,9 +1,9 @@
-package alura.com.gringotts.view.home.fragments
+package alura.com.gringotts.view.filter.fragment
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.models.home.Filter
+import alura.com.gringotts.presentation.filter.model.Filter
 import alura.com.gringotts.databinding.FilterFragmentBinding
-import alura.com.gringotts.view.home.adapters.FilterListAdapter
+import alura.com.gringotts.view.filter.adapter.FilterListAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     private var _binding: FilterFragmentBinding? = null
     private val binding: FilterFragmentBinding get() = _binding!!
 
-    private var localPostition = 1
+    private var localPostition : Int = 1
     private val filterList by lazy {
         listOf(
             Filter(getString(R.string.tres_dias)),
@@ -41,21 +41,24 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        filterList[1].isChecked=true
+        localPostition=getPositionFromValue(
+            requireActivity().intent.extras!!.getInt(RANGE_KEY)
+        )
+        filterList[localPostition].isChecked = true
         binding.filterRecyclerView.adapter =
-            FilterListAdapter(filterList, this@FilterFragment)
+            FilterListAdapter(filterList, this@FilterFragment, localPostition)
 
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", returnValueOfPosition())
+                Intent().putExtra(FILTER_KEY, returnValueOfPosition())
             )
             requireActivity().finish()
         }
         binding.btVoltaParaExtrato.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", 3)
+                Intent().putExtra(FILTER_KEY, 3)
             )
             requireActivity().finish()
         }
@@ -63,20 +66,46 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     }
 
     private fun returnValueOfPosition(): Int {
-        if (localPostition == 0) {
-            return 3
-        } else if (localPostition == 1) {
-            return 7
-        } else if (localPostition == 2) {
-            return 30
-        } else if (localPostition == 3) {
-            return 60
-        } else {
-            return 120
+        return when (localPostition) {
+            0 -> {
+                3
+            }
+            1 -> {
+                7
+            }
+            2 -> {
+                30
+            }
+            3 -> {
+                60
+            }
+            else -> {
+                120
+            }
         }
     }
 
+    private fun getPositionFromValue(newRange: Int): Int{
+        return when (newRange) {
+            3 -> {
+                0
+            }
+            7 -> {
+                1
+            }
+            30 -> {
+                2
+            }
+            60 -> {
+                3
+            }
+            else -> {
+                4
+            }
+        }
+    }
     companion object {
-        const val RESULT_OK = 1
+        private const val RANGE_KEY: String = "range"
+        private const val FILTER_KEY: String = "key_filter"
     }
 }

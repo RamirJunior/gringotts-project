@@ -1,7 +1,7 @@
-package alura.com.gringotts.view.home.adapters
+package alura.com.gringotts.view.filter.adapter
 
 import alura.com.gringotts.R
-import alura.com.gringotts.data.models.home.Filter
+import alura.com.gringotts.presentation.filter.model.Filter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilterListAdapter(
     private val filter: List<Filter>,
-    private val selectItemFilterListener: SelectItemFilterListener
+    private val selectItemFilterListener: SelectItemFilterListener,
+    private var lastPositionSelected: Int
 ) :
     RecyclerView.Adapter<FilterListAdapter.FilterViewHolder>() {
 
-    var lastPositionSelected = 1
 
     interface SelectItemFilterListener {
         fun returnPosition(position: Int) {
@@ -32,8 +32,8 @@ class FilterListAdapter(
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         holder.bind(filter[position])
         holder.itemView.setOnClickListener {
-            if(lastPositionSelected != position){
-                filter[lastPositionSelected].isChecked=false
+            if (lastPositionSelected != position) {
+                filter[lastPositionSelected].isChecked = false
                 filter[position].isChecked = true
                 lastPositionSelected = position
                 notifyDataSetChanged()
@@ -52,10 +52,9 @@ class FilterListAdapter(
 
         fun bind(filter: Filter) {
             cardText.text = filter.text
-            if(filter.isChecked){
+            if (filter.isChecked) {
                 cardText.setCheckMarkDrawable(R.drawable.ic_adicionar_dinheiro)
-            }
-            else{
+            } else {
                 cardText.setCheckMarkDrawable(R.drawable.golden_rounded_corner)
             }
         }

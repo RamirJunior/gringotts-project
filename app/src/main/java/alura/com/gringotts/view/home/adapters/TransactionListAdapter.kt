@@ -55,8 +55,8 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
         private val month: TextView = itemView.findViewById(R.id.textview_mounth)
 
         fun bindHeader(transaction: TransactionDateItem) {
-            day.text = transaction.day
-            month.text = transaction.month
+            day.text = transaction.transactionDate.day
+            month.text = transaction.transactionDate.month
         }
     }
 

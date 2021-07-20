@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/filterFragment"
-        android:name="alura.com.gringotts.view.home.fragments.FilterFragment"
+        android:name="alura.com.gringotts.view.filter.fragment.FilterFragment"
         android:label="FilterFragment"
         tools:layout="@layout/filter_fragment" />
 

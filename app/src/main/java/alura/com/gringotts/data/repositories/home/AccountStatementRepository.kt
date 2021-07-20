@@ -1,6 +1,6 @@
-import alura.com.gringotts.data.SessionManager
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
+import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -11,18 +11,20 @@ class AccountStatementRepository(
 ) {
 
     suspend fun getAccountStatement(initialDate: String, finalDate: String): List<Transaction> {
-        val response: Response<List<Transaction>>
-        withContext(Dispatchers.IO) {
-            response = apiInterface.transactions(
+
+         return withContext(Dispatchers.IO) {
+             val token = sessionManager.getTokens()!!.tokenAuthentication
+             val response = apiInterface.transactions(
                 initialDate,
                 finalDate,
-                sessionManager.getTokens()!!.tokenAuthentication
+                token
             )
-        }
-        if (response.isSuccessful) {
-            return response.body()!!
-        } else {
-            throw Exception("Erro desconhecido")
+             if (response.isSuccessful) {
+                 return@withContext response.body()!!
+             } else {
+                 throw Exception("Erro desconhecido")
+             }
         }
     }
+
 }

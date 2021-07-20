@@ -2,7 +2,7 @@ package alura.com.gringotts.view.home.fragments
 
 import alura.com.gringotts.databinding.FragmentAccountStatementBinding
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
-import alura.com.gringotts.view.home.FilterActivity
+import alura.com.gringotts.view.filter.FilterActivity
 import alura.com.gringotts.view.home.adapters.TransactionListAdapter
 import android.content.Intent
 import android.os.Bundle
@@ -48,9 +48,9 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner) {
             adapter.setAdapterList(it)
         }
-        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner) {
-            binding.recyclerViewTransactions.isVisible = it
-            binding.emptyListContainer.isVisible = !it
+        accountStatementViewModel.showPlaceHolder.observe(viewLifecycleOwner) {
+            binding.recyclerViewTransactions.isVisible = !it
+            binding.emptyListContainer.isVisible = it
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -64,7 +64,9 @@ class AccountStatementFragment : Fragment() {
 
         binding.toolbar.setOnMenuItemClickListener {
             startActivityForResult(
-                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
+                Intent(requireActivity(), FilterActivity::class.java)
+                    .putExtra("range", accountStatementViewModel.currentRange),
+                REQUEST_CODE
             )
             true
         }

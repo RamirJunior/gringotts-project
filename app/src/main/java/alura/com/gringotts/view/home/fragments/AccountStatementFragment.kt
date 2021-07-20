@@ -64,7 +64,9 @@ class AccountStatementFragment : Fragment() {
 
         binding.toolbar.setOnMenuItemClickListener {
             startActivityForResult(
-                Intent(requireActivity(), FilterActivity::class.java), REQUEST_CODE
+                Intent(requireActivity(), FilterActivity::class.java)
+                    .putExtra("range", accountStatementViewModel.currentRange),
+                REQUEST_CODE
             )
             true
         }

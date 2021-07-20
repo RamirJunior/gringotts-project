@@ -1,11 +1,13 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixTypeChoiceBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class PixTypeChoiceFragment : Fragment() {
 
@@ -25,7 +27,11 @@ class PixTypeChoiceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btBackPixChoice.setOnClickListener {
-            activity?.finish()
+            activity?.onBackPressed()
+        }
+
+        binding.imageButton1.setOnClickListener{
+            findNavController().navigate(R.id.action_pixTypeChoiceFragment_to_insertEmailPixFragment)
         }
     }
 

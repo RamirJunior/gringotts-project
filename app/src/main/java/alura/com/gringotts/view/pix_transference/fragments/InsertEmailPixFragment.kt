@@ -26,11 +26,11 @@ class InsertEmailPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPixInsertEmail.setNavigationOnClickListener{
+        binding.toolbarPixInsertEmail.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
 
-        binding.pixInsertEmailContinue.setOnClickListener{
+        binding.pixInsertEmailContinue.setOnClickListener {
             findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
         }
     }

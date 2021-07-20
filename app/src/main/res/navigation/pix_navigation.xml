@@ -29,7 +29,7 @@
         android:id="@+id/pixTypeChoiceFragment"
         android:name="alura.com.gringotts.view.pix_transference.fragments.PixTypeChoiceFragment"
         android:label="PixTypeChoiceFragment"
-        tools:layout="@layout/fragment_pix_type_choice" >
+        tools:layout="@layout/fragment_pix_type_choice">
         <action
             android:id="@+id/action_pixTypeChoiceFragment_to_insertEmailPixFragment"
             app:destination="@id/insertEmailPixFragment" />
@@ -47,5 +47,5 @@
         android:id="@+id/insertOptionalDescriptionPixFragment"
         android:name="alura.com.gringotts.view.pix_transference.fragments.InsertOptionalDescriptionPixFragment"
         android:label="InsertOptionalDescriptionPixFragment"
-        tools:layout="@layout/fragment_insert_optional_description_pix"/>
+        tools:layout="@layout/fragment_insert_optional_description_pix" />
 </navigation>

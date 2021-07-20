@@ -1,21 +1,22 @@
 package alura.com.gringotts.presentation.home
 
 import AccountStatementRepository
-import alura.com.gringotts.data.models.home.Transaction
-import alura.com.gringotts.data.models.home.TransactionDateItem
-import alura.com.gringotts.data.models.home.TransactionItem
-import alura.com.gringotts.data.models.home.TransactionListItem
+import alura.com.gringotts.data.models.home.*
+import alura.com.gringotts.data.models.home.Date
+import alura.com.gringotts.presentation.home.auxiliar.DataHelper.Companion.formatDate
+import alura.com.gringotts.presentation.home.auxiliar.DataHelper.Companion.getDateFromString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
-import java.text.SimpleDateFormat
 import java.util.*
 
-class AccountStatementViewModel
-    (private val accountStatementRepository: AccountStatementRepository) : ViewModel() {
+class AccountStatementViewModel(
+    private val accountStatementRepository: AccountStatementRepository
+) : ViewModel() {
+
     private lateinit var transactionList: List<Transaction>
     private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
     val currentTransactionsList: LiveData<List<TransactionListItem>> = _currentTransactionsList
@@ -25,6 +26,7 @@ class AccountStatementViewModel
     val loading: LiveData<Boolean> = _loading
     private val _isListVisible = MutableLiveData<Boolean>()
     val isListVisible: LiveData<Boolean> = _isListVisible
+    var currentRange = DEFAULT_RANGE
 
     init {
         getAccountStatement(DEFAULT_RANGE)
@@ -40,7 +42,7 @@ class AccountStatementViewModel
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
                 transactionList = response
-                getTransactionsSegmentedList(transactionList)
+                mapToTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _accountStatementError.postValue("Verifique sua conexão de internet.")
@@ -51,13 +53,26 @@ class AccountStatementViewModel
         }
     }
 
-    private fun getTransactionsSegmentedList(response: List<Transaction>) {
+    private fun mapToTransactionsSegmentedList(response: List<Transaction>) {
         val transactionsMap = TreeMap<String, List<Transaction>>()
-        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (i in response) {
             val currentList = transactionsMap[i.date] ?: listOf()
             transactionsMap[i.date] = currentList.plus(i)
         }
+        val segmentedList: List<TransactionListItem> = makeSegmentedList(transactionsMap)
+        if (segmentedList.isEmpty()) {
+            _isListVisible.postValue(false)
+        } else {
+            _currentTransactionsList.postValue(
+                segmentedList.reversed()
+            )
+            _isListVisible.postValue(true)
+        }
+    }
+
+    private fun makeSegmentedList(transactionsMap: TreeMap<String, List<Transaction>>)
+            : List<TransactionListItem> {
+        val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         for (date in transactionsMap.keys) {
             val calendar = Calendar.getInstance()
             calendar.time = getDateFromString(date)
@@ -70,19 +85,14 @@ class AccountStatementViewModel
             }
             segmentedList.add(
                 TransactionDateItem(
-                    calendar.get(Calendar.DAY_OF_MONTH).toString(),
-                    monthIntToString(calendar.get(Calendar.MONTH))
+                    Date(
+                        calendar.get(Calendar.DAY_OF_MONTH).toString(),
+                        monthIntToString(calendar.get(Calendar.MONTH))
+                    )
                 )
             )
         }
-        if (segmentedList.isEmpty()) {
-            _isListVisible.postValue(false)
-        } else {
-            _currentTransactionsList.postValue(
-                segmentedList.toList().reversed()
-            )
-            _isListVisible.postValue(true)
-        }
+        return segmentedList.toList()
     }
 
     private fun monthIntToString(monthInt: Int): String {
@@ -127,55 +137,32 @@ class AccountStatementViewModel
         }
     }
 
-    private fun getAccountStatement(range: Int) {
+    private fun getAccountStatement(daysAgo: Int) {
         val currentDate = Calendar.getInstance()
         val sevenDaysAgo = Calendar.getInstance()
-        sevenDaysAgo.timeInMillis = (currentDate.timeInMillis - range * MILLIS_DAY)
+        sevenDaysAgo.add(Calendar.DAY_OF_MONTH, -daysAgo)
         getTransactionList(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
     }
 
-    private fun formatDate(date: Date): String {
-        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.US)
-        return formatter.format(date)
-    }
-
-    private fun getDateFromString(dateString: String): Date {
-        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.US)
-        return formatter.parse(dateString)!!
-    }
-
     fun changeRange(newRange: Int) {
+        currentRange = newRange
         getAccountStatement(newRange)
     }
 
     fun setAllTransactions() {
-        getTransactionsSegmentedList(transactionList)
+        mapToTransactionsSegmentedList(transactionList)
     }
 
     fun setOnlyEntries() {
-        val filteredTransactions = mutableListOf<Transaction>()
-        for (transaction in transactionList) {
-            if (transaction.type == PAYMENT_FILTER) {
-                filteredTransactions.add(transaction)
-            }
-        }
-        getTransactionsSegmentedList(filteredTransactions.toList())
+        mapToTransactionsSegmentedList(transactionList.filter { it.type == PAYMENT_FILTER })
     }
 
     fun setWithdraw() {
-        val filteredTransactions = mutableListOf<Transaction>()
-        for (transaction in transactionList) {
-            if (transaction.type == EXPENSE_FILTER) {
-                filteredTransactions.add(transaction)
-            }
-        }
-        getTransactionsSegmentedList(filteredTransactions.toList())
+        mapToTransactionsSegmentedList(transactionList.filter { it.type == EXPENSE_FILTER })
     }
 
     companion object {
-        private const val MILLIS_DAY: Long = 86400000
-        private const val DATE_FORMAT: String = "dd/MM/yyyy"
-        private const val DEFAULT_RANGE: Int = 3
+        private const val DEFAULT_RANGE: Int = 7
         private const val EXPENSE_FILTER: String = "Despesa"
         private const val PAYMENT_FILTER: String = "Pagamento"
     }

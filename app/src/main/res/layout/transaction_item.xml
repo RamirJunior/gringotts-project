@@ -72,12 +72,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textview_type" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/icon_front"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginTop="4dp"
-            android:background="@color/trans"
             app:layout_constraintEnd_toEndOf="@+id/textview_value"
             app:layout_constraintTop_toTopOf="@+id/textview_typedescription"
             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />

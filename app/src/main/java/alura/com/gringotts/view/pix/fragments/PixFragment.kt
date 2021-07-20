@@ -26,7 +26,7 @@ class PixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPix.setOnClickListener {
+        binding.toolbarPix.setNavigationOnClickListener {
             activity?.finish()
         }
 

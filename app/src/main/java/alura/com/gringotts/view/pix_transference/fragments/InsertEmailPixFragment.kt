@@ -26,7 +26,7 @@ class InsertEmailPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPixInsertEmail.setOnClickListener{
+        binding.toolbarPixInsertEmail.setNavigationOnClickListener{
             activity?.onBackPressed()
         }
 

@@ -24,7 +24,7 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPixDescription.setOnClickListener {
+        binding.toolbarPixDescription.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
 

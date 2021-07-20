@@ -26,7 +26,7 @@ class PixTypeChoiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPixChoice.setOnClickListener {
+        binding.toolbarPixChoice.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
 

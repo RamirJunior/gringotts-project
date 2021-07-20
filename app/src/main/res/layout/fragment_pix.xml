@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,45 +10,20 @@
         android:layout_height="match_parent"
         android:background="@color/grayFront">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar_pix"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_pix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/gold"
+            app:title="Pix/QR Code"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
             app:elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
-
-                <ImageButton
-                    android:id="@+id/bt_back_pix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:background="@color/trans"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textview_pix"
-                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_28" />
-
-                <TextView
-                    android:id="@+id/textview_pix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pix/QR Code"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <TextView
             android:id="@+id/textView"
@@ -61,7 +37,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar_pix" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_pix" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
@@ -395,7 +371,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="CHAVE ALEATÓRIA" />
+                    android:text="CHAVE ALEATÓRIA"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView19"

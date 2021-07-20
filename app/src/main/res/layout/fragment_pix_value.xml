@@ -113,8 +113,8 @@
         android:text="Insira o valor da transferência"
         app:layout_constraintTop_toBottomOf="@+id/const1" />
 
-    <EditText
-        android:id="@+id/editText"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -133,7 +133,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:text="Cliente Gringotts tem transferências Pix gratuitas e ilimitadas."
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editValue" />
 
     <Button
         android:id="@+id/pix_value_continue"

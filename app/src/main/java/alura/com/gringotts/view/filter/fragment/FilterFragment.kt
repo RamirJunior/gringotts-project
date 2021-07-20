@@ -55,7 +55,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
             )
             requireActivity().finish()
         }
-        binding.toolbarFilter.setOnClickListener {
+        binding.toolbarFilter.setNavigationOnClickListener{
             requireActivity().setResult(
                 2,
                 Intent().putExtra(FILTER_KEY, 3)

@@ -11,8 +11,7 @@
         <action
             android:id="@+id/action_loginFragment2_to_homeActivity"
             app:destination="@id/homeActivity"
-            app:popUpTo="@id/loginFragment2"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <activity
         android:id="@+id/homeActivity"

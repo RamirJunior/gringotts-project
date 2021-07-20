@@ -46,7 +46,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         )
         filterList[selectedFilterPosition].isChecked = true
         binding.filterRecyclerView.adapter =
-            FilterListAdapter(filterList, this@FilterFragment, selectedFilterPosition)
+            FilterListAdapter(filterList, this@FilterFragment)
 
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(

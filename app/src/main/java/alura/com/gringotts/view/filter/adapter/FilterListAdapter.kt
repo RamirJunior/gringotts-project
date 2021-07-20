@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilterListAdapter(
     private val filter: List<Filter>,
-    private val selectItemFilterListener: SelectItemFilterListener,
-    private var lastPositionSelected: Int
+    private val selectItemFilterListener: SelectItemFilterListener
 ) :
     RecyclerView.Adapter<FilterListAdapter.FilterViewHolder>() {
 
@@ -20,6 +19,7 @@ class FilterListAdapter(
     interface SelectItemFilterListener {
         fun callbackPosition(position: Int)
     }
+    private var lastPositionSelected: Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -28,6 +28,8 @@ class FilterListAdapter(
     }
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
+        if(lastPositionSelected==-1 && filter[position].isChecked)
+            lastPositionSelected = position
         holder.bind(filter[position])
         holder.itemView.setOnClickListener {
             if (lastPositionSelected != position) {

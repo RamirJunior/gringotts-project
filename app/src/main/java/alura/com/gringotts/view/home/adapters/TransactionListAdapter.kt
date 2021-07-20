@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
@@ -77,52 +79,35 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             cardTransactionType.text = transaction.transaction.type
             cardTransactionTypeDescription.text = transaction.transaction.typeDescription
             cardTime.text = transaction.transaction.time
+
             if (transaction.transaction.status == "canceled") {
-                cardTransactionStatus.setImageDrawable(
-                    ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_close_24)
-                )
-                cardTransactionStatus.setColorFilter(
-                    ContextCompat.getColor(itemView.context, R.color.grayExpense)
-                )
-                cardTransactionType.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.grayExpense)
-                )
-                cardTransactionValue.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.grayExpense)
-                )
+                setColorItemView(R.color.grayExpense)
+                setImageItemView(R.drawable.ic_baseline_close_24)
             } else if ((transaction.transaction.type == "Pagamento") && (transaction.transaction.status != "canceled")) {
-                cardTransactionStatus.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.ic_baseline_south_east_24
-                    )
-                )
-                cardTransactionStatus.setColorFilter(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense)
-                )
-                cardTransactionType.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense)
-                )
-                cardTransactionValue.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.greenExpense)
-                )
+                setColorItemView(R.color.greenExpense)
+                setImageItemView(R.drawable.ic_baseline_south_east_24)
             } else {
-                cardTransactionStatus.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.ic_baseline_north_east_24
-                    )
-                )
-                cardTransactionStatus.setColorFilter(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense)
-                )
-                cardTransactionType.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense)
-                )
-                cardTransactionValue.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.redExpense)
-                )
+                setColorItemView(R.color.redExpense)
+                setImageItemView(R.drawable.ic_baseline_north_east_24)
             }
+        }
+
+        fun setColorItemView(@ColorRes color: Int) {
+            cardTransactionStatus.setColorFilter(
+                ContextCompat.getColor(itemView.context, color)
+            )
+            cardTransactionType.setTextColor(
+                ContextCompat.getColor(itemView.context, color)
+            )
+            cardTransactionValue.setTextColor(
+                ContextCompat.getColor(itemView.context, color)
+            )
+        }
+
+        fun setImageItemView(@DrawableRes drawable: Int) {
+            cardTransactionStatus.setImageDrawable(
+                ContextCompat.getDrawable(itemView.context, drawable)
+            )
         }
     }
 }

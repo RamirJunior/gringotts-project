@@ -18,7 +18,6 @@ class AccountStatementViewModel(
     private val accountStatementRepository: AccountStatementRepository
 ) : ViewModel() {
 
-    private lateinit var transactionList: List<Transaction>
     private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
     val currentTransactionsList: LiveData<List<TransactionListItem>> = _currentTransactionsList
     private val _accountStatementError = MutableLiveData<String>()
@@ -27,7 +26,9 @@ class AccountStatementViewModel(
     val loading: LiveData<Boolean> = _loading
     private val _showPlaceHolder = MutableLiveData<Boolean>()
     val showPlaceHolder: LiveData<Boolean> = _showPlaceHolder
+
     var currentRange = DEFAULT_RANGE
+    private lateinit var transactionList: List<Transaction>
 
     init {
         getAccountStatement(DEFAULT_RANGE)

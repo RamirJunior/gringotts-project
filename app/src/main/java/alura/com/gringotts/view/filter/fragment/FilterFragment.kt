@@ -42,7 +42,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         localPostition=getPositionFromValue(
-            requireActivity().intent.extras!!.getInt("range")
+            requireActivity().intent.extras!!.getInt(RANGE_KEY)
         )
         filterList[localPostition].isChecked = true
         binding.filterRecyclerView.adapter =
@@ -51,14 +51,14 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", returnValueOfPosition())
+                Intent().putExtra(FILTER_KEY, returnValueOfPosition())
             )
             requireActivity().finish()
         }
         binding.btVoltaParaExtrato.setOnClickListener {
             requireActivity().setResult(
                 2,
-                Intent().putExtra("key_filter", 3)
+                Intent().putExtra(FILTER_KEY, 3)
             )
             requireActivity().finish()
         }
@@ -103,5 +103,9 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
                 4
             }
         }
+    }
+    companion object {
+        private const val RANGE_KEY: String = "range"
+        private const val FILTER_KEY: String = "key_filter"
     }
 }

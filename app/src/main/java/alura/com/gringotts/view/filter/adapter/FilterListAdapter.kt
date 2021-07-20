@@ -18,9 +18,7 @@ class FilterListAdapter(
 
 
     interface SelectItemFilterListener {
-        fun returnPosition(position: Int) {
-
-        }
+        fun callbackPosition(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
@@ -38,7 +36,7 @@ class FilterListAdapter(
                 lastPositionSelected = position
                 notifyDataSetChanged()
             }
-            selectItemFilterListener.returnPosition(lastPositionSelected)
+            selectItemFilterListener.callbackPosition(lastPositionSelected)
         }
     }
 

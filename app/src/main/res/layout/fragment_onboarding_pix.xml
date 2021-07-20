@@ -127,6 +127,7 @@
                 android:id="@+id/cardView9"
                 android:layout_width="match_parent"
                 android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
                 android:layout_height="80dp"
                 android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"

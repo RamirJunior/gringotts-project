@@ -1,11 +1,13 @@
 package alura.com.gringotts.view.pix.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class PixFragment : Fragment() {
 
@@ -23,8 +25,13 @@ class PixFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btBackPix.setOnClickListener {
             activity?.finish()
+        }
+
+        binding.imageButton1.setOnClickListener {
+            findNavController().navigate(R.id.action_pixFragment2_to_pixTypeChoiceFragment)
         }
     }
 

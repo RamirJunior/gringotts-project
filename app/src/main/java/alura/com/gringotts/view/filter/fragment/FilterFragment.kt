@@ -1,8 +1,8 @@
 package alura.com.gringotts.view.filter.fragment
 
 import alura.com.gringotts.R
-import alura.com.gringotts.presentation.filter.model.Filter
 import alura.com.gringotts.databinding.FilterFragmentBinding
+import alura.com.gringotts.presentation.filter.model.Filter
 import alura.com.gringotts.view.filter.adapter.FilterListAdapter
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
     private var _binding: FilterFragmentBinding? = null
     private val binding: FilterFragmentBinding get() = _binding!!
 
-    private var localPostition : Int = 1
+    private var localPostition: Int = 1
     private val filterList by lazy {
         listOf(
             Filter(getString(R.string.tres_dias)),
@@ -41,7 +41,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        localPostition=getPositionFromValue(
+        localPostition = getPositionFromValue(
             requireActivity().intent.extras!!.getInt("range")
         )
         filterList[localPostition].isChecked = true
@@ -85,7 +85,7 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         }
     }
 
-    private fun getPositionFromValue(newRange: Int): Int{
+    private fun getPositionFromValue(newRange: Int): Int {
         return when (newRange) {
             3 -> {
                 0

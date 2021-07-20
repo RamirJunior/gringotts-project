@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pix_navigation">
+    android:id="@+id/pix_navigation"
+    app:startDestination="@id/pixTypeChoiceFragment">
 
     <fragment
         android:id="@+id/onboardingPixFragment2"
@@ -19,5 +20,14 @@
         android:id="@+id/pixFragment2"
         android:name="alura.com.gringotts.view.pix.fragments.PixFragment"
         android:label="PixFragment"
-        tools:layout="@layout/fragment_pix" />
+        tools:layout="@layout/fragment_pix">
+        <action
+            android:id="@+id/action_pixFragment2_to_pixTypeChoiceFragment"
+            app:destination="@id/pixTypeChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixTypeChoiceFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixTypeChoiceFragment"
+        android:label="PixTypeChoiceFragment"
+        tools:layout="@layout/fragment_pix_type_choice" />
 </navigation>

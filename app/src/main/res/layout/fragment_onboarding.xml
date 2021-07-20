@@ -4,89 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grayLow">
+    android:background="@color/gold">
 
-    <ImageView
-        android:id="@+id/imageViewLogoGringotts"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506"
-        app:srcCompat="@drawable/logotipo_png"
-        tools:ignore="ContentDescription" />
-
-    <View
-        android:id="@+id/view"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_onboarding"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/white_rounded_corner"
+        android:layout_height="400dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_onboarding1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/capriola"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:text="@string/txt_activityOnboarding1"
-        android:textAlignment="center"
-        android:textColor="@color/grayHigh"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txt_onboarding2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/capriola"
-        android:text="@string/txt_activityOnboarding2"
-        android:textAlignment="center"
-        android:textColor="@color/grayHigh"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_onboarding1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/buttonCriarConta"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/golden_rounded_corner"
-        android:text="@string/txt_botaoCriarConta"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_onboarding1" />
+            <ImageView
+                android:id="@+id/imageViewLogoGringotts"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="36dp"
+                android:background="@color/trans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logotipo_png"
+                tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/textViewJaTenhoCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_SouCliente"
-        android:textColor="@color/gold"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCriarConta" />
+            <TextView
+                android:id="@+id/txt_onboarding1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="36dp"
+                android:text="@string/txt_activityOnboarding1"
+                android:textAlignment="center"
+                android:textColor="@color/grayHigh"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewLogoGringotts" />
+
+            <Button
+                android:id="@+id/buttonCriarConta"
+                android:layout_width="200dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/golden_rounded_corner"
+                android:text="@string/txt_botaoCriarConta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_onboarding1" />
+
+            <TextView
+                android:id="@+id/textViewJaTenhoCadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_SouCliente"
+                android:textColorLink="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCriarConta" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

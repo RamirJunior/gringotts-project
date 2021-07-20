@@ -48,9 +48,9 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner) {
             adapter.setAdapterList(it)
         }
-        accountStatementViewModel.isListVisible.observe(viewLifecycleOwner) {
-            binding.recyclerViewTransactions.isVisible = it
-            binding.emptyListContainer.isVisible = !it
+        accountStatementViewModel.showPlaceHolder.observe(viewLifecycleOwner) {
+            binding.recyclerViewTransactions.isVisible = !it
+            binding.emptyListContainer.isVisible = it
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -80,6 +80,6 @@ class AccountStatementFragment : Fragment() {
     }
 
     companion object {
-        const val REQUEST_CODE = 2
+        private const val REQUEST_CODE = 2
     }
 }

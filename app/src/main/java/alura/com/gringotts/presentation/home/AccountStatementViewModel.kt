@@ -2,9 +2,9 @@ package alura.com.gringotts.presentation.home
 
 import AccountStatementRepository
 import alura.com.gringotts.data.models.home.*
-import alura.com.gringotts.data.models.home.Date
-import alura.com.gringotts.presentation.home.auxiliar.DataHelper.Companion.formatDate
-import alura.com.gringotts.presentation.home.auxiliar.DataHelper.Companion.getDateFromString
+import alura.com.gringotts.presentation.home.auxiliar.DateHelper.formatDate
+import alura.com.gringotts.presentation.home.auxiliar.DateHelper.getDateFromString
+import alura.com.gringotts.presentation.home.auxiliar.DateHelper.getMonthString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,24 +12,33 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import java.util.*
+import java.util.Date
 
 class AccountStatementViewModel(
     private val accountStatementRepository: AccountStatementRepository
 ) : ViewModel() {
 
-    private lateinit var transactionList: List<Transaction>
     private val _currentTransactionsList = MutableLiveData<List<TransactionListItem>>()
     val currentTransactionsList: LiveData<List<TransactionListItem>> = _currentTransactionsList
     private val _accountStatementError = MutableLiveData<String>()
     val accountStatementError: LiveData<String> = _accountStatementError
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-    private val _isListVisible = MutableLiveData<Boolean>()
-    val isListVisible: LiveData<Boolean> = _isListVisible
+    private val _showPlaceHolder = MutableLiveData<Boolean>()
+    val showPlaceHolder: LiveData<Boolean> = _showPlaceHolder
+
     var currentRange = DEFAULT_RANGE
+    private lateinit var transactionList: List<Transaction>
 
     init {
         getAccountStatement(DEFAULT_RANGE)
+    }
+
+    private fun getAccountStatement(daysAgo: Int) {
+        val currentDate = Calendar.getInstance()
+        val daysAgoDate = Calendar.getInstance()
+        daysAgoDate.add(Calendar.DAY_OF_MONTH, - daysAgo)
+        getTransactionList(formatDate(currentDate.time), formatDate(daysAgoDate.time))
     }
 
     private fun getTransactionList(
@@ -41,7 +50,7 @@ class AccountStatementViewModel(
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                transactionList = response
+                transactionList = response.reversed()
                 mapToTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
@@ -54,94 +63,36 @@ class AccountStatementViewModel(
     }
 
     private fun mapToTransactionsSegmentedList(response: List<Transaction>) {
-        val transactionsMap = TreeMap<String, List<Transaction>>()
-        for (i in response) {
-            val currentList = transactionsMap[i.date] ?: listOf()
-            transactionsMap[i.date] = currentList.plus(i)
-        }
-        val segmentedList: List<TransactionListItem> = makeSegmentedList(transactionsMap)
-        if (segmentedList.isEmpty()) {
-            _isListVisible.postValue(false)
-        } else {
-            _currentTransactionsList.postValue(
-                segmentedList.reversed()
-            )
-            _isListVisible.postValue(true)
-        }
-    }
-
-    private fun makeSegmentedList(transactionsMap: TreeMap<String, List<Transaction>>)
-            : List<TransactionListItem> {
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
-        for (date in transactionsMap.keys) {
-            val calendar = Calendar.getInstance()
-            calendar.time = getDateFromString(date)
-            for (transaction in transactionsMap[date]!!) {
+        lateinit var lastDate: Date
+        for (transaction in response) {
+            if(segmentedList.isEmpty() || lastDate != getDateFromString(transaction.date)){
+                lastDate = getDateFromString(transaction.date)
+                val calendar = Calendar.getInstance()
+                calendar.time = lastDate
                 segmentedList.add(
-                    TransactionItem(
-                        transaction
+                    TransactionDateItem(
+                        TransactionDate(
+                            calendar.get(Calendar.DAY_OF_MONTH).toString(),
+                            getMonthString(calendar)
+                        )
                     )
                 )
             }
             segmentedList.add(
-                TransactionDateItem(
-                    Date(
-                        calendar.get(Calendar.DAY_OF_MONTH).toString(),
-                        monthIntToString(calendar.get(Calendar.MONTH))
-                    )
+                TransactionItem(
+                    transaction
                 )
             )
         }
-        return segmentedList.toList()
-    }
-
-    private fun monthIntToString(monthInt: Int): String {
-        when (monthInt) {
-            1 -> {
-                return "JAN"
-            }
-            2 -> {
-                return "FEV"
-            }
-            3 -> {
-                return "MAR"
-            }
-            4 -> {
-                return "ABR"
-            }
-            5 -> {
-                return "MAI"
-            }
-            6 -> {
-                return "JUN"
-            }
-            7 -> {
-                return "JUL"
-            }
-            8 -> {
-                return "AGO"
-            }
-            9 -> {
-                return "SET"
-            }
-            10 -> {
-                return "OUT"
-            }
-            11 -> {
-                return "NOV"
-            }
-            12 -> {
-                return "DEZ"
-            }
-            else -> return ""
+        if (segmentedList.isEmpty()) {
+            _showPlaceHolder.postValue(true)
+        } else {
+            _currentTransactionsList.postValue(
+                segmentedList
+            )
+            _showPlaceHolder.postValue(false)
         }
-    }
-
-    private fun getAccountStatement(daysAgo: Int) {
-        val currentDate = Calendar.getInstance()
-        val sevenDaysAgo = Calendar.getInstance()
-        sevenDaysAgo.add(Calendar.DAY_OF_MONTH, -daysAgo)
-        getTransactionList(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
     }
 
     fun changeRange(newRange: Int) {

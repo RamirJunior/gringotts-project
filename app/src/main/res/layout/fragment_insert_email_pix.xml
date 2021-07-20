@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/pix_onboarding_continue"
+        android:id="@+id/pix_insert_email_continue"
         android:layout_width="302dp"
         android:layout_height="56dp"
         android:layout_marginTop="20dp"

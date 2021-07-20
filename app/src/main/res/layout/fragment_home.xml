@@ -215,47 +215,58 @@
                 android:backgroundTint="@color/gold"
                 app:layout_constraintTop_toBottomOf="@+id/card_view_balance">
 
-                <ImageView
-                    android:id="@+id/account_image"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_baseline_account_circle_24"
-                    tools:ignore="ContentDescription" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/account_title"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="88dp"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/txt_title_account"
-                    android:textColor="@color/grayHigh"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/account_image"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/txt_account"
-                    android:layout_width="232dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="88dp"
-                    android:layout_marginTop="32dp"
-                    android:text="@string/txt_account"
-                    android:textColor="@color/grayHigh"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/account_title"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txt_title_account"
+                        android:textColor="@color/grayHigh"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/account_image"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/account_next"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="316dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/trans"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                    tools:ignore="ContentDescription" />
+                    <TextView
+                        android:id="@+id/txt_account"
+                        android:layout_width="287dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txt_account"
+                        android:textColor="@color/grayHigh"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@+id/account_image"
+                        app:layout_constraintTop_toBottomOf="@+id/account_title" />
+
+                    <ImageButton
+                        android:id="@+id/account_next"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@color/trans"
+                        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txt_account"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

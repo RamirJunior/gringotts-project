@@ -36,9 +36,9 @@ class AccountStatementViewModel(
 
     private fun getAccountStatement(daysAgo: Int) {
         val currentDate = Calendar.getInstance()
-        val sevenDaysAgo = Calendar.getInstance()
-        sevenDaysAgo.add(Calendar.DAY_OF_MONTH, - daysAgo)
-        getTransactionList(formatDate(currentDate.time), formatDate(sevenDaysAgo.time))
+        val daysAgoDate = Calendar.getInstance()
+        daysAgoDate.add(Calendar.DAY_OF_MONTH, - daysAgo)
+        getTransactionList(formatDate(currentDate.time), formatDate(daysAgoDate.time))
     }
 
     private fun getTransactionList(

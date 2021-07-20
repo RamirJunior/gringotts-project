@@ -15,14 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gold"
-            app:title="Pix/QR Code"
-            app:titleCentered="true"
-            app:titleTextColor="@color/white"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
             app:elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+            app:title="Pix/QR Code"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white">
 
         </com.google.android.material.appbar.MaterialToolbar>
 

@@ -15,7 +15,7 @@ object DateHelper {
         return formatter.parse(date)!!
     }
 
-    fun getMonthString(calendar: Calendar): String{
+    fun getMonthString(calendar: Calendar): String {
         val formatter = SimpleDateFormat(DATE_FORMAT_MM, Locale("pt", "br"))
         return formatter.format(calendar.time)
     }

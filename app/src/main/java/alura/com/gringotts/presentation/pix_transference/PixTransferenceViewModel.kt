@@ -17,10 +17,9 @@ class PixTransferenceViewModel(private val sessionManager: SessionManager) : Vie
     }
 
     fun onInsertEmailButtonClicked() {
-        if(isEmailValid()){
+        if (isEmailValid()) {
             _validEmail.postValue(Unit)
-        }
-        else{
+        } else {
             _invalidEmail.postValue("e-mail invalido")
         }
     }

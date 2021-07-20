@@ -31,21 +31,21 @@ class InsertEmailPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarPixInsertEmail.setNavigationOnClickListener{
+        binding.toolbarPixInsertEmail.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
-        binding.editEmail.addTextChangedListener{
+        binding.editEmail.addTextChangedListener {
             insertEmailPixViewModel.setEmail(it.toString())
         }
-        binding.pixInsertEmailContinue.setOnClickListener{
+        binding.pixInsertEmailContinue.setOnClickListener {
             insertEmailPixViewModel.onInsertEmailButtonClicked()
         }
-        insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner){
+        insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner) {
             findNavController().navigate(
                 R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment
             )
         }
-        insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner){
+        insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {
             context?.let { it1 ->
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)

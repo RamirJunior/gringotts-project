@@ -128,7 +128,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="2dp"
-                android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

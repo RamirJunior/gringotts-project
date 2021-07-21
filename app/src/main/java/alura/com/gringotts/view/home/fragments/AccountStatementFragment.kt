@@ -53,7 +53,7 @@ class AccountStatementFragment : Fragment() {
             binding.emptyListContainer.isVisible = it
             binding.rangeNotSelectedContainer.isVisible = false
         }
-        accountStatementViewModel.showRangeNotSelectedHolder.observe(viewLifecycleOwner){
+        accountStatementViewModel.showRangeNotSelectedHolder.observe(viewLifecycleOwner) {
             binding.recyclerViewTransactions.isVisible = false
             binding.emptyListContainer.isVisible = false
             binding.rangeNotSelectedContainer.isVisible = true

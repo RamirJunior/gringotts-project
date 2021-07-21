@@ -4,14 +4,11 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorLong
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -93,7 +90,7 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             }
         }
 
-        private fun setColorItemView (@ColorRes color: Int){
+        private fun setColorItemView(@ColorRes color: Int) {
             cardTransactionStatus.setColorFilter(
                 ContextCompat.getColor(itemView.context, color)
             )
@@ -105,7 +102,7 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             )
         }
 
-        private fun setImageItemView (@DrawableRes drawable: Int){
+        private fun setImageItemView(@DrawableRes drawable: Int) {
             cardTransactionStatus.setImageDrawable(
                 ContextCompat.getDrawable(itemView.context, drawable)
             )

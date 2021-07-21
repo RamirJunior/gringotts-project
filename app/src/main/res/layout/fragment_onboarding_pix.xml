@@ -178,7 +178,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_meus_investimentos"
-                        app:tint="@color/grayHigh"/>
+                        app:tint="@color/grayHigh" />
 
                     <TextView
                         android:id="@+id/textView3"
@@ -186,8 +186,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
-                        android:textColor="@color/grayHigh"
                         android:text="Venda com QR Code Pix por até 1.89% e receba na hora."
+                        android:textColor="@color/grayHigh"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

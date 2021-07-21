@@ -30,8 +30,7 @@ class AccountStatementFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = TransactionListAdapter(listOf())
-        binding.recyclerViewTransactions.adapter = adapter
+        binding.recyclerViewTransactions.adapter = TransactionListAdapter(listOf())
         accountStatementViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingAccountStatement.isVisible = it
         }

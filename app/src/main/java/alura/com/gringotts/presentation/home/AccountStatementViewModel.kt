@@ -12,7 +12,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import java.util.*
-import java.util.Date
 
 class AccountStatementViewModel(
     private val accountStatementRepository: AccountStatementRepository
@@ -28,7 +27,6 @@ class AccountStatementViewModel(
     val showEmptyListPlaceHolder: LiveData<Boolean> = _showEmptyListPlaceHolder
 
 
-
     var currentRange = DEFAULT_RANGE
     private lateinit var transactionList: List<Transaction>
 
@@ -39,7 +37,7 @@ class AccountStatementViewModel(
     private fun getAccountStatement(daysAgo: Int) {
         val currentDate = Calendar.getInstance()
         val daysAgoDate = Calendar.getInstance()
-        daysAgoDate.add(Calendar.DAY_OF_MONTH, - daysAgo)
+        daysAgoDate.add(Calendar.DAY_OF_MONTH, -daysAgo)
         getTransactionList(formatDate(currentDate.time), formatDate(daysAgoDate.time))
     }
 
@@ -68,7 +66,7 @@ class AccountStatementViewModel(
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
         var lastDate: Date? = null
         for (transaction in response) {
-            if(lastDate != getDateFromString(transaction.date)){
+            if (lastDate != getDateFromString(transaction.date)) {
                 lastDate = getDateFromString(transaction.date)
                 val calendar = Calendar.getInstance()
                 calendar.time = lastDate

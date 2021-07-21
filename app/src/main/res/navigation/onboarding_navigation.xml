@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment2"
-        android:name="alura.com.gringotts.view.OnboardingFragment"
+        android:name="alura.com.gringotts.view.initial.OnboardingFragment"
         android:label="OnboardingFragment">
         <action
             android:id="@+id/action_onboardingFragment2_to_login_navigation"
@@ -15,4 +15,5 @@
             app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/login_navigation" />
+
 </navigation>

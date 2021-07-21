@@ -20,4 +20,15 @@
         </item>
     </style>
 
+    <style name="Widget.MyApp.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        ...
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MyApp.Chip.Choice</item>
+    </style>
+
+    <style name="ThemeOverlay.MyApp.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+    </style>
+
 </resources>

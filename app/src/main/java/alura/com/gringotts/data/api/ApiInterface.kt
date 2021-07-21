@@ -1,15 +1,13 @@
 package alura.com.gringotts.data.api
 
-import alura.com.gringotts.data.model.HomeResponse
-import alura.com.gringotts.data.model.LoginPayload
-import alura.com.gringotts.data.model.LoginResponse
+import alura.com.gringotts.data.models.home.HomeResponse
+import alura.com.gringotts.data.models.home.Transaction
+import alura.com.gringotts.data.models.initial.LoginPayload
+import alura.com.gringotts.data.models.initial.LoginResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -17,6 +15,13 @@ interface ApiInterface {
     suspend fun userLogin(
         @Body login: LoginPayload
     ): Response<LoginResponse>
+
+    @GET("extract")
+    suspend fun transactions(
+        @Query("start") initialDate: String,
+        @Query("end") finalDate: String,
+        @Header("token") token: String
+    ): Response<List<Transaction>>
 
     @GET("home")
     suspend fun home(

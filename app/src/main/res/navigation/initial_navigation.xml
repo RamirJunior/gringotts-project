@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="alura.com.gringotts.view.SplashFragment"
+        android:name="alura.com.gringotts.view.initial.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -22,6 +22,5 @@
     </fragment>
     <include app:graph="@navigation/login_navigation" />
     <include app:graph="@navigation/onboarding_navigation" />
-
 
 </navigation>

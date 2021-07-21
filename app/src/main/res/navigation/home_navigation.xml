@@ -6,12 +6,13 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="alura.com.gringotts.view.HomeFragment"
+        android:name="alura.com.gringotts.view.home.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/paymentsFragment"
-        android:name="alura.com.gringotts.view.PaymentsFragment"
-        android:label="fragment_payments"
-        tools:layout="@layout/fragment_payments" />
+        android:id="@+id/accountStatementFragment"
+        android:name="alura.com.gringotts.view.home.fragments.AccountStatementFragment"
+        android:label="Account Statement"
+        tools:layout="@layout/fragment_account_statement" />
+
 </navigation>

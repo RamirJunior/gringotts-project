@@ -26,8 +26,8 @@ class AccountStatementViewModel(
     val loading: LiveData<Boolean> = _loading
     private val _showEmptyListPlaceHolder = MutableLiveData<Boolean>()
     val showEmptyListPlaceHolder: LiveData<Boolean> = _showEmptyListPlaceHolder
-    private val _showRangeNotSelectedHolder = MutableLiveData<Unit>()
-    val showRangeNotSelectedHolder: LiveData<Unit> = _showRangeNotSelectedHolder
+
+
 
     var currentRange = DEFAULT_RANGE
     private lateinit var transactionList: List<Transaction>
@@ -83,10 +83,6 @@ class AccountStatementViewModel(
     fun changeRange(newRange: Int) {
         currentRange = newRange
         getAccountStatement(newRange)
-    }
-
-    fun rangeNotSelected(){
-        _showRangeNotSelectedHolder.postValue(Unit)
     }
 
     fun setAllTransactions() {

@@ -6,7 +6,6 @@ import alura.com.gringotts.databinding.HomeServicesLayoutBinding
 import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.view.adapters.FuncionalityListAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,6 @@ class HomeServicesFragment : Fragment() {
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
                         if (getItensByPosition(requireArguments().getInt("position"))[position].title == "Pix") {
-                            Log.i("Onboarding Home Valor  ", goToOnboardingPix.toString())
                             val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
                                 goToOnboardingPix
                             )

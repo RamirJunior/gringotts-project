@@ -16,6 +16,8 @@ class PixTransferenceViewModel(private val sessionManager: SessionManager) : Vie
         currentEmail = value
     }
 
+    fun getEmail() = currentEmail
+
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
             _validEmail.postValue(Unit)
@@ -27,4 +29,5 @@ class PixTransferenceViewModel(private val sessionManager: SessionManager) : Vie
     private fun isEmailValid(): Boolean {
         return true
     }
+
 }

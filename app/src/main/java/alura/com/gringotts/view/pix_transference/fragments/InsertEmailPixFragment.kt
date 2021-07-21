@@ -1,6 +1,6 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
-import alura.com.gringotts.R
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.databinding.FragmentInsertEmailPixBinding
 import alura.com.gringotts.presentation.pix_transference.PixTransferenceViewModel
 import android.os.Bundle
@@ -18,6 +18,7 @@ class InsertEmailPixFragment : Fragment() {
     private var _binding: FragmentInsertEmailPixBinding? = null
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
     private val insertEmailPixViewModel by viewModel<PixTransferenceViewModel>()
+    var pix = Pix()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,20 +32,28 @@ class InsertEmailPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        pix.receiverEmail = insertEmailPixViewModel.getEmail()
+
         binding.toolbarPixInsertEmail.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
+
         binding.defaultEditText.addTextChangedListener {
             insertEmailPixViewModel.setEmail(it.toString())
         }
+
         binding.pixInsertEmailContinue.setOnClickListener {
             insertEmailPixViewModel.onInsertEmailButtonClicked()
         }
+
         insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner) {
-            findNavController().navigate(
-                R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment
-            )
+//            val direction =
+//                InsertEmailPixFragmentDirections.actionInsertEmailPixFragmentToInsertOptionalDescriptionPixFragment(
+//                    pix
+//                )
+//            findNavController().navigate(direction)
         }
+
         insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {
             context?.let { it1 ->
                 MaterialAlertDialogBuilder(it1)

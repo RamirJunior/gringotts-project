@@ -34,7 +34,7 @@ class InsertEmailPixFragment : Fragment() {
         binding.toolbarPixInsertEmail.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
-        binding.editEmail.addTextChangedListener {
+        binding.defaultEditText.addTextChangedListener {
             insertEmailPixViewModel.setEmail(it.toString())
         }
         binding.pixInsertEmailContinue.setOnClickListener {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pix_navigation">
+
+    <fragment
+        android:id="@+id/onboardingPixFragment2"
+        android:name="alura.com.gringotts.view.pix.fragments.OnboardingPixFragment"
+        android:label="OnboardingPixFragment"
+        tools:layout="@layout/fragment_onboarding_pix">
+        <action
+            android:id="@+id/action_onboardingPixFragment2_to_pixFragment2"
+            app:destination="@id/pixFragment2"
+            app:popUpTo="@id/onboardingPixFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFragment2"
+        android:name="alura.com.gringotts.view.pix.fragments.PixFragment"
+        android:label="PixFragment"
+        tools:layout="@layout/fragment_pix" />
+</navigation>

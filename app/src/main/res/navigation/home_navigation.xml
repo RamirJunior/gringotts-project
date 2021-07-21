@@ -8,11 +8,23 @@
         android:id="@+id/homeFragment"
         android:name="alura.com.gringotts.view.home.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_pixActivity"
+            app:destination="@id/pixActivity" />
+    </fragment>
     <fragment
         android:id="@+id/accountStatementFragment"
         android:name="alura.com.gringotts.view.home.fragments.AccountStatementFragment"
         android:label="Account Statement"
         tools:layout="@layout/fragment_account_statement" />
+    <activity
+        android:id="@+id/pixActivity"
+        android:name="alura.com.gringotts.view.pix.PixActivity"
+        android:label="PixActivity">
+        <argument
+            android:name="pixOnboardingWasExecuted"
+            app:argType="boolean" />
+    </activity>
 
 </navigation>

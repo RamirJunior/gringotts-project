@@ -7,10 +7,12 @@ import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
+import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.presentation.initial.LoginViewModel
 import alura.com.gringotts.presentation.initial.OnboardingViewModel
 import alura.com.gringotts.presentation.initial.SplashViewModel
+import alura.com.gringotts.presentation.pix.OnboardingPixViewModel
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.android.ext.koin.androidContext
@@ -32,6 +34,12 @@ val initialModule = module {
     }
     viewModel {
         AccountStatementViewModel(get())
+    }
+    viewModel {
+        OnboardingPixViewModel(get())
+    }
+    viewModel {
+        HomeServicesViewModel(get())
     }
     single<SessionManager> {
         SessionManagerImpl(get())

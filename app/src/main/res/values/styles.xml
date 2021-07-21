@@ -2,6 +2,7 @@
 <resources>
 
     <style name="MyNewTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/gold</item>
         <item name="colorPrimaryDark">@color/gold</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorPrimaryVariant">@color/gold</item>

@@ -17,7 +17,8 @@ object DateHelper {
 
     fun getMonthString(calendar: Calendar): String {
         val formatter = SimpleDateFormat(DATE_FORMAT_MM, Locale.getDefault())
-        return formatter.format(calendar.time)
+        return formatter.format(calendar.time).substring(0, 4).uppercase() +
+                (formatter.format(calendar.time).substring(4, 8))
     }
 
     private const val DATE_FORMAT_dd_mm_yyyy: String = "dd/MM/yyyy"

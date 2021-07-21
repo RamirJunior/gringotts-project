@@ -51,12 +51,6 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.showEmptyListPlaceHolder.observe(viewLifecycleOwner) {
             binding.recyclerViewTransactions.isVisible = !it
             binding.emptyListContainer.isVisible = it
-            binding.rangeNotSelectedContainer.isVisible = false
-        }
-        accountStatementViewModel.showRangeNotSelectedHolder.observe(viewLifecycleOwner) {
-            binding.recyclerViewTransactions.isVisible = false
-            binding.emptyListContainer.isVisible = false
-            binding.rangeNotSelectedContainer.isVisible = true
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -82,8 +76,6 @@ class AccountStatementFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_SUCCESS_CODE) {
             accountStatementViewModel.changeRange(data!!.getIntExtra(FILTER_KEY, DEFAULT_RANGE))
-        } else {
-            accountStatementViewModel.rangeNotSelected()
         }
     }
 

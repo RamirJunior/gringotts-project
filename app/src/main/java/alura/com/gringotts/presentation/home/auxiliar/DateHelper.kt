@@ -16,11 +16,11 @@ object DateHelper {
     }
 
     fun getMonthString(calendar: Calendar): String{
-        val formatter = SimpleDateFormat(DATE_FORMAT_MM, Locale("pt", "br"))
+        val formatter = SimpleDateFormat(DATE_FORMAT_MM, Locale.getDefault())
         return formatter.format(calendar.time)
     }
 
     private const val DATE_FORMAT_dd_mm_yyyy: String = "dd/MM/yyyy"
-    private const val DATE_FORMAT_MM = "MMMM"
+    private const val DATE_FORMAT_MM = "dd MMMM"
 
 }

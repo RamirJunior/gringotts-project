@@ -64,35 +64,24 @@ class AccountStatementViewModel(
 
     private fun mapToTransactionsSegmentedList(response: List<Transaction>) {
         val segmentedList: MutableList<TransactionListItem> = mutableListOf()
-        lateinit var lastDate: Date
+        var lastDate: Date? = null
         for (transaction in response) {
-            if(segmentedList.isEmpty() || lastDate != getDateFromString(transaction.date)){
+            if(lastDate != getDateFromString(transaction.date)){
                 lastDate = getDateFromString(transaction.date)
                 val calendar = Calendar.getInstance()
                 calendar.time = lastDate
                 segmentedList.add(
                     TransactionDateItem(
                         TransactionDate(
-                            calendar.get(Calendar.DAY_OF_MONTH).toString(),
                             getMonthString(calendar)
                         )
                     )
                 )
             }
-            segmentedList.add(
-                TransactionItem(
-                    transaction
-                )
-            )
+            segmentedList.add(TransactionItem(transaction))
         }
-        if (segmentedList.isEmpty()) {
-            _showPlaceHolder.postValue(true)
-        } else {
-            _currentTransactionsList.postValue(
-                segmentedList
-            )
-            _showPlaceHolder.postValue(false)
-        }
+        _currentTransactionsList.postValue(segmentedList)
+        _showPlaceHolder.postValue(segmentedList.isEmpty())
     }
 
     fun changeRange(newRange: Int) {

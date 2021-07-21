@@ -56,12 +56,10 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
     }
 
     class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val day: TextView = itemView.findViewById(R.id.textview_day)
-        private val month: TextView = itemView.findViewById(R.id.textview_mounth)
+        private val date: TextView = itemView.findViewById(R.id.textview_date)
 
         fun bindHeader(transaction: TransactionDateItem) {
-            day.text = transaction.transactionDate.day
-            month.text = transaction.transactionDate.month
+            date.text = transaction.transactionDate.date
         }
     }
 
@@ -95,7 +93,7 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             }
         }
 
-        fun setColorItemView (@ColorRes color: Int){
+        private fun setColorItemView (@ColorRes color: Int){
             cardTransactionStatus.setColorFilter(
                 ContextCompat.getColor(itemView.context, color)
             )
@@ -107,7 +105,7 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             )
         }
 
-        fun setImageItemView (@DrawableRes drawable: Int){
+        private fun setImageItemView (@DrawableRes drawable: Int){
             cardTransactionStatus.setImageDrawable(
                 ContextCompat.getDrawable(itemView.context, drawable)
             )

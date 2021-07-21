@@ -24,6 +24,9 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.editDescription.isCounterEnabled = true
+        binding.editDescription.counterMaxLength = 20
+
         binding.toolbarPixDescription.setNavigationOnClickListener {
             activity?.onBackPressed()
         }

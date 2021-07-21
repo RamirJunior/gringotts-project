@@ -9,15 +9,14 @@
         android:id="@+id/toolbar_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:backgroundTint="@color/grayBack"
+        android:background="@color/gold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
         app:title="Filtros"
         app:titleCentered="true"
-        app:titleTextColor="@color/orange">
+        app:titleTextColor="@color/white">
 
     </com.google.android.material.appbar.MaterialToolbar>
 

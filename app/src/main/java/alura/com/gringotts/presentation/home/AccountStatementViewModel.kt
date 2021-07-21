@@ -24,8 +24,10 @@ class AccountStatementViewModel(
     val accountStatementError: LiveData<String> = _accountStatementError
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-    private val _showPlaceHolder = MutableLiveData<Boolean>()
-    val showPlaceHolder: LiveData<Boolean> = _showPlaceHolder
+    private val _showEmptyListPlaceHolder = MutableLiveData<Boolean>()
+    val showEmptyListPlaceHolder: LiveData<Boolean> = _showEmptyListPlaceHolder
+    private val _showRangeNotSelectedHolder = MutableLiveData<Unit>()
+    val showRangeNotSelectedHolder: LiveData<Unit> = _showRangeNotSelectedHolder
 
     var currentRange = DEFAULT_RANGE
     private lateinit var transactionList: List<Transaction>
@@ -81,12 +83,16 @@ class AccountStatementViewModel(
             segmentedList.add(TransactionItem(transaction))
         }
         _currentTransactionsList.postValue(segmentedList)
-        _showPlaceHolder.postValue(segmentedList.isEmpty())
+        _showEmptyListPlaceHolder.postValue(segmentedList.isEmpty())
     }
 
     fun changeRange(newRange: Int) {
         currentRange = newRange
         getAccountStatement(newRange)
+    }
+
+    fun rangeNotSelected(){
+        _showRangeNotSelectedHolder.postValue(Unit)
     }
 
     fun setAllTransactions() {

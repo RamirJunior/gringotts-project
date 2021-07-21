@@ -48,9 +48,15 @@ class AccountStatementFragment : Fragment() {
         accountStatementViewModel.currentTransactionsList.observe(viewLifecycleOwner) {
             adapter.setAdapterList(it)
         }
-        accountStatementViewModel.showPlaceHolder.observe(viewLifecycleOwner) {
+        accountStatementViewModel.showEmptyListPlaceHolder.observe(viewLifecycleOwner) {
             binding.recyclerViewTransactions.isVisible = !it
             binding.emptyListContainer.isVisible = it
+            binding.rangeNotSelectedContainer.isVisible = false
+        }
+        accountStatementViewModel.showRangeNotSelectedHolder.observe(viewLifecycleOwner){
+            binding.recyclerViewTransactions.isVisible = false
+            binding.emptyListContainer.isVisible = false
+            binding.rangeNotSelectedContainer.isVisible = true
         }
         binding.chipInput.setOnClickListener {
             accountStatementViewModel.setOnlyEntries()
@@ -65,7 +71,7 @@ class AccountStatementFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener {
             startActivityForResult(
                 Intent(requireActivity(), FilterActivity::class.java)
-                    .putExtra("range", accountStatementViewModel.currentRange),
+                    .putExtra(RANGE_KEY, accountStatementViewModel.currentRange),
                 REQUEST_CODE
             )
             true
@@ -74,16 +80,17 @@ class AccountStatementFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE) {
+        if (resultCode == RESULT_SUCCESS_CODE) {
             accountStatementViewModel.changeRange(data!!.getIntExtra(FILTER_KEY, DEFAULT_RANGE))
         } else {
-
+            accountStatementViewModel.rangeNotSelected()
         }
     }
 
     companion object {
+        private const val RANGE_KEY: String = "range_key"
         private const val REQUEST_CODE = 2
-        private const val FAILURE_CODE: Int = 3
+        private const val RESULT_SUCCESS_CODE = 2
         private const val FILTER_KEY: String = "key_filter"
         private const val DEFAULT_RANGE: Int = 7
     }

@@ -72,13 +72,7 @@ class AccountStatementViewModel(
                 lastDate = getDateFromString(transaction.date)
                 val calendar = Calendar.getInstance()
                 calendar.time = lastDate
-                segmentedList.add(
-                    TransactionDateItem(
-                        TransactionDate(
-                            getMonthString(calendar)
-                        )
-                    )
-                )
+                segmentedList.add(TransactionDateItem(TransactionDate(getMonthString(calendar))))
             }
             segmentedList.add(TransactionItem(transaction))
         }

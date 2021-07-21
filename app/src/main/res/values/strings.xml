@@ -22,12 +22,6 @@
     <string name="principais">Principais</string>
     <string name="produtosInvestimentos">Produtos</string>
     <string name="servicos">Serviços</string>
-    <string name="transferencias">Transferências</string>
-    <string name="cartoes">Cartões</string>
-    <string name="pagarContas">Pagar Contas</string>
-    <string name="recargas">Recargas</string>
-    <string name="adicionarDinheiro">Adicionar Dinheiro</string>
-    <string name="pixQrCode">Pix/QR Code</string>
     <string name="saldo">Saldo</string>
     <string name="real">R$&#xA0;</string>
     <string name="detalhes_conta">Ver detalhes da conta</string>
@@ -43,8 +37,8 @@
     <string name="empty" />
     <string name="txt_ola">Olá,&#xA0;</string>
     <string name="txt_transferencia">TRANSFERÊNCIAS</string>
-    <string name="txt_account">Complete seu perfil agora mesmo e aproveite os serviços Gringotts gratuitos!</string>
-    <string name="txt_title_account">#FALTA POUCO</string>
+    <string name="txt_account">Veja um local de saque mais próximo de você agora mesmo.</string>
+    <string name="txt_title_account">LOCAIS DE SAQUE EM TODO BRASIL</string>
     <string name="titulo">Titulo</string>
     <string name="texto">Texto</string>
     <string name="click">click</string>
@@ -61,4 +55,20 @@
     <string name="trinta_dias">Últimos 30 dias</string>
     <string name="sessenta_dias">Últimos 60 dias</string>
     <string name="centoevinte_dias">Últimos 120 dias</string>
+    <string name="PostosShell">Postos Shell</string>
+    <string name="Ofertas">Ofertas</string>
+    <string name="Shopping">Shopping</string>
+    <string name="LocaisDeSaque">Locais de saque</string>
+    <string name="IndiqueGanhe">Indique e Ganhe</string>
+    <string name="PagarComQrCode">Pagar com QR Code</string>
+    <string name="AplicarDinheiro">Aplicar dinheiro</string>
+    <string name="Investimentos">Investimentos</string>
+    <string name="Seguros">Seguros</string>
+    <string name="AprendaInvestir">Aprenda a investir</string>
+    <string name="Transferencias">Transferências</string>
+    <string name="Cartoes">Cartões</string>
+    <string name="PagarContas">Pagar contas</string>
+    <string name="Recargas">Recargas</string>
+    <string name="Depositar">Depositar</string>
+    <string name="Pix">Pix</string>
 </resources>

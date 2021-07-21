@@ -54,7 +54,7 @@ class FilterListAdapter(
         fun bind(filter: Filter) {
             cardText.text = filter.text
             if (filter.isChecked) {
-                cardText.setCheckMarkDrawable(R.drawable.ic_adicionar_dinheiro)
+                cardText.setCheckMarkDrawable(R.drawable.ic_baseline_check_24)
             } else {
                 cardText.setCheckMarkDrawable(R.drawable.golden_rounded_corner)
             }

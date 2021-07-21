@@ -71,10 +71,10 @@ class HomeServicesFragment : Fragment() {
 
     private fun functionalitiesPageThree(): List<FuncionalityItem> {
         return listOf(
-            FuncionalityItem("Postos Shell", R.drawable.ic_postos_shell),
+            FuncionalityItem("Postos HP", R.drawable.ic_postos_shell),
             FuncionalityItem("Ofertas", R.drawable.ic_ofertas),
             FuncionalityItem("Shopping", R.drawable.ic_carrinho_de_compras),
-            FuncionalityItem("Locais de saque", R.drawable.ic_saque),
+            FuncionalityItem("Locais de Saque", R.drawable.ic_saque),
             FuncionalityItem("Indique e Ganhe", R.drawable.ic_presente),
             FuncionalityItem("Pagar com QR Code", R.drawable.ic_pagar_com_qr_code)
         )
@@ -82,10 +82,10 @@ class HomeServicesFragment : Fragment() {
 
     private fun functionalitiesPageTwo(): List<FuncionalityItem> {
         return listOf(
-            FuncionalityItem("Aplicar dinheiro", R.drawable.ic_investir),
+            FuncionalityItem("Aplicar Dinheiro", R.drawable.ic_investir),
             FuncionalityItem("Investimentos", R.drawable.ic_meus_investimentos),
             FuncionalityItem("Seguros", R.drawable.ic_seguros),
-            FuncionalityItem("Aprenda a investir", R.drawable.ic_aprenda_a_investir),
+            FuncionalityItem("Aprenda a Investir", R.drawable.ic_aprenda_a_investir)
         )
     }
 
@@ -93,8 +93,8 @@ class HomeServicesFragment : Fragment() {
         return listOf(
             FuncionalityItem("Transferências", R.drawable.ic_transferecnia),
             FuncionalityItem("Cartões", R.drawable.ic_cartoes),
-            FuncionalityItem("Pagar contas", R.drawable.ic_codigo_barras_vector),
-            FuncionalityItem("Recargas", R.drawable.ic_celular_recarga),
+            FuncionalityItem("Pagar Conta", R.drawable.ic_codigo_barras_vector),
+            FuncionalityItem("Recarga", R.drawable.ic_celular_recarga),
             FuncionalityItem("Depositar", R.drawable.ic_adicionar_dinheiro),
             FuncionalityItem("Pix", R.drawable.logo_pix_final)
         )

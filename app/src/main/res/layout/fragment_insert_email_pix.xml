@@ -51,8 +51,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    />
-
     <Button
         android:id="@+id/pix_insert_email_continue"
         android:layout_width="302dp"

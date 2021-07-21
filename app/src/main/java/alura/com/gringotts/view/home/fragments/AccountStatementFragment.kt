@@ -75,11 +75,16 @@ class AccountStatementFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
-            accountStatementViewModel.changeRange(data!!.getIntExtra("key_filter", 3))
+            accountStatementViewModel.changeRange(data!!.getIntExtra(FILTER_KEY, DEFAULT_RANGE))
+        } else {
+
         }
     }
 
     companion object {
         private const val REQUEST_CODE = 2
+        private const val FAILURE_CODE: Int = 3
+        private const val FILTER_KEY: String = "key_filter"
+        private const val DEFAULT_RANGE: Int = 7
     }
 }

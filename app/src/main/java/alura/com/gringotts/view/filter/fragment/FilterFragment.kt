@@ -50,14 +50,14 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
         binding.btApplyfilters.setOnClickListener {
             requireActivity().setResult(
-                2,
+                SUCCESSFUL_CODE,
                 Intent().putExtra(FILTER_KEY, returnValueOfPosition())
             )
             requireActivity().finish()
         }
         binding.toolbarFilter.setNavigationOnClickListener{
             requireActivity().setResult(
-                2,
+                FAILURE_CODE,
                 Intent().putExtra(FILTER_KEY, 3)
             )
             requireActivity().finish()
@@ -105,7 +105,9 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         }
     }
     companion object {
-        private const val RANGE_KEY: String = "range"
+        private const val RANGE_KEY: String = "range_key"
         private const val FILTER_KEY: String = "key_filter"
+        private const val SUCCESSFUL_CODE: Int = 2
+        private const val FAILURE_CODE: Int = 3
     }
 }

@@ -17,7 +17,7 @@ class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() 
     init {
         viewModelScope.launch {
             try {
-                val pixData = pixRepository.balanceData()
+                val value = pixRepository.balanceData()
                 _balance.postValue(balance.toString())
 
             } catch (e: Exception) {

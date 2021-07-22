@@ -55,7 +55,7 @@ val initialModule = module {
         InsertOptionalDescriptionPixViewModel(get())
     }
     viewModel {
-        PixValueViewModel()
+        PixValueViewModel(get())
     }
     single<SessionManager> {
         SessionManagerImpl(get())

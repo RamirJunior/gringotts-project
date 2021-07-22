@@ -89,4 +89,10 @@
     <string name="tarifa">Tarifa</string>
     <string name="valor_da_transfer_ncia">Valor da Transferência</string>
     <string name="confira_os_dados_antes_de_continuar">Confira os dados antes de continuar</string>
+    <string name="onBoarding_pix_segurança">Conheça o Pix do Gringotts, segurança e praticidade a qualquer momento.</string>
+    <string name="o_pix_simples_e_gratuito_como_o_gringotts_sempre_foi_entenda_como_funciona">O Pix é simples e gratuito como o Gringotts sempre foi. Entenda como funciona:</string>
+    <string name="transfer_ncias_por_chaves_gr_tis_e_ilimitadas">Transferências por chaves grátis e ilimitadas.</string>
+    <string name="venda_com_qr_code_pix_por_at_1_89_e_receba_na_hora">Venda com QR Code Pix por até 1.89% e receba na hora.</string>
+    <string name="continuar">Continuar</string>
+    <string name="pague_e_receba_24_horas_por_dia_7_dias_por_semana">Pague e receba 24 horas por dia, 7 dias por semana.</string>
 </resources>

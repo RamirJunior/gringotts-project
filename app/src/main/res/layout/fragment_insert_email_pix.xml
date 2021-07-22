@@ -27,7 +27,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:text="Insira o e-mail do destinatário"
+        android:text="@string/insira_o_e_mail_do_destinat_rio"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_insert_email" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,17 +51,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/pix_insert_email_continue"
-        android:layout_width="302dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:background="@drawable/golden_rounded_corner"
-        android:text="Continuar"
+        android:text="@string/continuar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

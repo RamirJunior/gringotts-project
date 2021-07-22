@@ -9,16 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixValueFragment : Fragment() {
 
     private var _binding: FragmentPixValueBinding? = null
     private val binding: FragmentPixValueBinding get() = _binding!!
+    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
     private val pixValueFragmentViewModel by viewModel<PixValueViewModel>()
-    private val pixSharedViewModel: PixSharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

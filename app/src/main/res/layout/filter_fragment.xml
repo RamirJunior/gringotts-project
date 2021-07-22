@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+        app:navigationIconTint="@color/white"
         app:title="Filtros"
         app:titleCentered="true"
         app:titleTextColor="@color/white">

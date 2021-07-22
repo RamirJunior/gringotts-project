@@ -10,9 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InsertOptionalDescriptionPixFragment : Fragment() {
@@ -20,7 +19,7 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
     private var _binding: FragmentInsertOptionalDescriptionPixBinding? = null
     private val binding: FragmentInsertOptionalDescriptionPixBinding get() = _binding!!
     private val insertOptionalDescriptionPixViewModel by viewModel<InsertOptionalDescriptionPixViewModel>()
-    private val pixSharedViewModel: PixSharedViewModel by activityViewModels()
+    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

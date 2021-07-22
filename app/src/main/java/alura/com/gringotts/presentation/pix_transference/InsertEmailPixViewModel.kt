@@ -7,17 +7,14 @@ import androidx.lifecycle.ViewModel
 
 class InsertEmailPixViewModel(private val sessionManager: SessionManager) : ViewModel() {
 
-    private var currentEmail: String = ""
+
     private val _invalidEmail = MutableLiveData<String>()
     val invalidEmail: LiveData<String> = _invalidEmail
     private val _validEmail = MutableLiveData<Unit>()
     val validEmail: LiveData<Unit> = _validEmail
 
-    fun setEmail(value: String) {
-        currentEmail = value
-    }
+    var currentEmail: String = ""
 
-    fun getEmail() = currentEmail
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {

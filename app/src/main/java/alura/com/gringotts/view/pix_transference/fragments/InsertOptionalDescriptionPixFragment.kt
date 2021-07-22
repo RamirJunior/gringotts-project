@@ -50,9 +50,5 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         binding.pixDescriptionContinue.setOnClickListener {
             insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
         }
-
-        insertOptionalDescriptionPixViewModel.invalidDescription.observe(viewLifecycleOwner) {
-            binding.editTextDescription.error = it
-            }
-        }
     }
+}

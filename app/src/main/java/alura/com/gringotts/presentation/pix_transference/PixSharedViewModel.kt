@@ -37,5 +37,4 @@ class PixSharedViewModel : ViewModel() {
     }
 
     fun getPix(): Pix = pix
-
 }

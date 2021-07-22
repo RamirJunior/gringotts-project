@@ -30,7 +30,7 @@ class PixTypeChoiceFragment : Fragment() {
             activity?.onBackPressed()
         }
 
-        binding.imageButton1.setOnClickListener {
+        binding.imageButtonEmail.setOnClickListener {
             findNavController().navigate(R.id.action_pixTypeChoiceFragment_to_insertEmailPixFragment)
         }
     }

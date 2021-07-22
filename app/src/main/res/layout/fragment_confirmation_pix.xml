@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,19 +21,96 @@
         app:titleTextColor="@color/white" />
 
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/confiraOsDados"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/grayFront"
         android:gravity="center"
-        android:text="Confira os dados antes de continuar"
+        android:text="@string/confira_os_dados_antes_de_continuar"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_confirmation" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/valorDaTransferencia"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/valor_da_transfer_ncia"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ValorPix"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/gold"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia"
+                tools:text="R$ 2,00" />
+
+            <TextView
+                android:id="@+id/tarifa"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/tarifa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
+
+            <TextView
+                android:id="@+id/valor"
+                android:layout_width="176dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@string/valor_total_da_opera_o"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tarifa" />
+
+            <TextView
+                android:id="@+id/grátis"
+                android:layout_width="70dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:text="@string/gr_tis"
+                app:layout_constraintStart_toEndOf="@+id/tarifa"
+                app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

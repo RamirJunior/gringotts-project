@@ -33,6 +33,7 @@ class PixFragment : Fragment() {
         binding.imageButton1.setOnClickListener {
             findNavController().navigate(R.id.action_pixFragment2_to_pixTypeChoiceFragment)
         }
+
     }
 
 }

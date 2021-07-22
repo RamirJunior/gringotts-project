@@ -24,16 +24,8 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
         }
     }
 
-    fun setEmail(value: String){
-        currentEmail = value
-    }
-
-    fun getEmail() = currentEmail
-
-
     private fun isEmailValid(): Boolean {
         return currentEmail.contains("@")
-
     }
 
 }

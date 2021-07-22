@@ -38,7 +38,7 @@ class InsertEmailPixFragment : Fragment() {
             activity?.onBackPressed()
         }
 
-        binding.defaultEditText.addTextChangedListener {
+        binding.insertEmailField.addTextChangedListener {
             insertEmailPixViewModel.currentEmail=it.toString()
         }
 

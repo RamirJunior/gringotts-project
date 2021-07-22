@@ -99,7 +99,8 @@
             android:id="@+id/editValue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:background="@color/trans"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

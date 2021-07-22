@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_pix_description"
+        android:id="@+id/toolbar_pix_finished"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gold"
@@ -18,5 +18,43 @@
         app:title="Transferir com Pix"
         app:titleCentered="true"
         app:titleTextColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/icon_pix_success"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_finished"
+        app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
+        app:tint="@color/gold" />
+
+    <TextView
+        android:id="@+id/pix_finished_success_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/transferencia_pix_realizada_com_sucesso"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/icon_pix_success"
+        />
+
+    <TextView
+        android:id="@+id/pix_finished_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="16/11/2020 às 17:30"
+        app:layout_constraintTop_toBottomOf="@id/pix_finished_success_message"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

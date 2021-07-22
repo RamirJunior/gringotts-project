@@ -95,4 +95,5 @@
     <string name="continuar">Continuar</string>
     <string name="pague_e_receba_24_horas_por_dia_7_dias_por_semana">Pague e receba 24 horas por dia, 7 dias por semana.</string>
     <string name="insira_o_e_mail_do_destinat_rio">Insira o e-mail do destinatário</string>
+    <string name="transferencia_pix_realizada_com_sucesso">Transferencia Pix realizada com sucesso!</string>
 </resources>

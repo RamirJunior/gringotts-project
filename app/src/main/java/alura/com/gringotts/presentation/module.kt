@@ -13,7 +13,10 @@ import alura.com.gringotts.presentation.initial.LoginViewModel
 import alura.com.gringotts.presentation.initial.OnboardingViewModel
 import alura.com.gringotts.presentation.initial.SplashViewModel
 import alura.com.gringotts.presentation.pix.OnboardingPixViewModel
-import alura.com.gringotts.presentation.pix_transference.PixTransferenceViewModel
+import alura.com.gringotts.presentation.pix_transference.InsertEmailPixViewModel
+import alura.com.gringotts.presentation.pix_transference.InsertOptionalDescriptionPixViewModel
+import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
+import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.android.ext.koin.androidContext
@@ -43,7 +46,16 @@ val initialModule = module {
         HomeServicesViewModel(get())
     }
     viewModel {
-        PixTransferenceViewModel(get())
+        PixSharedViewModel()
+    }
+    viewModel {
+        InsertEmailPixViewModel(get())
+    }
+    viewModel {
+        InsertOptionalDescriptionPixViewModel(get())
+    }
+    viewModel {
+        PixValueViewModel()
     }
     single<SessionManager> {
         SessionManagerImpl(get())

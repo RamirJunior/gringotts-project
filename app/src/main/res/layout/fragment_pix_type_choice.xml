@@ -15,7 +15,7 @@
         app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
         app:title="Transferir com Pix"
         app:titleCentered="true"
-        app:titleTextColor="@color/white"></com.google.android.material.appbar.MaterialToolbar>
+        app:titleTextColor="@color/white" />
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +25,6 @@
         android:gravity="center"
         android:text="Escolher a chave do destinatário"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +155,6 @@
         android:gravity="center"
         android:text="Inserir manualmente"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

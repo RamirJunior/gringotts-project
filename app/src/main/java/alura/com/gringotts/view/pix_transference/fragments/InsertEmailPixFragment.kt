@@ -12,7 +12,6 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InsertEmailPixFragment : Fragment() {
@@ -39,7 +38,7 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.insertEmailField.addTextChangedListener {
-            insertEmailPixViewModel.currentEmail=it.toString()
+            insertEmailPixViewModel.currentEmail = it.toString()
         }
 
         insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner) {

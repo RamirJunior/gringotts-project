@@ -15,7 +15,6 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
 
     var currentEmail: String = ""
 
-
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
             _validEmail.postValue(Unit)

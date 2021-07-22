@@ -44,8 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:maxLength="72"
-            android:inputType="textLongMessage" />
+            android:inputType="textLongMessage"
+            android:maxLength="72" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

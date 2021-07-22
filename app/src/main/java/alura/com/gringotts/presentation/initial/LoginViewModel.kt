@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+
     private var currentUsername: String = ""
     private var currentPassword: String = ""
     private val _rememberSwitch = MutableLiveData<Boolean>()

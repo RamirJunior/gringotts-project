@@ -39,11 +39,11 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         }
 
         binding.editTextDescription.addTextChangedListener {
-            insertOptionalDescriptionPixViewModel.setDescription(it.toString())
+            insertOptionalDescriptionPixViewModel.currentDescription = it.toString()
         }
 
         insertOptionalDescriptionPixViewModel.validDescription.observe(viewLifecycleOwner) {
-            pixSharedViewModel.saveEmail(insertOptionalDescriptionPixViewModel.getDescription())
+            pixSharedViewModel.saveMessage(insertOptionalDescriptionPixViewModel.currentDescription)
             findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
         }
 
@@ -52,16 +52,7 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         }
 
         insertOptionalDescriptionPixViewModel.invalidDescription.observe(viewLifecycleOwner) {
-            context?.let { it1 ->
-                MaterialAlertDialogBuilder(it1)
-                    .setMessage(it)
-                    .setPositiveButton(
-                        "Ok"
-                    ) { _, _ -> }
-                    .show()
+            binding.editTextDescription.error = it
             }
         }
-
     }
-
-}

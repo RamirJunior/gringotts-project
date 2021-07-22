@@ -21,4 +21,17 @@ class ConfirmationPixFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.toolbarPixConfirmation.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
+
+//        binding.CONTINUEBUTTONNAME.setOnClickListener {
+//           findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
+//        }
+
+    }
+
 }

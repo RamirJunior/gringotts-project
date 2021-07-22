@@ -293,7 +293,7 @@
 
                 <TextView
                     android:id="@+id/textView17"
-                    android:layout_width="196dp"
+                    android:layout_width="181dp"
                     android:layout_height="32dp"
                     android:text="Receba na hora com QR Code Pix com taxa de apenas 1,69%."
                     android:textSize="12sp"
@@ -414,7 +414,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/grayBack">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/help_image"

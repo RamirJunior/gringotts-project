@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/imageViewLogoGringotts"
@@ -16,27 +17,11 @@
         app:srcCompat="@drawable/logotipo_png"
         tools:ignore="ContentDescription" />
 
-    <Button
-        android:id="@+id/login_register"
-        android:layout_width="320dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/golden_rounded_corner"
-        android:enabled="true"
-        android:text="@string/registrar"
-        app:layout_constraintBottom_toTopOf="@+id/login_forgot"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_username_layout"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:autofillHints="@string/prompt_email"
         android:hint="@string/prompt_email"
         android:selectAllOnFocus="true"
@@ -48,17 +33,16 @@
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/trans"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_input_layout"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:autofillHints="@string/prompt_password"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -73,9 +57,22 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/trans"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/login_remember"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/rememberPassword"
+        android:textAlignment="textStart"
+        android:theme="@style/SCBSwitch"
+        app:layout_constraintBottom_toTopOf="@+id/login_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login_login"
@@ -83,11 +80,25 @@
         android:layout_height="52dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/golden_rounded_corner"
         android:enabled="true"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toTopOf="@+id/login_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/login_register"
+        android:layout_width="320dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/golden_rounded_corner"
+        android:enabled="true"
+        android:text="@string/registrar"
+        app:layout_constraintBottom_toTopOf="@+id/login_forgot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -106,20 +117,6 @@
         app:layout_constraintStart_toStartOf="@+id/login_input_layout"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/login_remember"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/rememberPassword"
-        android:textAlignment="textStart"
-        android:theme="@style/SCBSwitch"
-        app:layout_constraintBottom_toTopOf="@+id/login_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/login_forgot"

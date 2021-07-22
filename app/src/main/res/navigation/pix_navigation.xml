@@ -47,5 +47,32 @@
         android:id="@+id/insertOptionalDescriptionPixFragment"
         android:name="alura.com.gringotts.view.pix_transference.fragments.InsertOptionalDescriptionPixFragment"
         android:label="InsertOptionalDescriptionPixFragment"
-        tools:layout="@layout/fragment_insert_optional_description_pix" />
+        tools:layout="@layout/fragment_insert_optional_description_pix">
+        <action
+            android:id="@+id/action_insertOptionalDescriptionPixFragment_to_pixValueFragment"
+            app:destination="@id/pixValueFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixValueFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixValueFragment"
+        android:label="PixValueFragment"
+        tools:layout="@layout/fragment_pix_value">
+        <action
+            android:id="@+id/action_pixValueFragment_to_confirmationPixFragment"
+            app:destination="@id/confirmationPixFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.ConfirmationPixFragment"
+        android:label="ConfirmationPixFragment"
+        tools:layout="@layout/fragment_confirmation_pix">
+        <action
+            android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
+            app:destination="@id/pixFinishedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFinishedFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixFinishedFragment"
+        android:label="PixFinishedFragment"
+        tools:layout="@layout/fragment_pix_finished" />
 </navigation>

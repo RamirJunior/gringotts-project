@@ -5,7 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PixTransferenceViewModel(private val sessionManager: SessionManager) : ViewModel() {
+class InsertEmailPixViewModel(private val sessionManager: SessionManager) : ViewModel() {
+
     private var currentEmail: String = ""
     private val _invalidEmail = MutableLiveData<String>()
     val invalidEmail: LiveData<String> = _invalidEmail
@@ -16,15 +17,18 @@ class PixTransferenceViewModel(private val sessionManager: SessionManager) : Vie
         currentEmail = value
     }
 
+    fun getEmail() = currentEmail
+
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
             _validEmail.postValue(Unit)
         } else {
-            _invalidEmail.postValue("e-mail invalido")
+            _invalidEmail.postValue("e-mail inválido")
         }
     }
 
     private fun isEmailValid(): Boolean {
         return true
     }
+
 }

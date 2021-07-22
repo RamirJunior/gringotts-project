@@ -8,17 +8,12 @@ import androidx.lifecycle.ViewModel
 class InsertOptionalDescriptionPixViewModel(private val sessionManager: SessionManager) :
     ViewModel() {
 
-    private var currentDescription: String = ""
     private val _invalidDescription = MutableLiveData<String>()
     val invalidDescription: LiveData<String> = _invalidDescription
     private val _validDescription = MutableLiveData<Unit>()
     val validDescription: LiveData<Unit> = _validDescription
 
-    fun setDescription(value: String) {
-        currentDescription = value
-    }
-
-    fun getDescription() = currentDescription
+    var currentDescription: String = ""
 
     fun onInsertDescriptionButtonClicked() {
         if (isDescriptionValid()) {
@@ -29,7 +24,6 @@ class InsertOptionalDescriptionPixViewModel(private val sessionManager: SessionM
     }
 
     private fun isDescriptionValid(): Boolean {
-        return true
+        return currentDescription.length <= 72
     }
-
 }

@@ -39,11 +39,11 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.defaultEditText.addTextChangedListener {
-            insertEmailPixViewModel.setEmail(it.toString())
+            insertEmailPixViewModel.currentEmail=it.toString()
         }
 
         insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner) {
-            pixSharedViewModel.saveEmail(insertEmailPixViewModel.getEmail())
+            pixSharedViewModel.saveEmail(insertEmailPixViewModel.currentEmail)
             findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
         }
 

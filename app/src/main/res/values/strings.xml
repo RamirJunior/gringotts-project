@@ -77,4 +77,9 @@
     <string name="email_instruction">Insira o valor da transferência</string>
     <string name="transferencias_pix">Cliente Gringotts tem transferências Pix gratuitas e ilimitadas.</string>
     <string name="continuar">Continuar</string>
+    <string name="gr_tis">Grátis</string>
+    <string name="valor_total_da_opera_o">Valor total da operação</string>
+    <string name="tarifa">Tarifa</string>
+    <string name="valor_da_transfer_ncia">Valor da Transferência</string>
+    <string name="confira_os_dados_antes_de_continuar">Confira os dados antes de continuar</string>
 </resources>

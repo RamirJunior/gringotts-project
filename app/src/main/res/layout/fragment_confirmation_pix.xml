@@ -26,7 +26,7 @@
         android:layout_height="60dp"
         android:background="@color/grayFront"
         android:gravity="center"
-        android:text="Confira os dados antes de continuar"
+        android:text="@string/confira_os_dados_antes_de_continuar"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -52,7 +52,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Valor da Transferência"
+                android:text="@string/valor_da_transfer_ncia"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Tarifa"
+                android:text="@string/tarifa"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
 
@@ -92,7 +92,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:text="Valor total da operação"
+                android:text="@string/valor_total_da_opera_o"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tarifa" />
 
@@ -103,7 +103,7 @@
                 android:layout_marginStart="250dp"
                 android:layout_marginTop="14dp"
                 android:gravity="center"
-                android:text="Grátis"
+                android:text="@string/gr_tis"
                 app:layout_constraintStart_toEndOf="@+id/tarifa"
                 app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
 

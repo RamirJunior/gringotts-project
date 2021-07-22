@@ -52,14 +52,7 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {
-            context?.let { it1 ->
-                MaterialAlertDialogBuilder(it1)
-                    .setMessage(it)
-                    .setPositiveButton(
-                        "Ok"
-                    ) { _, _ -> }
-                    .show()
-            }
+            binding.editEmail.error = it
         }
     }
 }

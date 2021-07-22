@@ -25,7 +25,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
     }
 
     private fun isEmailValid(): Boolean {
-        return true
+        return false
     }
 
 }

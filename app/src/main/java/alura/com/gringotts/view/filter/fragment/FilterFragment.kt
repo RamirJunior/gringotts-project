@@ -64,6 +64,11 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun returnValueOfPosition(): Int {
         return when (selectedFilterPosition) {
             0 -> {
@@ -110,4 +115,5 @@ class FilterFragment : Fragment(), FilterListAdapter.SelectItemFilterListener {
         private const val SUCCESSFUL_CODE: Int = 2
         private const val FAILURE_CODE: Int = 3
     }
+
 }

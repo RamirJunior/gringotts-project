@@ -96,4 +96,11 @@
     <string name="pague_e_receba_24_horas_por_dia_7_dias_por_semana">Pague e receba 24 horas por dia, 7 dias por semana.</string>
     <string name="insira_o_e_mail_do_destinat_rio">Insira o e-mail do destinatário</string>
     <string name="transferencia_pix_realizada_com_sucesso">Transferencia Pix realizada com sucesso!</string>
+    <string name="valor_transferencia">Valor transferência</string>
+    <string name="para">para</string>
+    <string name="o_que_voc_deseja_fazer_agora">O que você deseja fazer agora ?</string>
+    <string name="ver_comprovante">Ver comprovante</string>
+    <string name="fazer_outra_transferencia">Fazer outra transferência</string>
+    <string name="ir_para_o_inicio">Ir para o início</string>
+    <string name="compartilhe_suas_chaves_ou_seus_dados_banc_rios_para_receber_transfer_ncias_gr_tis">Compartilhe suas chaves ou seus dados bancários para receber transferências grátis.</string>
 </resources>

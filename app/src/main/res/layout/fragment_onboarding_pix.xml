@@ -2,18 +2,18 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gold">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gold">
+        android:layout_gravity="center">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_onboarding"
-            android:layout_width="0dp"
-            android:layout_height="702dp"
-            android:layout_margin="16dp"
+            android:layout_width="377dp"
+            android:layout_height="700dp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="14dp"
@@ -70,6 +70,7 @@
                     android:layout_marginBottom="12dp"
                     android:text="@string/o_pix_simples_e_gratuito_como_o_gringotts_sempre_foi_entenda_como_funciona"
                     android:textAlignment="center"
+                    android:gravity="center"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/cardview_transfer"
                     app:layout_constraintEnd_toEndOf="parent"

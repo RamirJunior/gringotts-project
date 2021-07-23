@@ -31,10 +31,6 @@ class PixFinishedFragment : Fragment() {
             activity?.onBackPressed()
         }
 
-        binding.concluir.setOnClickListener {
-            activity?.finish()
-        }
-
     }
 
 }

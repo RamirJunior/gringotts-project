@@ -89,5 +89,4 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(): Boolean {
         return currentPassword.length >= 6
     }
-
 }

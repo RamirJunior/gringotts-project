@@ -31,6 +31,10 @@ class PixFinishedFragment : Fragment() {
             activity?.onBackPressed()
         }
 
+        binding.imageButtonGoToHome.setOnClickListener {
+            activity?.finish()
+        }
+
     }
 
 }

@@ -53,5 +53,6 @@ class InsertEmailPixFragment : Fragment() {
         insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {
             binding.editEmail.error = it
         }
+
     }
 }

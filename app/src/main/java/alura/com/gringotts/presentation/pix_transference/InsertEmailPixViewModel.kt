@@ -14,18 +14,19 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
 //    }
 
     /////////////////////////////////////
-    private val _invalidEmail = MutableLiveData<String>()
-    val invalidEmail: LiveData<String> = _invalidEmail
-    private val _validEmail = MutableLiveData<Unit>()
-    val validEmail: LiveData<Unit> = _validEmail
+    private val _invalidEmailError = MutableLiveData<String?>()
+    val invalidEmailError: LiveData<String?> = _invalidEmailError
+    private val _goToInsertDescriptionScreen = SingleLiveEvent<String>()
+    val goToInsertDescriptionScreen: LiveData<String> = _goToInsertDescriptionScreen
 
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
-            _validEmail.postValue(Unit)
+            _goToInsertDescriptionScreen.postValue(currentEmail)
+            _invalidEmailError.postValue(null)
         } else {
-            _invalidEmail.postValue("e-mail inválido")
+            _invalidEmailError.postValue("e-mail inválido")
         }
     }
 

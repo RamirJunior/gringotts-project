@@ -350,7 +350,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
-            android:text="Compartilhe suas chaves ou seus dados bancários para receber transferências grátis."
+            android:text="@string/compartilhe_suas_chaves_ou_seus_dados_banc_rios_para_receber_transfer_ncias_gr_tis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />

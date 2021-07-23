@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModel
 
 class InsertEmailPixViewModel(private val sessionManager: SessionManager) : ViewModel() {
     //////// SlingleLiveEvent ///////////
-    private val uploadData = SingleLiveEvent<String>()
-    fun getUploadData(): SingleLiveEvent<String> {
-        return uploadData
-    }
+//    private val uploadData = SingleLiveEvent<String>()
+//    fun getUploadData(): SingleLiveEvent<String> {
+//        return uploadData
+//    }
 
     /////////////////////////////////////
     private val _invalidEmail = MutableLiveData<String>()

@@ -40,10 +40,9 @@ class PixValueFragment : Fragment() {
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }
 
-
-        pixValueFragmentViewModel.balance.observe(viewLifecycleOwner) {
-            binding.balanceValue.text = it
-        }
+//        pixValueFragmentViewModel.balance.observe(viewLifecycleOwner) {
+//            binding.balanceValue.text = it
+//        }
     }
 
 }

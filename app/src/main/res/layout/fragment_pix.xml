@@ -101,7 +101,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,7 +171,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -179,7 +181,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="116dp"
             android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -240,7 +242,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -308,7 +311,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -391,7 +395,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_compartilhar" />
+                    app:srcCompat="@drawable/ic_compartilhar"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

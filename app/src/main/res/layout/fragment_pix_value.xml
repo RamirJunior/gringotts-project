@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,10 +32,10 @@
             android:id="@+id/account_statement_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="14dp"
             android:text="@string/saldo_gringotts"
-            android:textColor="@color/grayHigh"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,9 +44,10 @@
             android:id="@+id/balance_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="@string/real"
-            android:textColor="@color/black"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/account_statement_text"
             app:layout_constraintStart_toEndOf="@id/account_statement_text" />
 
@@ -54,17 +56,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_account_statement_value"
-            android:textColor="@color/black"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/balance_currency"
-            app:layout_constraintStart_toEndOf="@+id/balance_currency" />
+            app:layout_constraintStart_toEndOf="@+id/balance_currency"
+            tools:text="@string/default_account_statement_value" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="14dp"
             android:text="@string/ocultar"
             android:textColor="@color/gold"
             android:textSize="16sp"
@@ -79,10 +81,10 @@
         android:id="@+id/email_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
         android:text="@string/email_instruction"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/account_statement_value_text" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +101,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editValue"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="46dp"
             android:background="@color/trans"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,20 +110,28 @@
         android:id="@+id/bottom_of_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="14dp"
+        android:gravity="center"
         android:text="@string/transferencias_pix"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_email_layout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/pixValueContinue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/golden_rounded_corner"
         android:text="@string/continuar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottom_of_input_text" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

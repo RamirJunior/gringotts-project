@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/gold">
+    android:layout_height="match_parent">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:background="@color/gold">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_onboarding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="702dp"
             android:layout_margin="16dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="32dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,13 +49,13 @@
 
                 <TextView
                     android:id="@+id/textView_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="362dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:gravity="center"
                     android:text="@string/onBoarding_pix_segurança"
                     android:textAlignment="center"
-                    android:textColor="@color/grayHigh"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/textview_slogan"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +64,7 @@
 
                 <TextView
                     android:id="@+id/textview_slogan"
-                    android:layout_width="match_parent"
+                    android:layout_width="362dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
@@ -220,5 +222,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

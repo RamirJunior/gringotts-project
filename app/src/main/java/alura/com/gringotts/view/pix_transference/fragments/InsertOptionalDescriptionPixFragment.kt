@@ -47,7 +47,8 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         }
 
         binding.pixDescriptionContinue.setOnClickListener {
-            insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
+            //insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
+            findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
         }
     }
 }

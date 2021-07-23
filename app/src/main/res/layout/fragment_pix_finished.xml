@@ -23,17 +23,18 @@
         android:id="@+id/icon_pix_success"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/concluir"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_finished"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_finished"
         app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
         app:tint="@color/gold" />
 
     <TextView
         android:id="@+id/pix_finished_success_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
@@ -43,16 +44,32 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icon_pix_success" />
+        app:layout_constraintTop_toBottomOf="@+id/icon_pix_success" />
 
     <TextView
         android:id="@+id/pix_finished_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="16/11/2020 às 17:30"
+        android:layout_width="133dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="23/07/2021 às 17:30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pix_finished_success_message" />
+        app:layout_constraintTop_toBottomOf="@+id/pix_finished_success_message" />
+
+    <Button
+        android:id="@+id/concluir"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/golden_rounded_corner"
+        android:text="Concluir"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

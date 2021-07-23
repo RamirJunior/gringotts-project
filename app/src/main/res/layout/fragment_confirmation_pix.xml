@@ -1,298 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_pix_confirmation"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gold"
-        app:elevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
-        app:navigationIconTint="@color/white"
-        app:title="Confirmação"
-        app:titleCentered="true"
-        app:titleTextColor="@color/white" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/confiraOsDados"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/grayFront"
-        android:gravity="center"
-        android:text="@string/confira_os_dados_antes_de_continuar"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_confirmation" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="205dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_pix_confirmation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/gold"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+            app:navigationIconTint="@color/white"
+            app:title="Confirmação"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
 
-            <TextView
-                android:id="@+id/valorDaTransferencia"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="@string/valor_da_transfer_ncia"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ValorPix"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="14dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/gold"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia"
-                tools:text="R$ 2,00" />
-
-            <TextView
-                android:id="@+id/tarifa"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="@string/tarifa"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
-
-            <TextView
-                android:id="@+id/valor"
-                android:layout_width="176dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="@string/valor_total_da_opera_o"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tarifa" />
-
-            <TextView
-                android:id="@+id/grátis"
-                android:layout_width="70dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="250dp"
-                android:layout_marginTop="14dp"
-                android:gravity="center"
-                android:text="@string/gr_tis"
-                android:textColor="@color/greenExpense"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/tarifa"
-                app:layout_constraintTop_toBottomOf="@+id/ValorPix" />
-
-            <TextView
-                android:id="@+id/valorTotalReais"
-                android:layout_width="70dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="135dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:textColor="@color/gold"
-                app:layout_constraintStart_toEndOf="@+id/valor"
-                app:layout_constraintTop_toBottomOf="@+id/grátis"
-                tools:text="R$ 2,00" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/confiraOsDados"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="60dp"
+            android:background="@color/grayFront"
+            android:gravity="center"
+            android:text="@string/confira_os_dados_antes_de_continuar"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_confirmation" />
 
-            <TextView
-                android:id="@+id/destinatario"
-                android:layout_width="80dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="14dp"
-                android:gravity="center"
-                android:text="Para"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="205dp"
+            android:outlineProvider="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
 
-            <TextView
-                android:id="@+id/nomeDestinatario"
-                android:layout_width="312dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
-                android:textColor="@color/orange"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/destinatario"
-                tools:ignore="RtlCompat"
-                tools:text="Junior Ribeiro Ramir" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/CPFtitle"
-                android:layout_width="38dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="CPF:"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
-                tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/valorDaTransferencia"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/valor_da_transfer_ncia"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/CPFpessoa"
-                android:layout_width="264dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/CPFtitle"
-                app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
-                tools:ignore="RtlCompat"
-                tools:text="12345678910" />
+                <TextView
+                    android:id="@+id/ValorPix"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="R$ 2,00"
+                    android:textAlignment="center"
+                    android:textColor="@color/gold"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia"
+                    tools:text="R$ 2,00" />
 
-            <TextView
-                android:id="@+id/Instituicao"
-                android:layout_width="78dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="Instituição:"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/CPFtitle"
-                tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/tarifa"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/tarifa"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ValorPix"
+                    tools:ignore="RtlCompat" />
 
-            <TextView
-                android:id="@+id/InstituicaoPix"
-                android:layout_width="223dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/Instituicao"
-                app:layout_constraintTop_toBottomOf="@+id/CPFpessoa"
-                tools:ignore="RtlCompat"
-                tools:text="PagBank" />
+                <TextView
+                    android:id="@+id/valor"
+                    android:layout_width="176dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/valor_total_da_opera_o"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tarifa"
+                    tools:ignore="RtlCompat" />
 
-            <TextView
-                android:id="@+id/DescricaoPix"
-                android:layout_width="78dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="Descrição:"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Instituicao"
-                tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/grátis"
+                    android:layout_width="70dp"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="@string/gr_tis"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greenExpense"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ValorPix"
+                    tools:ignore="RtlCompat" />
 
-            <TextView
-                android:id="@+id/Descricao"
-                android:layout_width="222dp"
-                android:layout_height="19dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/DescricaoPix"
-                app:layout_constraintTop_toBottomOf="@+id/InstituicaoPix"
-                tools:ignore="RtlCompat"
-                tools:text="Isso é um teste" />
+                <TextView
+                    android:id="@+id/valorTotalReais"
+                    android:layout_width="70dp"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="R$ 2,00"
+                    android:textAlignment="viewEnd"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grátis"
+                    tools:ignore="RtlCompat"
+                    tools:text="R$ 2,00" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:elevation="0dp"
+            android:outlineProvider="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/destinatario"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="Para"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/nomeDestinatario"
+                    android:layout_width="312dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Junior Ribeiro Ramir"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/orange"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/destinatario"
+                    tools:ignore="RtlCompat"
+                    tools:text="Junior Ribeiro Ramir" />
+
+                <TextView
+                    android:id="@+id/CPFtitle"
+                    android:layout_width="38dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="CPF:"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/CPFpessoa"
+                    android:layout_width="264dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="12345678910"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/CPFtitle"
+                    app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
+                    tools:ignore="RtlCompat"
+                    tools:text="12345678910" />
+
+                <TextView
+                    android:id="@+id/Instituicao"
+                    android:layout_width="78dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Instituição:"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CPFtitle"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/InstituicaoPix"
+                    android:layout_width="223dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="PagBank"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/Instituicao"
+                    app:layout_constraintTop_toBottomOf="@+id/CPFpessoa"
+                    tools:ignore="RtlCompat"
+                    tools:text="PagBank" />
+
+                <TextView
+                    android:id="@+id/DescricaoPix"
+                    android:layout_width="78dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Descrição:"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Instituicao"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/Descricao"
+                    android:layout_width="222dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="Isso é um teste"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/DescricaoPix"
+                    app:layout_constraintTop_toBottomOf="@+id/InstituicaoPix"
+                    tools:ignore="RtlCompat"
+                    tools:text="Isso é um teste" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
-    <TextView
-        android:id="@+id/quando"
-        android:layout_width="80dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:text="Quando"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        <TextView
+            android:id="@+id/quando"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:text="Quando"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            tools:ignore="RtlCompat" />
 
-    <TextView
-        android:id="@+id/Data"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="18dp"
-        android:gravity="center"
-        android:textAlignment="viewStart"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quando"
-        tools:ignore="RtlCompat"
-        tools:text="XX/XX/XXXX" />
+        <TextView
+            android:id="@+id/Data"
+            android:layout_width="86dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="23/07/2021"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quando"
+            tools:ignore="RtlCompat"
+            tools:text="23/07/2021" />
 
-    <TextView
-        android:id="@+id/hoje"
-        android:layout_width="61dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="2dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/Data"
-        tools:ignore="RtlCompat"
-        tools:layout_editor_absoluteY="570dp"
-        tools:text="(hoje)" />
+        <TextView
+            android:id="@+id/hoje"
+            android:layout_width="61dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="56dp"
+            android:gravity="center"
+            android:text="(hoje)"
+            android:textAlignment="viewStart"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/Data"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            tools:ignore="RtlCompat"
+            tools:text="(hoje)" />
+
+        <Button
+            android:id="@+id/continueConfirmation"
+            android:layout_width="320dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/golden_rounded_corner"
+            android:text="Confirmar transferência"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_confirmation" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="16dp"
+            android:text="Cancelar"
+            android:textColor="@color/gold"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/continueConfirmation" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

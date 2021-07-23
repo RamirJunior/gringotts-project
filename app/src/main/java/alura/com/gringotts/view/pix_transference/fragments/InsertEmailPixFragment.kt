@@ -47,7 +47,8 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.pixInsertEmailContinue.setOnClickListener {
-            insertEmailPixViewModel.onInsertEmailButtonClicked()
+            //insertEmailPixViewModel.onInsertEmailButtonClicked()
+            findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
         }
 
         insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {

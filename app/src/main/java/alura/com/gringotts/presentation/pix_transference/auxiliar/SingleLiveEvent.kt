@@ -1,4 +1,4 @@
-package alura.com.gringotts.presentation.pix_transference
+package alura.com.gringotts.presentation.pix_transference.auxiliar
 
 import android.util.Log
 import androidx.annotation.MainThread
@@ -15,6 +15,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         if (hasActiveObservers()) {
             Log.w(TAG, "Multiple observers registered but only one will be notified of changes.")
         }
+
         // Observe the internal MutableLiveData
         super.observe(owner, object : Observer<T> {
             override fun onChanged(t: T?) {
@@ -24,6 +25,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
             }
         })
     }
+
     @MainThread
     override fun setValue(t: T?) {
         mPending.set(true)
@@ -40,4 +42,4 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         private val TAG = "SingleLiveEvent"
     }
 }
-}
+

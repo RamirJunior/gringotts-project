@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InsertEmailPixFragment : Fragment() {
@@ -19,7 +19,7 @@ class InsertEmailPixFragment : Fragment() {
     private var _binding: FragmentInsertEmailPixBinding? = null
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
     private val insertEmailPixViewModel by viewModel<InsertEmailPixViewModel>()
-    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
+    private val pixSharedViewModel: PixSharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,8 +47,7 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.pixInsertEmailContinue.setOnClickListener {
-            //insertEmailPixViewModel.onInsertEmailButtonClicked()
-            findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
+            insertEmailPixViewModel.onInsertEmailButtonClicked()
         }
 
         insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {

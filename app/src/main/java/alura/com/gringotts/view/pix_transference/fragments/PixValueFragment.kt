@@ -49,5 +49,4 @@ class PixValueFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

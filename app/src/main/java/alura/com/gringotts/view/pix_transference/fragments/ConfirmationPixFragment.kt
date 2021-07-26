@@ -36,12 +36,10 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -66,7 +66,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/ValorPix"
+                    android:id="@+id/textview_value"
                     android:layout_width="200dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="14dp"
@@ -91,7 +91,7 @@
                     android:text="@string/tarifa"
                     android:textAlignment="viewStart"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ValorPix"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_value"
                     tools:ignore="RtlCompat" />
 
                 <TextView
@@ -119,11 +119,11 @@
                     android:textColor="@color/greenExpense"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ValorPix"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_value"
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/valorTotalReais"
+                    android:id="@+id/textview_total_value"
                     android:layout_width="70dp"
                     android:layout_height="22dp"
                     android:layout_marginTop="4dp"
@@ -169,7 +169,7 @@
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/nomeDestinatario"
+                    android:id="@+id/textview_username"
                     android:layout_width="312dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="14dp"
@@ -196,11 +196,11 @@
                     android:textAlignment="viewStart"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_username"
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/CPFpessoa"
+                    android:id="@+id/textview_cpf"
                     android:layout_width="264dp"
                     android:layout_height="23dp"
                     android:layout_marginStart="10dp"
@@ -210,7 +210,7 @@
                     android:textAlignment="viewStart"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/CPFtitle"
-                    app:layout_constraintTop_toBottomOf="@+id/nomeDestinatario"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_username"
                     tools:ignore="RtlCompat"
                     tools:text="12345678910" />
 
@@ -229,7 +229,7 @@
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/InstituicaoPix"
+                    android:id="@+id/textview_bank_name"
                     android:layout_width="223dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="10dp"
@@ -239,7 +239,7 @@
                     android:textAlignment="viewStart"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/Instituicao"
-                    app:layout_constraintTop_toBottomOf="@+id/CPFpessoa"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_cpf"
                     tools:ignore="RtlCompat"
                     tools:text="PagBank" />
 
@@ -258,7 +258,7 @@
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/Descricao"
+                    android:id="@+id/textview_description"
                     android:layout_width="222dp"
                     android:layout_height="19dp"
                     android:layout_marginStart="10dp"
@@ -268,7 +268,7 @@
                     android:textAlignment="viewStart"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/DescricaoPix"
-                    app:layout_constraintTop_toBottomOf="@+id/InstituicaoPix"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_bank_name"
                     tools:ignore="RtlCompat"
                     tools:text="Isso é um teste" />
 
@@ -291,7 +291,7 @@
             tools:ignore="RtlCompat" />
 
         <TextView
-            android:id="@+id/Data"
+            android:id="@+id/textview_date"
             android:layout_width="86dp"
             android:layout_height="32dp"
             android:layout_marginStart="14dp"
@@ -316,7 +316,7 @@
             android:text="(hoje)"
             android:textAlignment="viewStart"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/Data"
+            app:layout_constraintStart_toEndOf="@+id/textview_date"
             app:layout_constraintTop_toBottomOf="@+id/cardView2"
             tools:ignore="RtlCompat"
             tools:text="(hoje)" />

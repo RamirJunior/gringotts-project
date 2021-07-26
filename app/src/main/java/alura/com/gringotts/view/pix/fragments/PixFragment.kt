@@ -30,7 +30,7 @@ class PixFragment : Fragment() {
             activity?.finish()
         }
 
-        binding.imageButton1.setOnClickListener {
+        binding.cardView2.setOnClickListener {
             findNavController().navigate(R.id.action_pixFragment2_to_pixTypeChoiceFragment)
         }
 

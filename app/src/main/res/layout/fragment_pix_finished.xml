@@ -260,7 +260,7 @@
                             app:layout_constraintStart_toEndOf="@+id/icon_checking_copy"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                             app:layout_constraintStart_toEndOf="@+id/other_transfer"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton_other_transfer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
                             app:layout_constraintStart_toEndOf="@id/go_to_home_icon"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton_go_to_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -380,6 +380,16 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

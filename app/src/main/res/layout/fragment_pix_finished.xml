@@ -279,7 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="4dp"
                     android:backgroundTint="@color/grayLow"
                     app:layout_constraintStart_toStartOf="parent"
@@ -331,7 +331,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/grayLow"
@@ -353,7 +353,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_outline_home_28"
+                            app:srcCompat="@drawable/ic_outline_home_24"
                             app:tint="@color/gold" />
 
                         <TextView

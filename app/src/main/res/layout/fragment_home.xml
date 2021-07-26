@@ -244,7 +244,8 @@
                     android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades" />
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades"
+                    app:layout_constraintCircleRadius="30dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

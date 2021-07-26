@@ -79,6 +79,11 @@ class AccountStatementFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         private const val RANGE_KEY: String = "range_key"
         private const val REQUEST_CODE = 2

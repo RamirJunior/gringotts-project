@@ -41,8 +41,8 @@ class InsertEmailPixFragment : Fragment() {
             insertEmailPixViewModel.currentEmail = it.toString()
         }
 
-        insertEmailPixViewModel.validEmail.observe(viewLifecycleOwner) {
-            pixSharedViewModel.saveEmail(insertEmailPixViewModel.currentEmail)
+        insertEmailPixViewModel.goToInsertDescriptionScreen.observe(viewLifecycleOwner) {
+            pixSharedViewModel.saveEmail(it)
             findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
         }
 
@@ -50,9 +50,14 @@ class InsertEmailPixFragment : Fragment() {
             insertEmailPixViewModel.onInsertEmailButtonClicked()
         }
 
-        insertEmailPixViewModel.invalidEmail.observe(viewLifecycleOwner) {
+        insertEmailPixViewModel.invalidEmailError.observe(viewLifecycleOwner) {
             binding.editEmail.error = it
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

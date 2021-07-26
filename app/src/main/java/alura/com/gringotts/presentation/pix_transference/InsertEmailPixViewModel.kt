@@ -7,25 +7,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class InsertEmailPixViewModel(private val sessionManager: SessionManager) : ViewModel() {
-    //////// SlingleLiveEvent ///////////
-//    private val uploadData = SingleLiveEvent<String>()
-//    fun getUploadData(): SingleLiveEvent<String> {
-//        return uploadData
-//    }
 
-    /////////////////////////////////////
-    private val _invalidEmail = MutableLiveData<String>()
-    val invalidEmail: LiveData<String> = _invalidEmail
-    private val _validEmail = MutableLiveData<Unit>()
-    val validEmail: LiveData<Unit> = _validEmail
+    private val _invalidEmailError = MutableLiveData<String?>()
+    val invalidEmailError: LiveData<String?> = _invalidEmailError
+    private val _goToInsertDescriptionScreen = SingleLiveEvent<String>()
+    val goToInsertDescriptionScreen: LiveData<String> = _goToInsertDescriptionScreen
 
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
-            _validEmail.postValue(Unit)
-        } else {
-            _invalidEmail.postValue("e-mail inválido")
+            _goToInsertDescriptionScreen.postValue(currentEmail)
+            _invalidEmailError.postValue(null)
+        } else if (!currentEmail.contains("@")) {
+            _invalidEmailError.postValue("* E-mail inválido.")
+        } else if (currentEmail.contains(" ")){
+            _invalidEmailError.postValue("* Não pode conter espaços em branco.")
         }
     }
 

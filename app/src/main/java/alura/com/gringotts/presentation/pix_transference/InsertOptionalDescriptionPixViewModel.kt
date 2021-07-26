@@ -1,6 +1,7 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.session.SessionManager
+import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +9,7 @@ import androidx.lifecycle.ViewModel
 class InsertOptionalDescriptionPixViewModel(private val sessionManager: SessionManager) :
     ViewModel() {
 
-    private val _invalidDescription = MutableLiveData<String>()
+    private val _invalidDescription = SingleLiveEvent<String>()
     val invalidDescription: LiveData<String> = _invalidDescription
     private val _validDescription = MutableLiveData<Unit>()
     val validDescription: LiveData<Unit> = _validDescription

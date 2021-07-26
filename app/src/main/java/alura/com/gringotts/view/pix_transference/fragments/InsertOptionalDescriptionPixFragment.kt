@@ -51,4 +51,9 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
             findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

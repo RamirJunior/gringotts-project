@@ -58,6 +58,11 @@ class HomeServicesFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun getItensByPosition(position: Int): List<FuncionalityItem> {
         return when (position) {
             0 -> functionalitiesPageOne()

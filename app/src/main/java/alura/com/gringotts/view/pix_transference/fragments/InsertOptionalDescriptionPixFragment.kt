@@ -41,14 +41,15 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
             insertOptionalDescriptionPixViewModel.currentDescription = it.toString()
         }
 
-        insertOptionalDescriptionPixViewModel.validDescription.observe(viewLifecycleOwner) {
-            pixSharedViewModel.saveMessage(insertOptionalDescriptionPixViewModel.currentDescription)
+        insertOptionalDescriptionPixViewModel.goToPixValueFragment.observe(viewLifecycleOwner) {
+            if (it != null) {
+                pixSharedViewModel.saveMessage(it)
+            }
             findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
         }
 
         binding.pixDescriptionContinue.setOnClickListener {
-            //insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
-            findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
+            insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
         }
     }
 

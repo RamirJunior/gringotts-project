@@ -44,9 +44,4 @@ class PixValueFragment : Fragment() {
             binding.balanceValue.text = it
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

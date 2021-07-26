@@ -4,6 +4,7 @@ import AccountStatementRepository
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
+import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
@@ -65,6 +66,9 @@ val initialModule = module {
     }
     factory {
         LoginRepository(get())
+    }
+    factory {
+        PixRepository(get(), get())
     }
     factory {
         HomeRepository(get(), get())

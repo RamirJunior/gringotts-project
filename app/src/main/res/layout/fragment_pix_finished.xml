@@ -260,7 +260,7 @@
                             app:layout_constraintStart_toEndOf="@+id/icon_checking_copy"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                             app:layout_constraintStart_toEndOf="@+id/other_transfer"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton_other_transfer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
                             app:layout_constraintStart_toEndOf="@id/go_to_home_icon"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/imageButton_go_to_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

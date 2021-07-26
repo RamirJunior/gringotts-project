@@ -4,6 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,14 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
+
+        binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
+        binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
+        binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
+        binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
+        binding.textviewBankName.text = pixSharedViewModel.getPix().institution
+        binding.textviewDescription.text = pixSharedViewModel.getPix().message
+        binding.textviewDate.text = pixSharedViewModel.getPix().date.toString()
 
     }
 

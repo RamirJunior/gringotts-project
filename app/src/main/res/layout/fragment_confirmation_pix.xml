@@ -199,7 +199,7 @@
                 tools:ignore="RtlCompat" />
 
             <TextView
-                android:id="@+id/textview_cpf"
+                android:id="@+id/textview_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -238,7 +238,7 @@
                 android:textAlignment="viewStart"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/Instituicao"
-                app:layout_constraintTop_toBottomOf="@+id/textview_cpf"
+                app:layout_constraintTop_toBottomOf="@+id/textview_email"
                 tools:ignore="RtlCompat"
                 tools:text="PagBank" />
 

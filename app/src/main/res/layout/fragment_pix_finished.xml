@@ -99,7 +99,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
                 android:text="R$ 2,00"
-                android:textColor="@color/grayHigh"
+                android:textColor="@color/gold"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +124,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Ramir Junior Sobrenome Outro"
-                android:textColor="@color/grayHigh"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="123.456.781 92"
-                    android:textColor="@color/grayHigh"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_cpf"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -183,7 +183,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:text="234.567.879"
-                    android:textColor="@color/grayHigh"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_receiver_account"
@@ -215,8 +215,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:gravity="center"
                     android:text="@string/o_que_voc_deseja_fazer_agora"
-                    android:textColor="@color/grayHigh"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +235,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp">
 
                         <ImageView
                             android:id="@+id/icon_checking_copy"
@@ -277,7 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="4dp"
                     android:backgroundTint="@color/grayLow"
                     app:layout_constraintStart_toStartOf="parent"
@@ -285,7 +287,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp">
 
                         <ImageView
                             android:id="@+id/other_transfer"
@@ -327,7 +331,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/grayLow"
@@ -337,7 +341,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp">
 
                         <ImageView
                             android:id="@+id/go_to_home_icon"
@@ -347,7 +353,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_outline_home_28"
+                            app:srcCompat="@drawable/ic_outline_home_24"
                             app:tint="@color/gold" />
 
                         <TextView

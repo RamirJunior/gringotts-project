@@ -43,5 +43,6 @@ class PixValueFragment : Fragment() {
         pixValueFragmentViewModel.balance.observe(viewLifecycleOwner) {
             binding.balanceValue.text = it
         }
+
     }
 }

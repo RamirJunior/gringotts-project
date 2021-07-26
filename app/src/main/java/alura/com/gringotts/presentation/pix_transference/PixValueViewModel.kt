@@ -1,6 +1,7 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

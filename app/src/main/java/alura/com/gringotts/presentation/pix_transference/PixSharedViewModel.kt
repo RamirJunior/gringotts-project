@@ -17,7 +17,7 @@ class PixSharedViewModel(private val confirmationRepository: ConfirmationReposit
         pix.receiverEmail = newEmail
     }
 
-    fun savePixValue(newPixValue: Float) {//salvo da tela
+    fun savePixValue(newPixValue: Double) {//salvo da tela
         pix.pixValue = newPixValue
     }
 
@@ -33,7 +33,7 @@ class PixSharedViewModel(private val confirmationRepository: ConfirmationReposit
         pix.institution = newInstitution
     }
 
-    fun saveDate(newDate: Date) {//salvo da tela
+    fun saveDate(newDate: String) {//salvo da tela
         pix.date = newDate
     }
 

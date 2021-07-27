@@ -50,7 +50,7 @@ class PixValueFragment : Fragment() {
         }
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
-            pixSharedViewModel.savePixValue(it.toFloat())
+            pixSharedViewModel.savePixValue(it.toDouble())
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }
 

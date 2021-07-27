@@ -1,10 +1,11 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
+import alura.com.gringotts.data.repositories.pix_transference.ConfirmationRepository
 import androidx.lifecycle.ViewModel
 import java.util.*
 
-class PixSharedViewModel : ViewModel() {
+class PixSharedViewModel(private val confirmationRepository: ConfirmationRepository) : ViewModel() {
 
     private val pix: Pix = Pix()
 

@@ -4,6 +4,7 @@ import AccountStatementRepository
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
+import alura.com.gringotts.data.repositories.pix_transference.ConfirmationRepository
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
@@ -14,10 +15,7 @@ import alura.com.gringotts.presentation.initial.LoginViewModel
 import alura.com.gringotts.presentation.initial.OnboardingViewModel
 import alura.com.gringotts.presentation.initial.SplashViewModel
 import alura.com.gringotts.presentation.pix.OnboardingPixViewModel
-import alura.com.gringotts.presentation.pix_transference.InsertEmailPixViewModel
-import alura.com.gringotts.presentation.pix_transference.InsertOptionalDescriptionPixViewModel
-import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
-import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
+import alura.com.gringotts.presentation.pix_transference.*
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.android.ext.koin.androidContext
@@ -47,7 +45,7 @@ val initialModule = module {
         HomeServicesViewModel(get())
     }
     viewModel {
-        PixSharedViewModel()
+        PixSharedViewModel(get())
     }
     viewModel {
         InsertEmailPixViewModel(get())
@@ -57,6 +55,9 @@ val initialModule = module {
     }
     viewModel {
         PixValueViewModel(get())
+    }
+    viewModel {
+        ConfirmationPixViewModel()
     }
     single<SessionManager> {
         SessionManagerImpl(get())
@@ -78,5 +79,8 @@ val initialModule = module {
     }
     factory {
         ApiInterface.create()
+    }
+    factory {
+        ConfirmationRepository(get(), get())
     }
 }

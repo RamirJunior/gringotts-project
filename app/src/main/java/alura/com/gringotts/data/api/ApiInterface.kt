@@ -4,6 +4,7 @@ import alura.com.gringotts.data.models.home.HomeResponse
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
+import alura.com.gringotts.data.models.pix_transference.PixConfirmation
 import alura.com.gringotts.data.models.pix_transference.PixResponse
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -29,10 +30,17 @@ interface ApiInterface {
         @Header("token") token: String
     ): Response<HomeResponse>
 
-    @GET("pix")
-    suspend fun pix(
+    @POST("pix/confirm")
+    suspend fun pixConfirm(
+        @Body pix: PixConfirmation,
         @Header("token") token: String
     ): Response<PixResponse>
+
+//    @POST("pix/validation")
+//    suspend fun pixValidation(
+//        @Header("token") token: String
+//    ): Response<PixResponse>
+
 
     companion object {
         private const val BASE_URL =

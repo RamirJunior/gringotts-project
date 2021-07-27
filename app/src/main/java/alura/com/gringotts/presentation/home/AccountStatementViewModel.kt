@@ -26,7 +26,6 @@ class AccountStatementViewModel(
     private val _showEmptyListPlaceHolder = MutableLiveData<Boolean>()
     val showEmptyListPlaceHolder: LiveData<Boolean> = _showEmptyListPlaceHolder
 
-
     var currentRange = DEFAULT_RANGE
     private lateinit var transactionList: List<Transaction>
 
@@ -100,4 +99,5 @@ class AccountStatementViewModel(
         private const val EXPENSE_FILTER: String = "Despesa"
         private const val PAYMENT_FILTER: String = "Pagamento"
     }
+
 }

@@ -16,11 +16,10 @@ class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() 
     val apiError: LiveData<String> = _apiError
     private val _invalidValueError = MutableLiveData<String?>()
     val invalidValueError: LiveData<String?> = _invalidValueError
-    private val _goToConfirmationPixFragment = SingleLiveEvent<String>()
-    val goToConfirmationPixFragment: LiveData<String> = _goToConfirmationPixFragment
+    private val _goToConfirmationPixFragment = SingleLiveEvent<Double>()
+    val goToConfirmationPixFragment: LiveData<Double> = _goToConfirmationPixFragment
 
-    var pixValue: String = ""
-    private var pixValueToFloat: Float = pixValue.toFloat()
+    var pixValueToFloat: Double = 0.0
 
 
     init {
@@ -34,10 +33,10 @@ class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() 
     }
 
     fun onValueButtonClicked() {
-        if (pixValueToFloat <= balance.value!!.toFloat() && pixValueToFloat > 0) {
-            _goToConfirmationPixFragment.postValue(pixValue)
+        if (pixValueToFloat <= balance.value!!.toDouble() && pixValueToFloat > 0) {
+            _goToConfirmationPixFragment.postValue(pixValueToFloat)
             _invalidValueError.postValue(null)
-        } else if (pixValueToFloat > balance.value!!.toFloat()) {
+        } else if (pixValueToFloat > balance.value!!.toDouble()) {
             _invalidValueError.postValue("Valor da transferência maior que saldo")
         } else if (pixValueToFloat <= 0) {
             _invalidValueError.postValue("Transferência deve ser de pelo menos 0,01.")

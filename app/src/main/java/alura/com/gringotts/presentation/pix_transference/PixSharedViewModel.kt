@@ -58,4 +58,5 @@ class PixSharedViewModel(private val confirmationRepository: ConfirmationReposit
     companion object{
         private const val TYPE_EMAIL = "email"
     }
+
 }

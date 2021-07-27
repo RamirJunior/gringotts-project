@@ -1,7 +1,5 @@
 package alura.com.gringotts.data.models.pix_transference
 
-import java.util.*
-
 class Pix {
     lateinit var receiverEmail: String
     var pixValue: Double = 0.0

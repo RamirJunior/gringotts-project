@@ -74,6 +74,15 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return sharedPreferences.getBoolean(FINISHED_PIX_ONBOARDING_KEY, false)
     }
 
+    override fun savePixToken(token: String) {
+        sharedPreferencesEditor.putString(PIX_TOKEN, token)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getPixToken(): String? {
+        return sharedPreferences.getString(PIX_TOKEN, "")
+    }
+
     companion object {
         private const val LOGIN_PAYLOAD = "loginPayload"
         private const val TOKENS_KEY = "tokens"
@@ -81,6 +90,7 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         private const val USER_KEY = "user"
         private const val HIDE_STATUS = "hideStatus"
         private const val FINISHED_PIX_ONBOARDING_KEY = "finishedPix"
+        private const val PIX_TOKEN = "pixToken"
     }
 
 }

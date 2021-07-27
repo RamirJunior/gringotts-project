@@ -1,7 +1,5 @@
 package alura.com.gringotts.presentation.pix_transference
 
-import alura.com.gringotts.data.models.home.Balance
-import alura.com.gringotts.data.models.pix_transference.PixData
 import alura.com.gringotts.presentation.home.auxiliar.DateHelper
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -25,7 +23,7 @@ class ConfirmationPixViewModel() :
         getDate()
     }
 
-    private fun getDate(){
+    private fun getDate() {
         val currentDate = Calendar.getInstance()
         _pixDate.postValue(DateHelper.formatDate(currentDate.time))
         _pixDateInMillis.postValue(currentDate.timeInMillis)

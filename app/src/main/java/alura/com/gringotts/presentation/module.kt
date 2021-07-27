@@ -4,7 +4,7 @@ import AccountStatementRepository
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
-import alura.com.gringotts.data.repositories.pix_transference.ConfirmationRepository
+import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
@@ -69,7 +69,7 @@ val initialModule = module {
         LoginRepository(get())
     }
     factory {
-        PixRepository(get(), get())
+        PixActualAccountValueRepository(get(), get())
     }
     factory {
         HomeRepository(get(), get())
@@ -81,6 +81,6 @@ val initialModule = module {
         ApiInterface.create()
     }
     factory {
-        ConfirmationRepository(get(), get())
+        PixRepository(get(), get())
     }
 }

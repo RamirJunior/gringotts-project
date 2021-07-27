@@ -74,7 +74,7 @@
         android:id="@+id/pixFinishedFragment"
         android:name="alura.com.gringotts.view.pix_transference.fragments.PixFinishedFragment"
         android:label="PixFinishedFragment"
-        tools:layout="@layout/fragment_pix_finished" >
+        tools:layout="@layout/fragment_pix_finished">
         <action
             android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
             app:destination="@id/pixFragment2" />

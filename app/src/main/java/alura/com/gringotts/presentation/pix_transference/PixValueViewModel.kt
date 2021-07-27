@@ -1,6 +1,6 @@
 package alura.com.gringotts.presentation.pix_transference
 
-import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() {
+class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAccountValueRepository) :
+    ViewModel() {
 
     private val _balance = MutableLiveData<String>()
     val balance: LiveData<String> = _balance
@@ -25,7 +26,7 @@ class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() 
     init {
         viewModelScope.launch {
             try {
-                _balance.postValue(pixRepository.balanceData().toString())
+                _balance.postValue(pixActualAccountValueRepository.balanceData().toString())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
             }

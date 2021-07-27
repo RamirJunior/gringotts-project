@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import org.koin.android.ext.android.bind
 
 class PixFragment : Fragment() {
 
@@ -36,7 +35,7 @@ class PixFragment : Fragment() {
             findNavController().navigate(R.id.action_pixFragment2_to_pixTypeChoiceFragment)
         }
 
-        binding.cardView.setOnClickListener{
+        binding.cardView.setOnClickListener {
             functionNoDeveloped()
         }
 

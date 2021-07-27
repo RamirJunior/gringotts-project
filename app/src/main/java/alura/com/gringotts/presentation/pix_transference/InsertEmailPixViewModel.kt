@@ -21,7 +21,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
             _invalidEmailError.postValue(null)
         } else if (!currentEmail.contains("@")) {
             _invalidEmailError.postValue("* E-mail inválido.")
-        } else if (currentEmail.contains(" ")){
+        } else if (currentEmail.contains(" ")) {
             _invalidEmailError.postValue("* Não pode conter espaços em branco.")
         }
     }

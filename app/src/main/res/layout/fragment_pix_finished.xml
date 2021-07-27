@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_pix_finished"
@@ -36,7 +36,9 @@
                 android:id="@+id/icon_pix_success"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -47,8 +49,8 @@
                 android:id="@+id/pix_finished_success_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
                 android:gravity="center_horizontal"
                 android:text="@string/transferencia_pix_realizada_com_sucesso"
                 android:textColor="@color/grayHigh"
@@ -62,13 +64,13 @@
                 android:id="@+id/pix_finished_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                tools:text="23/07/2021 às 17:30"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pix_finished_success_message" />
+                app:layout_constraintTop_toBottomOf="@+id/pix_finished_success_message"
+                tools:text="23/07/2021 às 17:30" />
 
             <View
                 android:id="@+id/divider_bottom_fisnished_date"
@@ -84,9 +86,9 @@
                 android:id="@+id/value_transfer_top_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="14dp"
                 android:text="@string/valor_transferencia"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,9 +99,9 @@
                 android:id="@+id/container_pix_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text">
 
                 <TextView
                     android:id="@+id/pix_currency"
@@ -119,12 +121,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
-                    tools:text="2,00"
                     android:textColor="@color/gold"
                     android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/pix_currency"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2,00" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -143,14 +145,17 @@
                 android:id="@+id/pix_finished_receiver_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                tools:text="Ramir Junior Sobrenome Outro"
-                android:textStyle="bold"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
                 android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/pix_finished_cpf_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pix_finished_receiver_text" />
+                app:layout_constraintTop_toBottomOf="@+id/pix_finished_receiver_text"
+                tools:text="Ramir Junior Sobrenome Outro" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/pix_finished_cpf_container"
@@ -165,34 +170,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cpf"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/pix_finished_cpf_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="123.456.781 92"
+                    android:layout_width="139dp"
+                    android:layout_height="28dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_cpf"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="123.456.781 92" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/pix_finished_receiver_account_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_width="129dp"
+                android:layout_height="35dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pix_finished_cpf_container">
 
                 <ImageView
                     android:id="@+id/pix_finished_receiver_account"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="39dp"
+                    android:layout_height="36dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_account_balance_24"
@@ -202,14 +207,13 @@
                     android:id="@+id/pix_finished_number_account_receiver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    tools:text="PagBank"
-                    android:textStyle="bold"
+                    android:layout_marginStart="4dp"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_receiver_account"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="PagBank" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -227,6 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pix_finished_receiver_account_container">
@@ -235,7 +240,7 @@
                     android:id="@+id/options_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="14dp"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/o_que_voc_deseja_fazer_agora"
@@ -248,9 +253,9 @@
                     android:id="@+id/checking_copy_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="14dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="14dp"
                     android:backgroundTint="@color/grayLow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/options_title">
@@ -300,9 +305,9 @@
                     android:id="@+id/other_transfer_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="14dp"
                     android:backgroundTint="@color/grayLow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checking_copy_card_view">
@@ -352,10 +357,9 @@
                     android:id="@+id/go_to_home_container"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="14dp"
                     android:backgroundTint="@color/grayLow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -402,6 +406,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="wrap_content"

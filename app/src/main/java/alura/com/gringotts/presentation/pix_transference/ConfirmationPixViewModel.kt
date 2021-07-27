@@ -1,5 +1,7 @@
 package alura.com.gringotts.presentation.pix_transference
 
+import alura.com.gringotts.data.models.home.Balance
+import alura.com.gringotts.data.models.pix_transference.PixData
 import alura.com.gringotts.presentation.home.auxiliar.DateHelper
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -17,6 +19,7 @@ class ConfirmationPixViewModel() :
     val pixDate: LiveData<String> = _pixDate
     private val _pixDateInMillis = MutableLiveData<Long>()
     val pixDateInMillis: LiveData<Long> = _pixDateInMillis
+
 
     init {
         getDate()

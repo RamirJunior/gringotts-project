@@ -40,6 +40,11 @@ class ConfirmationPixFragment : Fragment() {
                 .setTitleText("Agende a Transfêrencia")
                 .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                 .build()
+
+        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner) {
+           binding.textviewDate.text = it
+        }
+
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -47,13 +52,13 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
-        binding.textviewDatePicker.setOnClickListener{
-             datePicker =
+        binding.textviewDatePicker.setOnClickListener {
+            datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                     .build()
-            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+//            datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
         }
 
         datePicker.addOnPositiveButtonClickListener {
@@ -66,7 +71,7 @@ class ConfirmationPixFragment : Fragment() {
         binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
         binding.textviewBankName.text = pixSharedViewModel.getPix().institution
         binding.textviewDescription.text = pixSharedViewModel.getPix().message
-        binding.textviewDate.text = pixSharedViewModel.getPix().date.toString()
+        binding.textviewDate.text = pixSharedViewModel.getPix().date
     }
 
     override fun onDestroyView() {

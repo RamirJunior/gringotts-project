@@ -22,6 +22,7 @@ class ConfirmationPixFragment : Fragment() {
     private val binding: FragmentConfirmationPixBinding get() = _binding!!
     private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
     private val pixConfirmationViewModel by viewModel<ConfirmationPixViewModel>()
+    private lateinit var datePicker: MaterialDatePicker<Long>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,11 +36,7 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val datePicker =
-            MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Agende a Transfêrencia")
-                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
-                .build()
+
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -48,11 +45,16 @@ class ConfirmationPixFragment : Fragment() {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
         binding.textviewDatePicker.setOnClickListener{
+            datePicker =
+                MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Agende a Transfêrencia")
+                    .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
+                    .build()
             datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
         }
 
         datePicker.addOnPositiveButtonClickListener {
-            Log.e("ee", it.toString())
+            pixConfirmationViewModel.positiveDataPicker(it)
         }
         datePicker.addOnCancelListener {
             Log.e("eee", "sss")

@@ -28,5 +28,11 @@ class ConfirmationPixViewModel() :
         _pixDateInMillis.postValue(currentDate.timeInMillis)
     }
 
+    fun positiveDataPicker(timeInMillis: Long) {
+        val newDate = Calendar.getInstance()
+        _pixDateInMillis.postValue(timeInMillis)
+        newDate.timeInMillis = timeInMillis
+        _pixDate.postValue(DateHelper.formatDate(newDate.time))
+    }
 
 }

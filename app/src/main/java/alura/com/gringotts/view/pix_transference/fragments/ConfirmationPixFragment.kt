@@ -9,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConfirmationPixFragment : Fragment() {
@@ -30,12 +32,27 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val datePicker =
+            MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Agende a Transfêrencia")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
 
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
+        }
+        binding.textviewDatePicker.setOnClickListener{
+            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+        }
+
+        datePicker.addOnPositiveButtonClickListener {
+            Log.e("ee", it.toString())
+        }
+        datePicker.addOnCancelListener {
+            Log.e("eee", "sss")
         }
 
         binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()

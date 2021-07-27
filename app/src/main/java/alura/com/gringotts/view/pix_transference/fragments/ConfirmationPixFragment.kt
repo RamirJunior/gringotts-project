@@ -36,7 +36,6 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -63,11 +62,13 @@ class ConfirmationPixFragment : Fragment() {
         binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
         binding.textviewBankName.text = pixSharedViewModel.getPix().institution
         binding.textviewDescription.text = pixSharedViewModel.getPix().message
-        binding.textviewDate.text = pixSharedViewModel.getPix().date.toString()
+        binding.textviewDate.text = pixSharedViewModel.getPix().date
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -22,12 +22,11 @@ class PixValueViewModel(private val pixRepository: PixRepository) : ViewModel() 
     var pixValue: String = ""
     private var pixValueToFloat: Float = pixValue.toFloat()
 
+
     init {
         viewModelScope.launch {
             try {
-                val value = pixRepository.balanceData()
-                _balance.postValue(balance.toString())
-
+                _balance.postValue(pixRepository.balanceData().toString())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
             }

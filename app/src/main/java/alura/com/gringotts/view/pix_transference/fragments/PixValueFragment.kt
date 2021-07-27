@@ -19,7 +19,7 @@ class PixValueFragment : Fragment() {
     private var _binding: FragmentPixValueBinding? = null
     private val binding: FragmentPixValueBinding get() = _binding!!
     private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
-    private val pixValueFragmentViewModel by viewModel<PixValueViewModel>()
+    private val pixValueViewModel by viewModel<PixValueViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,18 +38,18 @@ class PixValueFragment : Fragment() {
         }
 
         binding.pixValueContinue.setOnClickListener {
-            findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
+            pixValueViewModel.onValueButtonClicked()
         }
 
-        pixValueFragmentViewModel.balance.observe(viewLifecycleOwner) {
+        pixValueViewModel.balance.observe(viewLifecycleOwner) {
             binding.balanceValue.text = it
         }
 
         binding.editValue.addTextChangedListener {
-            pixValueFragmentViewModel.pixValue = it.toString()
+            pixValueViewModel.pixValue = it.toString()
         }
 
-        pixValueFragmentViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
+        pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
             pixSharedViewModel.savePixValue(it.toFloat())
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }

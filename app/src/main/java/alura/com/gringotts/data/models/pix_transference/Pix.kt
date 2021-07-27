@@ -4,9 +4,9 @@ import java.util.*
 
 class Pix {
     lateinit var receiverEmail: String
-    var pixValue: Float = 0.0F
+    var pixValue: Double = 0.0
     lateinit var receiverName: String
     lateinit var message: String
     lateinit var institution: String
-    lateinit var date: Date
+    lateinit var date: String
 }

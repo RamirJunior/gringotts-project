@@ -42,8 +42,10 @@ class ConfirmationPixFragment : Fragment() {
         }
 
         binding.continueConfirmation.setOnClickListener {
+            Log.d("Resposta Pix", pixSharedViewModel.confirmPix().toString())
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
+
         binding.textviewDatePicker.setOnClickListener{
             datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
         }
@@ -51,6 +53,7 @@ class ConfirmationPixFragment : Fragment() {
         datePicker.addOnPositiveButtonClickListener {
             Log.e("ee", it.toString())
         }
+
         datePicker.addOnCancelListener {
             Log.e("eee", "sss")
         }

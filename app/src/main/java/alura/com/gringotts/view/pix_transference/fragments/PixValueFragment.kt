@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -42,6 +43,15 @@ class PixValueFragment : Fragment() {
 
         pixValueFragmentViewModel.balance.observe(viewLifecycleOwner) {
             binding.balanceValue.text = it
+        }
+
+        binding.editValue.addTextChangedListener {
+            pixValueFragmentViewModel.pixValue = it.toString()
+        }
+
+        pixValueFragmentViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
+            pixSharedViewModel.savePixValue(it.toFloat())
+            findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }
 
     }

@@ -5,6 +5,7 @@ import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class PixValueFragment : Fragment() {
         }
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
+            Log.e("aa", "aaaa")
             pixSharedViewModel.savePixValue(it)
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }

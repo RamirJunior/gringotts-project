@@ -56,9 +56,6 @@ class ConfirmationPixFragment : Fragment() {
         datePicker.addOnPositiveButtonClickListener {
             pixConfirmationViewModel.positiveDataPicker(it)
         }
-        datePicker.addOnCancelListener {
-            Log.e("eee", "sss")
-        }
 
         binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
         binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()

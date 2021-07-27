@@ -8,20 +8,16 @@ class PixSharedViewModel : ViewModel() {
 
     private val pix: Pix = Pix()
 
-    fun saveEmail(newEmail: String) {
+    fun saveEmail(newEmail: String) { //salvo da tela
         pix.receiverEmail = newEmail
     }
 
-    fun savePixValue(newPixValue: Float) {
+    fun savePixValue(newPixValue: Float) {//salvo da tela
         pix.pixValue = newPixValue
     }
 
-    fun saveName(newName: String) {
+    fun saveName(newName: String) {//API
         pix.receiverName = newName
-    }
-
-    fun saveCPF(newCPF: String) {
-        pix.receiverCPF = newCPF
     }
 
     fun saveMessage(newMessage: String) {

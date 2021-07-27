@@ -45,7 +45,6 @@ class ConfirmationPixFragment : Fragment() {
         binding.textviewBankName.text = pixSharedViewModel.getPix().institution
         binding.textviewDescription.text = pixSharedViewModel.getPix().message
         binding.textviewDate.text = pixSharedViewModel.getPix().date.toString()
-
     }
 
     override fun onDestroyView() {

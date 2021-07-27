@@ -106,4 +106,6 @@
     <string name="cpf">CPF:</string>
     <string name="confirmar_transferencia">Confirmar transferência</string>
     <string name="cancelar">Cancelar</string>
+    <string name="rs">R$ </string>
+    <string name="agende_a_transferencia">Agende a transferencia</string>
 </resources>

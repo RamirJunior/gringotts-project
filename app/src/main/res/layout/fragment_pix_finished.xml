@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_pix_finished"
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="23/07/2021 às 17:30"
+                tools:text="23/07/2021 às 17:30"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,19 +93,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider_bottom_fisnished_date" />
 
-            <TextView
-                android:id="@+id/pix_transfer_currency"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_pix_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
-                android:text="R$ 2,00"
-                android:textColor="@color/gold"
-                android:textSize="36sp"
-                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text" />
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/pix_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/rs"
+                    android:textColor="@color/gold"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pix_transfer_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    tools:text="2,00"
+                    android:textColor="@color/gold"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/pix_currency"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/pix_finished_receiver_text"
@@ -115,7 +137,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pix_transfer_currency" />
+                app:layout_constraintTop_toBottomOf="@+id/container_pix_value" />
 
             <TextView
                 android:id="@+id/pix_finished_receiver_name"
@@ -123,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Ramir Junior Sobrenome Outro"
+                tools:text="Ramir Junior Sobrenome Outro"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +173,7 @@
                     android:id="@+id/pix_finished_cpf_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="123.456.781 92"
+                    tools:text="123.456.781 92"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_cpf"
@@ -182,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="234.567.879"
+                    tools:text="PagBank"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"

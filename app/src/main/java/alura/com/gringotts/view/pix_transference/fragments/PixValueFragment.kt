@@ -46,11 +46,11 @@ class PixValueFragment : Fragment() {
         }
 
         binding.editValue.addTextChangedListener {
-            pixValueViewModel.pixValue = it.toString()
+            pixValueViewModel.pixValueToFloat = it.toString().toDouble()
         }
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
-            pixSharedViewModel.savePixValue(it.toDouble())
+            pixSharedViewModel.savePixValue(it)
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }
 

@@ -2,6 +2,7 @@ package alura.com.gringotts.view.pix_transference.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
+import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +14,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConfirmationPixFragment : Fragment() {
 
     private var _binding: FragmentConfirmationPixBinding? = null
     private val binding: FragmentConfirmationPixBinding get() = _binding!!
     private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
+    private val pixConfirmationViewModel by viewModel<ConfirmationPixViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +38,7 @@ class ConfirmationPixFragment : Fragment() {
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Agende a Transfêrencia")
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                 .build()
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()

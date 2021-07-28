@@ -42,12 +42,6 @@ class ConfirmationPixFragment : Fragment() {
         pixSharedViewModel.loading.observe(viewLifecycleOwner, {
             updateLayout(it)
         })
-
-        var datePicker =
-            MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Agende a Transfêrencia")
-                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
-                .build()
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -56,17 +50,23 @@ class ConfirmationPixFragment : Fragment() {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
         binding.textviewDatePicker.setOnClickListener{
-             datePicker =
+             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                     .build()
-//            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+            datePicker.addOnPositiveButtonClickListener {
+                pixConfirmationViewModel.positiveDataPicker(it)
+            }
         }
 
-        datePicker.addOnPositiveButtonClickListener {
-            pixConfirmationViewModel.positiveDataPicker(it)
+        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner){
+            pixSharedViewModel.saveDate(it)
+            binding.textviewDate.text = it
+            pixSharedViewModel.validationPix()
         }
+
     }
 
     private fun updateLayout(loadingStatus : Boolean) {
@@ -74,7 +74,6 @@ class ConfirmationPixFragment : Fragment() {
             binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
             binding.textviewDescription.text = pixSharedViewModel.getPix().message
             binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
-            binding.textviewDate.text = pixSharedViewModel.getPix().date
             binding.textviewBankName.text = pixSharedViewModel.getPix().institution
             binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
             binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()

@@ -34,7 +34,8 @@ class ConfirmationPixViewModel() :
         val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         _pixDateInMillis.postValue(timeInMillis)
         newDate.timeInMillis = timeInMillis
-        _pixDate.postValue(DateHelper.formatDate(newDate.time))
+        newDate.time
+        _pixDate.postValue(DateHelper.formatDate(newDate.time,true))
     }
 
 }

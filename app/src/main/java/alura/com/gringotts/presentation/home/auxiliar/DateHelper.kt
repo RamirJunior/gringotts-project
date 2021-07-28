@@ -5,9 +5,9 @@ import java.util.*
 
 object DateHelper {
 
-    fun formatDate(date: Date): String {
+    fun formatDate(date: Date, isUtc :Boolean = false): String {
         val formatter = SimpleDateFormat(DATE_FORMAT_dd_mm_yyyy, Locale.getDefault())
-        formatter.timeZone = TimeZone.getTimeZone("UTC")
+        if(isUtc) formatter.timeZone = TimeZone.getTimeZone("UTC")
         return formatter.format(date)
     }
 

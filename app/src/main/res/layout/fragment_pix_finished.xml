@@ -173,7 +173,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/pix_finished_cpf_value"
+                    android:id="@+id/pix_finished_email_value"
                     android:layout_width="139dp"
                     android:layout_height="28dp"
                     android:layout_marginStart="4dp"
@@ -203,7 +203,7 @@
                     app:tint="@color/gold" />
 
                 <TextView
-                    android:id="@+id/pix_finished_number_account_receiver"
+                    android:id="@+id/pix_finished_institution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"

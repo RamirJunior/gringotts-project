@@ -29,6 +29,8 @@ class PixFinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        updateLayout()
+
         binding.imageButtonGoToHome.setOnClickListener {
             activity?.finish()
         }
@@ -38,4 +40,13 @@ class PixFinishedFragment : Fragment() {
         }
 
     }
+
+    fun updateLayout(){
+        binding.pixFinishedDate.text = pixSharedViewModel.date.value
+        binding.pixTransferCurrency.text = pixSharedViewModel.value.value
+        binding.pixFinishedReceiverName.text = pixSharedViewModel.name.value
+        binding.pixFinishedEmailValue.text = pixSharedViewModel.email.value
+        binding.pixFinishedInstitution.text = pixSharedViewModel.institution.value
+    }
+
 }

@@ -2,8 +2,8 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.models.pix_transference.PixValidation
+import alura.com.gringotts.data.models.pix_transference.UserPix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -12,27 +12,27 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
 
     private val pix: Pix = Pix()
 
-    fun saveEmail(newEmail: String) { //salvo da tela
+    fun saveEmail(newEmail: String) {
         pix.receiverEmail = newEmail
     }
 
-    fun savePixValue(newPixValue: Double) {//salvo da tela
+    fun savePixValue(newPixValue: Double) {
         pix.pixValue = newPixValue
     }
 
-    fun saveName(newName: String) {//API
+    private fun saveName(newName: String) {
         pix.receiverName = newName
     }
 
-    fun saveMessage(newMessage: String) {//salvo da tela
+    fun saveMessage(newMessage: String) {
         pix.message = newMessage
     }
 
-    fun saveInstitution(newInstitution: String) {//API
+    private fun saveInstitution(newInstitution: String) {
         pix.institution = newInstitution
     }
 
-    fun saveDate(newDate: String) {//salvo da tela
+    fun saveDate(newDate: String) {
         pix.date = newDate
     }
 
@@ -49,16 +49,45 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
                     pix.date
                 )
             )
-            Log.d("Teste Api", response.toString())
+            updatePixValues(
+                response.user,
+                response.pix,
+                response.description,
+                response.organization,
+                response.pixValue,
+                response.date
+            )
         }
     }
-
 
     fun confirmPix() {
         viewModelScope.launch {
             val response = pixRepository.pixConfirmData()
-            Log.d("Teste Api 2", response.toString())
+            updatePixValues(
+                response.user,
+                response.pix,
+                response.description,
+                response.organization,
+                response.pixValue,
+                response.date
+            )
         }
+    }
+
+    private fun updatePixValues(
+        user: UserPix,
+        pix: String,
+        description: String,
+        organization: String,
+        pixValue: String,
+        date: String
+    ) {
+        saveName(user.firstName + " " + user.lastName)
+        saveEmail(pix)
+        saveMessage(description)
+        saveInstitution(organization)
+        savePixValue(pixValue.toDouble())
+        saveDate(date)
     }
 
     companion object {

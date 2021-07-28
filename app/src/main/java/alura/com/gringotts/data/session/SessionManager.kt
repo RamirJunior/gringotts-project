@@ -16,6 +16,8 @@ interface SessionManager {
     fun getUser(): User?
     fun saveHideBalanceState(isVisible: Boolean)
     fun getHideBalanceState(): Boolean
+    fun saveHideBalanceStatePix(isVisible: Boolean)
+    fun getHideBalanceStatePix(): Boolean
     fun getOnboardingPixFinished(): Boolean
     fun setOnboardingPixFinished()
     fun savePixToken(token: String)

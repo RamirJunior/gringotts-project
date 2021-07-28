@@ -1,5 +1,6 @@
 package alura.com.gringotts.presentation.pix_transference
 
+import alura.com.gringotts.data.models.home.Balance
 import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -22,6 +23,7 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
 
     var pixValueToFloat: Double = 0.0
 
+    private lateinit var balanceValue: Balance
 
     init {
         viewModelScope.launch {
@@ -42,6 +44,33 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
         } else if (pixValueToFloat <= 0) {
             _invalidValueError.postValue("Transferência deve ser de pelo menos 0,01.")
         }
+    }
+
+    fun hideBalanceButtonClickedPix() {
+        val newCurrentBalanceVisibilityStatus =
+            !pixActualAccountValueRepository.getHideBalanceStatePix()
+        pixActualAccountValueRepository.saveHideBalanceStatePix(newCurrentBalanceVisibilityStatus)
+        setBalanceStatePix(newCurrentBalanceVisibilityStatus)
+    }
+
+    private fun setBalanceStatePix(isBalanceVisible: Boolean) {
+        if (isBalanceVisible) {
+            showBalancePix()
+        } else {
+            hideBalancePix()
+        }
+    }
+
+    private fun showBalancePix() {
+        _balance.postValue(balanceValue.currentValue.toString())
+    }
+
+    private fun hideBalancePix() {
+        _balance.postValue(HIDDENVALUE)
+    }
+
+    companion object {
+        private const val HIDDENVALUE = "* * * *"
     }
 
 }

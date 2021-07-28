@@ -16,6 +16,24 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
+    private val _email = MutableLiveData<String>()
+    val email: LiveData<String> = _email
+
+    private val _name = MutableLiveData<String>()
+    val name: LiveData<String> = _name
+
+    private val _description = MutableLiveData<String>()
+    val description: LiveData<String> = _description
+
+    private val _value = MutableLiveData<String>()
+    val value: LiveData<String> = _value
+
+    private val _institution = MutableLiveData<String>()
+    val institution: LiveData<String> = _institution
+
+    private val _date = MutableLiveData<String>()
+    val date: LiveData<String> = _date
+
     private val pix: Pix = Pix()
 
     fun saveEmail(newEmail: String) {
@@ -42,8 +60,6 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
         pix.date = newDate
     }
 
-    fun getPix(): Pix = pix
-
     fun validationPix() {
         _loading.postValue(true)
         viewModelScope.launch {
@@ -67,7 +83,7 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
             Log.e("Valor",pix.pixValue.toString())
             Log.e("Organizacao",pix.institution)
             Log.e("Valor",pix.receiverName)
-            Log.e("Valor",pix.receiverEmail)
+            Log.e("Email",pix.receiverEmail)
         }
         _loading.postValue(false)
     }
@@ -96,12 +112,12 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
         pixValue: String,
         date: String
     ) {
-        saveName(user.firstName + " " + user.lastName)
-        saveEmail(pix)
-        saveMessage(description)
-        saveInstitution(organization)
-        savePixValue(pixValue.toDouble())
-        saveDate(date)
+        _name.postValue(user.firstName + " " + user.lastName)
+        _email.postValue(pix)
+        _description.postValue(description)
+        _institution.postValue(organization)
+        _value.postValue(pixValue)
+        _date.postValue(date)
     }
 
     companion object {

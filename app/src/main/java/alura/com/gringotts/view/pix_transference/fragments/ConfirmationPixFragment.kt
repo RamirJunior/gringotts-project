@@ -39,9 +39,34 @@ class ConfirmationPixFragment : Fragment() {
         pixSharedViewModel.saveDate("28/07/2021")
         pixSharedViewModel.validationPix()
 
-        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
-            updateLayout(it)
+        pixSharedViewModel.name.observe(viewLifecycleOwner, {
+            binding.textviewUsername.text = it
         })
+
+        pixSharedViewModel.email.observe(viewLifecycleOwner, {
+            binding.textviewEmail.text = it
+        })
+
+        pixSharedViewModel.description.observe(viewLifecycleOwner, {
+            binding.textviewDescription.text = it
+        })
+
+        pixSharedViewModel.institution.observe(viewLifecycleOwner, {
+            binding.textviewBankName.text = it
+        })
+
+        pixSharedViewModel.value.observe(viewLifecycleOwner, {
+            binding.textviewValue.text = it
+            binding.textviewTotalValue.text = it
+        })
+
+        pixSharedViewModel.date.observe(viewLifecycleOwner, {
+            binding.textviewDate.text = it
+        })
+
+//        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
+//
+//        })
 
         var datePicker =
             MaterialDatePicker.Builder.datePicker()
@@ -66,20 +91,6 @@ class ConfirmationPixFragment : Fragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             pixConfirmationViewModel.positiveDataPicker(it)
-        }
-    }
-
-    private fun updateLayout(loadingStatus : Boolean) {
-        if(loadingStatus) {
-            binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
-            binding.textviewDescription.text = pixSharedViewModel.getPix().message
-            binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
-            binding.textviewDate.text = pixSharedViewModel.getPix().date
-            binding.textviewBankName.text = pixSharedViewModel.getPix().institution
-            binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
-            binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
-        }else{
-            //chama carregando
         }
     }
 

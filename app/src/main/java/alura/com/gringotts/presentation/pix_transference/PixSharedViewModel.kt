@@ -37,6 +37,14 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
         pix.pixValue = newPixValue
     }
 
+    fun saveName(name: String) {
+        pix.name = name
+    }
+
+    fun saveInstitution(institution: String) {
+        pix.institution = institution
+    }
+
     fun saveMessage(newMessage: String) {
         pix.message = newMessage
     }

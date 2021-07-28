@@ -5,15 +5,12 @@ import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,6 +36,7 @@ class ConfirmationPixFragment : Fragment() {
 
         pixSharedViewModel.name.observe(viewLifecycleOwner, {
             binding.textviewUsername.text = it
+            pixSharedViewModel.saveName(it)
         })
 
         pixSharedViewModel.email.observe(viewLifecycleOwner, {
@@ -47,23 +45,27 @@ class ConfirmationPixFragment : Fragment() {
 
         pixSharedViewModel.description.observe(viewLifecycleOwner, {
             binding.textviewDescription.text = it
+            pixSharedViewModel.saveMessage(it)
         })
 
         pixSharedViewModel.institution.observe(viewLifecycleOwner, {
             binding.textviewBankName.text = it
+            pixSharedViewModel.saveInstitution(it)
         })
 
         pixSharedViewModel.value.observe(viewLifecycleOwner, {
             binding.textviewValue.text = it
             binding.textviewTotalValue.text = it
+            pixSharedViewModel.savePixValue(it.toDouble())
         })
 
         pixSharedViewModel.date.observe(viewLifecycleOwner, {
             binding.textviewDate.text = it
+            pixSharedViewModel.saveDate(it)
         })
 
         pixSharedViewModel.loading.observe(viewLifecycleOwner, {
-            binding.loadingConfirmation.isVisible=it
+            binding.loadingConfirmation.isVisible = it
         })
 
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
@@ -74,7 +76,7 @@ class ConfirmationPixFragment : Fragment() {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
 
-        binding.textviewDatePicker.setOnClickListener{
+        binding.textviewDatePicker.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Agende a Transfêrencia")
                 .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
@@ -82,12 +84,11 @@ class ConfirmationPixFragment : Fragment() {
             datePicker.addOnPositiveButtonClickListener {
                 pixConfirmationViewModel.positiveDataPicker(it)
             }
-            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+            datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
         }
 
-        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner){
+        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner) {
             pixSharedViewModel.saveDate(it)
-            binding.textviewDate.text = it
             pixSharedViewModel.validationPix()
         }
 

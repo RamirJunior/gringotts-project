@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -58,9 +59,10 @@ class ConfirmationPixFragment : Fragment() {
             binding.textviewDate.text = it
         })
 
-//        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
-//
-//        })
+        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
+              binding.loadingConfirmation.isVisible = it
+        })
+
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -68,6 +70,7 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
+
         binding.textviewDatePicker.setOnClickListener {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()

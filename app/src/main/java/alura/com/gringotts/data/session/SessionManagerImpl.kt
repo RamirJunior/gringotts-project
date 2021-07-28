@@ -65,6 +65,15 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return sharedPreferences.getBoolean(HIDE_STATUS, false)
     }
 
+    override fun saveHideBalanceStatePix(isVisible: Boolean) {
+        sharedPreferencesEditor.putBoolean(HIDE_STATUS, isVisible)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getHideBalanceStatePix(): Boolean {
+        return sharedPreferences.getBoolean(HIDE_STATUS, false)
+    }
+
     override fun setOnboardingPixFinished() {
         sharedPreferencesEditor.putBoolean(FINISHED_PIX_ONBOARDING_KEY, true)
         sharedPreferencesEditor.apply()

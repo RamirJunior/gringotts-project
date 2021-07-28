@@ -62,9 +62,10 @@ class ConfirmationPixFragment : Fragment() {
             binding.textviewDate.text = it
         })
 
-//        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
-//
-//        })
+        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
+            binding.loadingConfirmation.isVisible=it
+        })
+
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -72,6 +73,7 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
+
         binding.textviewDatePicker.setOnClickListener{
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Agende a Transfêrencia")

@@ -35,6 +35,10 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        pixSharedViewModel.saveDate("28/07/2021")
+        pixSharedViewModel.validationPix()
+        updateLayout()
+
         var datePicker =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Agende a Transfêrencia")
@@ -53,20 +57,22 @@ class ConfirmationPixFragment : Fragment() {
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                     .build()
-            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+//            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
         }
 
         datePicker.addOnPositiveButtonClickListener {
             pixConfirmationViewModel.positiveDataPicker(it)
         }
+    }
 
-        binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
-        binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
-        binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
+    private fun updateLayout() {
         binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
-        binding.textviewBankName.text = pixSharedViewModel.getPix().institution
         binding.textviewDescription.text = pixSharedViewModel.getPix().message
-        binding.textviewDate.text = pixSharedViewModel.getPix().date.toString()
+        binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
+        binding.textviewDate.text = pixSharedViewModel.getPix().date
+        binding.textviewBankName.text = pixSharedViewModel.getPix().institution
+        binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
+        binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
     }
 
     override fun onDestroyView() {

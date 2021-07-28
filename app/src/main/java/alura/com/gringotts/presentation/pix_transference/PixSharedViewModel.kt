@@ -77,7 +77,7 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
         }
     }
 
-    fun confirmPix(){
+    fun confirmPix() {
         _loading.postValue(true)
         viewModelScope.launch {
             val response = pixRepository.pixConfirmData()

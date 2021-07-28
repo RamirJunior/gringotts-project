@@ -41,7 +41,7 @@ class PixFinishedFragment : Fragment() {
 
     }
 
-    fun updateLayout(){
+    fun updateLayout() {
         binding.pixFinishedDate.text = pixSharedViewModel.date.value
         binding.pixTransferCurrency.text = pixSharedViewModel.value.value
         binding.pixFinishedReceiverName.text = pixSharedViewModel.name.value

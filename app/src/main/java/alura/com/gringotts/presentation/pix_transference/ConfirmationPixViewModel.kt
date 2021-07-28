@@ -2,7 +2,6 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.presentation.home.auxiliar.DateHelper
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,7 +31,7 @@ class ConfirmationPixViewModel() :
     }
 
     fun positiveDataPicker(timeInMillis: Long) {
-        if(timeInMillis > MaterialDatePicker.todayInUtcMilliseconds()) {
+        if (timeInMillis > MaterialDatePicker.todayInUtcMilliseconds()) {
             val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
             _pixDateInMillis.postValue(timeInMillis)
             newDate.timeInMillis = timeInMillis

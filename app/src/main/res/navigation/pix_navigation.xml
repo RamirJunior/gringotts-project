@@ -68,7 +68,9 @@
         tools:layout="@layout/fragment_confirmation_pix">
         <action
             android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
-            app:destination="@id/pixFinishedFragment" />
+            app:destination="@id/pixFinishedFragment"
+            app:popUpTo="@id/confirmationPixFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/pixFinishedFragment"

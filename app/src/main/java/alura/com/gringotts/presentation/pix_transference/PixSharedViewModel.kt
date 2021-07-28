@@ -4,6 +4,7 @@ import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.UserPix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -63,6 +64,10 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
                 response.pixValue,
                 response.date
             )
+            Log.e("Valor",pix.pixValue.toString())
+            Log.e("Organizacao",pix.institution)
+            Log.e("Valor",pix.receiverName)
+            Log.e("Valor",pix.receiverEmail)
         }
         _loading.postValue(false)
     }

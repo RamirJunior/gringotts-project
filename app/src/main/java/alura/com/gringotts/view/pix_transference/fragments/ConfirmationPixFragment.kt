@@ -41,6 +41,7 @@ class ConfirmationPixFragment : Fragment() {
 
         pixSharedViewModel.email.observe(viewLifecycleOwner, {
             binding.textviewEmail.text = it
+            pixSharedViewModel.saveEmail(it)
         })
 
         pixSharedViewModel.description.observe(viewLifecycleOwner, {

@@ -5,15 +5,11 @@ import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -74,19 +70,19 @@ class ConfirmationPixFragment : Fragment() {
         binding.continueConfirmation.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
-        binding.textviewDatePicker.setOnClickListener{
+        binding.textviewDatePicker.setOnClickListener {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                     .build()
-            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+            datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
             datePicker.addOnPositiveButtonClickListener {
                 pixConfirmationViewModel.positiveDataPicker(it)
             }
         }
 
-        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner){
+        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner) {
             pixSharedViewModel.saveDate(it)
             binding.textviewDate.text = it
             pixSharedViewModel.validationPix()

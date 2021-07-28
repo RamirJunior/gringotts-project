@@ -5,6 +5,7 @@ import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,12 +34,6 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var datePicker =
-            MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Agende a Transfêrencia")
-                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
-                .build()
-
         pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner) {
             binding.textviewDate.text = it
         }
@@ -53,27 +48,27 @@ class ConfirmationPixFragment : Fragment() {
         }
 
         binding.textviewDatePicker.setOnClickListener {
-            datePicker =
+            val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
                     .build()
-//            datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
-            pixSharedViewModel.saveDate("27/07/2021")
+            datePicker.addOnPositiveButtonClickListener {
+                pixConfirmationViewModel.positiveDataPicker(it)
+            }
+            datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
+        }
+        pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner){
+            pixSharedViewModel.saveDate(it)
+            binding.textviewDate.text = it
             pixSharedViewModel.validationPix()
         }
-
-        datePicker.addOnPositiveButtonClickListener {
-            pixConfirmationViewModel.positiveDataPicker(it)
-        }
-
 //        binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
 //        binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
 //        binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
 //        binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
 //        binding.textviewBankName.text = pixSharedViewModel.getPix().institution
 //        binding.textviewDescription.text = pixSharedViewModel.getPix().message
-//        binding.textviewDate.text = pixSharedViewModel.getPix().date
     }
 
     override fun onDestroyView() {

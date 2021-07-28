@@ -75,15 +75,14 @@ class ConfirmationPixFragment : Fragment() {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
         binding.textviewDatePicker.setOnClickListener{
-            val datePicker =
-                MaterialDatePicker.Builder.datePicker()
-                    .setTitleText("Agende a Transfêrencia")
-                    .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
-                    .build()
-            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Agende a Transfêrencia")
+                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
+                .build()
             datePicker.addOnPositiveButtonClickListener {
                 pixConfirmationViewModel.positiveDataPicker(it)
             }
+            datePicker.show(requireActivity().supportFragmentManager,datePicker.toString())
         }
 
         pixConfirmationViewModel.pixDate.observe(viewLifecycleOwner){

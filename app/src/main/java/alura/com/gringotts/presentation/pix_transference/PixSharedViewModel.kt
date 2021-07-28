@@ -4,11 +4,16 @@ import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.UserPix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel() {
+
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
 
     private val pix: Pix = Pix()
 
@@ -39,6 +44,7 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
     fun getPix(): Pix = pix
 
     fun validationPix() {
+        _loading.postValue(true)
         viewModelScope.launch {
             val response = pixRepository.pixValidationData(
                 PixValidation(
@@ -58,9 +64,11 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
                 response.date
             )
         }
+        _loading.postValue(false)
     }
 
-    fun confirmPix() {
+    fun confirmPix(){
+        _loading.postValue(true)
         viewModelScope.launch {
             val response = pixRepository.pixConfirmData()
             updatePixValues(
@@ -72,6 +80,7 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
                 response.date
             )
         }
+        _loading.postValue(false)
     }
 
     private fun updatePixValues(

@@ -13,6 +13,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -66,12 +67,6 @@ class ConfirmationPixFragment : Fragment() {
 //        pixSharedViewModel.loading.observe(viewLifecycleOwner, {
 //
 //        })
-
-        var datePicker =
-            MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Agende a Transfêrencia")
-                .setSelection(pixConfirmationViewModel.pixDateInMillis.value)
-                .build()
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
@@ -80,7 +75,7 @@ class ConfirmationPixFragment : Fragment() {
             findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
         }
         binding.textviewDatePicker.setOnClickListener{
-             val datePicker =
+            val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Agende a Transfêrencia")
                     .setSelection(pixConfirmationViewModel.pixDateInMillis.value)

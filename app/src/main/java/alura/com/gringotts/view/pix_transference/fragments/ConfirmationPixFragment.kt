@@ -100,19 +100,6 @@ class ConfirmationPixFragment : Fragment() {
 
     }
 
-    private fun updateLayout(loadingStatus : Boolean) {
-        if(loadingStatus) {
-            binding.textviewEmail.text = pixSharedViewModel.getPix().receiverEmail
-            binding.textviewDescription.text = pixSharedViewModel.getPix().message
-            binding.textviewValue.text = pixSharedViewModel.getPix().pixValue.toString()
-            binding.textviewBankName.text = pixSharedViewModel.getPix().institution
-            binding.textviewUsername.text = pixSharedViewModel.getPix().receiverName
-            binding.textviewTotalValue.text = pixSharedViewModel.getPix().pixValue.toString()
-        }else{
-            //chama carregando
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

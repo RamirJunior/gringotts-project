@@ -7,6 +7,7 @@ object DateHelper {
 
     fun formatDate(date: Date): String {
         val formatter = SimpleDateFormat(DATE_FORMAT_dd_mm_yyyy, Locale.getDefault())
+        formatter.timeZone = TimeZone.getTimeZone("UTC")
         return formatter.format(date)
     }
 

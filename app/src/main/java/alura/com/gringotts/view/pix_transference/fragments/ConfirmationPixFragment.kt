@@ -36,7 +36,6 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pixSharedViewModel.saveDate("28/07/2021")
         pixSharedViewModel.validationPix()
 
         pixSharedViewModel.name.observe(viewLifecycleOwner, {

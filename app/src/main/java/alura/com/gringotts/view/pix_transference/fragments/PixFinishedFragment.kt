@@ -28,14 +28,14 @@ class PixFinishedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.toolbarPixFinished.setNavigationOnClickListener {
-            activity?.onBackPressed()
-        }
+
         binding.imageButtonGoToHome.setOnClickListener {
             activity?.finish()
         }
+
         binding.imageButtonOtherTransfer.setOnClickListener {
             findNavController().navigate(R.id.action_pixFinishedFragment_to_pixFragment2)
         }
+
     }
 }

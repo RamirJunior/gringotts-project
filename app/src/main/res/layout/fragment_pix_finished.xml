@@ -14,8 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
-        app:navigationIconTint="@color/white"
         app:title="Transferir com Pix"
         app:titleCentered="true"
         app:titleTextColor="@color/white" />
@@ -178,12 +176,13 @@
                     android:id="@+id/pix_finished_cpf_value"
                     android:layout_width="139dp"
                     android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pix_finished_cpf"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="123.456.781 92" />
+                    tools:text="teste@google" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

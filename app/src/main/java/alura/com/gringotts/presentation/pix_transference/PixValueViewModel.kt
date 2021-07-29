@@ -41,6 +41,7 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     }
 
     fun onValueButtonClicked() {
+        changeNullToZero()
         if (pixValue.toDouble() <= balance.value!!.toDouble() && pixValue.toDouble() > 0) {
             _goToConfirmationPixFragment.postValue(pixValue)
             _invalidValueError.postValue(null)
@@ -48,6 +49,12 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
             _invalidValueError.postValue("Valor da transferência maior que saldo")
         } else if (pixValue.toDouble() <= 0) {
             _invalidValueError.postValue("Transferência deve ser de pelo menos 0,01.")
+        }
+    }
+
+    private fun changeNullToZero() {
+        if (pixValue.isEmpty()) {
+            pixValue = "0.0"
         }
     }
 

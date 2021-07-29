@@ -1,6 +1,5 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
-import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import android.os.Bundle
@@ -11,15 +10,17 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class PixValueFragment : Fragment() {
 
     private var _binding: FragmentPixValueBinding? = null
     private val binding: FragmentPixValueBinding get() = _binding!!
-    private val pixValueViewModel by viewModel<PixValueViewModel>()
+    private val arguments by navArgs<PixValueFragmentArgs>()
+    private val pixValueViewModel: PixValueViewModel by viewModel { parametersOf(arguments.pix) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,8 +53,9 @@ class PixValueFragment : Fragment() {
         }
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
-            pixSharedViewModel.savePixValue(it.toDouble())
-            findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
+            val direction =
+                PixValueFragmentDirections.actionPixValueFragmentToConfirmationPixFragment(arguments.pix)
+            findNavController().navigate(direction)
         }
 
         binding.hideBalancePix.setOnClickListener {

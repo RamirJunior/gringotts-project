@@ -26,7 +26,7 @@ class MoneyTextWatcher(editText: EditText, val pixValueViewModel: PixValueViewMo
         val cleanString = s.replace("[^0-9]".toRegex(), "")
         val parsed = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR)
             .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR)
-        pixValueViewModel.pixValue = parsed.toString()
+        pixValueViewModel.pixValue = parsed.toDouble()
         val formatted: String = NumberFormat.getCurrencyInstance().format(parsed)
         editText.setText(formatted)
         editText.setSelection(formatted.length)

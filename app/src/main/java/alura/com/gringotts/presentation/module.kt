@@ -54,7 +54,7 @@ val initialModule = module {
         InsertOptionalDescriptionPixViewModel(get())
     }
     viewModel {
-        PixValueViewModel(get())
+        PixValueViewModel(get(),get())
     }
     viewModel {
         ConfirmationPixViewModel(get(), get())

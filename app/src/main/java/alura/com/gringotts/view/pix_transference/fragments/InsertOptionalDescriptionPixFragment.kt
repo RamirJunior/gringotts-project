@@ -53,6 +53,7 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         binding.pixDescriptionContinue.setOnClickListener {
             insertOptionalDescriptionPixViewModel.onInsertDescriptionButtonClicked()
         }
+
     }
 
     override fun onDestroyView() {

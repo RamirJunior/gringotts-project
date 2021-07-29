@@ -4,6 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
+import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcher
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,11 +48,13 @@ class PixValueFragment : Fragment() {
             binding.balanceValue.text = it
         }
 
-        binding.editValue.addTextChangedListener {
-            if (it != null) {
+        binding.editValue.addTextChangedListener (
+            MoneyTextWatcher(binding.editValue, pixValueViewModel)
+        )
+
+           /* if (it != null) {
                 pixValueViewModel.pixValue = it.toString()
-            }
-        }
+            }*/
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
             pixSharedViewModel.savePixValue(it.toDouble())

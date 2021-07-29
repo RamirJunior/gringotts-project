@@ -23,7 +23,7 @@
     <string name="produtosInvestimentos">Produtos</string>
     <string name="servicos">Serviços</string>
     <string name="saldo">Saldo</string>
-    <string name="real">R$&#xA0;</string>
+    <string name="real">R$</string>
     <string name="detalhes_conta">Ver detalhes da conta</string>
     <string name="detalhes_saldo">Ver detalhes do saldo</string>
     <string name="security">security</string>

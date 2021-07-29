@@ -22,6 +22,12 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     private val _goToConfirmationPixFragment = SingleLiveEvent<String>()
     val goToConfirmationPixFragment: LiveData<String> = _goToConfirmationPixFragment
 
+    private val _hideButtonText = MutableLiveData<String>()
+    val hideButtonText: LiveData<String> = _hideButtonText
+
+    private val _hideValueString = MutableLiveData<String>()
+    val hideValueString: LiveData<String> = _hideValueString
+
     var pixValue: String = "0.0"
 
     private lateinit var balanceValue: String
@@ -74,11 +80,14 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     }
 
     private fun showBalancePix() {
+        _hideValueString.postValue(balanceValue)
+        _hideButtonText.postValue("Ocultar")
         _balance.postValue(balanceValue)
     }
 
     private fun hideBalancePix() {
-        _balance.postValue(HIDDENVALUE)
+        _hideValueString.postValue(HIDDENVALUE)
+        _hideButtonText.postValue("Mostrar")
     }
 
     companion object {

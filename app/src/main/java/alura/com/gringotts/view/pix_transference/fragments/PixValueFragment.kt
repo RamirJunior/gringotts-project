@@ -43,7 +43,7 @@ class PixValueFragment : Fragment() {
             pixValueViewModel.onValueButtonClicked()
         }
 
-        pixValueViewModel.balance.observe(viewLifecycleOwner) {
+        pixValueViewModel.hideValueString.observe(viewLifecycleOwner) {
             binding.balanceValue.text = it
         }
 
@@ -60,6 +60,10 @@ class PixValueFragment : Fragment() {
 
         binding.hideBalancePix.setOnClickListener {
             pixValueViewModel.hideBalanceButtonClickedPix()
+        }
+
+        pixValueViewModel.hideButtonText.observe(viewLifecycleOwner){
+            binding.hideBalancePix.text=it
         }
 
         pixValueViewModel.loading.observe(viewLifecycleOwner) {

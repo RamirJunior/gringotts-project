@@ -62,8 +62,8 @@ class PixValueFragment : Fragment() {
             pixValueViewModel.hideBalanceButtonClickedPix()
         }
 
-        pixValueViewModel.hideButtonText.observe(viewLifecycleOwner){
-            binding.hideBalancePix.text=it
+        pixValueViewModel.hideButtonText.observe(viewLifecycleOwner) {
+            binding.hideBalancePix.text = it
         }
 
         pixValueViewModel.loading.observe(viewLifecycleOwner) {

@@ -1,6 +1,8 @@
 package alura.com.gringotts.data.models.pix_transference
 
-class Pix {
+import java.io.Serializable
+
+class Pix : Serializable {
     lateinit var receiverEmail: String
     var pixValue: Double = 0.0
     lateinit var institution: String

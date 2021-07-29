@@ -1,9 +1,7 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
-import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentInsertOptionalDescriptionPixBinding
 import alura.com.gringotts.presentation.pix_transference.InsertOptionalDescriptionPixViewModel
-import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +9,18 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class InsertOptionalDescriptionPixFragment : Fragment() {
 
     private var _binding: FragmentInsertOptionalDescriptionPixBinding? = null
     private val binding: FragmentInsertOptionalDescriptionPixBinding get() = _binding!!
-    private val insertOptionalDescriptionPixViewModel by viewModel<InsertOptionalDescriptionPixViewModel>()
-    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
+    private val arguments by navArgs<InsertOptionalDescriptionPixFragmentArgs>()
+    private val insertOptionalDescriptionPixViewModel: InsertOptionalDescriptionPixViewModel by viewModel {
+        parametersOf(arguments.pix)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,10 +43,11 @@ class InsertOptionalDescriptionPixFragment : Fragment() {
         }
 
         insertOptionalDescriptionPixViewModel.goToPixValueFragment.observe(viewLifecycleOwner) {
-            if (it != null) {
-                pixSharedViewModel.saveMessage(it)
-            }
-            findNavController().navigate(R.id.action_insertOptionalDescriptionPixFragment_to_pixValueFragment)
+            val direction =
+                InsertOptionalDescriptionPixFragmentDirections.actionInsertOptionalDescriptionPixFragmentToPixValueFragment(
+                    arguments.pix
+                )
+            findNavController().navigate(direction)
         }
 
         binding.pixDescriptionContinue.setOnClickListener {

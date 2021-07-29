@@ -1,10 +1,8 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
-import alura.com.gringotts.R
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.databinding.FragmentInsertEmailPixBinding
 import alura.com.gringotts.presentation.pix_transference.InsertEmailPixViewModel
-import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,17 +10,15 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class InsertEmailPixFragment : Fragment() {
 
     private var _binding: FragmentInsertEmailPixBinding? = null
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
-    private val insertEmailPixViewModel by viewModel<InsertEmailPixViewModel>()
-    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
-
     val pix: Pix = Pix()
+    private val insertEmailPixViewModel: InsertEmailPixViewModel by viewModel { parametersOf(pix) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +41,11 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         insertEmailPixViewModel.goToInsertDescriptionScreen.observe(viewLifecycleOwner) {
-            pixSharedViewModel.saveEmail(it)
-            findNavController().navigate(R.id.action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment)
+            val direction =
+                InsertEmailPixFragmentDirections.actionInsertEmailPixFragmentToInsertOptionalDescriptionPixFragment(
+                    pix
+                )
+            findNavController().navigate(direction)
         }
 
         binding.pixInsertEmailContinue.setOnClickListener {
@@ -54,7 +53,7 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         insertEmailPixViewModel.invalidEmailError.observe(viewLifecycleOwner) {
-            binding.editEmail.error = it
+            binding.insertEmailField.error = it
         }
 
     }
@@ -63,4 +62,5 @@ class InsertEmailPixFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

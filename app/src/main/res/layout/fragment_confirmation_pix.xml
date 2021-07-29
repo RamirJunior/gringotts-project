@@ -60,12 +60,18 @@
             android:layout_margin="8dp"
             android:elevation="16dp"
             app:cardCornerRadius="28dp"
-            app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_pix_confirmation">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:paddingTop="52dp"
+                android:paddingBottom="52dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
@@ -88,11 +94,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
+                    android:text="@string/txt_symbol"
                     android:textAlignment="center"
                     android:textColor="@color/gold"
                     android:textSize="30sp"
                     android:textStyle="bold"
-                    android:text="@string/txt_symbol"
                     app:layout_constraintEnd_toStartOf="@+id/textview_value"
                     app:layout_constraintTop_toTopOf="@+id/textview_value" />
 
@@ -154,9 +160,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
+                    android:text="@string/txt_symbol"
                     android:textAlignment="viewEnd"
                     android:textStyle="bold"
-                    android:text="@string/txt_symbol"
                     app:layout_constraintEnd_toStartOf="@+id/textview_total_value"
                     app:layout_constraintTop_toTopOf="@+id/valor"
                     tools:ignore="RtlCompat" />
@@ -185,8 +191,8 @@
                     android:id="@+id/destinatario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="15dp"
+                    android:gravity="center"
                     android:text="@string/txt_to"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_value"
@@ -295,16 +301,16 @@
                     android:id="@+id/divider_receptor"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/grayBack"
                     android:layout_marginTop="16dp"
+                    android:background="@color/grayBack"
                     app:layout_constraintTop_toBottomOf="@+id/textview_description" />
 
                 <TextView
                     android:id="@+id/quando"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="15dp"
+                    android:gravity="center"
                     android:text="@string/txt_when"
                     android:textAlignment="viewStart"
                     app:layout_constraintStart_toStartOf="parent"
@@ -327,14 +333,17 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/textview_date_picker"
-                    style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:background="@color/trans"
                     android:text="@string/agende_a_transferencia"
                     android:textColor="@color/gold"
                     android:textSize="12sp"
+                    android:textAlignment="textEnd"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_receptor" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -342,9 +351,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/continueConfirmation"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/golden_rounded_corner"
             android:text="@string/confirmar_transferencia"
             android:textAllCaps="false"
@@ -359,7 +369,7 @@
             android:layout_height="wrap_content"
             android:text="@string/cancelar"
             android:textColor="@color/gold"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

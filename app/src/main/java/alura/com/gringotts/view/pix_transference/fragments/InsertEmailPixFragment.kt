@@ -1,6 +1,7 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
 import alura.com.gringotts.R
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.databinding.FragmentInsertEmailPixBinding
 import alura.com.gringotts.presentation.pix_transference.InsertEmailPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
@@ -20,6 +21,8 @@ class InsertEmailPixFragment : Fragment() {
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
     private val insertEmailPixViewModel by viewModel<InsertEmailPixViewModel>()
     private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
+
+    val pix: Pix = Pix()
 
     override fun onCreateView(
         inflater: LayoutInflater,

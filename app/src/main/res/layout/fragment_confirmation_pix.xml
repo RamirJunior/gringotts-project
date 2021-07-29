@@ -64,7 +64,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="584dp"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,11 +88,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
+                    android:text="@string/txt_symbol"
                     android:textAlignment="center"
                     android:textColor="@color/gold"
                     android:textSize="30sp"
                     android:textStyle="bold"
-                    android:text="@string/txt_symbol"
                     app:layout_constraintEnd_toStartOf="@+id/textview_value"
                     app:layout_constraintTop_toTopOf="@+id/textview_value" />
 
@@ -154,9 +154,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
+                    android:text="@string/txt_symbol"
                     android:textAlignment="viewEnd"
                     android:textStyle="bold"
-                    android:text="@string/txt_symbol"
                     app:layout_constraintEnd_toStartOf="@+id/textview_total_value"
                     app:layout_constraintTop_toTopOf="@+id/valor"
                     tools:ignore="RtlCompat" />
@@ -185,8 +185,8 @@
                     android:id="@+id/destinatario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="15dp"
+                    android:gravity="center"
                     android:text="@string/txt_to"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_value"
@@ -295,16 +295,16 @@
                     android:id="@+id/divider_receptor"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/grayBack"
                     android:layout_marginTop="16dp"
+                    android:background="@color/grayBack"
                     app:layout_constraintTop_toBottomOf="@+id/textview_description" />
 
                 <TextView
                     android:id="@+id/quando"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="15dp"
+                    android:gravity="center"
                     android:text="@string/txt_when"
                     android:textAlignment="viewStart"
                     app:layout_constraintStart_toStartOf="parent"
@@ -357,9 +357,9 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/cancelar"
             android:textColor="@color/gold"
-            android:layout_marginTop="16dp"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

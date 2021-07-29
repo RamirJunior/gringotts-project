@@ -104,8 +104,15 @@
     <string name="ir_para_o_inicio">Ir para o início</string>
     <string name="compartilhe_suas_chaves_ou_seus_dados_banc_rios_para_receber_transfer_ncias_gr_tis">Compartilhe suas chaves ou seus dados bancários para receber transferências grátis.</string>
     <string name="cpf">CPF:</string>
-    <string name="confirmar_transferencia">Confirmar transferência</string>
+    <string name="confirmar_transferencia">CONFIRMAR TRANSFERÊNCIA</string>
     <string name="cancelar">Cancelar</string>
     <string name="rs">R$ </string>
     <string name="agende_a_transferencia">Agende a transferencia</string>
+    <string name="txt_to">Para</string>
+    <string name="txt_email">E-mail:</string>
+    <string name="txt_institution">Instituição:</string>
+    <string name="txt_description">Descrição:</string>
+    <string name="txt_when">Quando</string>
+    <string name="txt_example_date">21/07/2021</string>
+    <string name="txt_symbol">R$</string>
 </resources>

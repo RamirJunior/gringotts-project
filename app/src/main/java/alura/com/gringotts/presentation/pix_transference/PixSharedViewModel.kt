@@ -75,7 +75,6 @@ class PixSharedViewModel(private val pixRepository: PixRepository) : ViewModel()
             )
             _loading.postValue(false)
         }
-
     }
 
     fun confirmPix(){

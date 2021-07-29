@@ -2,7 +2,6 @@ package alura.com.gringotts.view.pix_transference.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixTypeChoiceBinding
-import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ class PixTypeChoiceFragment : Fragment() {
 
     private var _binding: FragmentPixTypeChoiceBinding? = null
     private val binding: FragmentPixTypeChoiceBinding get() = _binding!!
-    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

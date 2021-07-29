@@ -1,5 +1,6 @@
 package alura.com.gringotts.presentation.pix_transference
 
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.presentation.home.auxiliar.DateHelper
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -8,7 +9,9 @@ import androidx.lifecycle.ViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.util.*
 
-class ConfirmationPixViewModel() :
+class ConfirmationPixViewModel(
+    private val pix: Pix
+) :
     ViewModel() {
 
     private val _goToPixFinishedFragment = SingleLiveEvent<String>()

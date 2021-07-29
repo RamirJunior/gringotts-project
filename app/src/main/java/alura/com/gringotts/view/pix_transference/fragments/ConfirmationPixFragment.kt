@@ -3,6 +3,7 @@ package alura.com.gringotts.view.pix_transference.fragments
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
+import alura.com.gringotts.presentation.pix_transference.InsertOptionalDescriptionPixViewModel
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,16 +12,20 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class ConfirmationPixFragment : Fragment() {
 
     private var _binding: FragmentConfirmationPixBinding? = null
     private val binding: FragmentConfirmationPixBinding get() = _binding!!
-    private val pixSharedViewModel by sharedViewModel<PixSharedViewModel>()
-    private val pixConfirmationViewModel by viewModel<ConfirmationPixViewModel>()
+    private val arguments by navArgs<ConfirmationPixFragmentArgs>()
+    private val confirmationPixViewModel: ConfirmationPixViewModel by viewModel {
+        parametersOf(arguments.pix)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,7 +81,8 @@ class ConfirmationPixFragment : Fragment() {
         }
 
         binding.continueConfirmation.setOnClickListener {
-            findNavController().navigate(R.id.action_confirmationPixFragment_to_pixFinishedFragment)
+        val direction = ConfirmationPixFragmentDirections.actionConfirmationPixFragmentToPixFinishedFragment(arguments.pix)
+            findNavController().navigate(direction)
             pixSharedViewModel.confirmPix()
         }
 

@@ -52,10 +52,6 @@ class PixValueFragment : Fragment() {
             MoneyTextWatcher(binding.editValue, pixValueViewModel)
         )
 
-           /* if (it != null) {
-                pixValueViewModel.pixValue = it.toString()
-            }*/
-
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
             pixSharedViewModel.savePixValue(it.toDouble())
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)

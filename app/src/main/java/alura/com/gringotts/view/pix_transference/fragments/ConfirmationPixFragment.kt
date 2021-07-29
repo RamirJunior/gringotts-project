@@ -71,6 +71,8 @@ class ConfirmationPixFragment : Fragment() {
             binding.loadingConfirmation.isVisible = it
         })
 
+
+
         binding.toolbarPixConfirmation.setNavigationOnClickListener {
             activity?.onBackPressed()
         }

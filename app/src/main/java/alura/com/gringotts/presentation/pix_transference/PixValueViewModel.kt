@@ -1,5 +1,6 @@
 package alura.com.gringotts.presentation.pix_transference
 
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -8,7 +9,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAccountValueRepository) :
+class PixValueViewModel(
+    private val pix: Pix,
+    private val pixActualAccountValueRepository: PixActualAccountValueRepository
+) :
     ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -19,8 +23,8 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     val apiError: LiveData<String> = _apiError
     private val _invalidValueError = MutableLiveData<String?>()
     val invalidValueError: LiveData<String?> = _invalidValueError
-    private val _goToConfirmationPixFragment = SingleLiveEvent<String>()
-    val goToConfirmationPixFragment: LiveData<String> = _goToConfirmationPixFragment
+    private val _goToConfirmationPixFragment = SingleLiveEvent<Boolean>()
+    val goToConfirmationPixFragment: LiveData<Boolean> = _goToConfirmationPixFragment
 
     private val _hideButtonText = MutableLiveData<String>()
     val hideButtonText: LiveData<String> = _hideButtonText
@@ -49,7 +53,8 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     fun onValueButtonClicked() {
         changeNullToZero()
         if (pixValue.toDouble() <= balance.value!!.toDouble() && pixValue.toDouble() > 0) {
-            _goToConfirmationPixFragment.postValue(pixValue)
+            pix.pixValue = pixValue.toDouble()
+            _goToConfirmationPixFragment.postValue(true)
             _invalidValueError.postValue(null)
         } else if (pixValue.toDouble() > balance.value!!.toDouble()) {
             _invalidValueError.postValue("Valor da transferência maior que saldo")

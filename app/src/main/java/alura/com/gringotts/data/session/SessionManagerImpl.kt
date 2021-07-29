@@ -65,15 +65,6 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return sharedPreferences.getBoolean(HIDE_STATUS, false)
     }
 
-    override fun saveHideBalanceStatePix(isVisible: Boolean) {
-        sharedPreferencesEditor.putBoolean(HIDE_STATUS, isVisible)
-        sharedPreferencesEditor.apply()
-    }
-
-    override fun getHideBalanceStatePix(): Boolean {
-        return sharedPreferences.getBoolean(HIDE_STATUS, false)
-    }
-
     override fun setOnboardingPixFinished() {
         sharedPreferencesEditor.putBoolean(FINISHED_PIX_ONBOARDING_KEY, true)
         sharedPreferencesEditor.apply()
@@ -81,6 +72,15 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
 
     override fun getOnboardingPixFinished(): Boolean {
         return sharedPreferences.getBoolean(FINISHED_PIX_ONBOARDING_KEY, false)
+    }
+
+    override fun saveHideBalanceStatePix(isVisible: Boolean) {
+        sharedPreferencesEditor.putBoolean(HIDE_STATUS_PIX, isVisible)
+        sharedPreferencesEditor.apply()
+    }
+
+    override fun getHideBalanceStatePix(): Boolean {
+        return sharedPreferences.getBoolean(HIDE_STATUS_PIX, false)
     }
 
     override fun savePixToken(token: String) {
@@ -99,6 +99,7 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         private const val USER_KEY = "user"
         private const val HIDE_STATUS = "hideStatus"
         private const val FINISHED_PIX_ONBOARDING_KEY = "finishedPix"
+        private const val HIDE_STATUS_PIX = "hideStatusPix"
         private const val PIX_TOKEN = "pixToken"
     }
 

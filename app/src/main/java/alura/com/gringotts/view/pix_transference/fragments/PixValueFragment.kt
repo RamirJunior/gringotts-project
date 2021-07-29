@@ -8,9 +8,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,17 +48,38 @@ class PixValueFragment : Fragment() {
         }
 
         binding.editValue.addTextChangedListener {
-            pixValueViewModel.pixValueToFloat = it.toString().toDouble()
+            if (it != null) {
+                pixValueViewModel.pixValue = it.toString()
+            }
         }
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
-            pixSharedViewModel.savePixValue(it)
+            pixSharedViewModel.savePixValue(it.toDouble())
             findNavController().navigate(R.id.action_pixValueFragment_to_confirmationPixFragment)
         }
 
         binding.hideBalancePix.setOnClickListener {
             pixValueViewModel.hideBalanceButtonClickedPix()
         }
+
+        pixValueViewModel.loading.observe(viewLifecycleOwner) {
+            binding.loading.isVisible = it
+        }
+
+        pixValueViewModel.invalidValueError.observe(viewLifecycleOwner) {
+            binding.editValue.error = it
+        }
+
+        pixValueViewModel.apiError.observe(viewLifecycleOwner, {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { _, _ -> }
+                    .show()
+            }
+        })
 
     }
 }

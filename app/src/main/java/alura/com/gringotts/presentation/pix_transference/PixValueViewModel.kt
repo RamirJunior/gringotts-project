@@ -1,6 +1,5 @@
 package alura.com.gringotts.presentation.pix_transference
 
-import alura.com.gringotts.data.models.home.Balance
 import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -12,36 +11,42 @@ import kotlinx.coroutines.launch
 class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAccountValueRepository) :
     ViewModel() {
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
     private val _balance = MutableLiveData<String>()
     val balance: LiveData<String> = _balance
     private val _apiError = MutableLiveData<String>()
     val apiError: LiveData<String> = _apiError
     private val _invalidValueError = MutableLiveData<String?>()
     val invalidValueError: LiveData<String?> = _invalidValueError
-    private val _goToConfirmationPixFragment = SingleLiveEvent<Double>()
-    val goToConfirmationPixFragment: LiveData<Double> = _goToConfirmationPixFragment
+    private val _goToConfirmationPixFragment = SingleLiveEvent<String>()
+    val goToConfirmationPixFragment: LiveData<String> = _goToConfirmationPixFragment
 
-    var pixValueToFloat: Double = 0.0
+    var pixValue: String = "0.0"
 
-    private lateinit var balanceValue: Balance
+    private lateinit var balanceValue: String
 
     init {
+        _loading.postValue(true)
         viewModelScope.launch {
             try {
-                _balance.postValue(pixActualAccountValueRepository.balanceData().toString())
+                balanceValue = pixActualAccountValueRepository.balanceData().toString()
+                _balance.postValue(balanceValue)
+                setBalanceStatePix(pixActualAccountValueRepository.getHideBalanceStatePix())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
             }
+            _loading.postValue(false)
         }
     }
 
     fun onValueButtonClicked() {
-        if (pixValueToFloat <= balance.value!!.toDouble() && pixValueToFloat > 0) {
-            _goToConfirmationPixFragment.postValue(pixValueToFloat)
+        if (pixValue.toDouble() <= balance.value!!.toDouble() && pixValue.toDouble() > 0) {
+            _goToConfirmationPixFragment.postValue(pixValue)
             _invalidValueError.postValue(null)
-        } else if (pixValueToFloat > balance.value!!.toDouble()) {
+        } else if (pixValue.toDouble() > balance.value!!.toDouble()) {
             _invalidValueError.postValue("Valor da transferência maior que saldo")
-        } else if (pixValueToFloat <= 0) {
+        } else if (pixValue.toDouble() <= 0) {
             _invalidValueError.postValue("Transferência deve ser de pelo menos 0,01.")
         }
     }
@@ -62,7 +67,7 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     }
 
     private fun showBalancePix() {
-        _balance.postValue(balanceValue.currentValue.toString())
+        _balance.postValue(balanceValue)
     }
 
     private fun hideBalancePix() {

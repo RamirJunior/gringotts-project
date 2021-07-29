@@ -69,7 +69,7 @@
         <action
             android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
             app:destination="@id/pixFinishedFragment"
-            app:popUpTo="@id/confirmationPixFragment"
+            app:popUpTo="@id/pixTypeChoiceFragment"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment

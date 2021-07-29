@@ -46,7 +46,9 @@ class ConfirmationPixFragment : Fragment() {
 
         pixSharedViewModel.description.observe(viewLifecycleOwner, {
             binding.textviewDescription.text = it
-            pixSharedViewModel.saveMessage(it)
+            if (it != null) {
+                pixSharedViewModel.saveMessage(it)
+            }
         })
 
         pixSharedViewModel.institution.observe(viewLifecycleOwner, {

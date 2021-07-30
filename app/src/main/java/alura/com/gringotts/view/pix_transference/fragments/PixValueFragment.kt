@@ -4,8 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixSharedViewModel
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
-import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcher
-import android.annotation.SuppressLint
+import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcherPixFragment
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -48,10 +47,10 @@ class PixValueFragment : Fragment() {
 
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
             if(it){
-                binding.hideBalancePix.text = "Visualizar"
+                binding.hideBalancePix.text = requireContext().getString(R.string.visualizar)
             }
             else{
-                binding.hideBalancePix.text = "Ocultar"
+                binding.hideBalancePix.text = requireContext().getString(R.string.ocultar)
             }
         }
         pixValueViewModel.balance.observe(viewLifecycleOwner){
@@ -59,7 +58,7 @@ class PixValueFragment : Fragment() {
         }
 
         binding.editValue.addTextChangedListener (
-            MoneyTextWatcher(binding.editValue, pixValueViewModel)
+            MoneyTextWatcherPixFragment(binding.editValue, pixValueViewModel)
         )
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {

@@ -7,13 +7,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_onboarding"
-            android:layout_width="377dp"
-            android:layout_height="700dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="14dp"
@@ -30,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:padding="16dp"
                 android:background="@color/trans"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
 
                 <TextView
                     android:id="@+id/textView_title"
-                    android:layout_width="362dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:gravity="center"
@@ -64,7 +64,7 @@
 
                 <TextView
                     android:id="@+id/textview_slogan"
-                    android:layout_width="362dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"

@@ -117,4 +117,5 @@
     <string name="txt_symbol">R$</string>
     <string name="visualizar">Visualizar</string>
     <string name="FunctionNotImplemented">Função não implementada</string>
+    <string name="insira_a_descri_o_opcional">Insira a descrição (opcional)</string>
 </resources>

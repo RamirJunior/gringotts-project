@@ -48,17 +48,17 @@ val initialModule = module {
     viewModel {
         HomeServicesViewModel(get())
     }
-    viewModel {
-        (pix: Pix) -> InsertEmailPixViewModel(pix)
+    viewModel { (pix: Pix) ->
+        InsertEmailPixViewModel(pix)
+    }
+    viewModel { (pix: Pix) ->
+        InsertOptionalDescriptionPixViewModel(pix)
     }
     viewModel {
-        InsertOptionalDescriptionPixViewModel(get())
+            (pix: Pix) -> PixValueViewModel(pix, get())
     }
-    viewModel {
-        PixValueViewModel(get(),get())
-    }
-    viewModel {
-        ConfirmationPixViewModel(get(), get())
+    viewModel { (pix: Pix) ->
+        ConfirmationPixViewModel(pix, get())
     }
     single<SessionManager> {
         SessionManagerImpl(get())

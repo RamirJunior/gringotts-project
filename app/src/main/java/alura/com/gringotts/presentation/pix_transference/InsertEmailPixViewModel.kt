@@ -17,7 +17,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
-        if (isEmailValid(currentEmail)) {
+        if (isEmailValid()) {
             _goToInsertDescriptionScreen.postValue(currentEmail)
             _invalidEmailError.postValue(null)
         } else if (!currentEmail.contains("@")) {
@@ -27,7 +27,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
         }
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    private fun isEmailValid(): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(currentEmail).matches()
     }
 }

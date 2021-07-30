@@ -12,8 +12,7 @@ import kotlinx.coroutines.launch
 class PixValueViewModel(
     private val pix: Pix,
     private val pixActualAccountValueRepository: PixActualAccountValueRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -23,16 +22,15 @@ class PixValueViewModel(
     val apiError: LiveData<String> = _apiError
     private val _invalidValueError = MutableLiveData<String?>()
     val invalidValueError: LiveData<String?> = _invalidValueError
-    private val _goToConfirmationPixFragment = SingleLiveEvent<Boolean>()
-    val goToConfirmationPixFragment: LiveData<Boolean> = _goToConfirmationPixFragment
-
+    private val _goToConfirmationPixFragment = SingleLiveEvent<Unit>()
+    val goToConfirmationPixFragment: LiveData<Unit> = _goToConfirmationPixFragment
     private val _hideButtonText = MutableLiveData<String>()
     val hideButtonText: LiveData<String> = _hideButtonText
 
     private val _hideButtonValue = MutableLiveData<Boolean>()
     val hideButtonValue: LiveData<Boolean> = _hideButtonValue
 
-    private var balanceValue: Double=0.0
+    private var balanceValue: Double = 0.0
 
     var pixValue: Double = 0.0
 
@@ -40,7 +38,7 @@ class PixValueViewModel(
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                balanceValue=pixActualAccountValueRepository.balanceData()
+                balanceValue = pixActualAccountValueRepository.balanceData()
                 _balance.postValue(balanceValue.toString())
                 _hideButtonValue.postValue(pixActualAccountValueRepository.getHideBalanceStatePix())
             } catch (e: Exception) {
@@ -53,9 +51,9 @@ class PixValueViewModel(
     fun onValueButtonClicked() {
         if (pixValue <= balanceValue && pixValue > 0) {
             pix.pixValue = pixValue
-            _goToConfirmationPixFragment.postValue(true)
+            _goToConfirmationPixFragment.postValue(Unit)
             _invalidValueError.postValue(null)
-        } else if (pixValue> balanceValue) {
+        } else if (pixValue > balanceValue) {
             _invalidValueError.postValue("Valor da transferência maior que saldo")
         } else if (pixValue <= 0) {
             _invalidValueError.postValue("Transferência deve ser de pelo menos 0,01.")
@@ -64,23 +62,18 @@ class PixValueViewModel(
 
     fun hideBalanceButtonClickedPix() {
         val newCurrentBalanceVisibilityStatus = !_hideButtonValue.value!!
-        if(newCurrentBalanceVisibilityStatus){
-            _balance.postValue(HIDDENVALUE)
-        }
-        else{
+        if (newCurrentBalanceVisibilityStatus) {
+            _balance.postValue(HIDDEN_VALUE)
+        } else {
             _balance.postValue(balanceValue.toString())
         }
         pixActualAccountValueRepository.saveHideBalanceStatePix(newCurrentBalanceVisibilityStatus)
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)
     }
 
-    private fun hideBalancePix() {
-        _hideValueString.postValue(HIDDENVALUE)
-        _hideButtonText.postValue("Mostrar")
-    }
 
     companion object {
-        private const val HIDDENVALUE = "* * * *"
+        private const val HIDDEN_VALUE = "* * * *"
     }
 
 }

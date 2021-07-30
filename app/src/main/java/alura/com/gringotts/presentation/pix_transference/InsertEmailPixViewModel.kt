@@ -11,15 +11,15 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
     private val _invalidEmailError = MutableLiveData<String?>()
     val invalidEmailError: LiveData<String?> = _invalidEmailError
-    private val _goToInsertDescriptionScreen = SingleLiveEvent<Boolean>()
-    val goToInsertDescriptionScreen: LiveData<Boolean> = _goToInsertDescriptionScreen
+    private val _goToInsertDescriptionScreen = SingleLiveEvent<Unit>()
+    val goToInsertDescriptionScreen: LiveData<Unit> = _goToInsertDescriptionScreen
 
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
             pix.receiverEmail = currentEmail
-            _goToInsertDescriptionScreen.postValue(true)
+            _goToInsertDescriptionScreen.postValue(Unit)
             _invalidEmailError.postValue(null)
         } else if (!currentEmail.contains("@")) {
             _invalidEmailError.postValue("* E-mail inválido.")

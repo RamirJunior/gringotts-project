@@ -11,13 +11,13 @@ class InsertOptionalDescriptionPixViewModel(
 ) :
     ViewModel() {
 
-    private val _goToPixValueFragment = SingleLiveEvent<Boolean>()
-    val goToPixValueFragment: LiveData<Boolean> = _goToPixValueFragment
+    private val _goToPixValueFragment = SingleLiveEvent<Unit>()
+    val goToPixValueFragment: LiveData<Unit> = _goToPixValueFragment
 
     var currentDescription: String = ""
 
     fun onInsertDescriptionButtonClicked() {
         pix.message = currentDescription
-        _goToPixValueFragment.postValue(true)
+        _goToPixValueFragment.postValue(Unit)
     }
 }

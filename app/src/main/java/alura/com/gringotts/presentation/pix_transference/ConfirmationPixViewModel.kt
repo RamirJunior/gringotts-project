@@ -17,8 +17,7 @@ import java.util.*
 class ConfirmationPixViewModel(
     private val pix: Pix,
     private val pixRepository: PixRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _goToPixFinishedFragment = SingleLiveEvent<String>()
     val goToPixFinishedFragment: LiveData<String> = _goToPixFinishedFragment

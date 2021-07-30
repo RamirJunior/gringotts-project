@@ -1,15 +1,14 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcherPixFragment
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -62,7 +61,9 @@ class PixValueFragment : Fragment() {
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {
             val direction =
-                PixValueFragmentDirections.actionPixValueFragmentToConfirmationPixFragment(arguments.pix)
+                PixValueFragmentDirections.actionPixValueFragmentToConfirmationPixFragment(
+                    arguments.pix
+                )
             findNavController().navigate(direction)
         }
 

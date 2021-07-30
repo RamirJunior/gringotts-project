@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -91,6 +92,17 @@ class ConfirmationPixFragment : Fragment() {
         confirmationPixViewModel.pixDate.observe(viewLifecycleOwner) {
             arguments.pix.date = it
             confirmationPixViewModel.validationPix()
+        }
+
+        confirmationPixViewModel.pixError.observe(viewLifecycleOwner) {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { _, _ -> }
+                    .show()
+            }
         }
 
     }

@@ -9,11 +9,8 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 
 
-class MoneyTextWatcherPixFragment(
-    editText: EditText,
-    private val pixValueViewModel: PixValueViewModel
-    ) : TextWatcher {
-
+class MoneyTextWatcher(editText: EditText, val pixValueViewModel: PixValueViewModel)
+    : TextWatcher {
     private val editTextWeakReference: WeakReference<EditText> = WeakReference(editText)
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
@@ -35,4 +32,5 @@ class MoneyTextWatcherPixFragment(
         editText.setSelection(formatted.length)
         editText.addTextChangedListener(this)
     }
+
 }

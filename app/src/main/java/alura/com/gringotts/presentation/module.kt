@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation
 
 import AccountStatementRepository
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
@@ -48,7 +49,7 @@ val initialModule = module {
         HomeServicesViewModel(get())
     }
     viewModel {
-        InsertEmailPixViewModel(get())
+        (pix: Pix) -> InsertEmailPixViewModel(pix)
     }
     viewModel {
         InsertOptionalDescriptionPixViewModel(get())

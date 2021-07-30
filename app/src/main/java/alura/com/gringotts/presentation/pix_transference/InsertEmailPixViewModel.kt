@@ -21,10 +21,8 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
             pix.receiverEmail = currentEmail
             _goToInsertDescriptionScreen.postValue(Unit)
             _invalidEmailError.postValue(null)
-        } else if (!currentEmail.contains("@")) {
+        } else {
             _invalidEmailError.postValue("* E-mail inválido.")
-        } else if (currentEmail.contains(" ")) {
-            _invalidEmailError.postValue("* Não pode conter espaços em branco.")
         }
     }
 

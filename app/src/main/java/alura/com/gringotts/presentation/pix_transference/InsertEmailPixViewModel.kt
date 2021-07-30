@@ -6,6 +6,7 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
@@ -22,7 +23,7 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
             _goToInsertDescriptionScreen.postValue(Unit)
             _invalidEmailError.postValue(null)
         } else {
-            _invalidEmailError.postValue("* E-mail inválido.")
+            _invalidEmailError.postValue("Insira um e-mail válido.")
         }
     }
 

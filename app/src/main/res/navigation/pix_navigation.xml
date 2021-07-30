@@ -51,6 +51,8 @@
         <action
             android:id="@+id/action_insertOptionalDescriptionPixFragment_to_pixValueFragment"
             app:destination="@id/pixValueFragment" />
+        <argument android:name="Pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
     </fragment>
     <fragment
         android:id="@+id/pixValueFragment"
@@ -60,6 +62,9 @@
         <action
             android:id="@+id/action_pixValueFragment_to_confirmationPixFragment"
             app:destination="@id/confirmationPixFragment" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
     </fragment>
     <fragment
         android:id="@+id/confirmationPixFragment"
@@ -71,6 +76,9 @@
             app:destination="@id/pixFinishedFragment"
             app:popUpTo="@id/pixTypeChoiceFragment"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
     </fragment>
     <fragment
         android:id="@+id/pixFinishedFragment"
@@ -80,5 +88,8 @@
         <action
             android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
             app:destination="@id/pixFragment2" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
     </fragment>
 </navigation>

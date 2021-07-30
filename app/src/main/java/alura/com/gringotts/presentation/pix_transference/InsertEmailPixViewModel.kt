@@ -1,24 +1,25 @@
 package alura.com.gringotts.presentation.pix_transference
 
-import alura.com.gringotts.data.session.SessionManager
+import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class InsertEmailPixViewModel(private val sessionManager: SessionManager) : ViewModel() {
+class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
     private val _invalidEmailError = MutableLiveData<String?>()
     val invalidEmailError: LiveData<String?> = _invalidEmailError
-    private val _goToInsertDescriptionScreen = SingleLiveEvent<String>()
-    val goToInsertDescriptionScreen: LiveData<String> = _goToInsertDescriptionScreen
+    private val _goToInsertDescriptionScreen = SingleLiveEvent<Boolean>()
+    val goToInsertDescriptionScreen: LiveData<Boolean> = _goToInsertDescriptionScreen
 
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {
-            _goToInsertDescriptionScreen.postValue(currentEmail)
+            pix.receiverEmail = currentEmail
+            _goToInsertDescriptionScreen.postValue(true)
             _invalidEmailError.postValue(null)
         } else if (!currentEmail.contains("@")) {
             _invalidEmailError.postValue("* E-mail inválido.")
@@ -30,4 +31,5 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
     private fun isEmailValid(): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(currentEmail).matches()
     }
+
 }

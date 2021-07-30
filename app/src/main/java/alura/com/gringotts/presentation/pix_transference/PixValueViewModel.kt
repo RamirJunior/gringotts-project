@@ -8,7 +8,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAccountValueRepository) :
+class PixValueViewModel(
+    private val pix: Pix,
+    private val pixActualAccountValueRepository: PixActualAccountValueRepository
+) :
     ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -19,8 +22,8 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     val apiError: LiveData<String> = _apiError
     private val _invalidValueError = MutableLiveData<String?>()
     val invalidValueError: LiveData<String?> = _invalidValueError
-    private val _goToConfirmationPixFragment = SingleLiveEvent<Double>()
-    val goToConfirmationPixFragment: LiveData<Double> = _goToConfirmationPixFragment
+    private val _goToConfirmationPixFragment = SingleLiveEvent<Boolean>()
+    val goToConfirmationPixFragment: LiveData<Boolean> = _goToConfirmationPixFragment
 
     private val _hideButtonText = MutableLiveData<String>()
     val hideButtonText: LiveData<String> = _hideButtonText
@@ -29,8 +32,6 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
     val hideButtonValue: LiveData<Boolean> = _hideButtonValue
 
     private var balanceValue: Double=0.0
-
-
 
     var pixValue: Double = 0.0
 
@@ -50,7 +51,7 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
 
     fun onValueButtonClicked() {
         if (pixValue <= balanceValue && pixValue > 0) {
-            _goToConfirmationPixFragment.postValue(pixValue)
+            _goToConfirmationPixFragment.postValue(true)
             _invalidValueError.postValue(null)
         } else if (pixValue> balanceValue) {
             _invalidValueError.postValue("Valor da transferência maior que saldo")
@@ -70,7 +71,14 @@ class PixValueViewModel(private val pixActualAccountValueRepository: PixActualAc
         pixActualAccountValueRepository.saveHideBalanceStatePix(newCurrentBalanceVisibilityStatus)
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)
     }
+
+    private fun hideBalancePix() {
+        _hideValueString.postValue(HIDDENVALUE)
+        _hideButtonText.postValue("Mostrar")
+    }
+
     companion object {
         private const val HIDDENVALUE = "* * * *"
     }
+
 }

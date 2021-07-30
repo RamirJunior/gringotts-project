@@ -32,7 +32,7 @@ interface ApiInterface {
     ): Response<HomeResponse>
 
     @GET("home")
-    suspend fun pix(
+    suspend fun getHomeBalanceForPix(
         @Header("token") token: String
     ): Response<HomeResponse>
 

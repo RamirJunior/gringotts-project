@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,7 +17,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
     var currentEmail: String = ""
 
     fun onInsertEmailButtonClicked() {
-        if (isEmailValid()) {
+        if (isEmailValid(currentEmail)) {
             _goToInsertDescriptionScreen.postValue(currentEmail)
             _invalidEmailError.postValue(null)
         } else if (!currentEmail.contains("@")) {
@@ -26,7 +27,7 @@ class InsertEmailPixViewModel(private val sessionManager: SessionManager) : View
         }
     }
 
-    private fun isEmailValid(): Boolean {
-        return (currentEmail.contains("@") && !(currentEmail.contains(" ")))
+    private fun isEmailValid(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

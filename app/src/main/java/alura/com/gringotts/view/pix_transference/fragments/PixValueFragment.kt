@@ -51,6 +51,7 @@ class PixValueFragment : Fragment() {
                 binding.hideBalancePix.text = requireContext().getString(R.string.ocultar)
             }
         }
+
         pixValueViewModel.balance.observe(viewLifecycleOwner){
             binding.balanceValue.text=it
         }

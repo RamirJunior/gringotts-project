@@ -9,7 +9,7 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 
 
-class MoneyTextWatcher(editText: EditText, val pixValueViewModel: PixValueViewModel)
+class MoneyTextWatcherPixFragment(editText: EditText, private val pixValueViewModel: PixValueViewModel)
     : TextWatcher {
     private val editTextWeakReference: WeakReference<EditText> = WeakReference(editText)
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

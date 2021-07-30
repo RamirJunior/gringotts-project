@@ -48,7 +48,7 @@ class PixValueFragment : Fragment() {
 
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
             if(it){
-                binding.hideBalancePix.text = "Visualizar"
+                binding.hideBalancePix.text = "Mostrar"
             }
             else{
                 binding.hideBalancePix.text = "Ocultar"

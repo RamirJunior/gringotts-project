@@ -52,6 +52,7 @@ class PixValueViewModel(
 
     fun onValueButtonClicked() {
         if (pixValue <= balanceValue && pixValue > 0) {
+            pix.pixValue = pixValue
             _goToConfirmationPixFragment.postValue(true)
             _invalidValueError.postValue(null)
         } else if (pixValue> balanceValue) {

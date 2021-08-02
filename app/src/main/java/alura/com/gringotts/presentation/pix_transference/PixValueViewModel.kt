@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 
 class PixValueViewModel(
     private val pix: Pix,
@@ -30,7 +31,7 @@ class PixValueViewModel(
 
     private var balanceValue: Double = 0.0
 
-    var pixValue: Double = 0.0
+    private var pixValue: Double = 0.0
 
     init {
         _loading.postValue(true)
@@ -46,7 +47,10 @@ class PixValueViewModel(
         }
     }
 
-    fun onValueButtonClicked() {
+    fun onValueButtonClicked(newValue: String) {
+        val cleanString = newValue.replace("[^0-9]".toRegex(), "")
+        pixValue = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR)
+            .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR).toDouble()
         if (pixValue <= balanceValue && pixValue > 0) {
             pix.pixValue = pixValue
             _goToConfirmationPixFragment.postValue(Unit)

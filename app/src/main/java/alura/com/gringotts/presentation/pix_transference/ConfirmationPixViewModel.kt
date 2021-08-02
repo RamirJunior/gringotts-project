@@ -10,7 +10,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import java.util.*
@@ -54,12 +53,10 @@ class ConfirmationPixViewModel(
     }
 
     fun positiveDataPicker(timeInMillis: Long) {
-        if (timeInMillis > MaterialDatePicker.todayInUtcMilliseconds()) {
-            val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            _pixDateInMillis.postValue(timeInMillis)
-            newDate.timeInMillis = timeInMillis
-            _pixDate.postValue(DateHelper.formatDate(newDate.time, true))
-        }
+        val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        _pixDateInMillis.postValue(timeInMillis)
+        newDate.timeInMillis = timeInMillis
+        _pixDate.postValue(DateHelper.formatDate(newDate.time, true))
     }
 
     fun validationPix() {

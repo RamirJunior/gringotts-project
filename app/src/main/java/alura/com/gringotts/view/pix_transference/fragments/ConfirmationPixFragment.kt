@@ -1,5 +1,6 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import android.os.Bundle
@@ -105,7 +106,7 @@ class ConfirmationPixFragment : Fragment() {
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
                     .setPositiveButton(
-                        "Ok"
+                        getString(R.string.ok)
                     ) { _, _ -> }
                     .show()
             }

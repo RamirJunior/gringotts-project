@@ -1,9 +1,11 @@
 <resources>
+
     <string name="app_name">Gringotts</string>
     <string name="txt_activityOnboarding1">O jeito fácil de controlar seu dinheiro.</string>
     <string name="txt_activityOnboarding2">Crie sua conta agora mesmo.</string>
     <string name="txt_botaoCriarConta">Criar conta</string>
     <string name="txt_SouCliente">Já tenho cadastro</string>
+    <string name="ok">Ok</string>
 
     <!-- STRINGS TELA LOGIN -->
     <string name="prompt_email">CPF, CNPJ ou E-mail</string>

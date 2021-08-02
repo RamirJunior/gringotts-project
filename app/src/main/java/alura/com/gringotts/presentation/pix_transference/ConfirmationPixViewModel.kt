@@ -10,8 +10,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 import java.util.*
 
 class ConfirmationPixViewModel(
@@ -39,7 +39,8 @@ class ConfirmationPixViewModel(
     val pixDate: LiveData<String> = _pixDate
     private val _pixDateInMillis = MutableLiveData<Long>()
     val pixDateInMillis: LiveData<Long> = _pixDateInMillis
-
+    private val _pixError = MutableLiveData<String>()
+    val pixError: LiveData<String> = _pixError
 
     init {
         getDate()
@@ -51,35 +52,40 @@ class ConfirmationPixViewModel(
         _pixDateInMillis.postValue(currentDate.timeInMillis)
     }
 
-    fun positiveDataPicker(timeInMillis: Long) {
-        if (timeInMillis > MaterialDatePicker.todayInUtcMilliseconds()) {
-            val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            _pixDateInMillis.postValue(timeInMillis)
-            newDate.timeInMillis = timeInMillis
-            _pixDate.postValue(DateHelper.formatDate(newDate.time, true))
-        }
+    fun onClickPositiveDatePicker(timeInMillis: Long) {
+        val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        _pixDateInMillis.postValue(timeInMillis)
+        newDate.timeInMillis = timeInMillis
+        _pixDate.postValue(DateHelper.formatDate(newDate.time, true))
     }
 
     fun validationPix() {
         _loading.postValue(true)
         viewModelScope.launch {
-            val response = pixRepository.pixValidationData(
-                PixValidation(
-                    pix.receiverEmail,
-                    TYPE_EMAIL,
-                    pix.message,
-                    pix.pixValue,
-                    pix.date
+            try {
+                val response = pixRepository.pixValidationData(
+                    PixValidation(
+                        pix.receiverEmail,
+                        TYPE_EMAIL,
+                        pix.message,
+                        pix.pixValue,
+                        pix.date
+                    )
                 )
-            )
-            updatePixValues(
-                response.user,
-                response.pix,
-                response.description,
-                response.organization,
-                response.pixValue,
-                response.date
-            )
+                updatePixValues(
+                    response.user,
+                    response.pix,
+                    response.description,
+                    response.organization,
+                    response.pixValue,
+                    response.date
+                )
+            }catch (e: Exception) {
+                if (e is UnknownHostException)
+                    _pixError.postValue("Verifique sua conexão de internet.")
+                else
+                    _pixError.postValue("Erro desconhecido ao validar a transação !")
+            }
             _loading.postValue(false)
         }
     }
@@ -87,15 +93,22 @@ class ConfirmationPixViewModel(
     fun confirmPix() {
         _loading.postValue(true)
         viewModelScope.launch {
-            val response = pixRepository.pixConfirmData()
-            updatePixValues(
-                response.user,
-                response.pix,
-                response.description,
-                response.organization,
-                response.pixValue,
-                response.date
-            )
+            try {
+                val response = pixRepository.pixConfirmData()
+                updatePixValues(
+                    response.user,
+                    response.pix,
+                    response.description,
+                    response.organization,
+                    response.pixValue,
+                    response.date
+                )
+            } catch (e: Exception) {
+                if (e is UnknownHostException)
+                    _pixError.postValue("Verifique sua conexão de internet.")
+                else
+                    _pixError.postValue("Erro desconhecido ao confirmar a transação !")
+            }
             _loading.postValue(false)
         }
     }

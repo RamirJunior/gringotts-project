@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PixTypeChoiceFragment : Fragment() {
 
@@ -36,25 +36,29 @@ class PixTypeChoiceFragment : Fragment() {
             findNavController().navigate(R.id.action_pixTypeChoiceFragment_to_insertEmailPixFragment)
         }
 
-        binding.cardViewPhone.setOnClickListener {
-            functionNoDeveloped()
+        with(binding) {
+            setOnFunctionNoDeveloped(
+                listOf(
+                    cardViewPhone,
+                    cardViewCpf,
+                    cardViewRandomKey,
+                    cardViewManualKey
+                )
+            )
         }
 
-        binding.cardViewCpf.setOnClickListener {
-            functionNoDeveloped()
-        }
-
-        binding.cardViewRandomKey.setOnClickListener {
-            functionNoDeveloped()
-        }
-
-        binding.cardViewManualKey.setOnClickListener {
-            functionNoDeveloped()
-        }
     }
 
-    private fun functionNoDeveloped() {
-        Toast.makeText(context, "Função não implementada", Toast.LENGTH_LONG).show()
+    private fun setOnFunctionNoDeveloped(views: List<CardView>) {
+        views.forEach {
+            it.setOnClickListener {
+                Toast.makeText(
+                    context,
+                    getString(R.string.FunctionNotImplemented),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     override fun onDestroyView() {

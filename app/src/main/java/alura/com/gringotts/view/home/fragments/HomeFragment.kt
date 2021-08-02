@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
                     .setPositiveButton(
-                        "Ok"
+                        getString(R.string.ok)
                     ) { _, _ -> }
                     .show()
             }

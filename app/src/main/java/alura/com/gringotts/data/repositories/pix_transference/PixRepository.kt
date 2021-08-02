@@ -23,9 +23,9 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
         }
     }
 
-    fun savePixToken(token: String) = sessionManager.savePixToken(token)
+    private fun savePixToken(token: String) = sessionManager.savePixToken(token)
 
-    fun getPixToken() = sessionManager.getPixToken()
+    private fun getPixToken() = sessionManager.getPixToken()
 
     suspend fun pixConfirmData(): PixConfirmResponse {
         return withContext(Dispatchers.IO) {

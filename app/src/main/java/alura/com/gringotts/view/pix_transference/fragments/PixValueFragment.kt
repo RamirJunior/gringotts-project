@@ -5,6 +5,8 @@ import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcherPixFragment
 import android.os.Bundle
+import android.text.InputType.TYPE_CLASS_TEXT
+import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,9 +47,11 @@ class PixValueFragment : Fragment() {
 
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
             if(it){
+                binding.balanceValue.inputType = TYPE_TEXT_VARIATION_PASSWORD or TYPE_CLASS_TEXT
                 binding.hideBalancePix.text = requireContext().getString(R.string.visualizar)
             }
             else{
+                binding.balanceValue.inputType = TYPE_CLASS_TEXT
                 binding.hideBalancePix.text = requireContext().getString(R.string.ocultar)
             }
         }
@@ -70,10 +74,6 @@ class PixValueFragment : Fragment() {
 
         binding.hideBalancePix.setOnClickListener {
             pixValueViewModel.hideBalanceButtonClickedPix()
-        }
-
-        pixValueViewModel.hideButtonText.observe(viewLifecycleOwner) {
-            binding.hideBalancePix.text = it
         }
 
         pixValueViewModel.loading.observe(viewLifecycleOwner) {

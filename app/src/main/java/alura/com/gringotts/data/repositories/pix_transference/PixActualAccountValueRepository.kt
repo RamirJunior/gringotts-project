@@ -13,7 +13,7 @@ class PixActualAccountValueRepository(
     suspend fun balanceData(): Double {
         return withContext(Dispatchers.IO) {
             val token = sessionManager.getTokens()!!.tokenAuthentication
-            val response = api.pix(token)
+            val response = api.getHomeBalanceForPix(token)
             if (response.isSuccessful) {
                 return@withContext response.body()!!.balance.currentValue
             } else {

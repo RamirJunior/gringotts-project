@@ -1,5 +1,6 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import android.os.Bundle
@@ -10,7 +11,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -78,12 +82,16 @@ class ConfirmationPixFragment : Fragment() {
         }
 
         binding.textviewDatePicker.setOnClickListener {
+            val constraintsBuilder =
+                CalendarConstraints.Builder()
+                    .setValidator(DateValidatorPointForward.now())
             val datePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Agende a Transfêrencia")
+                .setCalendarConstraints(constraintsBuilder.build())
+                .setTitleText(getString(R.string.agende_transferencia))
                 .setSelection(confirmationPixViewModel.pixDateInMillis.value)
                 .build()
             datePicker.addOnPositiveButtonClickListener {
-                confirmationPixViewModel.positiveDataPicker(it)
+                confirmationPixViewModel.onClickPositiveDatePicker(it)
             }
             datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
         }
@@ -91,6 +99,17 @@ class ConfirmationPixFragment : Fragment() {
         confirmationPixViewModel.pixDate.observe(viewLifecycleOwner) {
             arguments.pix.date = it
             confirmationPixViewModel.validationPix()
+        }
+
+        confirmationPixViewModel.pixError.observe(viewLifecycleOwner) {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(it)
+                    .setPositiveButton(
+                        getString(R.string.ok)
+                    ) { _, _ -> }
+                    .show()
+            }
         }
 
     }

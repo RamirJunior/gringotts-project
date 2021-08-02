@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
@@ -35,29 +36,26 @@ class PixFragment : Fragment() {
             findNavController().navigate(R.id.action_pixFragment2_to_pixTypeChoiceFragment)
         }
 
-        binding.cardView.setOnClickListener {
-            functionNoDeveloped()
-        }
-
-        binding.cardView3.setOnClickListener {
-            functionNoDeveloped()
-        }
-
-        binding.cardView4.setOnClickListener {
-            functionNoDeveloped()
-        }
-
-        binding.cardView6.setOnClickListener {
-            functionNoDeveloped()
-        }
-
         binding.cardView7.setOnClickListener {
             Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
         }
+
+        with(binding) {
+            setOnFunctionNoDeveloped(listOf(cardView, cardView3, cardView4, cardView6, cardView7))
+        }
+
     }
 
-    private fun functionNoDeveloped() {
-        Toast.makeText(context, "Função não implementada", Toast.LENGTH_LONG).show()
+    private fun setOnFunctionNoDeveloped(views: List<CardView>) {
+        views.forEach {
+            it.setOnClickListener {
+                Toast.makeText(
+                    context,
+                    getString(R.string.FunctionNotImplemented),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     override fun onDestroyView() {

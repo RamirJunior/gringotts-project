@@ -1,5 +1,6 @@
 package alura.com.gringotts.view.pix_transference.fragments
 
+import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentConfirmationPixBinding
 import alura.com.gringotts.presentation.pix_transference.ConfirmationPixViewModel
 import android.os.Bundle
@@ -86,7 +87,7 @@ class ConfirmationPixFragment : Fragment() {
                     .setValidator(DateValidatorPointForward.now())
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setCalendarConstraints(constraintsBuilder.build())
-                .setTitleText("Agende a Transfêrencia")
+                .setTitleText(getString(R.string.pix_date_picker_title))
                 .setSelection(confirmationPixViewModel.pixDateInMillis.value)
                 .build()
             datePicker.addOnPositiveButtonClickListener {

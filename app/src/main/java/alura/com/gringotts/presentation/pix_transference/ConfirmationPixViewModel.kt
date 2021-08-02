@@ -23,16 +23,11 @@ class ConfirmationPixViewModel(
     val goToPixFinishedFragment: LiveData<String> = _goToPixFinishedFragment
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-    private val _email = MutableLiveData<String>()
-    val email: LiveData<String> = _email
-    private val _name = MutableLiveData<String>()
-    val name: LiveData<String> = _name
-    private val _description = MutableLiveData<String>()
-    val description: LiveData<String> = _description
-    private val _value = MutableLiveData<String>()
-    val value: LiveData<String> = _value
-    private val _institution = MutableLiveData<String>()
-    val institution: LiveData<String> = _institution
+    private val _pixUpdate = MutableLiveData<Pix>()
+    val pixUpdate: LiveData<Pix> = _pixUpdate
+
+
+
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
     private val _pixDate = MutableLiveData<String>()
@@ -41,6 +36,8 @@ class ConfirmationPixViewModel(
     val pixDateInMillis: LiveData<Long> = _pixDateInMillis
     private val _pixError = MutableLiveData<String>()
     val pixError: LiveData<String> = _pixError
+
+    private lateinit var pixToken: String
 
     init {
         getDate()
@@ -72,6 +69,7 @@ class ConfirmationPixViewModel(
                         pix.date
                     )
                 )
+                pixToken = response.pixToken
                 updatePixValues(
                     response.user,
                     response.pix,
@@ -94,7 +92,7 @@ class ConfirmationPixViewModel(
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                val response = pixRepository.pixConfirmData()
+                val response = pixRepository.pixConfirmData(pixToken)
                 updatePixValues(
                     response.user,
                     response.pix,
@@ -127,12 +125,7 @@ class ConfirmationPixViewModel(
         pix.institution = organization
         pix.pixValue = pixValue.toDouble()
         pix.date = date
-        _name.postValue(pix.name)
-        _email.postValue(pix.receiverEmail)
-        _description.postValue(pix.message)
-        _institution.postValue(pix.institution)
-        _value.postValue(pix.pixValue.toString())
-        _date.postValue(pix.date)
+        _pixUpdate.postValue(pix)
     }
 
     companion object {

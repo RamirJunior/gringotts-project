@@ -15,7 +15,6 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
             val token = sessionManager.getTokens()!!.tokenAuthentication
             val response = api.pixValidation(pix, token)
             if (response.isSuccessful) {
-                savePixToken(response.body()!!.pixToken)
                 return@withContext response.body()!!
             } else {
                 throw Exception("Não foi possível acessar a api")
@@ -23,14 +22,9 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
         }
     }
 
-    private fun savePixToken(token: String) = sessionManager.savePixToken(token)
-
-    private fun getPixToken() = sessionManager.getPixToken()
-
-    suspend fun pixConfirmData(): PixConfirmResponse {
+    suspend fun pixConfirmData(pixToken:String): PixConfirmResponse {
         return withContext(Dispatchers.IO) {
             val token = sessionManager.getTokens()!!.tokenAuthentication
-            val pixToken = getPixToken()!!
             val response = api.pixConfirm(token, pixToken)
             if (response.isSuccessful) {
                 return@withContext response.body()!!

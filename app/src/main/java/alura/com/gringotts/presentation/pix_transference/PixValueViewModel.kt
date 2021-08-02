@@ -39,7 +39,7 @@ class PixValueViewModel(
             try {
                 balanceValue = pixActualAccountValueRepository.balanceData()
                 _balance.postValue(balanceValue.toString())
-                _hideButtonValue.postValue(pixActualAccountValueRepository.getHideBalanceStatePix())
+                _hideButtonValue.postValue(pixActualAccountValueRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
             }
@@ -64,7 +64,7 @@ class PixValueViewModel(
 
     fun hideBalanceButtonClickedPix() {
         val newCurrentBalanceVisibilityStatus = !_hideButtonValue.value!!
-        pixActualAccountValueRepository.saveHideBalanceStatePix(newCurrentBalanceVisibilityStatus)
+        pixActualAccountValueRepository.saveBalancePixStateVisibility(newCurrentBalanceVisibilityStatus)
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)
     }
 

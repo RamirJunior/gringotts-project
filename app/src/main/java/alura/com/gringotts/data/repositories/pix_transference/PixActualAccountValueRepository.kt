@@ -22,10 +22,9 @@ class PixActualAccountValueRepository(
         }
     }
 
+    fun saveBalancePixStateVisibility(isVisible: Boolean) =
+        sessionManager.saveBalancePixStateVisibility(isVisible)
 
-    fun saveHideBalanceStatePix(isVisible: Boolean) =
-        sessionManager.saveHideBalanceStatePix(isVisible)
-
-    fun getHideBalanceStatePix(): Boolean = sessionManager.getHideBalanceStatePix()
+    fun getBalancePixStateVisibility(): Boolean = sessionManager.getBalancePixStateVisibility()
 
 }

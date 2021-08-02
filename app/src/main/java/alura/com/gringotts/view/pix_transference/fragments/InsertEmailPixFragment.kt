@@ -17,7 +17,7 @@ class InsertEmailPixFragment : Fragment() {
 
     private var _binding: FragmentInsertEmailPixBinding? = null
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
-    val pix: Pix = Pix()
+    val pix: Pix = Pix("",0.0,"","","","")
     private val insertEmailPixViewModel: InsertEmailPixViewModel by viewModel { parametersOf(pix) }
 
     override fun onCreateView(

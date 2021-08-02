@@ -74,22 +74,13 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         return sharedPreferences.getBoolean(FINISHED_PIX_ONBOARDING_KEY, false)
     }
 
-    override fun saveHideBalanceStatePix(isVisible: Boolean) {
+    override fun saveBalancePixStateVisibility(isVisible: Boolean) {
         sharedPreferencesEditor.putBoolean(HIDE_STATUS_PIX, isVisible)
         sharedPreferencesEditor.apply()
     }
 
-    override fun getHideBalanceStatePix(): Boolean {
+    override fun getBalancePixStateVisibility(): Boolean {
         return sharedPreferences.getBoolean(HIDE_STATUS_PIX, false)
-    }
-
-    override fun savePixToken(token: String) {
-        sharedPreferencesEditor.putString(PIX_TOKEN, token)
-        sharedPreferencesEditor.apply()
-    }
-
-    override fun getPixToken(): String? {
-        return sharedPreferences.getString(PIX_TOKEN, "")
     }
 
     companion object {
@@ -100,7 +91,6 @@ class SessionManagerImpl(private val sharedPreferences: SharedPreferences) : Ses
         private const val HIDE_STATUS = "hideStatus"
         private const val FINISHED_PIX_ONBOARDING_KEY = "finishedPix"
         private const val HIDE_STATUS_PIX = "hideStatusPix"
-        private const val PIX_TOKEN = "pixToken"
     }
 
 }

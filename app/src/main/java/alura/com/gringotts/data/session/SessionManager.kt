@@ -18,8 +18,6 @@ interface SessionManager {
     fun getHideBalanceState(): Boolean
     fun getOnboardingPixFinished(): Boolean
     fun setOnboardingPixFinished()
-    fun saveHideBalanceStatePix(isVisible: Boolean)
-    fun getHideBalanceStatePix(): Boolean
-    fun savePixToken(token: String)
-    fun getPixToken(): String?
+    fun saveBalancePixStateVisibility(isVisible: Boolean)
+    fun getBalancePixStateVisibility(): Boolean
 }

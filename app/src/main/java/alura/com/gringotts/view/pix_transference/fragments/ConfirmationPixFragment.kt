@@ -39,29 +39,14 @@ class ConfirmationPixFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        confirmationPixViewModel.name.observe(viewLifecycleOwner, {
-            binding.textviewUsername.text = it
-        })
-
-        confirmationPixViewModel.email.observe(viewLifecycleOwner, {
-            binding.textviewEmail.text = it
-        })
-
-        confirmationPixViewModel.description.observe(viewLifecycleOwner, {
-            binding.textviewDescription.text = it
-        })
-
-        confirmationPixViewModel.institution.observe(viewLifecycleOwner, {
-            binding.textviewBankName.text = it
-        })
-
-        confirmationPixViewModel.value.observe(viewLifecycleOwner, {
-            binding.textviewValue.text = it
-            binding.textviewTotalValue.text = it
-        })
-
-        confirmationPixViewModel.date.observe(viewLifecycleOwner, {
-            binding.textviewDate.text = it
+        confirmationPixViewModel.pixUpdate.observe(viewLifecycleOwner, {
+            binding.textviewUsername.text = it.name
+            binding.textviewEmail.text = it.receiverEmail
+            binding.textviewDescription.text = it.message
+            binding.textviewBankName.text = it.institution
+            binding.textviewValue.text = it.pixValue.toString()
+            binding.textviewTotalValue.text = it.pixValue.toString()
+            binding.textviewDate.text = it.date
         })
 
         confirmationPixViewModel.loading.observe(viewLifecycleOwner, {

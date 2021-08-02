@@ -91,7 +91,7 @@ class ConfirmationPixFragment : Fragment() {
                 .setSelection(confirmationPixViewModel.pixDateInMillis.value)
                 .build()
             datePicker.addOnPositiveButtonClickListener {
-                confirmationPixViewModel.positiveDataPicker(it)
+                confirmationPixViewModel.onClickPositiveDatePicker(it)
             }
             datePicker.show(requireActivity().supportFragmentManager, datePicker.toString())
         }

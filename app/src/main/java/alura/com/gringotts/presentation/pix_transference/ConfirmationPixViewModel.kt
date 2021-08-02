@@ -52,7 +52,7 @@ class ConfirmationPixViewModel(
         _pixDateInMillis.postValue(currentDate.timeInMillis)
     }
 
-    fun positiveDataPicker(timeInMillis: Long) {
+    fun onClickPositiveDatePicker(timeInMillis: Long) {
         val newDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         _pixDateInMillis.postValue(timeInMillis)
         newDate.timeInMillis = timeInMillis

@@ -25,9 +25,6 @@ class ConfirmationPixViewModel(
     val loading: LiveData<Boolean> = _loading
     private val _pixUpdate = MutableLiveData<Pix>()
     val pixUpdate: LiveData<Pix> = _pixUpdate
-
-
-
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
     private val _pixDate = MutableLiveData<String>()

@@ -87,7 +87,7 @@ class ConfirmationPixFragment : Fragment() {
                     .setValidator(DateValidatorPointForward.now())
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setCalendarConstraints(constraintsBuilder.build())
-                .setTitleText("Agende a Transfêrencia")
+                .setTitleText(getString(R.string.agende_transferencia))
                 .setSelection(confirmationPixViewModel.pixDateInMillis.value)
                 .build()
             datePicker.addOnPositiveButtonClickListener {

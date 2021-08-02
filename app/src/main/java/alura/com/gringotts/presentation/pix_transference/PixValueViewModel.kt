@@ -24,8 +24,6 @@ class PixValueViewModel(
     val invalidValueError: LiveData<String?> = _invalidValueError
     private val _goToConfirmationPixFragment = SingleLiveEvent<Unit>()
     val goToConfirmationPixFragment: LiveData<Unit> = _goToConfirmationPixFragment
-    private val _hideButtonText = MutableLiveData<String>()
-    val hideButtonText: LiveData<String> = _hideButtonText
 
     private val _hideButtonValue = MutableLiveData<Boolean>()
     val hideButtonValue: LiveData<Boolean> = _hideButtonValue
@@ -62,18 +60,8 @@ class PixValueViewModel(
 
     fun hideBalanceButtonClickedPix() {
         val newCurrentBalanceVisibilityStatus = !_hideButtonValue.value!!
-        if (newCurrentBalanceVisibilityStatus) {
-            _balance.postValue(HIDDEN_VALUE)
-        } else {
-            _balance.postValue(balanceValue.toString())
-        }
         pixActualAccountValueRepository.saveHideBalanceStatePix(newCurrentBalanceVisibilityStatus)
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)
-    }
-
-
-    companion object {
-        private const val HIDDEN_VALUE = "* * * *"
     }
 
 }

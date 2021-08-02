@@ -2,7 +2,7 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
-import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -64,7 +64,9 @@ class PixValueViewModel(
 
     fun hideBalanceButtonClickedPix() {
         val newCurrentBalanceVisibilityStatus = !_hideButtonValue.value!!
-        pixActualAccountValueRepository.saveBalancePixStateVisibility(newCurrentBalanceVisibilityStatus)
+        pixActualAccountValueRepository.saveBalancePixStateVisibility(
+            newCurrentBalanceVisibilityStatus
+        )
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)
     }
 

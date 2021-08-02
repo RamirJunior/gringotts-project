@@ -54,8 +54,8 @@ val initialModule = module {
     viewModel { (pix: Pix) ->
         InsertOptionalDescriptionPixViewModel(pix)
     }
-    viewModel {
-            (pix: Pix) -> PixValueViewModel(pix, get())
+    viewModel { (pix: Pix) ->
+        PixValueViewModel(pix, get())
     }
     viewModel { (pix: Pix) ->
         ConfirmationPixViewModel(pix, get())

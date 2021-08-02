@@ -1,4 +1,4 @@
-package alura.com.gringotts.presentation.pix_transference.auxiliar
+package alura.com.gringotts.presentation.auxiliar
 
 import android.util.Log
 import androidx.annotation.MainThread

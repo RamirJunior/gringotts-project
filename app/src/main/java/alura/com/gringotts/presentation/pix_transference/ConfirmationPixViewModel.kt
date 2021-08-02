@@ -4,8 +4,8 @@ import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.UserPix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
-import alura.com.gringotts.presentation.home.auxiliar.DateHelper
-import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
+import alura.com.gringotts.presentation.auxiliar.DateHelper
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -75,7 +75,7 @@ class ConfirmationPixViewModel(
                     response.pixValue,
                     response.date
                 )
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _pixError.postValue("Verifique sua conexão de internet.")
                 else

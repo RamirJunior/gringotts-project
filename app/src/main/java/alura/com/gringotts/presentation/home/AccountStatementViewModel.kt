@@ -2,9 +2,9 @@ package alura.com.gringotts.presentation.home
 
 import AccountStatementRepository
 import alura.com.gringotts.data.models.home.*
-import alura.com.gringotts.presentation.home.auxiliar.DateHelper.formatDate
-import alura.com.gringotts.presentation.home.auxiliar.DateHelper.getDateFromString
-import alura.com.gringotts.presentation.home.auxiliar.DateHelper.getMonthString
+import alura.com.gringotts.presentation.auxiliar.DateHelper.formatDate
+import alura.com.gringotts.presentation.auxiliar.DateHelper.getDateFromString
+import alura.com.gringotts.presentation.auxiliar.DateHelper.getMonthString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

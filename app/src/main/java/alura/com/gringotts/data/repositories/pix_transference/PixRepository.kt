@@ -22,7 +22,7 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
         }
     }
 
-    suspend fun pixConfirmData(pixToken:String): PixConfirmResponse {
+    suspend fun pixConfirmData(pixToken: String): PixConfirmResponse {
         return withContext(Dispatchers.IO) {
             val token = sessionManager.getTokens()!!.tokenAuthentication
             val response = api.pixConfirm(token, pixToken)

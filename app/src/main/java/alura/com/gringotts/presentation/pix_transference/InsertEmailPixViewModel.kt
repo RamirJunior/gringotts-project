@@ -1,12 +1,11 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
-import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.material.textfield.TextInputLayout
 
 class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 

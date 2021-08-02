@@ -18,6 +18,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
+
+
+
 class PixValueFragment : Fragment() {
 
     private var _binding: FragmentPixValueBinding? = null
@@ -42,7 +45,7 @@ class PixValueFragment : Fragment() {
         }
 
         binding.pixValueContinue.setOnClickListener {
-            pixValueViewModel.onValueButtonClicked()
+            pixValueViewModel.onValueButtonClicked(binding.editValue.text.toString())
         }
 
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
@@ -61,7 +64,7 @@ class PixValueFragment : Fragment() {
         }
 
         binding.editValue.addTextChangedListener (
-            MoneyTextWatcherPixFragment(binding.editValue, pixValueViewModel)
+            MoneyTextWatcherPixFragment(binding.editValue)
         )
 
         pixValueViewModel.goToConfirmationPixFragment.observe(viewLifecycleOwner) {

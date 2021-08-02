@@ -4,6 +4,7 @@
     <string name="txt_activityOnboarding2">Crie sua conta agora mesmo.</string>
     <string name="txt_botaoCriarConta">Criar conta</string>
     <string name="txt_SouCliente">Já tenho cadastro</string>
+    <string name="ok">OK</string>
 
     <!-- STRINGS TELA LOGIN -->
     <string name="prompt_email">CPF, CNPJ ou E-mail</string>

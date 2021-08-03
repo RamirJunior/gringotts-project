@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,11 +40,8 @@ class PixValueViewModel(
         viewModelScope.launch {
             try {
                 balanceValue = pixRepository.balanceData()
-                val numberFormatter = NumberFormat.getInstance()
-                numberFormatter.minimumFractionDigits = 2
-                numberFormatter.maximumFractionDigits = 2
                 _balance.postValue(
-                    numberFormatter.format(balanceValue)
+                    formatDoubleToTwoFractionDigits(balanceValue)
                 )
                 _hideButtonValue.postValue(pixRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {

@@ -39,8 +39,11 @@ class PixValueViewModel(
         viewModelScope.launch {
             try {
                 balanceValue = pixActualAccountValueRepository.balanceData()
+                val numberFormatter = NumberFormat.getInstance()
+                numberFormatter.minimumFractionDigits=2
+                numberFormatter.maximumFractionDigits=2
                 _balance.postValue(
-                    NumberFormat.getInstance().format(balanceValue)
+                    numberFormatter.format(balanceValue)
                 )
                 _hideButtonValue.postValue(pixActualAccountValueRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {

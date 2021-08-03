@@ -36,8 +36,11 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 val homeData = homeRepository.homeData()
                 _benefits.postValue(homeData.benefits)
                 balanceValue = homeData.balance
-                _balance.postValue(NumberFormat.getInstance().format(balanceValue.currentValue))
-                _receivable.postValue(NumberFormat.getInstance().format(balanceValue.receivables.toString()))
+                val numberFormatter = NumberFormat.getInstance()
+                numberFormatter.minimumFractionDigits=2
+                numberFormatter.maximumFractionDigits=2
+                _balance.postValue(numberFormatter.format(balanceValue.currentValue))
+                _receivable.postValue(numberFormatter.format(balanceValue.receivables))
                 setBalanceState(homeRepository.getHideBalanceState())
                 val user = homeRepository.getUser()
                 _userName.postValue(user!!.firstName + " " + user.lastName)

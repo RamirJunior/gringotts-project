@@ -4,6 +4,7 @@ import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.repositories.initial.LoginRepository
+import alura.com.gringotts.presentation.auxiliar.InputValidationHelper.isEmailValid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,10 +37,12 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun loginValidation() {
-        if (isPasswordValid()) {
+        if (isPasswordValid() && isEmailValid(currentUsername)) {
             doLogin()
         } else {
-            _loginError.postValue("A senha deve conter pelo menos 6 letras")
+            _loginError.postValue(
+                "A senha deve conter pelo menos 6 letras e o email deve ser valido"
+            )
         }
     }
 

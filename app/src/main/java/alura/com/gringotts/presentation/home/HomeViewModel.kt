@@ -56,11 +56,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     private fun setBalanceState(isBalanceVisible: Boolean) {
-        if (isBalanceVisible) {
-            _hideBalanceAndReceivable.postValue(false)
-        } else {
-            _hideBalanceAndReceivable.postValue(true)
-        }
+        _hideBalanceAndReceivable.postValue(!isBalanceVisible)
     }
 
 }

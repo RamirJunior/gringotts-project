@@ -40,7 +40,7 @@ class InsertEmailPixFragment : Fragment() {
             insertEmailPixViewModel.insertEmail(it.toString())
         }
 
-        insertEmailPixViewModel.isButtonEnable.observe(viewLifecycleOwner){
+        insertEmailPixViewModel.isButtonEnable.observe(viewLifecycleOwner) {
             binding.pixInsertEmailContinue.isEnabled = it
         }
 

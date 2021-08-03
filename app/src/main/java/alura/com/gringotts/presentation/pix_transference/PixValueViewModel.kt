@@ -40,8 +40,8 @@ class PixValueViewModel(
             try {
                 balanceValue = pixActualAccountValueRepository.balanceData()
                 val numberFormatter = NumberFormat.getInstance()
-                numberFormatter.minimumFractionDigits=2
-                numberFormatter.maximumFractionDigits=2
+                numberFormatter.minimumFractionDigits = 2
+                numberFormatter.maximumFractionDigits = 2
                 _balance.postValue(
                     numberFormatter.format(balanceValue)
                 )

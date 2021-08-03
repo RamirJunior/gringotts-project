@@ -61,13 +61,12 @@ class HomeFragment : Fragment() {
             binding.loadingHome.isVisible = it
         }
 
-        homeViewModel.hideBalanceAndReceivable.observe(viewLifecycleOwner){
-            if(it){
+        homeViewModel.hideBalanceAndReceivable.observe(viewLifecycleOwner) {
+            if (it) {
                 binding.balanceValue.inputType = InputType.TYPE_CLASS_TEXT
                 binding.receivableValue.inputType = InputType.TYPE_CLASS_TEXT
                 binding.hideBalance.setImageResource(R.drawable.ic_baseline_visibility_off_24)
-            }
-            else{
+            } else {
                 binding.balanceValue.inputType =
                     InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
                 binding.receivableValue.inputType =

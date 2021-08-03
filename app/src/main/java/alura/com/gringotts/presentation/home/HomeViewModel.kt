@@ -25,7 +25,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val _apiError = MutableLiveData<String>()
     val apiError: LiveData<String> = _apiError
     private val _hideBalanceAndReceivable = MutableLiveData<Boolean>()
-    val hideBalanceAndReceivable : LiveData<Boolean> = _hideBalanceAndReceivable
+    val hideBalanceAndReceivable: LiveData<Boolean> = _hideBalanceAndReceivable
 
     private lateinit var balanceValue: Balance
 
@@ -37,8 +37,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 _benefits.postValue(homeData.benefits)
                 balanceValue = homeData.balance
                 val numberFormatter = NumberFormat.getInstance()
-                numberFormatter.minimumFractionDigits=2
-                numberFormatter.maximumFractionDigits=2
+                numberFormatter.minimumFractionDigits = 2
+                numberFormatter.maximumFractionDigits = 2
                 _balance.postValue(numberFormatter.format(balanceValue.currentValue))
                 _receivable.postValue(numberFormatter.format(balanceValue.receivables))
                 setBalanceState(homeRepository.getHideBalanceState())

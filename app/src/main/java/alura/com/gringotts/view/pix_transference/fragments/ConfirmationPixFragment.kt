@@ -61,7 +61,7 @@ class ConfirmationPixFragment : Fragment() {
             confirmationPixViewModel.confirmPix()
         }
 
-        confirmationPixViewModel.goToPixFinishedFragment.observe(viewLifecycleOwner){
+        confirmationPixViewModel.goToPixFinishedFragment.observe(viewLifecycleOwner) {
             val direction =
                 ConfirmationPixFragmentDirections.actionConfirmationPixFragmentToPixFinishedFragment(
                     arguments.pix

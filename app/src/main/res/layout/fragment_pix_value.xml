@@ -60,9 +60,9 @@
                 android:id="@+id/balance_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="@id/balance_currency"
                 app:layout_constraintStart_toEndOf="@+id/balance_currency"
                 tools:text="@string/default_account_statement_value" />

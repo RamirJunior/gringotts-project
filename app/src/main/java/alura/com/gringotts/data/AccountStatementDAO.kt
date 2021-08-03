@@ -1,5 +1,6 @@
 package alura.com.gringotts.data
 
+import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.TransactionListItem
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,13 +11,13 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AccountStatementDAO {
 
-    @Query("SELECT * FROM transactions")
-    fun getAllTransactions(): Flow<List<TransactionListItem>>
+    @Query("SELECT * FROM [transaction]")
+    fun getAllTransactions(): Flow<List<Transaction>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTransaction(restaurants: List<TransactionListItem>)
+    suspend fun insertTransaction(restaurants: List<Transaction>)
 
-    @Query("DELETE FROM transactions")
+    @Query("DELETE FROM [transaction]")
     suspend fun deleteAllTransactions()
 
 }

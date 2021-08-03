@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 class PixRepository(
     private val sessionManager: SessionManager,
     private val api: ApiInterface
-    ) {
+) {
 
     suspend fun pixValidationData(pix: PixValidation): PixValidationResponse {
         return withContext(Dispatchers.IO) {

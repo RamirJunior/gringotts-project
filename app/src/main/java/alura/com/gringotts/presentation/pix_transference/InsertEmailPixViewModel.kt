@@ -18,7 +18,7 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
     private var currentEmail: String = ""
 
-    fun insertEmail(newEmail: String){
+    fun insertEmail(newEmail: String) {
         _isButtonEnable.postValue(newEmail.isNotEmpty())
         currentEmail = newEmail
     }

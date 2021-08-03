@@ -88,23 +88,22 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     fun onLoginButtonClicked() {
         loginValidation()
     }
+
     private fun isPasswordValid(): Boolean {
         val isPasswordValid = currentPassword.length >= 6
-        if(!isPasswordValid){
+        if (!isPasswordValid) {
             _passwordError.postValue("A senha deve conter pelo menos 6 letras")
-        }
-        else{
+        } else {
             _passwordError.postValue(null)
         }
         return isPasswordValid
     }
 
-    private fun emailValidation(): Boolean{
+    private fun emailValidation(): Boolean {
         val isEmailValid = isEmailValid(currentUsername)
-        if(!isEmailValid){
+        if (!isEmailValid) {
             _usernameError.postValue("e-mail invalido")
-        }
-        else{
+        } else {
             _usernameError.postValue(null)
         }
         return isEmailValid

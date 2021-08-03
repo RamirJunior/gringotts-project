@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
-import java.text.NumberFormat
 
 class PixValueViewModel(
     private val pix: Pix,

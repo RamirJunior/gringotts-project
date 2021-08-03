@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
@@ -26,7 +25,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val _apiError = MutableLiveData<String>()
     val apiError: LiveData<String> = _apiError
     private val _hideBalanceAndReceivable = MutableLiveData<Boolean>()
-    val hideBalanceAndReceivable : LiveData<Boolean> = _hideBalanceAndReceivable
+    val hideBalanceAndReceivable: LiveData<Boolean> = _hideBalanceAndReceivable
 
     private lateinit var balanceValue: Balance
 

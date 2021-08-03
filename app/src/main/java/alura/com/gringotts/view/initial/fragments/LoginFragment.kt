@@ -64,11 +64,11 @@ class LoginFragment : Fragment() {
             }
         }
 
-        loginViewModel.usernameError.observe(viewLifecycleOwner){
+        loginViewModel.usernameError.observe(viewLifecycleOwner) {
             binding.loginUsernameLayout.error = it
 
         }
-        loginViewModel.passwordError.observe(viewLifecycleOwner){
+        loginViewModel.passwordError.observe(viewLifecycleOwner) {
             binding.loginInputLayout.error = it
         }
 

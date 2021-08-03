@@ -24,7 +24,7 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
     }
 
     fun insertEmail(newEmail: String){
-        if(newEmail.length > 1){
+        if(newEmail.length > 0){
             _isButtonEnable.postValue(true)
         }
         else{

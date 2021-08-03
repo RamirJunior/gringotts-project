@@ -13,8 +13,23 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
     val invalidEmailError: LiveData<String?> = _invalidEmailError
     private val _goToInsertDescriptionScreen = SingleLiveEvent<Unit>()
     val goToInsertDescriptionScreen: LiveData<Unit> = _goToInsertDescriptionScreen
+    private val _isButtonEnable = SingleLiveEvent<Boolean>()
+    val isButtonEnable: LiveData<Boolean> = _isButtonEnable
+
 
     var currentEmail: String = ""
+
+    init {
+        _isButtonEnable.postValue(false)
+    }
+
+    fun insertEmail(newEmail: String){
+        if(newEmail.length > 1){
+            _isButtonEnable.postValue(true)
+        }
+        currentEmail = newEmail
+    }
+
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid()) {

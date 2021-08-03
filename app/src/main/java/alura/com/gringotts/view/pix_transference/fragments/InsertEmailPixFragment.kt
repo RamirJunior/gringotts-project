@@ -37,7 +37,11 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.insertEmailField.addTextChangedListener {
-            insertEmailPixViewModel.currentEmail = it.toString()
+            insertEmailPixViewModel.insertEmail(it.toString())
+        }
+
+        insertEmailPixViewModel.isButtonEnable.observe(viewLifecycleOwner){
+            binding.pixInsertEmailContinue.isClickable = it
         }
 
         insertEmailPixViewModel.goToInsertDescriptionScreen.observe(viewLifecycleOwner) {

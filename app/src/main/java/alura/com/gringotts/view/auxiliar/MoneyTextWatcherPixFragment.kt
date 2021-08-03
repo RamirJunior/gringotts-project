@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.pix_transference.fragments.auxiliar
+package alura.com.gringotts.view.auxiliar
 
 import android.text.Editable
 import android.text.TextWatcher

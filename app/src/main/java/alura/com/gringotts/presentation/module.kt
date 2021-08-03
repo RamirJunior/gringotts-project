@@ -5,7 +5,6 @@ import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
-import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
@@ -54,8 +53,8 @@ val initialModule = module {
     viewModel { (pix: Pix) ->
         InsertOptionalDescriptionPixViewModel(pix)
     }
-    viewModel {
-            (pix: Pix) -> PixValueViewModel(pix, get())
+    viewModel { (pix: Pix) ->
+        PixValueViewModel(pix, get())
     }
     viewModel { (pix: Pix) ->
         ConfirmationPixViewModel(pix, get())
@@ -68,9 +67,6 @@ val initialModule = module {
     }
     factory {
         LoginRepository(get())
-    }
-    factory {
-        PixActualAccountValueRepository(get(), get())
     }
     factory {
         HomeRepository(get(), get())

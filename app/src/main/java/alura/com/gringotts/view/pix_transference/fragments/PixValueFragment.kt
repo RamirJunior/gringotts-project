@@ -3,7 +3,7 @@ package alura.com.gringotts.view.pix_transference.fragments
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentPixValueBinding
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
-import alura.com.gringotts.view.pix_transference.fragments.auxiliar.MoneyTextWatcherPixFragment
+import alura.com.gringotts.view.auxiliar.MoneyTextWatcherPixFragment
 import android.os.Bundle
 import android.text.InputType.TYPE_CLASS_TEXT
 import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
@@ -17,8 +17,6 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-
-
 
 
 class PixValueFragment : Fragment() {
@@ -49,21 +47,20 @@ class PixValueFragment : Fragment() {
         }
 
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
-            if(it){
+            if (it) {
                 binding.balanceValue.inputType = TYPE_TEXT_VARIATION_PASSWORD or TYPE_CLASS_TEXT
                 binding.hideBalancePix.text = requireContext().getString(R.string.visualizar)
-            }
-            else{
+            } else {
                 binding.balanceValue.inputType = TYPE_CLASS_TEXT
                 binding.hideBalancePix.text = requireContext().getString(R.string.ocultar)
             }
         }
 
-        pixValueViewModel.balance.observe(viewLifecycleOwner){
-            binding.balanceValue.text=it
+        pixValueViewModel.balance.observe(viewLifecycleOwner) {
+            binding.balanceValue.text = it
         }
 
-        binding.editValue.addTextChangedListener (
+        binding.editValue.addTextChangedListener(
             MoneyTextWatcherPixFragment(binding.editValue)
         )
 
@@ -92,7 +89,7 @@ class PixValueFragment : Fragment() {
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
                     .setPositiveButton(
-                        "Ok"
+                        getString(R.string.ok)
                     ) { _, _ -> }
                     .show()
             }

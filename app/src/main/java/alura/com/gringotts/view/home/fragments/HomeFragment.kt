@@ -7,6 +7,7 @@ import alura.com.gringotts.view.adapters.BenefitsListAdapter
 import alura.com.gringotts.view.adapters.HomeServicesAdapter
 import alura.com.gringotts.view.home.decoration.DotsIndicatorDecoration
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,12 +57,23 @@ class HomeFragment : Fragment() {
             binding.userName.text = it
         }
 
-        homeViewModel.visibilityId.observe(viewLifecycleOwner) {
-            binding.hideBalance.setImageResource(it)
-        }
-
         homeViewModel.loading.observe(viewLifecycleOwner) {
             binding.loadingHome.isVisible = it
+        }
+
+        homeViewModel.hideBalanceAndReceivable.observe(viewLifecycleOwner){
+            if(it){
+                binding.balanceValue.inputType = InputType.TYPE_CLASS_TEXT
+                binding.receivableValue.inputType = InputType.TYPE_CLASS_TEXT
+                binding.hideBalance.setImageResource(R.drawable.ic_baseline_visibility_off_24)
+            }
+            else{
+                binding.balanceValue.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+                binding.receivableValue.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+                binding.hideBalance.setImageResource(R.drawable.ic_baseline_visibility_24)
+            }
         }
 
         homeViewModel.apiError.observe(viewLifecycleOwner, {

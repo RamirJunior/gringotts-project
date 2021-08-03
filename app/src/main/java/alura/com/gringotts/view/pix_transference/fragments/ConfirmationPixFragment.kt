@@ -58,12 +58,15 @@ class ConfirmationPixFragment : Fragment() {
         }
 
         binding.continueConfirmation.setOnClickListener {
+            confirmationPixViewModel.confirmPix()
+        }
+
+        confirmationPixViewModel.goToPixFinishedFragment.observe(viewLifecycleOwner){
             val direction =
                 ConfirmationPixFragmentDirections.actionConfirmationPixFragmentToPixFinishedFragment(
                     arguments.pix
                 )
             findNavController().navigate(direction)
-            confirmationPixViewModel.confirmPix()
         }
 
         binding.textviewDatePicker.setOnClickListener {

@@ -22,7 +22,7 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
         }
     }
 
-    suspend fun pixConfirmData(pixToken:String): PixConfirmResponse {
+    suspend fun pixConfirmData(pixToken: String): PixConfirmResponse {
         return withContext(Dispatchers.IO) {
             val token = sessionManager.getTokens()!!.tokenAuthentication
             val response = api.pixConfirm(token, pixToken)
@@ -33,5 +33,22 @@ class PixRepository(private val sessionManager: SessionManager, private val api:
             }
         }
     }
+
+    suspend fun balanceData(): Double {
+        return withContext(Dispatchers.IO) {
+            val token = sessionManager.getTokens()!!.tokenAuthentication
+            val response = api.getHomeBalanceForPix(token)
+            if (response.isSuccessful) {
+                return@withContext response.body()!!.balance.currentValue
+            } else {
+                throw Exception("Não foi possível acessar o saldo")
+            }
+        }
+    }
+
+    fun saveBalancePixStateVisibility(isVisible: Boolean) =
+        sessionManager.saveBalancePixStateVisibility(isVisible)
+
+    fun getBalancePixStateVisibility(): Boolean = sessionManager.getBalancePixStateVisibility()
 
 }

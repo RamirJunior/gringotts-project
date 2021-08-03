@@ -17,7 +17,7 @@ class InsertEmailPixFragment : Fragment() {
 
     private var _binding: FragmentInsertEmailPixBinding? = null
     private val binding: FragmentInsertEmailPixBinding get() = _binding!!
-    val pix: Pix = Pix("",0.0,"","","","")
+    val pix: Pix = Pix("", 0.0, "", "", "", "")
     private val insertEmailPixViewModel: InsertEmailPixViewModel by viewModel { parametersOf(pix) }
 
     override fun onCreateView(
@@ -37,7 +37,11 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         binding.insertEmailField.addTextChangedListener {
-            insertEmailPixViewModel.currentEmail = it.toString()
+            insertEmailPixViewModel.insertEmail(it.toString())
+        }
+
+        insertEmailPixViewModel.isButtonEnable.observe(viewLifecycleOwner){
+            binding.pixInsertEmailContinue.isEnabled = it
         }
 
         insertEmailPixViewModel.goToInsertDescriptionScreen.observe(viewLifecycleOwner) {

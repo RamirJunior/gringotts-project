@@ -4,8 +4,8 @@ import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.UserPix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
-import alura.com.gringotts.presentation.home.auxiliar.DateHelper
-import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
+import alura.com.gringotts.presentation.auxiliar.DateHelper
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,15 +19,12 @@ class ConfirmationPixViewModel(
     private val pixRepository: PixRepository
 ) : ViewModel() {
 
-    private val _goToPixFinishedFragment = SingleLiveEvent<String>()
-    val goToPixFinishedFragment: LiveData<String> = _goToPixFinishedFragment
+    private val _goToPixFinishedFragment = SingleLiveEvent<Unit>()
+    val goToPixFinishedFragment: LiveData<Unit> = _goToPixFinishedFragment
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
     private val _pixUpdate = MutableLiveData<Pix>()
     val pixUpdate: LiveData<Pix> = _pixUpdate
-
-
-
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
     private val _pixDate = MutableLiveData<String>()
@@ -78,7 +75,7 @@ class ConfirmationPixViewModel(
                     response.pixValue,
                     response.date
                 )
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _pixError.postValue("Verifique sua conexão de internet.")
                 else
@@ -101,6 +98,7 @@ class ConfirmationPixViewModel(
                     response.pixValue,
                     response.date
                 )
+                _goToPixFinishedFragment.postValue(Unit)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _pixError.postValue("Verifique sua conexão de internet.")

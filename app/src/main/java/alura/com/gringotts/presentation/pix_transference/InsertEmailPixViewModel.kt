@@ -1,12 +1,11 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
-import alura.com.gringotts.presentation.pix_transference.auxiliar.SingleLiveEvent
-import android.util.Patterns
+import alura.com.gringotts.presentation.auxiliar.InputValidationHelper.isEmailValid
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.material.textfield.TextInputLayout
 
 class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
@@ -14,21 +13,33 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
     val invalidEmailError: LiveData<String?> = _invalidEmailError
     private val _goToInsertDescriptionScreen = SingleLiveEvent<Unit>()
     val goToInsertDescriptionScreen: LiveData<Unit> = _goToInsertDescriptionScreen
+    private val _isButtonEnable = MutableLiveData<Boolean>()
+    val isButtonEnable: LiveData<Boolean> = _isButtonEnable
 
-    var currentEmail: String = ""
+    private var currentEmail: String = ""
+
+    init {
+        _isButtonEnable.postValue(false)
+    }
+
+    fun insertEmail(newEmail: String){
+        if(newEmail.isNotEmpty()){
+            _isButtonEnable.postValue(true)
+        }
+        else{
+            _isButtonEnable.postValue(false)
+        }
+        currentEmail = newEmail
+    }
 
     fun onInsertEmailButtonClicked() {
-        if (isEmailValid()) {
+        if (isEmailValid(currentEmail)) {
             pix.receiverEmail = currentEmail
             _goToInsertDescriptionScreen.postValue(Unit)
             _invalidEmailError.postValue(null)
         } else {
             _invalidEmailError.postValue("Insira um e-mail válido.")
         }
-    }
-
-    private fun isEmailValid(): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(currentEmail).matches()
     }
 
 }

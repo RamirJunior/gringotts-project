@@ -17,7 +17,7 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
     val isButtonEnable: LiveData<Boolean> = _isButtonEnable
 
 
-    var currentEmail: String = ""
+    private var currentEmail: String = ""
 
     init {
         _isButtonEnable.postValue(false)

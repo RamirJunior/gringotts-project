@@ -112,14 +112,14 @@ class ConfirmationPixViewModel(
     private fun updatePixValues(
         user: UserPix,
         email: String,
-        description: String,
+        description: String?,
         organization: String,
         pixValue: String,
         date: String
     ) {
         pix.name = user.firstName + " " + user.lastName
         pix.receiverEmail = email
-        pix.message = description
+        pix.message = description?:""
         pix.institution = organization
         pix.pixValue = pixValue.toDouble()
         pix.date = date

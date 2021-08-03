@@ -11,6 +11,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
+
 
 interface ApiInterface {
 
@@ -53,8 +56,13 @@ interface ApiInterface {
             "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/"
 
         fun create(): ApiInterface {
+            val logger =HttpLoggingInterceptor()
+            logger.level = HttpLoggingInterceptor.Level.BODY
+            val client = OkHttpClient().newBuilder()
+                .addInterceptor(HttpLoggingInterceptor()).build()
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             return retrofit.create(ApiInterface::class.java)

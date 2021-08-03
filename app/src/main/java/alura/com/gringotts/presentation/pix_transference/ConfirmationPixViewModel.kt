@@ -19,8 +19,8 @@ class ConfirmationPixViewModel(
     private val pixRepository: PixRepository
 ) : ViewModel() {
 
-    private val _goToPixFinishedFragment = SingleLiveEvent<String>()
-    val goToPixFinishedFragment: LiveData<String> = _goToPixFinishedFragment
+    private val _goToPixFinishedFragment = SingleLiveEvent<Unit>()
+    val goToPixFinishedFragment: LiveData<Unit> = _goToPixFinishedFragment
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
     private val _pixUpdate = MutableLiveData<Pix>()
@@ -98,6 +98,7 @@ class ConfirmationPixViewModel(
                     response.pixValue,
                     response.date
                 )
+                _goToPixFinishedFragment.postValue(Unit)
             } catch (e: Exception) {
                 if (e is UnknownHostException)
                     _pixError.postValue("Verifique sua conexão de internet.")

@@ -1,7 +1,6 @@
 package alura.com.gringotts.data
 
 import alura.com.gringotts.data.models.home.Transaction
-import alura.com.gringotts.data.models.home.TransactionListItem
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,7 +14,7 @@ interface AccountStatementDAO {
     fun getAllTransactions(): Flow<List<Transaction>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTransaction(restaurants: List<Transaction>)
+    suspend fun insertTransactions(restaurants: List<Transaction>)
 
     @Query("DELETE FROM [transaction]")
     suspend fun deleteAllTransactions()

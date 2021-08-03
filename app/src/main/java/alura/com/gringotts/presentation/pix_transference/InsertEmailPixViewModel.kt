@@ -16,7 +16,6 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
     private val _isButtonEnable = SingleLiveEvent<Boolean>()
     val isButtonEnable: LiveData<Boolean> = _isButtonEnable
 
-
     private var currentEmail: String = ""
 
     init {
@@ -32,7 +31,6 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
         }
         currentEmail = newEmail
     }
-
 
     fun onInsertEmailButtonClicked() {
         if (isEmailValid(currentEmail)) {

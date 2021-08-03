@@ -18,4 +18,5 @@ interface AccountStatementDAO {
 
     @Query("DELETE FROM transactions")
     suspend fun deleteAllTransactions()
+
 }

@@ -1,8 +1,8 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
+import alura.com.gringotts.presentation.auxiliar.InputValidationHelper.isEmailValid
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
-import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,17 +35,13 @@ class InsertEmailPixViewModel(private val pix: Pix) : ViewModel() {
 
 
     fun onInsertEmailButtonClicked() {
-        if (isEmailValid()) {
+        if (isEmailValid(currentEmail)) {
             pix.receiverEmail = currentEmail
             _goToInsertDescriptionScreen.postValue(Unit)
             _invalidEmailError.postValue(null)
         } else {
             _invalidEmailError.postValue("Insira um e-mail válido.")
         }
-    }
-
-    private fun isEmailValid(): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(currentEmail).matches()
     }
 
 }

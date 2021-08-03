@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pix_navigation">
+    android:id="@+id/pix_navigation"
+    app:startDestination="@id/pixTypeChoiceFragment">
 
     <fragment
         android:id="@+id/onboardingPixFragment2"
@@ -19,5 +20,77 @@
         android:id="@+id/pixFragment2"
         android:name="alura.com.gringotts.view.pix.fragments.PixFragment"
         android:label="PixFragment"
-        tools:layout="@layout/fragment_pix" />
+        tools:layout="@layout/fragment_pix">
+        <action
+            android:id="@+id/action_pixFragment2_to_pixTypeChoiceFragment"
+            app:destination="@id/pixTypeChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixTypeChoiceFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixTypeChoiceFragment"
+        android:label="PixTypeChoiceFragment"
+        tools:layout="@layout/fragment_pix_type_choice">
+        <action
+            android:id="@+id/action_pixTypeChoiceFragment_to_insertEmailPixFragment"
+            app:destination="@id/insertEmailPixFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertEmailPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.InsertEmailPixFragment"
+        android:label="InsertEmailPixFragment"
+        tools:layout="@layout/fragment_insert_email_pix">
+        <action
+            android:id="@+id/action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment"
+            app:destination="@id/insertOptionalDescriptionPixFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertOptionalDescriptionPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.InsertOptionalDescriptionPixFragment"
+        android:label="InsertOptionalDescriptionPixFragment"
+        tools:layout="@layout/fragment_insert_optional_description_pix">
+        <action
+            android:id="@+id/action_insertOptionalDescriptionPixFragment_to_pixValueFragment"
+            app:destination="@id/pixValueFragment" />
+        <argument
+            android:name="Pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixValueFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixValueFragment"
+        android:label="PixValueFragment"
+        tools:layout="@layout/fragment_pix_value">
+        <action
+            android:id="@+id/action_pixValueFragment_to_confirmationPixFragment"
+            app:destination="@id/confirmationPixFragment" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.ConfirmationPixFragment"
+        android:label="ConfirmationPixFragment"
+        tools:layout="@layout/fragment_confirmation_pix">
+        <action
+            android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
+            app:destination="@id/pixFinishedFragment"
+            app:popUpTo="@id/pixTypeChoiceFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFinishedFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixFinishedFragment"
+        android:label="PixFinishedFragment"
+        tools:layout="@layout/fragment_pix_finished">
+        <action
+            android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
+            app:destination="@id/pixFragment2" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
 </navigation>

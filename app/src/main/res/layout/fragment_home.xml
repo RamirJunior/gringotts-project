@@ -21,13 +21,12 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="180dp"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="24dp"
+                android:layout_width="159dp"
+                android:layout_height="49dp"
+                android:elevation="200dp"
                 android:padding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/tb_tipo"
                 tools:ignore="ContentDescription" />
 
@@ -52,6 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_home"
+        app:layout_constraintVertical_bias="1.0"
         tools:context=".view.home.fragments.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -243,6 +243,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    app:layout_constraintCircleRadius="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades" />
@@ -300,7 +301,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@color/grayBack">
+                    android:background="@color/white">
 
                     <ImageView
                         android:id="@+id/help_image"

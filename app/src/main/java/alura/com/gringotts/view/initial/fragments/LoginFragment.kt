@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
             loginViewModel.switchChanged(isChecked)
         }
 
-        loginViewModel.loginError.observe(viewLifecycleOwner, {
+        loginViewModel.loginError.observe(viewLifecycleOwner) {
             context?.let { it1 ->
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
                     ) { _, _ -> }
                     .show()
             }
-        })
+        }
 
         loginViewModel.loginSuccess.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.action_loginFragment2_to_homeActivity)

@@ -20,6 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+            app:navigationIconTint="@color/white"
             app:title="Pix/QR Code"
             app:titleCentered="true"
             app:titleTextColor="@color/white">
@@ -33,7 +34,6 @@
             android:gravity="center"
             android:text="Transferir ou pagar QR Code"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
                     app:layout_constraintStart_toStartOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +101,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,7 +171,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -179,7 +181,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="116dp"
             android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -240,7 +242,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,7 +256,6 @@
             android:gravity="center"
             android:text="Vender"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -293,7 +295,7 @@
 
                 <TextView
                     android:id="@+id/textView17"
-                    android:layout_width="196dp"
+                    android:layout_width="181dp"
                     android:layout_height="32dp"
                     android:text="Receba na hora com QR Code Pix com taxa de apenas 1,69%."
                     android:textSize="12sp"
@@ -309,7 +311,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -347,7 +350,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
-            android:text="Compartilhe suas chaves ou seus dados bancários para receber transferências grátis."
+            android:text="@string/compartilhe_suas_chaves_ou_seus_dados_banc_rios_para_receber_transfer_ncias_gr_tis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
@@ -392,7 +395,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_compartilhar" />
+                    app:srcCompat="@drawable/ic_compartilhar"
+                    app:tint="@color/gold" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -414,7 +418,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/grayBack">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/help_image"

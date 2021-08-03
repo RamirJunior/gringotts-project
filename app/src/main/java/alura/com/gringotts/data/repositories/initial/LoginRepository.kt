@@ -67,5 +67,4 @@ class LoginRepository(private val sessionManager: SessionManager) {
         private const val INCORRECT_PASSWORD = 401
         private const val INCOMPATIBLE_EMAIL_PASSWORD = 404
     }
-
 }

@@ -43,10 +43,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun loginValidation() {
         if (isPasswordValid() && emailValidation()) {
             doLogin()
-        } else {
-            _loginError.postValue(
-                "A senha deve conter pelo menos 6 letras e o email deve ser valido"
-            )
         }
     }
 

@@ -1,7 +1,7 @@
 package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
-import alura.com.gringotts.data.repositories.pix_transference.PixActualAccountValueRepository
+import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ import java.text.NumberFormat
 
 class PixValueViewModel(
     private val pix: Pix,
-    private val pixActualAccountValueRepository: PixActualAccountValueRepository
+    private val pixRepository: PixRepository
 ) : ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -38,14 +38,14 @@ class PixValueViewModel(
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                balanceValue = pixActualAccountValueRepository.balanceData()
+                balanceValue = pixRepository.balanceData()
                 val numberFormatter = NumberFormat.getInstance()
                 numberFormatter.minimumFractionDigits = 2
                 numberFormatter.maximumFractionDigits = 2
                 _balance.postValue(
                     numberFormatter.format(balanceValue)
                 )
-                _hideButtonValue.postValue(pixActualAccountValueRepository.getBalancePixStateVisibility())
+                _hideButtonValue.postValue(pixRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
             }
@@ -70,7 +70,7 @@ class PixValueViewModel(
 
     fun hideBalanceButtonClickedPix() {
         val newCurrentBalanceVisibilityStatus = !_hideButtonValue.value!!
-        pixActualAccountValueRepository.saveBalancePixStateVisibility(
+        pixRepository.saveBalancePixStateVisibility(
             newCurrentBalanceVisibilityStatus
         )
         _hideButtonValue.postValue(newCurrentBalanceVisibilityStatus)

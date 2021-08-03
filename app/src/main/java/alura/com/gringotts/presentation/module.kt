@@ -72,7 +72,7 @@ val initialModule = module {
         HomeRepository(get(), get())
     }
     factory {
-        AccountStatementRepository(get(), get())
+        AccountStatementRepository(get(), get(), get())
     }
     factory {
         ApiInterface.create()

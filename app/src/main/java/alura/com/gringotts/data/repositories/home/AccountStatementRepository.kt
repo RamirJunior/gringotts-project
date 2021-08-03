@@ -5,7 +5,6 @@ import alura.com.gringotts.data.networkBoundResource
 import alura.com.gringotts.data.session.SessionManager
 import androidx.room.withTransaction
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(
@@ -14,7 +13,7 @@ class AccountStatementRepository(
     private val db: AccountStatementDatabase
 ) {
 
-    private val restaurantDao = db.AccountStatementDAO()
+    private val transactionDAO = db.accountStatementDAO()
 
     suspend fun getAccountStatement(initialDate: String, finalDate: String): List<Transaction> {
         return withContext(Dispatchers.IO) {
@@ -26,16 +25,16 @@ class AccountStatementRepository(
             )
             networkBoundResource(
                 query = {
-                    restaurantDao.getAllTransactions()
+                    transactionDAO.getAllTransactions()
                 },
                 fetch = {
                     response.body()
                 },
                 saveFetchResult = { transaction ->
                     db.withTransaction {
-                        restaurantDao.deleteAllTransactions()
+                        transactionDAO.deleteAllTransactions()
                         if (transaction != null) {
-                            restaurantDao.insertTransactions(transaction)
+                            transactionDAO.insertTransactions(transaction)
                         }
                     }
                 }

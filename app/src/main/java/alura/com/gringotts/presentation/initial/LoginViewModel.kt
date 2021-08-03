@@ -24,6 +24,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     val loginError: LiveData<String> = _loginError
     private val _loginSuccess = MutableLiveData<Unit>()
     val loginSuccess: LiveData<Unit> = _loginSuccess
+    private val _usernameError = MutableLiveData<String?>()
+    val usernameError: LiveData<String?> = _usernameError
+    private val _passwordError = MutableLiveData<String?>()
+    val passwordError: LiveData<String?> = _passwordError
 
     init {
         val user = loginRepository.getUser()
@@ -37,7 +41,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun loginValidation() {
-        if (isPasswordValid() && isEmailValid(currentUsername)) {
+        if (isPasswordValid() && emailValidation()) {
             doLogin()
         } else {
             _loginError.postValue(
@@ -88,8 +92,25 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     fun onLoginButtonClicked() {
         loginValidation()
     }
-
     private fun isPasswordValid(): Boolean {
-        return currentPassword.length >= 6
+        val isPasswordValid = currentPassword.length >= 6
+        if(!isPasswordValid){
+            _passwordError.postValue("A senha deve conter pelo menos 6 letras")
+        }
+        else{
+            _passwordError.postValue(null)
+        }
+        return isPasswordValid
+    }
+
+    private fun emailValidation(): Boolean{
+        val isEmailValid = isEmailValid(currentUsername)
+        if(!isEmailValid){
+            _usernameError.postValue("e-mail invalido")
+        }
+        else{
+            _usernameError.postValue(null)
+        }
+        return isEmailValid
     }
 }

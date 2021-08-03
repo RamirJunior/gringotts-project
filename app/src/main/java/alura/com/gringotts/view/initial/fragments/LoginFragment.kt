@@ -64,6 +64,14 @@ class LoginFragment : Fragment() {
             }
         }
 
+        loginViewModel.usernameError.observe(viewLifecycleOwner){
+            binding.loginUsernameLayout.error = it
+
+        }
+        loginViewModel.passwordError.observe(viewLifecycleOwner){
+            binding.loginInputLayout.error = it
+        }
+
         loginViewModel.loginSuccess.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.action_loginFragment2_to_homeActivity)
         })

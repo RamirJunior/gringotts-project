@@ -40,9 +40,7 @@ class PixValueViewModel(
         viewModelScope.launch {
             try {
                 balanceValue = pixRepository.balanceData()
-                _balance.postValue(
-                    formatDoubleToTwoFractionDigits(balanceValue)
-                )
+                _balance.postValue(formatDoubleToTwoFractionDigits(balanceValue))
                 _hideButtonValue.postValue(pixRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
@@ -35,8 +36,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 val homeData = homeRepository.homeData()
                 _benefits.postValue(homeData.benefits)
                 balanceValue = homeData.balance
-                _balance.postValue(balanceValue.currentValue.toString())
-                _receivable.postValue(balanceValue.receivables.toString())
+                _balance.postValue(NumberFormat.getInstance().format(balanceValue.currentValue))
+                _receivable.postValue(NumberFormat.getInstance().format(balanceValue.receivables.toString()))
                 setBalanceState(homeRepository.getHideBalanceState())
                 val user = homeRepository.getUser()
                 _userName.postValue(user!!.firstName + " " + user.lastName)

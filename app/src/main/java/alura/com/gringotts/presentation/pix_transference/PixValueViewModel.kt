@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.text.NumberFormat
 
 class PixValueViewModel(
     private val pix: Pix,
@@ -38,7 +39,9 @@ class PixValueViewModel(
         viewModelScope.launch {
             try {
                 balanceValue = pixActualAccountValueRepository.balanceData()
-                _balance.postValue(balanceValue.toString())
+                _balance.postValue(
+                    NumberFormat.getInstance().format(balanceValue)
+                )
                 _hideButtonValue.postValue(pixActualAccountValueRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")

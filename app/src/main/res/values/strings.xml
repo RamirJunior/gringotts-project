@@ -96,7 +96,7 @@
     <string name="continuar">Continuar</string>
     <string name="pague_e_receba_24_horas_por_dia_7_dias_por_semana">Pague e receba 24 horas por dia, 7 dias por semana.</string>
     <string name="insira_o_e_mail_do_destinat_rio">Insira o e-mail do destinatário</string>
-    <string name="transferencia_pix_realizada_com_sucesso">Transferencia Pix realizada com sucesso!</string>
+    <string name="transferencia_pix_realizada_com_sucesso">Transferência Pix realizada com sucesso!</string>
     <string name="valor_transferencia">Valor transferência</string>
     <string name="para">para</string>
     <string name="o_que_voc_deseja_fazer_agora">O que você deseja fazer agora ?</string>
@@ -120,4 +120,6 @@
     <string name="FunctionNotImplemented">Função não implementada</string>
     <string name="insira_a_descri_o_opcional">Insira a descrição (opcional)</string>
     <string name="pix_date_picker_title">Agende a Transfêrencia</string>
+    <string name="txt_string_date">17/06/2021</string>
+    <string name="txt_string_pix">mymail@pix.com</string>
 </resources>

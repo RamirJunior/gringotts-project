@@ -41,7 +41,7 @@ class InsertEmailPixFragment : Fragment() {
         }
 
         insertEmailPixViewModel.isButtonEnable.observe(viewLifecycleOwner){
-            binding.pixInsertEmailContinue.isClickable = it
+            binding.pixInsertEmailContinue.isEnabled = it
         }
 
         insertEmailPixViewModel.goToInsertDescriptionScreen.observe(viewLifecycleOwner) {

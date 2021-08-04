@@ -2,14 +2,23 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\ProjetosAS\\android-pagbank-gringotts\\app\\key.jks')
+            storePassword 'Teste@123'
+            keyAlias 'pbpuc'
+            keyPassword 'Teste@123'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "compasso.com.gringotts"
+        applicationId "pbpuc2021.compasso"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -77,4 +86,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    implementation platform('com.google.firebase:firebase-bom:28.3.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

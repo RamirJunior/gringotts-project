@@ -3,9 +3,7 @@ import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(
@@ -26,13 +24,13 @@ class AccountStatementRepository(
                 finalDate
             )
 
-            if(response.code() == 200){ //Se n tiver dado
+            if(response.code() == NEW_RESPONSE){
                 transactionDAO.deleteAllTransactions()
                 transactionDAO.insertTransactions(response.body()!!)
                 return@withContext transactionDAO.getAllTransactions().single()
             }
 
-            if(response.code() == 304) { //Se n tiver mudado nada e a api falar isso
+            if(response.code() == SAME_RESPONSE) {
                 return@withContext transactionDAO.getAllTransactions().single()
             } else {
                 throw Exception("Erro desconhecido")
@@ -40,15 +38,11 @@ class AccountStatementRepository(
 
         }
     }
+    companion object {
+        private const val NEW_RESPONSE = 200
+        private const val SAME_RESPONSE = 304
+    }
 
 }
 
-//            if(response.code() == 5000) { //Se a api tiver retornado que a resposta do servidor mudou e precisa atualizar o db
-//                transactionDAO.deleteAllTransactions()
-//                transactionDAO.insertTransactions(response.body()!!)
-//
-//            }
 
-//            if (response.isSuccessful) {
-//                return@withContext response.body()!!
-//            }

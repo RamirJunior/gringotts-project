@@ -11,8 +11,7 @@ class HomeRepository(private val sessionManager: SessionManager, private val api
 
     suspend fun homeData(): HomeResponse {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
-            val response = api.home(token)
+            val response = api.home()
             if (response.isSuccessful) {
                 return@withContext response.body()!!
             } else {

@@ -21,11 +21,9 @@ class AccountStatementRepository(
         finalDate: String
     ): List<Transaction> {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
             val response = apiInterface.transactions(
                 initialDate,
-                finalDate,
-                token
+                finalDate
             )
 
             if(response.code() == 200){ //Se n tiver dado

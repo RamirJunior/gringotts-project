@@ -10,12 +10,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class LoginRepository(private val sessionManager: SessionManager) {
+class LoginRepository(private val sessionManager: SessionManager, private val apiInterface: ApiInterface) {
 
     suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean) {
         val response: Response<LoginResponse>
         withContext(Dispatchers.IO) {
-            response = ApiInterface.create().userLogin(loginPayload)
+            response = apiInterface.userLogin(loginPayload)
         }
         if (response.isSuccessful) {
             loginSuccessHandler(response.body()!!, rememberSwitch, loginPayload)

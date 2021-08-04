@@ -82,7 +82,7 @@ val initialModule = module {
         get<AccountStatementDatabase>().accountStatementDAO()
     }
     factory {
-        AccountStatementRepository(get(), get(), get())
+        AccountStatementRepository(get(), get())
     }
     factory {
         ApiInterface.create(get())

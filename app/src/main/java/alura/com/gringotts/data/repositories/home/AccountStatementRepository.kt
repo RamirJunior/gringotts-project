@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(
-    private val sessionManager: SessionManager,
     private val apiInterface: ApiInterface,
     db: AccountStatementDatabase
 ) {
@@ -25,12 +24,12 @@ class AccountStatementRepository(
             )
 
             return@withContext when {
-                response.code() == NEW_RESPONSE -> { //Se n tiver dado
+                response.code() == NEW_RESPONSE -> {
                     transactionDAO.deleteAllTransactions()
                     transactionDAO.insertTransactions(response.body()!!)
                     response.body()!!
                 }
-                response.code() == SAME_RESPONSE -> { //Se n tiver mudado nada e a api falar isso
+                response.code() == SAME_RESPONSE -> {
                     transactionDAO.getAllTransactions()
                 }
                 else -> {
@@ -40,11 +39,12 @@ class AccountStatementRepository(
 
         }
 
-
     }
+
     companion object {
         private const val NEW_RESPONSE = 200
         private const val SAME_RESPONSE = 304
     }
+
 }
 

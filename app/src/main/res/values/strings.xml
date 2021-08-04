@@ -122,4 +122,5 @@
     <string name="pix_date_picker_title">Agende a Transfêrencia</string>
     <string name="txt_string_date">17/06/2021</string>
     <string name="txt_string_pix">mymail@pix.com</string>
+    <string name="tela_nao_implementada">Tela não implementada</string>
 </resources>

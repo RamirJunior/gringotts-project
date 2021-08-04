@@ -41,7 +41,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun loginValidation() {
-        if (isPasswordValid() && emailValidation()) {
+        val isPasswordValid = isPasswordValid()
+        val isEmailValid = emailValidation()
+        if (isPasswordValid && isEmailValid) {
             doLogin()
         }
     }

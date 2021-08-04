@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "transaction")
 data class Transaction(
+    @PrimaryKey(autoGenerate = true) val id: Long,
     val status: String,
     val time: String,
     val type: String,

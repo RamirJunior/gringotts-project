@@ -24,25 +24,27 @@ class AccountStatementRepository(
                 finalDate
             )
 
-            if(response.code() == NEW_RESPONSE){
-                transactionDAO.deleteAllTransactions()
-                transactionDAO.insertTransactions(response.body()!!)
-                return@withContext transactionDAO.getAllTransactions().single()
-            }
-
-            if(response.code() == SAME_RESPONSE) {
-                return@withContext transactionDAO.getAllTransactions().single()
-            } else {
-                throw Exception("Erro desconhecido")
+            return@withContext when {
+                response.code() == NEW_RESPONSE -> { //Se n tiver dado
+                    transactionDAO.deleteAllTransactions()
+                    transactionDAO.insertTransactions(response.body()!!)
+                    response.body()!!
+                }
+                response.code() == SAME_RESPONSE -> { //Se n tiver mudado nada e a api falar isso
+                    transactionDAO.getAllTransactions()
+                }
+                else -> {
+                    throw Exception("Erro desconhecido")
+                }
             }
 
         }
+
+
     }
     companion object {
         private const val NEW_RESPONSE = 200
         private const val SAME_RESPONSE = 304
     }
-
 }
-
 

@@ -1,18 +1,14 @@
 import alura.com.gringotts.data.AccountStatementDAO
-import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(
     private val sessionManager: SessionManager,
     private val apiInterface: ApiInterface,
-    private val transactionDAO : AccountStatementDAO
+    private val transactionDAO: AccountStatementDAO
 ) {
     suspend fun getAccountStatement(
         initialDate: String,
@@ -25,7 +21,7 @@ class AccountStatementRepository(
                 finalDate,
                 token
             )
-0
+
             return@withContext when {
                 response.code() == 200 -> { //Se n tiver dado
                     transactionDAO.deleteAllTransactions()

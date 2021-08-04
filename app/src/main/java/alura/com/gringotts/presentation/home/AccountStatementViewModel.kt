@@ -48,8 +48,9 @@ class AccountStatementViewModel(
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                val response = accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                transactionList = response
+                val response =
+                    accountStatementRepository.getAccountStatement(initialDate, finalDate)
+                transactionList = response.reversed()
                 mapToTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)

@@ -75,7 +75,7 @@ val initialModule = module {
     factory {
         HomeRepository(get(), get())
     }
-    factory {
+    single {
         AccountStatementDatabase.provideDatabase(androidApplication())
     }
     factory {

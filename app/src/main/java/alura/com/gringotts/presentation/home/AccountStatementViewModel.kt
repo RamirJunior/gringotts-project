@@ -5,11 +5,12 @@ import alura.com.gringotts.data.models.home.*
 import alura.com.gringotts.presentation.auxiliar.DateHelper.formatDate
 import alura.com.gringotts.presentation.auxiliar.DateHelper.getDateFromString
 import alura.com.gringotts.presentation.auxiliar.DateHelper.getMonthString
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.net.UnknownHostException
 import java.util.*
 
@@ -47,9 +48,8 @@ class AccountStatementViewModel(
         _loading.postValue(true)
         viewModelScope.launch {
             try {
-                val response =
-                    accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                transactionList = response.reversed()
+                val response = accountStatementRepository.getAccountStatement(initialDate, finalDate)
+                transactionList = response
                 mapToTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)

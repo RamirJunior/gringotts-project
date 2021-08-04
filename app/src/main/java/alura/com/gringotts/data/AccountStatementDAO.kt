@@ -5,13 +5,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AccountStatementDAO {
 
     @Query("SELECT * FROM [transaction]")
-    fun getAllTransactions(): Flow<List<Transaction>>
+    fun getAllTransactions(): List<Transaction>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTransactions(transaction: List<Transaction>)

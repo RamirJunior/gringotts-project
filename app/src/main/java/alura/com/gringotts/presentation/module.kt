@@ -1,6 +1,7 @@
 package alura.com.gringotts.presentation
 
 import AccountStatementRepository
+import alura.com.gringotts.data.AccountStatementDAO
 import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.pix_transference.Pix
@@ -71,12 +72,14 @@ val initialModule = module {
     factory {
         LoginRepository(get())
     }
-
     factory {
         HomeRepository(get(), get())
     }
     single {
         AccountStatementDatabase.provideDatabase(androidApplication())
+    }
+    factory {
+        get<AccountStatementDatabase>().accountStatementDAO()
     }
     factory {
         AccountStatementRepository(get(), get(), get())
@@ -87,6 +90,5 @@ val initialModule = module {
     factory {
         PixRepository(get(), get())
     }
-
 
 }

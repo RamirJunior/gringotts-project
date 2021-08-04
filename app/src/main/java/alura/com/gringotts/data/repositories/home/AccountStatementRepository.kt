@@ -1,3 +1,4 @@
+import alura.com.gringotts.data.AccountStatementDAO
 import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
@@ -11,11 +12,8 @@ import kotlinx.coroutines.withContext
 class AccountStatementRepository(
     private val sessionManager: SessionManager,
     private val apiInterface: ApiInterface,
-    db: AccountStatementDatabase
+    private val transactionDAO : AccountStatementDAO
 ) {
-
-    private val transactionDAO = db.accountStatementDAO()
-
     suspend fun getAccountStatement(
         initialDate: String,
         finalDate: String
@@ -27,30 +25,23 @@ class AccountStatementRepository(
                 finalDate,
                 token
             )
-
-            if(response.code() == 200){ //Se n tiver dado
-                transactionDAO.deleteAllTransactions()
-                transactionDAO.insertTransactions(response.body()!!)
-                return@withContext transactionDAO.getAllTransactions().single()
-            }
-
-            if(response.code() == 304) { //Se n tiver mudado nada e a api falar isso
-                return@withContext transactionDAO.getAllTransactions().single()
-            } else {
-                throw Exception("Erro desconhecido")
+0
+            return@withContext when {
+                response.code() == 200 -> { //Se n tiver dado
+                    transactionDAO.deleteAllTransactions()
+                    transactionDAO.insertTransactions(response.body()!!)
+                    response.body()!!
+                }
+                response.code() == 304 -> { //Se n tiver mudado nada e a api falar isso
+                    transactionDAO.getAllTransactions()
+                }
+                else -> {
+                    throw Exception("Erro desconhecido")
+                }
             }
 
         }
     }
 
+
 }
-
-//            if(response.code() == 5000) { //Se a api tiver retornado que a resposta do servidor mudou e precisa atualizar o db
-//                transactionDAO.deleteAllTransactions()
-//                transactionDAO.insertTransactions(response.body()!!)
-//
-//            }
-
-//            if (response.isSuccessful) {
-//                return@withContext response.body()!!
-//            }

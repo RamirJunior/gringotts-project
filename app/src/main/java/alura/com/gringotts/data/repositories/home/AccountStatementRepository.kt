@@ -1,9 +1,7 @@
 import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
-import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(

@@ -9,12 +9,12 @@ import alura.com.gringotts.data.models.pix_transference.PixConfirmResponse
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.PixValidationResponse
 import alura.com.gringotts.data.session.SessionManager
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import okhttp3.*
-import okhttp3.logging.HttpLoggingInterceptor
 
 
 interface ApiInterface {

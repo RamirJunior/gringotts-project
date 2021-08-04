@@ -5,12 +5,11 @@ import alura.com.gringotts.data.models.home.*
 import alura.com.gringotts.presentation.auxiliar.DateHelper.formatDate
 import alura.com.gringotts.presentation.auxiliar.DateHelper.getDateFromString
 import alura.com.gringotts.presentation.auxiliar.DateHelper.getMonthString
-import android.util.Log
-import androidx.lifecycle.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.net.UnknownHostException
 import java.util.*
 

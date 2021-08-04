@@ -49,7 +49,7 @@ class PixValueViewModel(
     }
 
     fun onValueButtonClicked(newValue: String) {
-        if(newValue.isEmpty()) return
+        if (newValue.isEmpty()) return
         val cleanString = newValue.replace("[^0-9]".toRegex(), "")
         pixValue = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR)
             .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR).toDouble()

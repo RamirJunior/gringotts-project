@@ -7,12 +7,12 @@ import alura.com.gringotts.data.models.initial.LoginResponse
 import alura.com.gringotts.data.models.pix_transference.PixConfirmResponse
 import alura.com.gringotts.data.models.pix_transference.PixValidation
 import alura.com.gringotts.data.models.pix_transference.PixValidationResponse
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import okhttp3.*
-import okhttp3.logging.HttpLoggingInterceptor
 
 
 interface ApiInterface {
@@ -56,7 +56,7 @@ interface ApiInterface {
             "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/"
 
         fun create(): ApiInterface {
-            val logger =HttpLoggingInterceptor()
+            val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient().newBuilder()
                 .addInterceptor(HttpLoggingInterceptor()).build()

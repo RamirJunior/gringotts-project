@@ -70,7 +70,7 @@ val initialModule = module {
         androidContext().getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
     }
     factory {
-        LoginRepository(get())
+        LoginRepository(get(), get())
     }
     factory {
         HomeRepository(get(), get())
@@ -85,7 +85,7 @@ val initialModule = module {
         AccountStatementRepository(get(), get(), get())
     }
     factory {
-        ApiInterface.create()
+        ApiInterface.create(get())
     }
     factory {
         PixRepository(get(), get())

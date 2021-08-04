@@ -87,11 +87,11 @@ class LoginFragment : Fragment() {
         })
 
         binding.loginRegister.setOnClickListener {
-            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.tela_nao_implementada), Toast.LENGTH_LONG).show()
         }
 
         binding.loginForgot.setOnClickListener {
-            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,  getString(R.string.tela_nao_implementada), Toast.LENGTH_LONG).show()
         }
     }
 

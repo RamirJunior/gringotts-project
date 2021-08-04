@@ -15,8 +15,7 @@ class PixRepository(
 
     suspend fun pixValidationData(pix: PixValidation): PixValidationResponse {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
-            val response = api.pixValidation(pix, token)
+            val response = api.pixValidation(pix)
             if (response.isSuccessful) {
                 return@withContext response.body()!!
             } else {
@@ -27,8 +26,7 @@ class PixRepository(
 
     suspend fun pixConfirmData(pixToken: String): PixConfirmResponse {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
-            val response = api.pixConfirm(token, pixToken)
+            val response = api.pixConfirm(pixToken)
             if (response.isSuccessful) {
                 return@withContext response.body()!!
             } else {
@@ -39,8 +37,7 @@ class PixRepository(
 
     suspend fun balanceData(): Double {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
-            val response = api.getHomeBalanceForPix(token)
+            val response = api.home()
             if (response.isSuccessful) {
                 return@withContext response.body()!!.balance.currentValue
             } else {

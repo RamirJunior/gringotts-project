@@ -4,7 +4,6 @@
     package="alura.com.gringotts">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".view.App"
@@ -38,15 +37,6 @@
             android:name=".view.filter.FilterActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+
     </application>
-
-    <!--    <service-->
-    <!--        android:name=".java.MyFirebaseMessagingService"-->
-    <!--        android:exported="false"-->
-    <!--        android:directBootAware="true">-->
-    <!--        <intent-filter>-->
-    <!--            <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-    <!--        </intent-filter>-->
-    <!--    </service>-->
-
 </manifest>

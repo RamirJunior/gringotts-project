@@ -46,6 +46,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setContentTitle(title)
+                .setContentText(message)
                 .setStyle(NotificationCompat.BigTextStyle()
                     .bigText(message)
                     .setSummaryText("Notificação"))

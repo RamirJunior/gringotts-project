@@ -27,9 +27,9 @@
     <string name="real">R$</string>
     <string name="detalhes_conta">Ver detalhes da conta</string>
     <string name="detalhes_saldo">Ver detalhes do saldo</string>
-    <string name="security">security</string>
-    <string name="notifications">notifications</string>
-    <string name="profile_picture">profile picture</string>
+    <string name="security">Bloqueio</string>
+    <string name="notifications">Notificações</string>
+    <string name="profile_picture">Meu Perfil</string>
     <string name="txt_vantagens">Vantagens do Gringotts para você</string>
     <string name="hidden_balance">* * * *</string>
     <string name="txt_ajuda">Precisa de ajuda?</string>

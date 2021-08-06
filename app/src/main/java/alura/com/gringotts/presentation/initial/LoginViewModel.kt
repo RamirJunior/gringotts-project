@@ -57,15 +57,13 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                     _rememberSwitch.value!!
                 )
                 _loginSuccess.postValue(Unit)
-            } catch (e: IncorrectPasswordException) {
-                _loginError.postValue(e.message)
-            } catch (e: NotFoundEmailException) {
-                _loginError.postValue(e.message)
             } catch (e: Exception) {
-                if (e is UnknownHostException)
-                    _loginError.postValue("Sem acesso a internet")
-                else
-                    _loginError.postValue("Erro desconhecido")
+                when (e) {
+                    is UnknownHostException -> _loginError.postValue("Sem acesso a internet")
+                    is NotFoundEmailException -> _loginError.postValue(e.message)
+                    is IncorrectPasswordException -> _loginError.postValue(e.message)
+                    else -> _loginError.postValue("Erro desconhecido")
+                }
             }
             _loading.postValue(false)
         }

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_pix_finished"
         android:layout_width="match_parent"
@@ -16,17 +18,22 @@
         app:title="Transferir com Pix"
         app:titleCentered="true"
         app:titleTextColor="@color/white" />
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/grayFront"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_finished">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_finished"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cardview_value"
@@ -117,10 +124,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:text="300,20"
                     android:textColor="@color/gold"
                     android:textSize="36sp"
                     android:textStyle="bold"
-                    tools:text="300,20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text" />

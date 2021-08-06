@@ -123,4 +123,7 @@
     <string name="txt_string_date">17/06/2021</string>
     <string name="txt_string_pix">mymail@pix.com</string>
     <string name="tela_nao_implementada">Tela não implementada</string>
+    <string name="txt_statement_title">Transações de Extrato</string>
+    <string name="txt_empty_list_img">Sem dados para exibir</string>
+    <string name="txt_no_data_message">Você não possui transações neste período</string>
 </resources>

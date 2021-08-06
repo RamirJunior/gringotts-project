@@ -1,6 +1,7 @@
 package alura.com.gringotts.data.repositories.initial
 
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
@@ -36,7 +37,7 @@ class LoginRepository(
                 throw NotFoundEmailException("e-mail não encontrado")
             }
             INCORRECT_PASSWORD -> {
-                throw Exception("Senha incorreta")
+                throw IncorrectPasswordException("Senha incorreta")
             }
         }
     }
@@ -59,10 +60,6 @@ class LoginRepository(
 
     fun getUser(): LoginPayload? {
         return sessionManager.getUserData()
-    }
-
-    fun getTokens(): Token? {
-        return sessionManager.getTokens()
     }
 
     companion object {

@@ -9,7 +9,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Rafael\\AndroidStudioProjects\\android-pagbank-gringotts\\app\\Key.jks')
+            storeFile file('C:\\ProjetosAS\\android-pagbank-gringotts\\app\\key.jks')
             storePassword 'Teste@123'
             keyAlias 'pbpuc'
             keyPassword 'Teste@123'

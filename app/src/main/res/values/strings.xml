@@ -116,7 +116,7 @@
     <string name="txt_when">Quando</string>
     <string name="txt_example_date">21/07/2021</string>
     <string name="txt_symbol">R$</string>
-    <string name="visualizar">Visualizar</string>
+    <string name="mostrar">Mostrar</string>
     <string name="FunctionNotImplemented">Função não implementada</string>
     <string name="insira_a_descri_o_opcional">Insira a descrição (opcional)</string>
     <string name="pix_date_picker_title">Agende a Transfêrencia</string>

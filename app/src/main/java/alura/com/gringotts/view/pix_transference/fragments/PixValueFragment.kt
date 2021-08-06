@@ -49,7 +49,7 @@ class PixValueFragment : Fragment() {
         pixValueViewModel.hideButtonValue.observe(viewLifecycleOwner) {
             if (it) {
                 binding.balanceValue.inputType = TYPE_TEXT_VARIATION_PASSWORD or TYPE_CLASS_TEXT
-                binding.hideBalancePix.text = requireContext().getString(R.string.visualizar)
+                binding.hideBalancePix.text = requireContext().getString(R.string.mostrar)
             } else {
                 binding.balanceValue.inputType = TYPE_CLASS_TEXT
                 binding.hideBalancePix.text = requireContext().getString(R.string.ocultar)

@@ -61,6 +61,10 @@ class ConfirmationPixFragment : Fragment() {
             confirmationPixViewModel.confirmPix()
         }
 
+        binding.textView8.setOnClickListener{
+            activity?.finish()
+        }
+
         confirmationPixViewModel.goToPixFinishedFragment.observe(viewLifecycleOwner) {
             val direction =
                 ConfirmationPixFragmentDirections.actionConfirmationPixFragmentToPixFinishedFragment(

@@ -74,9 +74,9 @@
     <string name="Pix">Pix</string>
     <string name="saldo_gringotts">Saldo Gringotts: </string>
     <string name="ocultar">Ocultar</string>
-    <string name="default_account_statement_value">0,00</string>
+    <string name="default_account_statement_value">&#xA0;0,00</string>
     <string name="email_instruction">Insira o valor da transferência</string>
-    <string name="transferencias_pix">Cliente Gringotts tem transferências Pix gratuitas e ilimitadas.</string>
+    <string name="transferencias_pix">Clientes Gringotts tem transferências Pix gratuitas!</string>
     <string name="chave_destinario">Escolher a chave do destinatário</string>
     <string name="e_mail">E-mail</string>
     <string name="celular">Celular</string>

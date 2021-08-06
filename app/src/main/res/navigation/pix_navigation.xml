@@ -75,7 +75,7 @@
         <action
             android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
             app:destination="@id/pixFinishedFragment"
-            app:popUpTo="@id/pixTypeChoiceFragment"
+            app:popUpTo="@id/pixFragment2"
             app:popUpToInclusive="false" />
         <argument
             android:name="pix"
@@ -88,7 +88,9 @@
         tools:layout="@layout/fragment_pix_finished">
         <action
             android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
-            app:destination="@id/pixFragment2" />
+            app:destination="@id/pixFragment2"
+            app:popUpTo="@id/pixFragment2"
+            app:popUpToInclusive="false" />
         <argument
             android:name="pix"
             app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />

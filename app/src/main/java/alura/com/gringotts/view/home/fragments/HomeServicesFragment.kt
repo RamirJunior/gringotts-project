@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,13 +39,18 @@ class HomeServicesFragment : Fragment() {
                 getItensByPosition(requireArguments().getInt("position")),
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
-                        if (getItensByPosition(requireArguments().getInt("position"))[position].title == "Pix") {
-                            val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
-                                goToOnboardingPix
-                            )
-                            findNavController().navigate(
-                                direction
-                            )
+                        when (getItensByPosition(requireArguments().getInt("position"))[position].title) {
+                            "Pix" -> {
+                                val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
+                                    goToOnboardingPix
+                                )
+                                findNavController().navigate(
+                                    direction
+                                )
+                            }
+                            else -> {
+                                Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
                 })

@@ -74,9 +74,9 @@
     <string name="Pix">Pix</string>
     <string name="saldo_gringotts">Saldo Gringotts: </string>
     <string name="ocultar">Ocultar</string>
-    <string name="default_account_statement_value">0,00</string>
+    <string name="default_account_statement_value">&#xA0;0,00</string>
     <string name="email_instruction">Insira o valor da transferência</string>
-    <string name="transferencias_pix">Cliente Gringotts tem transferências Pix gratuitas e ilimitadas.</string>
+    <string name="transferencias_pix">Clientes Gringotts tem transferências Pix gratuitas!</string>
     <string name="chave_destinario">Escolher a chave do destinatário</string>
     <string name="e_mail">E-mail</string>
     <string name="celular">Celular</string>
@@ -116,7 +116,7 @@
     <string name="txt_when">Quando</string>
     <string name="txt_example_date">21/07/2021</string>
     <string name="txt_symbol">R$</string>
-    <string name="visualizar">Visualizar</string>
+    <string name="mostrar">Mostrar</string>
     <string name="FunctionNotImplemented">Função não implementada</string>
     <string name="insira_a_descri_o_opcional">Insira a descrição (opcional)</string>
     <string name="pix_date_picker_title">Agende a Transfêrencia</string>

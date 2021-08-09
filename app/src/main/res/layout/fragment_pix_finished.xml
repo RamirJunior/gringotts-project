@@ -34,7 +34,7 @@
                 android:id="@+id/cardview_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/screen_margin"
                 app:layout_constraintBottom_toTopOf="@+id/options_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +54,8 @@
                     android:id="@+id/pix_finished_success_message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="36dp"
+
                     android:gravity="center_horizontal"
                     android:text="@string/transferencia_pix_realizada_com_sucesso"
                     android:textColor="@color/grayHigh"
@@ -70,9 +69,9 @@
                     android:id="@+id/pix_finished_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
+                    android:layout_marginStart="@dimen/screen_margin_start"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="14dp"
+                    android:layout_marginEnd="@dimen/screen_margin_end"
                     android:text="@string/txt_string_date"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +82,7 @@
                     android:id="@+id/divider_bottom_fisnished_date"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:background="@color/grayBack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -93,57 +92,67 @@
                     android:id="@+id/value_transfer_top_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:layout_marginEnd="@dimen/screen_margin_end"
                     android:text="@string/valor_transferencia"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_bottom_fisnished_date" />
 
-                <TextView
-                    android:id="@+id/pix_currency"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pix_currency_container"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/rs"
-                    android:textColor="@color/gold"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/pix_transfer_currency"
-                    app:layout_constraintTop_toTopOf="@+id/pix_transfer_currency" />
-
-                <TextView
-                    android:id="@+id/pix_transfer_currency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/gold"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/value_transfer_top_text"
-                    tools:text="300,20" />
+                    app:layout_constraintTop_toBottomOf="@id/value_transfer_top_text"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/pix_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/rs"
+                        android:textColor="@color/gold"
+                        android:textSize="36sp"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/pix_transfer_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:textColor="@color/gold"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/pix_currency"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="300,20" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/pix_finished_receiver_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:text="@string/para"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pix_transfer_currency" />
+                    app:layout_constraintTop_toBottomOf="@id/pix_currency_container" />
 
                 <TextView
                     android:id="@+id/pix_finished_receiver_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:layout_marginBottom="@dimen/screen_margin"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -151,27 +160,37 @@
                     app:layout_constraintTop_toBottomOf="@+id/pix_finished_receiver_text"
                     tools:text="Ramir Junior Sobrenome Outro" />
 
-                <TextView
-                    android:id="@+id/pix_finished_cpf"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_pix_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/txt_pix"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/pix_finished_email_value"
-                    app:layout_constraintTop_toTopOf="@+id/pix_finished_email_value" />
-
-                <TextView
-                    android:id="@+id/pix_finished_email_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/txt_string_pix"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pix_finished_receiver_name" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pix_finished_receiver_name">
+
+                    <TextView
+                        android:id="@+id/pix_finished_cpf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/txt_pix"
+                        android:textSize="18sp"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/pix_finished_email_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:text="@string/txt_string_pix"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/pix_finished_cpf"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <ImageView
                     android:id="@+id/pix_finished_receiver_account"
@@ -187,13 +206,13 @@
                     android:id="@+id/pix_finished_institution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:text="PagBank"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pix_finished_email_value" />
+                    app:layout_constraintTop_toBottomOf="@+id/container_pix_email" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,9 +228,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="@dimen/screen_margin_start"
+                    android:layout_marginEnd="@dimen/screen_margin_end"
+                    android:layout_marginBottom="@dimen/screen_margin"
                     android:background="@color/gold"
                     app:layout_constraintBottom_toBottomOf="parent">
 
@@ -219,7 +238,7 @@
                         android:id="@+id/options_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
+                        android:layout_margin="@dimen/screen_margin"
                         android:text="@string/o_que_voc_deseja_fazer_agora"
                         android:textColor="@color/white"
                         android:textSize="16sp"
@@ -233,7 +252,7 @@
                         android:id="@+id/checking_copy_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/screen_margin"
                         android:background="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -259,7 +278,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginStart="@dimen/screen_margin_start"
                                 android:text="@string/ver_comprovante"
                                 android:textSize="16sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -270,7 +289,6 @@
                                 android:id="@+id/imageButton1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
                                 android:background="@color/trans"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -294,8 +312,8 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14dp">
+                            android:layout_marginStart="@dimen/screen_margin_start"
+                            android:layout_marginEnd="@dimen/screen_margin_end">
 
                             <ImageView
                                 android:id="@+id/other_transfer"
@@ -311,7 +329,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginStart="@dimen/screen_margin_start"
                                 android:text="@string/fazer_outra_transferencia"
                                 android:textSize="16sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -322,7 +340,6 @@
                                 android:id="@+id/imageButton_other_transfer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
                                 android:background="@color/trans"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -345,8 +362,8 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14dp">
+                            android:layout_marginStart="@dimen/screen_margin_start"
+                            android:layout_marginEnd="@dimen/screen_margin_end">
 
                             <ImageView
                                 android:id="@+id/go_to_home_icon"
@@ -362,7 +379,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginStart="@dimen/screen_margin_start"
                                 android:text="@string/ir_para_o_inicio"
                                 android:textSize="16sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -373,7 +390,6 @@
                                 android:id="@+id/imageButton_go_to_home"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
                                 android:background="@color/trans"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"

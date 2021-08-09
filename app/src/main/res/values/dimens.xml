@@ -6,4 +6,7 @@
     <dimen name="screen_margin">16dp</dimen>
 
     <dimen name="view_margin_between">8dp</dimen>
+    <dimen name="remember_me_margin">16dp</dimen>
+    <dimen name="forgot_password_margin">32dp</dimen>
+
 </resources>

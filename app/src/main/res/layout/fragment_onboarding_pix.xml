@@ -209,9 +209,10 @@
 
                 <Button
                     android:id="@+id/pix_onboarding_continue"
-                    android:layout_width="200dp"
-                    android:layout_height="52dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/golden_rounded_corner"
                     android:text="@string/continuar"

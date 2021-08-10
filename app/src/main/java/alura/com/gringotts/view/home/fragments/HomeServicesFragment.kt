@@ -32,15 +32,15 @@ class HomeServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireArguments().getInt("position")
+        requireArguments().getInt(POSITION_KEY)
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.recyclerView.adapter =
             FuncionalityListAdapter(
-                getItensByPosition(requireArguments().getInt("position")),
+                getItensByPosition(requireArguments().getInt(POSITION_KEY)),
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
-                        when (getItensByPosition(requireArguments().getInt("position"))[position].title) {
-                            "Pix" -> {
+                        when (getItensByPosition(requireArguments().getInt(POSITION_KEY))[position].title) {
+                            PIX_NAME -> {
                                 val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
                                     goToOnboardingPix
                                 )
@@ -49,7 +49,7 @@ class HomeServicesFragment : Fragment() {
                                 )
                             }
                             else -> {
-                                Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, NOT_IMPLEMENTED_SCREEN, Toast.LENGTH_LONG).show()
                             }
                         }
                     }
@@ -106,5 +106,10 @@ class HomeServicesFragment : Fragment() {
             FuncionalityItem(getString(R.string.Depositar), R.drawable.ic_adicionar_dinheiro),
             FuncionalityItem(getString(R.string.Pix), R.drawable.logo_pix_final)
         )
+    }
+    companion object{
+        private const val PIX_NAME = "Pix"
+        private const val POSITION_KEY = "position"
+        private const val NOT_IMPLEMENTED_SCREEN = "Tela não implementada"
     }
 }

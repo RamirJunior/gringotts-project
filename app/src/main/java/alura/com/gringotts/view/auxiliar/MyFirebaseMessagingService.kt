@@ -16,9 +16,8 @@ import kotlin.random.Random
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        val title = remoteMessage.notification?.title
-        val body = remoteMessage.notification?.body
-        notificatioReceived(applicationContext, title, body)
+        remoteMessage.notification?.let {
+            notificatioReceived(applicationContext, it.title, it.body) }
     }
 
     override fun onNewToken(remoteMessage: String) {
@@ -29,7 +28,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val notificationChannel: NotificationChannel
         val builder: NotificationCompat.Builder
-        val channelId = "alura.com.gringotts"
+        val channelId = TXT_CHANNEL
         val notificationManager: NotificationManager = applicationContext
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val id = Random.nextInt(1, 100)
@@ -47,11 +46,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setStyle(
-                    NotificationCompat.BigTextStyle()
-                        .bigText(message)
-                        .setSummaryText("Notificação")
-                )
+                .setStyle(NotificationCompat.BigTextStyle()
+                    .bigText(message)
+                    .setSummaryText(TXT_MESSAGE))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
         } else {
@@ -64,6 +61,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentIntent(pendingIntent)
         }
         notificationManager.notify(id, builder.build())
+    }
+
+    companion object {
+        private const val TXT_CHANNEL = "Pix"
+        private const val TXT_MESSAGE = "Mensagem Teste"
     }
 
 }

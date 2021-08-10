@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:gravity="start"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

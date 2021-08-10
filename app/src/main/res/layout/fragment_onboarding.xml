@@ -67,12 +67,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/already_registred_bottom"
                 android:text="@string/txt_SouCliente"
-                android:textColorLink="@color/black"
                 android:textColor="@color/grayMiddle"
+                android:textColorLink="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

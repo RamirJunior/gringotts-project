@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
             .setNegativeButtonText("Cancelar")
             .build()
 
-        loginViewModel.digitalSwitch.observe(viewLifecycleOwner){
+        loginViewModel.digitalSwitch.observe(viewLifecycleOwner) {
             biometricPrompt.authenticate(promptInfo)
         }
 

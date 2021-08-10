@@ -74,7 +74,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun switchChanged(value: Boolean) {
         _rememberSwitch.postValue(value)
-        if(value && currentPassword != "" && currentUsername != "" && isPasswordValid() && emailValidation())
+        if (value && currentPassword != "" && currentUsername != "" && isPasswordValid() && emailValidation())
             _digitalSwitch.postValue(Unit)
     }
 

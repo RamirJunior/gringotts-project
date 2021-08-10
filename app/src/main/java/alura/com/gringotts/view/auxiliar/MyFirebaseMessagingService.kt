@@ -47,9 +47,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setStyle(NotificationCompat.BigTextStyle()
-                    .bigText(message)
-                    .setSummaryText("Notificação"))
+                .setStyle(
+                    NotificationCompat.BigTextStyle()
+                        .bigText(message)
+                        .setSummaryText("Notificação")
+                )
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
         } else {

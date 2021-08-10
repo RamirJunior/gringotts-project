@@ -104,23 +104,23 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/pix_currency_container"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/value_transfer_top_text"
-                    android:layout_height="wrap_content">
+                    app:layout_constraintTop_toBottomOf="@id/value_transfer_top_text">
 
                     <TextView
                         android:id="@+id/pix_currency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
                         android:layout_marginEnd="4dp"
                         android:text="@string/rs"
                         android:textColor="@color/gold"
                         android:textSize="36sp"
-                        android:layout_marginTop="@dimen/screen_margin"
                         android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/pix_transfer_currency"
@@ -164,18 +164,18 @@
                     android:id="@+id/container_pix_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/pix_finished_receiver_name">
 
                     <TextView
                         android:id="@+id/pix_finished_cpf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
                         android:layout_marginEnd="4dp"
                         android:text="@string/txt_pix"
                         android:textSize="18sp"
-                        android:layout_marginTop="@dimen/screen_margin"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

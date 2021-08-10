@@ -20,9 +20,9 @@ import java.util.concurrent.Executor
 
 class LoginFragment : Fragment() {
 
-    lateinit var executor: Executor
-    lateinit var biometricPrompt: BiometricPrompt
-    lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var executor: Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     private val loginViewModel by viewModel<LoginViewModel>()
     private var _binding: FragmentLoginBinding? = null
@@ -40,37 +40,25 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.loginUsername.setText(loginViewModel.getUsername())
+        binding.loginPassword.setText(loginViewModel.getPassword())
+        binding.loginRemember.isChecked = loginViewModel.rememberSwitch.value == true
+
         executor = ContextCompat.getMainExecutor(context)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
-
-                override fun onAuthenticationError(
-                    errorCode: Int,
-                    errString: CharSequence
-                ) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(
-                        context,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT
-                    )
-                        .show()
-                }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult
                 ) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(
-                        context,
-                        "Authentication succeeded!", Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    loginViewModel.onLoginButtonClicked()
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
                     Toast.makeText(
-                        context, "Authentication failed",
+                        context, "Autenticação falhada!",
                         Toast.LENGTH_SHORT
                     )
                         .show()
@@ -78,20 +66,14 @@ class LoginFragment : Fragment() {
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric login for my app")
-            .setSubtitle("Log in using your biometric credential")
-            .setNegativeButtonText("Use account password")
+            .setTitle("Autenticação biométrica")
+            .setDescription("Utilize o leitor de impressões digitais do seu dispositivo")
+            .setNegativeButtonText("Cancelar")
             .build()
 
-        val biometricLoginButton =
-            binding.loginLogin
-        biometricLoginButton.setOnClickListener {
+        loginViewModel.digitalSwitch.observe(viewLifecycleOwner){
             biometricPrompt.authenticate(promptInfo)
         }
-
-        binding.loginUsername.setText(loginViewModel.getUsername())
-        binding.loginPassword.setText(loginViewModel.getPassword())
-        binding.loginRemember.isChecked = loginViewModel.rememberSwitch.value == true
 
         binding.loginUsername.addTextChangedListener {
             loginViewModel.setUsername(it.toString())
@@ -122,8 +104,8 @@ class LoginFragment : Fragment() {
 
         loginViewModel.usernameError.observe(viewLifecycleOwner) {
             binding.loginUsernameLayout.error = it
-
         }
+
         loginViewModel.passwordError.observe(viewLifecycleOwner) {
             binding.loginInputLayout.error = it
         }
@@ -151,6 +133,7 @@ class LoginFragment : Fragment() {
             Toast.makeText(context, getString(R.string.tela_nao_implementada), Toast.LENGTH_LONG)
                 .show()
         }
+
     }
 
     override fun onDestroyView() {

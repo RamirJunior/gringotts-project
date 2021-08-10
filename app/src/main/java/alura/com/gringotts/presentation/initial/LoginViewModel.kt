@@ -5,6 +5,7 @@ import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.presentation.auxiliar.InputValidationHelper.isEmailValid
+import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     val usernameError: LiveData<String?> = _usernameError
     private val _passwordError = MutableLiveData<String?>()
     val passwordError: LiveData<String?> = _passwordError
+    private val _digitalSwitch = SingleLiveEvent<Unit>()
+    val digitalSwitch: LiveData<Unit> = _digitalSwitch
 
     init {
         val user = loginRepository.getUser()
@@ -71,6 +74,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun switchChanged(value: Boolean) {
         _rememberSwitch.postValue(value)
+        if(value && currentPassword != "" && currentUsername != "" && isPasswordValid() && emailValidation())
+            _digitalSwitch.postValue(Unit)
     }
 
     fun setUsername(value: String) {

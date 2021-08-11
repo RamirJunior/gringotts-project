@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper
 import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
@@ -50,9 +51,7 @@ class PixValueViewModel(
 
     fun onValueButtonClicked(newValue: String) {
         if (newValue.isEmpty()) return
-        val cleanString = newValue.replace("[^0-9]".toRegex(), "")
-        pixValue = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR)
-            .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR).toDouble()
+        pixValue = NumberFormatHelper.formatStringToDouble(newValue)
         if (pixValue <= balanceValue && pixValue > 0) {
             pix.pixValue = pixValue
             _goToConfirmationPixFragment.postValue(Unit)

@@ -3,11 +3,17 @@ package alura.com.gringotts.view.initial
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.initial.LoginViewModel
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -69,10 +75,17 @@ class LoginFragment : Fragment() {
             .setTitle("Autenticação biométrica")
             .setDescription("Utilize o leitor de impressões digitais do seu dispositivo")
             .setNegativeButtonText("Cancelar")
+            .setAllowedAuthenticators(BIOMETRIC_STRONG)
             .build()
 
         loginViewModel.digitalSwitch.observe(viewLifecycleOwner) {
             biometricPrompt.authenticate(promptInfo)
+        }
+
+        val biometricManager = BiometricManager.from(requireContext())
+        when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
+                binding.loginRemember.text = "Lembrar Digital"
         }
 
         binding.loginUsername.addTextChangedListener {

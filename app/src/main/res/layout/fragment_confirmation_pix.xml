@@ -363,12 +363,12 @@
                 android:background="@drawable/golden_rounded_corner"
                 android:text="@string/confirmar_transferencia"
                 android:textAllCaps="false"
-                app:layout_constraintBottom_toTopOf="@+id/textView8"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCancelar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textViewCancelar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/screen_margin"

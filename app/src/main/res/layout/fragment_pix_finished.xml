@@ -113,7 +113,7 @@
                         android:id="@+id/pix_currency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/view_margin_between"
                         android:layout_marginEnd="4dp"
                         android:text="@string/rs"
                         android:textColor="@color/gold"
@@ -126,7 +126,7 @@
                         android:id="@+id/pix_transfer_currency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/view_margin_between"
                         android:textColor="@color/gold"
                         android:textSize="36sp"
                         android:textStyle="bold"
@@ -151,7 +151,7 @@
                     android:id="@+id/pix_finished_receiver_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/view_margin_between"
                     android:layout_marginBottom="@dimen/screen_margin"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -172,10 +172,10 @@
                         android:id="@+id/pix_finished_cpf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/view_margin_between"
                         android:layout_marginEnd="4dp"
                         android:text="@string/txt_pix"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -183,12 +183,13 @@
                         android:id="@+id/pix_finished_email_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/screen_margin"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="@dimen/view_margin_between"
                         android:text="@string/txt_string_pix"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@id/pix_finished_cpf"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/pix_finished_cpf" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -206,7 +207,7 @@
                     android:id="@+id/pix_finished_institution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/view_margin_between"
                     android:text="PagBank"
                     android:textSize="20sp"
                     android:textStyle="bold"

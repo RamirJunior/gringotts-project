@@ -125,5 +125,16 @@
     <string name="tela_nao_implementada">Tela não implementada</string>
     <string name="txt_statement_title">Transações de Extrato</string>
     <string name="txt_empty_list_img">Sem dados para exibir</string>
-    <string name="txt_no_data_message">Você não possui transações neste período</string>
+    <string name="txt_no_data_message">Sem transações para exibir neste período.</string>
+    <string name="connection_error">Verifique sua conexão de internet.</string>
+    <string name="transaction_validation_error">Erro desconhecido ao validar a transação !</string>
+    <string name="transaction_confirmation_error">Erro desconhecido ao confirmar a transação !</string>
+    <string name="invalid_email_error">Insira um e-mail válido.</string>
+    <string name="get_balance_error">Erro desconheido ao recuperar o saldo.</string>
+    <string name="transfer_value_balance_error">Valor da transferência maior que saldo.</string>
+    <string name="minimal_transfer_value_error">Transferência deve ser de pelo menos 0,01.</string>
+    <string name="email_not_found_error">e-mail não encontrado.</string>
+    <string name="incorrect_password_error">Senha incorreta.</string>
+    <string name="invalid_password_error">A senha deve conter pelo menos 6 letras.</string>
+    <string name="unknown_error">Erro desconhecido.</string>
 </resources>

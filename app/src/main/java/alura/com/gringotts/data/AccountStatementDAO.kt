@@ -13,9 +13,9 @@ interface AccountStatementDAO {
     fun getAllTransactions(): List<Transaction>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTransactions(transaction: List<Transaction>)
+    fun insertTransactions(transaction: List<Transaction>)
 
     @Query("DELETE FROM [transaction]")
-    suspend fun deleteAllTransactions()
+    fun deleteAllTransactions()
 
 }

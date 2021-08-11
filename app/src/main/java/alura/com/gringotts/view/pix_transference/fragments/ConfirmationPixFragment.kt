@@ -61,7 +61,7 @@ class ConfirmationPixFragment : Fragment() {
             confirmationPixViewModel.confirmPix()
         }
 
-        binding.textView8.setOnClickListener {
+        binding.textViewCancelar.setOnClickListener {
             activity?.finish()
         }
 

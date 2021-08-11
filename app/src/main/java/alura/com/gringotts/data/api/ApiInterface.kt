@@ -26,8 +26,8 @@ interface ApiInterface {
 
     @GET("extract")
     suspend fun transactions(
-        @Query("start") initialDate: String,
         @Query("end") finalDate: String,
+        @Query("start") initialDate: String,
     ): Response<List<Transaction>>
 
     @GET("home")
@@ -48,11 +48,11 @@ interface ApiInterface {
             "https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/"
 
         fun create(sessionManager: SessionManager): ApiInterface {
-            val logger = HttpLoggingInterceptor()
-            logger.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient().newBuilder()
                 .addInterceptor(HeaderInterceptor(sessionManager))
-                .addInterceptor(logger)
+                .addInterceptor(HttpLoggingInterceptor().apply {
+                    this.level = HttpLoggingInterceptor.Level.BODY
+                })
                 .build()
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)

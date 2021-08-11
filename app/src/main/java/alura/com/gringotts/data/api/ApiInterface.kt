@@ -26,8 +26,8 @@ interface ApiInterface {
 
     @GET("extract")
     suspend fun transactions(
-        @Query("start") initialDate: String,
         @Query("end") finalDate: String,
+        @Query("start") initialDate: String,
     ): Response<List<Transaction>>
 
     @GET("home")

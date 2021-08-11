@@ -17,6 +17,7 @@ abstract class AccountStatementDatabase : RoomDatabase() {
                 STATEMENT_DB_NAME
             )
                 .build()
+
         private const val STATEMENT_DB_NAME = "account_statement_database"
     }
 }

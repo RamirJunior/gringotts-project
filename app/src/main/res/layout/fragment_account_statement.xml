@@ -97,7 +97,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
     </Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -125,12 +124,12 @@
             android:id="@+id/icon_empty_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/txt_empty_list_img"
             android:src="@drawable/img_no_finance"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/txt_empty_list_img" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="200dp"

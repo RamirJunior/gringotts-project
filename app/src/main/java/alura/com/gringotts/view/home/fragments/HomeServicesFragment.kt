@@ -41,15 +41,17 @@ class HomeServicesFragment : Fragment() {
                     override fun onSelect(position: Int) {
                         when (getItensByPosition(requireArguments().getInt(POSITION_KEY))[position].title) {
                             PIX_NAME -> {
-                                val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
-                                    goToOnboardingPix
-                                )
+                                val direction =
+                                    HomeFragmentDirections.actionHomeFragmentToPixActivity(
+                                        goToOnboardingPix
+                                    )
                                 findNavController().navigate(
                                     direction
                                 )
                             }
                             else -> {
-                                Toast.makeText(context, NOT_IMPLEMENTED_SCREEN, Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, NOT_IMPLEMENTED_SCREEN, Toast.LENGTH_LONG)
+                                    .show()
                             }
                         }
                     }
@@ -107,7 +109,8 @@ class HomeServicesFragment : Fragment() {
             FuncionalityItem(getString(R.string.Pix), R.drawable.logo_pix_final)
         )
     }
-    companion object{
+
+    companion object {
         private const val PIX_NAME = "Pix"
         private const val POSITION_KEY = "position"
         private const val NOT_IMPLEMENTED_SCREEN = "Tela não implementada"

@@ -17,7 +17,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         remoteMessage.notification?.let {
-            notificatioReceived(applicationContext, it.title, it.body) }
+            notificatioReceived(applicationContext, it.title, it.body)
+        }
     }
 
     override fun onNewToken(remoteMessage: String) {
@@ -46,9 +47,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setStyle(NotificationCompat.BigTextStyle()
-                    .bigText(message)
-                    .setSummaryText(TXT_MESSAGE))
+                .setStyle(
+                    NotificationCompat.BigTextStyle()
+                        .bigText(message)
+                        .setSummaryText(TXT_MESSAGE)
+                )
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
         } else {

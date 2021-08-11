@@ -50,7 +50,7 @@ interface ApiInterface {
         fun create(sessionManager: SessionManager): ApiInterface {
             val client = OkHttpClient().newBuilder()
                 .addInterceptor(HeaderInterceptor(sessionManager))
-                .addInterceptor(HttpLoggingInterceptor().apply{
+                .addInterceptor(HttpLoggingInterceptor().apply {
                     this.level = HttpLoggingInterceptor.Level.BODY
                 })
                 .build()

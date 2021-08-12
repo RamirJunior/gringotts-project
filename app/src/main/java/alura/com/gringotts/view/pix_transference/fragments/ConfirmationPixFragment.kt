@@ -75,8 +75,7 @@ class ConfirmationPixFragment : Fragment() {
 
         binding.textviewDatePicker.setOnClickListener {
             val constraintsBuilder =
-                CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
+                CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now())
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setCalendarConstraints(constraintsBuilder.build())
                 .setTitleText(getString(R.string.pix_date_picker_title))
@@ -103,7 +102,6 @@ class ConfirmationPixFragment : Fragment() {
                     .show()
             }
         }
-
     }
 
     override fun onDestroyView() {

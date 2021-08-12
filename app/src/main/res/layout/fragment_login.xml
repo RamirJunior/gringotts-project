@@ -91,11 +91,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/screen_margin_start"
             android:layout_marginEnd="@dimen/screen_margin_end"
-            android:layout_marginBottom="@dimen/view_margin_between"
+
             android:background="@drawable/golden_rounded_corner"
             android:enabled="true"
             android:text="@string/action_sign_in"
             app:layout_constraintBottom_toTopOf="@+id/login_register"
+            android:layout_marginBottom="@dimen/screen_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -105,11 +106,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/screen_margin_start"
             android:layout_marginEnd="@dimen/screen_margin_end"
-            android:layout_marginBottom="@dimen/screen_margin"
+
             android:background="@drawable/golden_rounded_corner"
             android:enabled="true"
             android:text="@string/registrar"
             app:layout_constraintBottom_toTopOf="@+id/login_forgot"
+            android:layout_marginBottom="@dimen/screen_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

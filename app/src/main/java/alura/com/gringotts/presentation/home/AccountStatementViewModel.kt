@@ -49,7 +49,7 @@ class AccountStatementViewModel(
             try {
                 val response =
                     accountStatementRepository.getAccountStatement(initialDate, finalDate)
-                transactionList = response.reversed()
+                transactionList = response
                 mapToTransactionsSegmentedList(transactionList)
             } catch (e: Exception) {
                 if (e is UnknownHostException)

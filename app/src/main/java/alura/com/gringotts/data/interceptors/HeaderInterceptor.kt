@@ -10,7 +10,7 @@ class HeaderInterceptor(private val sessionManager: SessionManager) : Intercepto
             if (sessionManager.getTokens() != null) {
                 request()
                     .newBuilder()
-                    .addHeader("token", sessionManager.getTokens()!!.tokenAuthentication)
+                    .addHeader(TOKEN_HEADER, sessionManager.getTokens()!!.tokenAuthentication)
                     .build()
             } else {
                 request().newBuilder().build()
@@ -18,4 +18,7 @@ class HeaderInterceptor(private val sessionManager: SessionManager) : Intercepto
         )
     }
 
+    companion object{
+        private const val TOKEN_HEADER = "token"
+    }
 }

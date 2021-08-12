@@ -63,7 +63,7 @@ class ConfirmationPixViewModel(
                         TYPE_EMAIL,
                         pix.message,
                         pix.pixValue,
-                        pix.date
+                        _pixDate.value!!
                     )
                 )
                 pixToken = response.pixToken

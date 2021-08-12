@@ -10,7 +10,8 @@ object NumberFormatHelper {
         numberFormatter.maximumFractionDigits = 2
         return numberFormatter.format(value)
     }
-    fun formatStringToDouble(value: String) : Double{
+
+    fun formatStringToDouble(value: String): Double {
         return BigDecimal(value.replace("[^0-9]".toRegex(), ""))
             .setScale(2, BigDecimal.ROUND_FLOOR)
             .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR).toDouble()

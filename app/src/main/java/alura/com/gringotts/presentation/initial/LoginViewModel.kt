@@ -6,9 +6,6 @@ import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.presentation.auxiliar.InputValidationHelper.isEmailValid
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
-import android.util.Log
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

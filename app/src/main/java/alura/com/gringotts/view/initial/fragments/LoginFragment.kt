@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.initial
+package alura.com.gringotts.view.initial.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding

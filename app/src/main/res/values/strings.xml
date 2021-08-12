@@ -143,4 +143,5 @@
     <string name="AtenticaçãoBiométrica">Autenticação biométrica</string>
     <string name="AutenticacaoFalhada">Autenticação falhada!</string>
     <string name="Ok">Ok</string>
+    <string name="TelaNaoImplementada">Tela não implementada</string>
 </resources>

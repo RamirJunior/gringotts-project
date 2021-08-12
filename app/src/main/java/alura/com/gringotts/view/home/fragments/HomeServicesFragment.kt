@@ -4,7 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.FuncionalityItem
 import alura.com.gringotts.databinding.HomeServicesLayoutBinding
 import alura.com.gringotts.presentation.home.HomeServicesViewModel
-import alura.com.gringotts.view.adapters.FuncionalityListAdapter
+import alura.com.gringotts.view.home.adapters.FuncionalityListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

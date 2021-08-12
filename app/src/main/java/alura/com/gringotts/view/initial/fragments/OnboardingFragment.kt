@@ -1,4 +1,4 @@
-package alura.com.gringotts.view.initial
+package alura.com.gringotts.view.initial.fragments
 
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentOnboardingBinding
@@ -31,7 +31,8 @@ class OnboardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonCriarConta.setOnClickListener {
-            Toast.makeText(context, "Tela não implementada", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.TelaNaoImplementada), Toast.LENGTH_LONG)
+                .show()
         }
 
         binding.textViewJaTenhoCadastro.setOnClickListener {

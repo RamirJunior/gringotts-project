@@ -137,4 +137,10 @@
     <string name="incorrect_password_error">Senha incorreta.</string>
     <string name="invalid_password_error">A senha deve conter pelo menos 6 letras.</string>
     <string name="unknown_error">Erro desconhecido.</string>
+    <string name="LembrarDigital">Lembrar Digital</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="UtilizeOLeitorDeImpressoesDigitais">Utilize o leitor de impressões digitais do seu dispositivo</string>
+    <string name="AtenticaçãoBiométrica">Autenticação biométrica</string>
+    <string name="AutenticacaoFalhada">Autenticação falhada!</string>
+    <string name="Ok">Ok</string>
 </resources>

@@ -3,6 +3,7 @@ package alura.com.gringotts.view.initial
 import alura.com.gringotts.R
 import alura.com.gringotts.databinding.FragmentLoginBinding
 import alura.com.gringotts.presentation.initial.LoginViewModel
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,7 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SwitchIntDef")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,7 +63,7 @@ class LoginFragment : Fragment() {
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
                     Toast.makeText(
-                        context, "Autenticação falhada!",
+                        context, getString(R.string.AutenticacaoFalhada),
                         Toast.LENGTH_SHORT
                     )
                         .show()
@@ -69,9 +71,9 @@ class LoginFragment : Fragment() {
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Autenticação biométrica")
-            .setDescription("Utilize o leitor de impressões digitais do seu dispositivo")
-            .setNegativeButtonText("Cancelar")
+            .setTitle(getString(R.string.AtenticaçãoBiométrica))
+            .setDescription(getString(R.string.UtilizeOLeitorDeImpressoesDigitais))
+            .setNegativeButtonText(getString(R.string.Cancelar))
             .setAllowedAuthenticators(BIOMETRIC_STRONG)
             .build()
 
@@ -82,7 +84,7 @@ class LoginFragment : Fragment() {
         val biometricManager = BiometricManager.from(requireContext())
         when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
             BiometricManager.BIOMETRIC_SUCCESS ->
-                binding.loginRemember.text = "Lembrar Digital"
+                binding.loginRemember.text = getString(R.string.LembrarDigital)
         }
 
         binding.loginUsername.addTextChangedListener {
@@ -106,7 +108,7 @@ class LoginFragment : Fragment() {
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(it)
                     .setPositiveButton(
-                        "Ok"
+                        getString(R.string.Ok)
                     ) { _, _ -> }
                     .show()
             }

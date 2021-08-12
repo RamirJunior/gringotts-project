@@ -21,8 +21,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-    override fun onNewToken(remoteMessage: String) {
-        super.onNewToken(remoteMessage)
+    override fun onNewToken(p0: String) {
+        super.onNewToken(p0)
     }
 
     fun notificatioReceived(context: Context, title: String?, message: String?) {

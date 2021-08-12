@@ -2,6 +2,7 @@ package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.data.models.home.Balance
 import alura.com.gringotts.data.models.home.Benefit
+import alura.com.gringotts.data.models.home.TokenResponse
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import androidx.lifecycle.LiveData
@@ -56,6 +57,12 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private fun setBalanceState(isBalanceVisible: Boolean) {
         _hideBalanceAndReceivable.postValue(!isBalanceVisible)
+    }
+
+    fun getToken(tokenResponse: TokenResponse) {
+        viewModelScope.launch {
+            homeRepository.sendToken(tokenResponse)
+        }
     }
 
 }

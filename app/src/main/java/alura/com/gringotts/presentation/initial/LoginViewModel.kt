@@ -107,7 +107,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun emailValidation(): Boolean {
         val isEmailValid = isEmailValid(currentUsername)
         if (!isEmailValid) {
-            _usernameError.postValue("e-mail invalido")
+            _usernameError.postValue("E-mail inválido")
         } else {
             _usernameError.postValue(null)
         }

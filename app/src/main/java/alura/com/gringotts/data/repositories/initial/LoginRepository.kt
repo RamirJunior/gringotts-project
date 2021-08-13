@@ -1,7 +1,6 @@
 package alura.com.gringotts.data.repositories.initial
 
 import alura.com.gringotts.data.api.ApiInterface
-import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
@@ -34,10 +33,7 @@ class LoginRepository(
                 throw NotFoundEmailException("e-mail não encontrado")
             }
             INCOMPATIBLE_EMAIL_PASSWORD -> {
-                throw NotFoundEmailException("e-mail não encontrado")
-            }
-            INCORRECT_PASSWORD -> {
-                throw IncorrectPasswordException("Senha incorreta")
+                throw NotFoundEmailException("e-mail ou senha invalida")
             }
         }
     }
@@ -64,7 +60,6 @@ class LoginRepository(
 
     companion object {
         private const val NOT_FOUND_EMAIL = 422
-        private const val INCORRECT_PASSWORD = 401
         private const val INCOMPATIBLE_EMAIL_PASSWORD = 404
     }
 }

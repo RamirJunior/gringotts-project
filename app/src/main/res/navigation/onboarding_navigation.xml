@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboarding_navigation"
+    app:startDestination="@id/onboardingFragment2">
+
+    <fragment
+        android:id="@+id/onboardingFragment2"
+        android:name="alura.com.gringotts.view.initial.fragments.OnboardingFragment"
+        android:label="OnboardingFragment">
+        <action
+            android:id="@+id/action_onboardingFragment2_to_login_navigation"
+            app:destination="@id/login_navigation"
+            app:popUpTo="@id/onboardingFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <include app:graph="@navigation/login_navigation" />
+
+</navigation>

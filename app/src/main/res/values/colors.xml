@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gold">#EFAF2D</color>
+    <color name="grayLow">#EDEDED</color>
+    <color name="grayHigh">#3C3C3C</color>
+    <color name="orange">#F7931E</color>
+    <color name="grayMiddle">#565656</color>
+    <color name="orangeHigh">#FF9D00</color>
+    <color name="trans">#00000000</color>
+
+    <!-- Gringotts Palette Colors -->
+    <color name="orangeLogo">#F7931E</color>
+    <color name="orangeMain">#FF9D00</color>
+    <color name="grayBack">#E0E0E0</color>
+    <color name="grayFront">#F2F2F2</color>
+    <color name="lowBlack">#565656</color>
+
+    <!-- Colors for Statement -->
+    <color name="redExpense">#F84343</color>
+    <color name="greenExpense">#458A3D</color>
+    <color name="grayExpense">#9E9E9E</color>
 </resources>

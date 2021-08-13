@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pix_navigation"
+    app:startDestination="@id/pixTypeChoiceFragment">
+
+    <fragment
+        android:id="@+id/onboardingPixFragment2"
+        android:name="alura.com.gringotts.view.pix.fragments.OnboardingPixFragment"
+        android:label="OnboardingPixFragment"
+        tools:layout="@layout/fragment_onboarding_pix">
+        <action
+            android:id="@+id/action_onboardingPixFragment2_to_pixFragment2"
+            app:destination="@id/pixFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/onboardingPixFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFragment2"
+        android:name="alura.com.gringotts.view.pix.fragments.PixFragment"
+        android:label="PixFragment"
+        tools:layout="@layout/fragment_pix">
+        <action
+            android:id="@+id/action_pixFragment2_to_pixTypeChoiceFragment"
+            app:destination="@id/pixTypeChoiceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixTypeChoiceFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixTypeChoiceFragment"
+        android:label="PixTypeChoiceFragment"
+        tools:layout="@layout/fragment_pix_type_choice">
+        <action
+            android:id="@+id/action_pixTypeChoiceFragment_to_insertEmailPixFragment"
+            app:destination="@id/insertEmailPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertEmailPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.InsertEmailPixFragment"
+        android:label="InsertEmailPixFragment"
+        tools:layout="@layout/fragment_insert_email_pix">
+        <action
+            android:id="@+id/action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment"
+            app:destination="@id/insertOptionalDescriptionPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertOptionalDescriptionPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.InsertOptionalDescriptionPixFragment"
+        android:label="InsertOptionalDescriptionPixFragment"
+        tools:layout="@layout/fragment_insert_optional_description_pix">
+        <action
+            android:id="@+id/action_insertOptionalDescriptionPixFragment_to_pixValueFragment"
+            app:destination="@id/pixValueFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="Pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixValueFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixValueFragment"
+        android:label="PixValueFragment"
+        tools:layout="@layout/fragment_pix_value">
+        <action
+            android:id="@+id/action_pixValueFragment_to_confirmationPixFragment"
+            app:destination="@id/confirmationPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationPixFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.ConfirmationPixFragment"
+        android:label="ConfirmationPixFragment"
+        tools:layout="@layout/fragment_confirmation_pix">
+        <action
+            android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
+            app:destination="@id/pixFinishedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pixFragment2"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFinishedFragment"
+        android:name="alura.com.gringotts.view.pix_transference.fragments.PixFinishedFragment"
+        android:label="PixFinishedFragment"
+        tools:layout="@layout/fragment_pix_finished">
+        <action
+            android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
+            app:destination="@id/pixFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pixFragment2"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="pix"
+            app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
+    </fragment>
+</navigation>

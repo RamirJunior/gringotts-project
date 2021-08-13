@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayFront">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_pix_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gold"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+        app:navigationIconTint="@color/white"
+        app:title="Confirmação"
+        app:titleCentered="true"
+        app:titleTextColor="@color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_confirmation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/confiraOsDados"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/grayFront"
+                android:gravity="center"
+                android:text="@string/confira_os_dados_antes_de_continuar"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/loading_confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardview_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/screen_margin_start"
+                android:paddingTop="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin_end"
+                android:paddingBottom="@dimen/screen_margin_bottom"
+                app:layout_constraintBottom_toTopOf="@+id/continueConfirmation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
+
+                <TextView
+                    android:id="@+id/valorDaTransferencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/valor_da_transfer_ncia"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_pix_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia">
+
+                    <TextView
+                        android:id="@+id/textview_symbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:text="@string/txt_symbol"
+                        android:textAlignment="center"
+                        android:textColor="@color/gold"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textview_value"
+                        app:layout_constraintTop_toTopOf="@+id/textview_value" />
+
+                    <TextView
+                        android:id="@+id/textview_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:textAlignment="center"
+                        android:textColor="@color/gold"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/textview_symbol"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2,00" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tarifa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:gravity="center"
+                    android:text="@string/tarifa"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_pix_value"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/valor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:gravity="center"
+                    android:text="@string/valor_total_da_opera_o"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tarifa"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/grátis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/gr_tis"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/gold"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tarifa"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_total_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center"
+                    android:text="@string/txt_symbol"
+                    android:textAlignment="viewEnd"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textview_total_value"
+                    app:layout_constraintTop_toTopOf="@+id/valor"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_total_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="viewEnd"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/valor"
+                    tools:ignore="RtlCompat"
+                    tools:text="2,00" />
+
+                <View
+                    android:id="@+id/divider_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:background="@color/grayBack"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_total_value" />
+
+                <TextView
+                    android:id="@+id/destinatario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:gravity="center"
+                    android:text="@string/txt_to"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_value"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/gold"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/destinatario"
+                    tools:ignore="RtlCompat"
+                    tools:text="Junior Ribeiro Ramir" />
+
+                <TextView
+                    android:id="@+id/CPFtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/txt_email"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_username"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin_start"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/CPFtitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_username"
+                    tools:ignore="RtlCompat"
+                    tools:text="12345678910" />
+
+                <TextView
+                    android:id="@+id/Instituicao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/txt_institution"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CPFtitle"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_bank_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin_start"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/Instituicao"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_email"
+                    tools:ignore="RtlCompat"
+                    tools:text="PagBank" />
+
+                <TextView
+                    android:id="@+id/DescricaoPix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/txt_description"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Instituicao"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin_start"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/DescricaoPix"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_bank_name"
+                    tools:ignore="RtlCompat"
+                    tools:text="Isso é um teste" />
+
+                <View
+                    android:id="@+id/divider_receptor"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:background="@color/grayBack"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_description" />
+
+                <TextView
+                    android:id="@+id/quando"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:gravity="center"
+                    android:text="@string/txt_when"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_receptor"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textview_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/quando"
+                    app:layout_constraintTop_toBottomOf="@+id/quando"
+                    tools:ignore="RtlCompat"
+                    tools:text="@string/txt_example_date" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/textview_date_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/trans"
+                    android:padding="0dp"
+                    android:text="@string/agende_a_transferencia"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/gold"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueConfirmation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:layout_marginBottom="@dimen/screen_margin"
+                android:background="@drawable/golden_rounded_corner"
+                android:text="@string/confirmar_transferencia"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCancelar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/screen_margin"
+                android:layout_marginBottom="@dimen/screen_margin_bottom"
+                android:text="@string/cancelar"
+                android:textColor="@color/gold"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

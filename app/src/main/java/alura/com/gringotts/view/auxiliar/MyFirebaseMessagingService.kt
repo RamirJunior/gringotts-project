@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random
@@ -18,6 +19,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onMessageReceived(remoteMessage)
         remoteMessage.notification?.let {
             notificatioReceived(applicationContext, it.title, it.body)
+            if(it.body?.contains("pix", true) == true) {
+                val localBroadcast = LocalBroadcastManager.getInstance(applicationContext)
+                localBroadcast.sendBroadcast(Intent("PIX_RECEIVED"))
+            }
         }
     }
 

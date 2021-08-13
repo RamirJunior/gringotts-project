@@ -1,6 +1,5 @@
 package alura.com.gringotts.presentation.initial
 
-import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.repositories.initial.LoginRepository
@@ -64,7 +63,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                 when (e) {
                     is UnknownHostException -> _loginError.postValue("Sem acesso a internet")
                     is NotFoundEmailException -> _loginError.postValue(e.message)
-                    is IncorrectPasswordException -> _loginError.postValue(e.message)
                     else -> _loginError.postValue("Erro desconhecido")
                 }
             }

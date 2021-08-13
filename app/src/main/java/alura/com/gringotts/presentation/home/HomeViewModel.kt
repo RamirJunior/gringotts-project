@@ -30,6 +30,10 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private lateinit var balanceValue: Balance
 
     init {
+        getHomeData()
+    }
+
+    fun getHomeData(){
         _loading.postValue(true)
         viewModelScope.launch {
             try {

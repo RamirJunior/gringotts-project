@@ -6,6 +6,10 @@ import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.view.home.adapters.BenefitsListAdapter
 import alura.com.gringotts.view.home.adapters.HomeServicesAdapter
 import alura.com.gringotts.view.home.decoration.DotsIndicatorDecoration
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -13,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,12 +29,26 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private val onPixReceiverBroadcast = object: BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            homeViewModel.getHomeData()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val localBroadcast = LocalBroadcastManager.getInstance(requireContext())
+        localBroadcast.registerReceiver(onPixReceiverBroadcast, IntentFilter("PIX_RECEIVED"))
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding.recyclerView.addItemDecoration(DotsIndicatorDecoration())
+        PagerSnapHelper().attachToRecyclerView(binding.recyclerView)
         return binding.root
     }
 
@@ -37,8 +56,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel.benefits.observe(viewLifecycleOwner) {
             binding.recyclerView.adapter = BenefitsListAdapter(it)
-            binding.recyclerView.addItemDecoration(DotsIndicatorDecoration())
-            PagerSnapHelper().attachToRecyclerView(binding.recyclerView)
         }
 
         homeViewModel.balance.observe(viewLifecycleOwner) {
@@ -115,6 +132,12 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val localBroadcast = LocalBroadcastManager.getInstance(requireContext())
+        localBroadcast.unregisterReceiver(onPixReceiverBroadcast)
     }
 
 }

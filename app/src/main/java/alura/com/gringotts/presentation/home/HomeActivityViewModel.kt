@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class HomeActivityViewModel (
+class HomeActivityViewModel(
     private val homeActivityRepository: HomeActivityRepository
-): ViewModel()  {
+) : ViewModel() {
     fun sendFcmToken(tokenFcm: String) {
         viewModelScope.launch {
             homeActivityRepository.sendToken(tokenFcm)

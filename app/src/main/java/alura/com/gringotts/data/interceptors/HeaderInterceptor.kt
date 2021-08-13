@@ -18,7 +18,7 @@ class HeaderInterceptor(private val sessionManager: SessionManager) : Intercepto
         )
     }
 
-    companion object{
+    companion object {
         private const val TOKEN_HEADER = "token"
     }
 }

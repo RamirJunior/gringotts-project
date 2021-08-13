@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val onPixReceiverBroadcast = object: BroadcastReceiver(){
+    private val onPixReceiverBroadcast = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             homeViewModel.getHomeData()
         }

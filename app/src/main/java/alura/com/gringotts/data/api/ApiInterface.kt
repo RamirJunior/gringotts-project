@@ -2,8 +2,8 @@ package alura.com.gringotts.data.api
 
 import alura.com.gringotts.data.interceptors.HeaderInterceptor
 import alura.com.gringotts.data.models.home.HomeResponse
-import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.home.SendFcmTokenPayload
+import alura.com.gringotts.data.models.home.Transaction
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
 import alura.com.gringotts.data.models.pix_transference.PixConfirmResponse

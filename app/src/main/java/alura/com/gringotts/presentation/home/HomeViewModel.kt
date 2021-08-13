@@ -33,7 +33,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         getHomeData()
     }
 
-    fun getHomeData(){
+    fun getHomeData() {
         _loading.postValue(true)
         viewModelScope.launch {
             try {
@@ -61,7 +61,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private fun setBalanceState(isBalanceVisible: Boolean) {
         _hideBalanceAndReceivable.postValue(!isBalanceVisible)
     }
-
 
 
 }

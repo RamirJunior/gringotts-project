@@ -1,29 +1,48 @@
+import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.Transaction
-import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AccountStatementRepository(
-    private val sessionManager: SessionManager,
-    private val apiInterface: ApiInterface
+    private val apiInterface: ApiInterface,
+    db: AccountStatementDatabase
 ) {
 
-    suspend fun getAccountStatement(initialDate: String, finalDate: String): List<Transaction> {
+    private val transactionDAO = db.accountStatementDAO()
 
+    suspend fun getAccountStatement(
+        initialDate: String,
+        finalDate: String
+    ): List<Transaction> {
         return withContext(Dispatchers.IO) {
-            val token = sessionManager.getTokens()!!.tokenAuthentication
             val response = apiInterface.transactions(
                 initialDate,
-                finalDate,
-                token
+                finalDate
             )
-            if (response.isSuccessful) {
-                return@withContext response.body()!!
-            } else {
-                throw Exception("Erro desconhecido")
+
+            return@withContext when {
+                response.code() == NEW_RESPONSE -> {
+                    transactionDAO.deleteAllTransactions()
+                    transactionDAO.insertTransactions(response.body()!!)
+                    response.body()!!
+                }
+                response.code() == SAME_RESPONSE -> {
+                    transactionDAO.getAllTransactions()
+                }
+                else -> {
+                    throw Exception("Erro desconhecido")
+                }
             }
+
         }
+
+    }
+
+    companion object {
+        private const val NEW_RESPONSE = 200
+        private const val SAME_RESPONSE = 304
     }
 
 }
+

@@ -2,14 +2,14 @@ package alura.com.gringotts.presentation.pix_transference
 
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import alura.com.gringotts.presentation.auxiliar.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
-import java.text.NumberFormat
 
 class PixValueViewModel(
     private val pix: Pix,
@@ -39,12 +39,7 @@ class PixValueViewModel(
         viewModelScope.launch {
             try {
                 balanceValue = pixRepository.balanceData()
-                val numberFormatter = NumberFormat.getInstance()
-                numberFormatter.minimumFractionDigits = 2
-                numberFormatter.maximumFractionDigits = 2
-                _balance.postValue(
-                    numberFormatter.format(balanceValue)
-                )
+                _balance.postValue(formatDoubleToTwoFractionDigits(balanceValue))
                 _hideButtonValue.postValue(pixRepository.getBalancePixStateVisibility())
             } catch (e: Exception) {
                 _apiError.postValue("Sem acesso a internet")
@@ -54,9 +49,8 @@ class PixValueViewModel(
     }
 
     fun onValueButtonClicked(newValue: String) {
-        val cleanString = newValue.replace("[^0-9]".toRegex(), "")
-        pixValue = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR)
-            .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR).toDouble()
+        if (newValue.isEmpty()) return
+        pixValue = NumberFormatHelper.formatStringToDouble(newValue)
         if (pixValue <= balanceValue && pixValue > 0) {
             pix.pixValue = pixValue
             _goToConfirmationPixFragment.postValue(Unit)

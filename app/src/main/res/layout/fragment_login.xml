@@ -8,12 +8,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/imageViewLogoGringotts"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@+id/login_username_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +25,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_username_layout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginBottom="@dimen/view_margin_between"
             android:autofillHints="@string/prompt_email"
             android:hint="@string/prompt_email"
             android:selectAllOnFocus="true"
@@ -48,10 +48,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginBottom="@dimen/remember_me_margin"
             android:autofillHints="@string/prompt_password"
             android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
@@ -73,9 +73,11 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/login_remember"
-            android:layout_width="321dp"
-            android:layout_height="52dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginBottom="@dimen/remember_me_margin"
             android:text="@string/rememberPassword"
             android:textAlignment="textStart"
             android:theme="@style/SCBSwitch"
@@ -85,29 +87,31 @@
 
         <Button
             android:id="@+id/login_login"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+
             android:background="@drawable/golden_rounded_corner"
             android:enabled="true"
             android:text="@string/action_sign_in"
             app:layout_constraintBottom_toTopOf="@+id/login_register"
+            android:layout_marginBottom="@dimen/screen_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/login_register"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+
             android:background="@drawable/golden_rounded_corner"
             android:enabled="true"
             android:text="@string/registrar"
             app:layout_constraintBottom_toTopOf="@+id/login_forgot"
+            android:layout_marginBottom="@dimen/screen_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -126,17 +130,18 @@
             app:layout_constraintStart_toStartOf="@+id/login_input_layout"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login_forgot"
-            android:layout_width="179dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="52dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginBottom="@dimen/forgot_password_margin"
             android:linksClickable="true"
             android:text="@string/forgotPassword"
             android:textAlignment="center"
-            android:textColorLink="@color/black"
+            android:textColor="@color/grayMiddle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

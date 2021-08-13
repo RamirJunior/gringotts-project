@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gold">
+    android:background="@color/gold"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_onboarding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="@dimen/screen_margin_start"
+            android:layout_marginTop="@dimen/screen_margin_bottom"
+            android:layout_marginEnd="@dimen/screen_margin_end"
+            android:layout_marginBottom="@dimen/screen_margin_bottom"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -209,9 +210,10 @@
 
                 <Button
                     android:id="@+id/pix_onboarding_continue"
-                    android:layout_width="200dp"
-                    android:layout_height="52dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/golden_rounded_corner"
                     android:text="@string/continuar"
@@ -225,4 +227,4 @@
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

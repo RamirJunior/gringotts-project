@@ -1,77 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/grayFront">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_pix_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grayFront">
+        android:background="@color/gold"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
+        app:navigationIconTint="@color/white"
+        app:title="Confirmação"
+        app:titleCentered="true"
+        app:titleTextColor="@color/white" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_pix_confirmation"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_pix_confirmation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gold"
-            app:elevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_28"
-            app:navigationIconTint="@color/white"
-            app:title="Confirmação"
-            app:titleCentered="true"
-            app:titleTextColor="@color/white" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/confiraOsDados"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/grayFront"
-            android:gravity="center"
-            android:text="@string/confira_os_dados_antes_de_continuar"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_confirmation" />
+            <TextView
+                android:id="@+id/confiraOsDados"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/grayFront"
+                android:gravity="center"
+                android:text="@string/confira_os_dados_antes_de_continuar"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/loading_confirmation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="16dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardview_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:elevation="16dp"
-            app:cardCornerRadius="28dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar_pix_confirmation">
+            <ProgressBar
+                android:id="@+id/loading_confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardview_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="32dp"
-                android:paddingTop="52dp"
-                android:paddingEnd="32dp"
-                android:paddingBottom="52dp"
+                android:paddingStart="@dimen/screen_margin_start"
+                android:paddingTop="@dimen/screen_margin"
+                android:paddingEnd="@dimen/screen_margin_end"
+                android:paddingBottom="@dimen/screen_margin_bottom"
+                app:layout_constraintBottom_toTopOf="@+id/continueConfirmation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confiraOsDados">
@@ -88,55 +83,64 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textview_symbol"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_pix_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:gravity="center"
-                    android:text="@string/txt_symbol"
-                    android:textAlignment="center"
-                    android:textColor="@color/gold"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/textview_value"
-                    app:layout_constraintTop_toTopOf="@+id/textview_value" />
-
-                <TextView
-                    android:id="@+id/textview_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/gold"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia"
-                    tools:text="2,00" />
+                    app:layout_constraintTop_toBottomOf="@+id/valorDaTransferencia">
+
+                    <TextView
+                        android:id="@+id/textview_symbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:text="@string/txt_symbol"
+                        android:textAlignment="center"
+                        android:textColor="@color/gold"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textview_value"
+                        app:layout_constraintTop_toTopOf="@+id/textview_value" />
+
+                    <TextView
+                        android:id="@+id/textview_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/screen_margin"
+                        android:textAlignment="center"
+                        android:textColor="@color/gold"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/textview_symbol"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2,00" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/tarifa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:gravity="center"
                     android:text="@string/tarifa"
                     android:textAlignment="viewStart"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textview_value"
+                    app:layout_constraintTop_toBottomOf="@+id/container_pix_value"
                     tools:ignore="RtlCompat" />
 
                 <TextView
                     android:id="@+id/valor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:gravity="center"
                     android:text="@string/valor_total_da_opera_o"
                     android:textAlignment="viewStart"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tarifa"
                     tools:ignore="RtlCompat" />
@@ -149,6 +153,7 @@
                     android:text="@string/gr_tis"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/gold"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tarifa"
@@ -162,6 +167,7 @@
                     android:gravity="center"
                     android:text="@string/txt_symbol"
                     android:textAlignment="viewEnd"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/textview_total_value"
                     app:layout_constraintTop_toTopOf="@+id/valor"
@@ -173,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textAlignment="viewEnd"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/valor"
@@ -183,7 +190,7 @@
                     android:id="@+id/divider_value"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:background="@color/grayBack"
                     app:layout_constraintTop_toBottomOf="@+id/textview_total_value" />
 
@@ -191,7 +198,7 @@
                     android:id="@+id/destinatario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:gravity="center"
                     android:text="@string/txt_to"
                     app:layout_constraintStart_toStartOf="parent"
@@ -205,8 +212,8 @@
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/orange"
-                    android:textSize="18sp"
+                    android:textColor="@color/gold"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/destinatario"
@@ -221,7 +228,7 @@
                     android:gravity="center"
                     android:text="@string/txt_email"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textview_username"
                     tools:ignore="RtlCompat" />
@@ -230,11 +237,11 @@
                     android:id="@+id/textview_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/screen_margin_start"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/CPFtitle"
                     app:layout_constraintTop_toBottomOf="@+id/textview_username"
@@ -249,7 +256,7 @@
                     android:gravity="center"
                     android:text="@string/txt_institution"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/CPFtitle"
                     tools:ignore="RtlCompat" />
@@ -258,11 +265,11 @@
                     android:id="@+id/textview_bank_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/screen_margin_start"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/Instituicao"
                     app:layout_constraintTop_toBottomOf="@+id/textview_email"
@@ -277,7 +284,7 @@
                     android:gravity="center"
                     android:text="@string/txt_description"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Instituicao"
                     tools:ignore="RtlCompat" />
@@ -286,11 +293,11 @@
                     android:id="@+id/textview_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="@dimen/screen_margin_start"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/DescricaoPix"
                     app:layout_constraintTop_toBottomOf="@+id/textview_bank_name"
@@ -301,7 +308,7 @@
                     android:id="@+id/divider_receptor"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:background="@color/grayBack"
                     app:layout_constraintTop_toBottomOf="@+id/textview_description" />
 
@@ -309,7 +316,7 @@
                     android:id="@+id/quando"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:gravity="center"
                     android:text="@string/txt_when"
                     android:textAlignment="viewStart"
@@ -321,15 +328,15 @@
                     android:id="@+id/textview_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/screen_margin"
                     android:gravity="center"
-                    android:text="@string/txt_example_date"
                     android:textAlignment="viewStart"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/quando"
                     app:layout_constraintTop_toBottomOf="@+id/quando"
-                    tools:ignore="RtlCompat" />
+                    tools:ignore="RtlCompat"
+                    tools:text="@string/txt_example_date" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/textview_date_picker"
@@ -340,40 +347,44 @@
                     android:text="@string/agende_a_transferencia"
                     android:textAlignment="textEnd"
                     android:textColor="@color/gold"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider_receptor" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_date" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueConfirmation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:layout_marginBottom="@dimen/screen_margin"
+                android:background="@drawable/golden_rounded_corner"
+                android:text="@string/confirmar_transferencia"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCancelar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/continueConfirmation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/golden_rounded_corner"
-            android:text="@string/confirmar_transferencia"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardview_value" />
+            <TextView
+                android:id="@+id/textViewCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/screen_margin"
+                android:layout_marginBottom="@dimen/screen_margin_bottom"
+                android:text="@string/cancelar"
+                android:textColor="@color/gold"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/cancelar"
-            android:textColor="@color/gold"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/continueConfirmation" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

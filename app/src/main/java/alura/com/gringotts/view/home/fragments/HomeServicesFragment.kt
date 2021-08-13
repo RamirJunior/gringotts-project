@@ -4,11 +4,12 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.FuncionalityItem
 import alura.com.gringotts.databinding.HomeServicesLayoutBinding
 import alura.com.gringotts.presentation.home.HomeServicesViewModel
-import alura.com.gringotts.view.adapters.FuncionalityListAdapter
+import alura.com.gringotts.view.home.adapters.FuncionalityListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,20 +32,27 @@ class HomeServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireArguments().getInt("position")
+        requireArguments().getInt(POSITION_KEY)
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.recyclerView.adapter =
             FuncionalityListAdapter(
-                getItensByPosition(requireArguments().getInt("position")),
+                getItensByPosition(requireArguments().getInt(POSITION_KEY)),
                 object : FuncionalityListAdapter.OnSelectOnClickListener {
                     override fun onSelect(position: Int) {
-                        if (getItensByPosition(requireArguments().getInt("position"))[position].title == "Pix") {
-                            val direction = HomeFragmentDirections.actionHomeFragmentToPixActivity(
-                                goToOnboardingPix
-                            )
-                            findNavController().navigate(
-                                direction
-                            )
+                        when (getItensByPosition(requireArguments().getInt(POSITION_KEY))[position].title) {
+                            PIX_NAME -> {
+                                val direction =
+                                    HomeFragmentDirections.actionHomeFragmentToPixActivity(
+                                        goToOnboardingPix
+                                    )
+                                findNavController().navigate(
+                                    direction
+                                )
+                            }
+                            else -> {
+                                Toast.makeText(context, NOT_IMPLEMENTED_SCREEN, Toast.LENGTH_LONG)
+                                    .show()
+                            }
                         }
                     }
                 })
@@ -100,5 +108,11 @@ class HomeServicesFragment : Fragment() {
             FuncionalityItem(getString(R.string.Depositar), R.drawable.ic_adicionar_dinheiro),
             FuncionalityItem(getString(R.string.Pix), R.drawable.logo_pix_final)
         )
+    }
+
+    companion object {
+        private const val PIX_NAME = "Pix"
+        private const val POSITION_KEY = "position"
+        private const val NOT_IMPLEMENTED_SCREEN = "Tela não implementada"
     }
 }

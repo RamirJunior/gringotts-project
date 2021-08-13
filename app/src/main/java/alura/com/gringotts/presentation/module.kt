@@ -1,6 +1,7 @@
 package alura.com.gringotts.presentation
 
 import AccountStatementRepository
+import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.pix_transference.Pix
 import alura.com.gringotts.data.repositories.home.HomeRepository
@@ -21,11 +22,13 @@ import alura.com.gringotts.presentation.pix_transference.InsertOptionalDescripti
 import alura.com.gringotts.presentation.pix_transference.PixValueViewModel
 import android.content.Context
 import android.content.SharedPreferences
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val initialModule = module {
+
     viewModel {
         LoginViewModel(get())
     }
@@ -66,18 +69,25 @@ val initialModule = module {
         androidContext().getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
     }
     factory {
-        LoginRepository(get())
+        LoginRepository(get(), get())
     }
     factory {
         HomeRepository(get(), get())
+    }
+    single {
+        AccountStatementDatabase.provideDatabase(androidApplication())
+    }
+    factory {
+        get<AccountStatementDatabase>().accountStatementDAO()
     }
     factory {
         AccountStatementRepository(get(), get())
     }
     factory {
-        ApiInterface.create()
+        ApiInterface.create(get())
     }
     factory {
         PixRepository(get(), get())
     }
+
 }

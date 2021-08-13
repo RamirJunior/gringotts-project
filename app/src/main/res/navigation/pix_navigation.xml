@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_onboardingPixFragment2_to_pixFragment2"
             app:destination="@id/pixFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/onboardingPixFragment2"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,7 +27,11 @@
         tools:layout="@layout/fragment_pix">
         <action
             android:id="@+id/action_pixFragment2_to_pixTypeChoiceFragment"
-            app:destination="@id/pixTypeChoiceFragment" />
+            app:destination="@id/pixTypeChoiceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/pixTypeChoiceFragment"
@@ -32,7 +40,11 @@
         tools:layout="@layout/fragment_pix_type_choice">
         <action
             android:id="@+id/action_pixTypeChoiceFragment_to_insertEmailPixFragment"
-            app:destination="@id/insertEmailPixFragment" />
+            app:destination="@id/insertEmailPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/insertEmailPixFragment"
@@ -41,7 +53,11 @@
         tools:layout="@layout/fragment_insert_email_pix">
         <action
             android:id="@+id/action_insertEmailPixFragment_to_insertOptionalDescriptionPixFragment"
-            app:destination="@id/insertOptionalDescriptionPixFragment" />
+            app:destination="@id/insertOptionalDescriptionPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/insertOptionalDescriptionPixFragment"
@@ -50,7 +66,11 @@
         tools:layout="@layout/fragment_insert_optional_description_pix">
         <action
             android:id="@+id/action_insertOptionalDescriptionPixFragment_to_pixValueFragment"
-            app:destination="@id/pixValueFragment" />
+            app:destination="@id/pixValueFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="Pix"
             app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
@@ -62,7 +82,11 @@
         tools:layout="@layout/fragment_pix_value">
         <action
             android:id="@+id/action_pixValueFragment_to_confirmationPixFragment"
-            app:destination="@id/confirmationPixFragment" />
+            app:destination="@id/confirmationPixFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="pix"
             app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />
@@ -75,7 +99,11 @@
         <action
             android:id="@+id/action_confirmationPixFragment_to_pixFinishedFragment"
             app:destination="@id/pixFinishedFragment"
-            app:popUpTo="@id/pixTypeChoiceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pixFragment2"
             app:popUpToInclusive="false" />
         <argument
             android:name="pix"
@@ -88,7 +116,13 @@
         tools:layout="@layout/fragment_pix_finished">
         <action
             android:id="@+id/action_pixFinishedFragment_to_pixFragment2"
-            app:destination="@id/pixFragment2" />
+            app:destination="@id/pixFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pixFragment2"
+            app:popUpToInclusive="false" />
         <argument
             android:name="pix"
             app:argType="alura.com.gringotts.data.models.pix_transference.Pix" />

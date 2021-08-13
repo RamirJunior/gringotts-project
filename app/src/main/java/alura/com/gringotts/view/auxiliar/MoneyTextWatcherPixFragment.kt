@@ -7,7 +7,6 @@ import java.lang.ref.WeakReference
 import java.math.BigDecimal
 import java.text.NumberFormat
 
-
 class MoneyTextWatcherPixFragment(editText: EditText) : TextWatcher {
 
     private val editTextWeakReference: WeakReference<EditText> = WeakReference(editText)

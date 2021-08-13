@@ -51,7 +51,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_home"
-        app:layout_constraintVertical_bias="1.0"
         tools:context=".view.home.fragments.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,7 +120,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="8dp"
-                        android:text="@string/hidden_balance"
                         android:textColor="@color/grayHigh"
                         android:textSize="24sp"
                         android:textStyle="bold"

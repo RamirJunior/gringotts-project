@@ -2,13 +2,14 @@ package alura.com.gringotts.presentation.home
 
 import alura.com.gringotts.data.models.home.Balance
 import alura.com.gringotts.data.models.home.Benefit
+import alura.com.gringotts.data.models.home.TokenResponse
 import alura.com.gringotts.data.repositories.home.HomeRepository
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
@@ -25,7 +26,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val _apiError = MutableLiveData<String>()
     val apiError: LiveData<String> = _apiError
     private val _hideBalanceAndReceivable = MutableLiveData<Boolean>()
-    val hideBalanceAndReceivable : LiveData<Boolean> = _hideBalanceAndReceivable
+    val hideBalanceAndReceivable: LiveData<Boolean> = _hideBalanceAndReceivable
 
     private lateinit var balanceValue: Balance
 
@@ -36,11 +37,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 val homeData = homeRepository.homeData()
                 _benefits.postValue(homeData.benefits)
                 balanceValue = homeData.balance
-                val numberFormatter = NumberFormat.getInstance()
-                numberFormatter.minimumFractionDigits=2
-                numberFormatter.maximumFractionDigits=2
-                _balance.postValue(numberFormatter.format(balanceValue.currentValue))
-                _receivable.postValue(numberFormatter.format(balanceValue.receivables))
+                _balance.postValue(formatDoubleToTwoFractionDigits(balanceValue.currentValue))
+                _receivable.postValue(formatDoubleToTwoFractionDigits(balanceValue.receivables))
                 setBalanceState(homeRepository.getHideBalanceState())
                 val user = homeRepository.getUser()
                 _userName.postValue(user!!.firstName + " " + user.lastName)
@@ -58,10 +56,12 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     private fun setBalanceState(isBalanceVisible: Boolean) {
-        if (isBalanceVisible) {
-            _hideBalanceAndReceivable.postValue(false)
-        } else {
-            _hideBalanceAndReceivable.postValue(true)
+        _hideBalanceAndReceivable.postValue(!isBalanceVisible)
+    }
+
+    fun getToken(tokenResponse: TokenResponse) {
+        viewModelScope.launch {
+            homeRepository.sendToken(tokenResponse)
         }
     }
 

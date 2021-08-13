@@ -30,11 +30,11 @@ class PixFinishedFragment : Fragment() {
 
         updateLayout()
 
-        binding.imageButtonGoToHome.setOnClickListener {
+        binding.goToHomeContainer.setOnClickListener {
             activity?.finish()
         }
 
-        binding.imageButtonOtherTransfer.setOnClickListener {
+        binding.otherTransferCardView.setOnClickListener {
             findNavController().navigate(R.id.action_pixFinishedFragment_to_pixFragment2)
         }
 

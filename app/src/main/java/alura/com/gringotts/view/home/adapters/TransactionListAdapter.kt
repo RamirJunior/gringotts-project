@@ -4,6 +4,7 @@ import alura.com.gringotts.R
 import alura.com.gringotts.data.models.home.TransactionDateItem
 import alura.com.gringotts.data.models.home.TransactionItem
 import alura.com.gringotts.data.models.home.TransactionListItem
+import alura.com.gringotts.presentation.auxiliar.NumberFormatHelper.formatDoubleToTwoFractionDigits
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,9 +72,14 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
             itemView.findViewById(R.id.textview_type)
         private val cardTransactionValue: TextView =
             itemView.findViewById(R.id.textview_value)
+        private val cardTransactionCurrency: TextView =
+            itemView.findViewById(R.id.textview_currency)
 
         fun bindList(transaction: TransactionItem) {
-            cardTransactionValue.text = transaction.transaction.value
+
+            cardTransactionValue.text = formatDoubleToTwoFractionDigits(
+                transaction.transaction.value.toDouble()
+            )
             cardTransactionType.text = transaction.transaction.type
             cardTransactionTypeDescription.text = transaction.transaction.typeDescription
             cardTime.text = transaction.transaction.time
@@ -92,6 +98,9 @@ class TransactionListAdapter(private var transaction: List<TransactionListItem>)
 
         private fun setColorItemView(@ColorRes color: Int) {
             cardTransactionStatus.setColorFilter(
+                ContextCompat.getColor(itemView.context, color)
+            )
+            cardTransactionCurrency.setTextColor(
                 ContextCompat.getColor(itemView.context, color)
             )
             cardTransactionType.setTextColor(

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
@@ -44,32 +44,35 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewLogoGringotts" />
 
             <Button
                 android:id="@+id/buttonCriarConta"
-                android:layout_width="200dp"
-                android:layout_height="52dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_margin_start"
                 android:layout_marginTop="36dp"
+                android:layout_marginEnd="@dimen/screen_margin_end"
                 android:background="@drawable/golden_rounded_corner"
                 android:text="@string/txt_botaoCriarConta"
+                app:layout_constraintBottom_toTopOf="@+id/textViewJaTenhoCadastro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_onboarding1" />
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/textViewJaTenhoCadastro"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/already_registred_bottom"
                 android:text="@string/txt_SouCliente"
+                android:textColor="@color/grayMiddle"
                 android:textColorLink="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonCriarConta" />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

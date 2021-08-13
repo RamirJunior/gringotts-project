@@ -1,6 +1,7 @@
 package alura.com.gringotts.data.repositories.initial
 
 import alura.com.gringotts.data.api.ApiInterface
+import alura.com.gringotts.data.exceptions.IncorrectPasswordException
 import alura.com.gringotts.data.exceptions.NotFoundEmailException
 import alura.com.gringotts.data.models.initial.LoginPayload
 import alura.com.gringotts.data.models.initial.LoginResponse
@@ -10,12 +11,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class LoginRepository(private val sessionManager: SessionManager) {
+class LoginRepository(
+    private val sessionManager: SessionManager,
+    private val apiInterface: ApiInterface
+) {
 
     suspend fun userLogin(loginPayload: LoginPayload, rememberSwitch: Boolean) {
         val response: Response<LoginResponse>
         withContext(Dispatchers.IO) {
-            response = ApiInterface.create().userLogin(loginPayload)
+            response = apiInterface.userLogin(loginPayload)
         }
         if (response.isSuccessful) {
             loginSuccessHandler(response.body()!!, rememberSwitch, loginPayload)
@@ -33,7 +37,7 @@ class LoginRepository(private val sessionManager: SessionManager) {
                 throw NotFoundEmailException("e-mail não encontrado")
             }
             INCORRECT_PASSWORD -> {
-                throw Exception("Senha incorreta")
+                throw IncorrectPasswordException("Senha incorreta")
             }
         }
     }
@@ -56,10 +60,6 @@ class LoginRepository(private val sessionManager: SessionManager) {
 
     fun getUser(): LoginPayload? {
         return sessionManager.getUserData()
-    }
-
-    fun getTokens(): Token? {
-        return sessionManager.getTokens()
     }
 
     companion object {

@@ -2,7 +2,7 @@ package alura.com.gringotts.data.repositories.home
 
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.home.HomeResponse
-import alura.com.gringotts.data.models.home.TokenResponse
+import alura.com.gringotts.data.models.home.SendFcmTokenPayload
 import alura.com.gringotts.data.models.initial.User
 import alura.com.gringotts.data.session.SessionManager
 import kotlinx.coroutines.Dispatchers
@@ -27,8 +27,8 @@ class HomeRepository(private val sessionManager: SessionManager, private val api
 
     fun getHideBalanceState(): Boolean = sessionManager.getHideBalanceState()
 
-    suspend fun sendToken(tokenResponse: TokenResponse) {
-        api.getToken(tokenResponse)
+    suspend fun sendToken(sendFcmTokenPayload: SendFcmTokenPayload) {
+        api.getToken(sendFcmTokenPayload)
     }
 
 }

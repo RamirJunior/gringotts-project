@@ -4,12 +4,14 @@ import AccountStatementRepository
 import alura.com.gringotts.data.AccountStatementDatabase
 import alura.com.gringotts.data.api.ApiInterface
 import alura.com.gringotts.data.models.pix_transference.Pix
+import alura.com.gringotts.data.repositories.home.HomeActivityRepository
 import alura.com.gringotts.data.repositories.home.HomeRepository
 import alura.com.gringotts.data.repositories.initial.LoginRepository
 import alura.com.gringotts.data.repositories.pix_transference.PixRepository
 import alura.com.gringotts.data.session.SessionManager
 import alura.com.gringotts.data.session.SessionManagerImpl
 import alura.com.gringotts.presentation.home.AccountStatementViewModel
+import alura.com.gringotts.presentation.home.HomeActivityViewModel
 import alura.com.gringotts.presentation.home.HomeServicesViewModel
 import alura.com.gringotts.presentation.home.HomeViewModel
 import alura.com.gringotts.presentation.initial.LoginViewModel
@@ -45,6 +47,9 @@ val initialModule = module {
         AccountStatementViewModel(get())
     }
     viewModel {
+        HomeActivityViewModel(get())
+    }
+    viewModel {
         OnboardingPixViewModel(get())
     }
     viewModel {
@@ -73,6 +78,9 @@ val initialModule = module {
     }
     factory {
         HomeRepository(get(), get())
+    }
+    factory {
+        HomeActivityRepository(get())
     }
     single {
         AccountStatementDatabase.provideDatabase(androidApplication())
